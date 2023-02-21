@@ -1,0 +1,32 @@
+<header
+	class="fixed inset-x-0 top-[20px] z-50 grid w-screen grid-cols-12 place-items-start"
+>
+	{{/* Lang */}}
+	<div
+		class="relative col-span-2 col-start-2 grid grid-cols-3 place-items-center justify-self-center text-[11px] sm:justify-self-end md:text-base"
+	>
+		<span class="block">CZ</span>
+		<span class="h-[13px] w-px bg-neutral-800 md:h-[19px]"></span>
+		<span class="block">EN</span>
+	</div>
+	<nav class="col-span-6 col-start-5">
+		<ul
+			class="flex gap-4 text-base font-semibold text-neutral-800 md:gap-10 md:text-2xl"
+		>
+			<li>
+				<a href="/about">About</a>
+			</li>
+			<li>
+				<a href="/blog">Blog</a>
+			</li>
+			<li>
+				<a href="/contact">Contact</a>
+			</li>
+		</ul>
+	</nav>
+	<div
+		class="col-start-11 w-2/3 min-w-[20px] max-w-[56px] place-self-center fill-neutral-800"
+	>
+		<a href="/">{{ partial "svg/Logo.svg" }}</a>
+	</div>
+</header>

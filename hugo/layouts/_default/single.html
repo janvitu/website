@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="{{ .Site.Language }}">
+	{{ partial "head.html" . }}
+	<body>
+		{{ partial "grid.html" . }}
+		{{ partial "header.html" . }}
+		<main class="mt-14 md:mt-20">
+			{{ block "main" . }}
+				{{ .Content }}
+			{{ end }}
+		</main>
+		{{ partial "footer.html" . }}
+	</body>
+</html>
