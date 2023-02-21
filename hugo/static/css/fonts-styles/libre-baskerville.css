@@ -1,0 +1,17 @@
+@font-face {
+	font-family: "LibreBaskerville";
+	src: url("/fonts/Libre-Baskerville/LibreBaskerville-Bold.ttf");
+	font-weight: 700;
+}
+
+@font-face {
+	font-family: "LibreBaskerville";
+	src: url("/fonts/Libre-Baskerville/LibreBaskerville-Regular.ttf");
+	font-weight: 400;
+}
+@font-face {
+	font-family: "LibreBaskerville";
+	src: url("/fonts/Libre-Baskerville/LibreBaskerville-Italic.ttf");
+	font-style: italic;
+	font-weight: 400;
+}
