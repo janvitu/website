@@ -10,5 +10,6 @@
 			{{ end }}
 		</main>
 		{{ partial "footer.html" . }}
+		{{ $indexJS := resources.Get "ts/index.ts" | js.Build "js/index.js" | fingerprint }}		 <script src="{{$indexJS.Permalink}}"></script>
 	</body>
 </html>
