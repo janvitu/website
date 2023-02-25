@@ -1,0 +1,29 @@
+
+defaultContentLanguage = "en"
+languageCode = "en"
+[languages]
+  [languages.en]
+    languageName = "English"
+    weight = 1
+  [languages.cs]
+    languageName = "Čeština"
+    weight = 2
+
+title = "JanVitu"
+publishDir = "../dist"
+enableEmoji = true
+timeZone = "Europe/Prague"
+
+[params.testimonials]
+  enabled = true
+  title = "Testimonials"
+
+
+[minify]
+  minifyOutput = true
+
+
+# [markup.highlight]
+#   codeFences = true
+#   guessSyntax = false
+#   tabWidth = 2
