@@ -1,31 +1,38 @@
 {
-  "name": "portfolio-website",
-  "version": "1.0.0",
-  "description": "Portfolio project created with hugo",
-  "main": "index.js",
-  "scripts": {
-    "dev:tailwind": "tailwindcss -i ./hugo/assets/css/tailwind.css -o ./hugo/assets/css/tw.css -w",
-    "dev:hugo": "cd ./hugo && hugo server -D",
-    "build:tailwind": "tailwindcss -i ./hugo/assets/css/tailwind.css -o ./hugo/assets/css/tw.css --minify",
-    "build:hugo": "cd ./hugo && hugo",
-    "dev": "concurrently --names 'TAILWIND,HUGO' -c 'cyan,green'  'npm run dev:tailwind' 'npm run dev:hugo'",
-    "build": "concurrently --names 'TAILWIND,HUGO' -c 'cyan,green' -g 'npm run build:tailwind' 'npm run build:hugo'"
-  },
-  "author": "",
-  "license": "ISC",
-  "devDependencies": {
-    "concurrently": "^7.0.0",
-    "postcss": "^8.4.6",
-    "postcss-cli": "^9.1.0",
-    "prettier": "^2.5.1",
-    "prettier-plugin-go-template": "^0.0.11",
-    "prettier-plugin-tailwindcss": "^0.1.5",
-    "tailwindcss": "^3.1.7",
-    "typescript": "^4.7.4"
-  },
-  "dependencies": {
-    "package-lock.json": "^1.0.0",
-    "package.json": "^0.0.0",
-    "swup": "^2.0.14"
-  }
+	"name": "portfolio-website",
+	"version": "1.0.0",
+	"description": "Portfolio project created with hugo",
+	"main": "index.js",
+	"scripts": {
+		"dev:tailwind": "tailwindcss -i ./hugo/assets/css/tailwind.css -o ./hugo/assets/css/tw.css -w",
+		"dev:hugo": "cd ./hugo && hugo server -D",
+		"build:tailwind": "tailwindcss -i ./hugo/assets/css/tailwind.css -o ./hugo/assets/css/tw.css --minify",
+		"build:hugo": "cd ./hugo && hugo",
+		"dev:solid": "vite build --watch",
+		"build:solid": "vite build",
+		"dev": "concurrently --names 'TAILWIND,SOLID,HUGO' -c 'cyan,blue,green'  'npm run dev:tailwind' 'npm run dev:solid' 'npm run dev:hugo'",
+		"build": "concurrently --names 'TAILWIND,SOLID,HUGO' -c 'cyan,blue,green' -g 'npm run build:tailwind' 'npm run build:solid' 'npm run build:hugo'"
+	},
+	"author": "",
+	"license": "ISC",
+	"devDependencies": {
+		"@types/node": "^18.15.3",
+		"concurrently": "^7.0.0",
+		"postcss": "^8.4.6",
+		"postcss-cli": "^9.1.0",
+		"prettier": "^2.5.1",
+		"prettier-plugin-go-template": "^0.0.11",
+		"prettier-plugin-tailwindcss": "^0.1.5",
+		"tailwindcss": "^3.1.7",
+		"typescript": "^4.7.4",
+		"vite": "^4.1.4",
+		"vite-plugin-solid": "^2.6.1"
+	},
+	"dependencies": {
+		"motion": "^10.15.5",
+		"package-lock.json": "^1.0.0",
+		"package.json": "^0.0.0",
+		"solid-js": "^1.6.14",
+		"zod": "^3.21.4"
+	}
 }
