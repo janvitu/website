@@ -1,0 +1,13 @@
+<section class="pt-24 pb-48">
+	<h2
+		class="text-center text-3xl font-medium sm:text-5xl md:text-7xl lg:text-8xl"
+	>
+		{{ i18n "contact-footer.text" }}<br />
+		{{ $contacURL := ($.Site.GetPage `contact`).RelPermalink }}
+		<a
+			href="{{ $contacURL }}"
+			class="inline-block font-bold underline hover:cursor-pointer"
+			>{{ i18n "contact-footer.link-text" }}</a
+		>
+	</h2>
+</section>

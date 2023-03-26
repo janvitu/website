@@ -18,7 +18,7 @@
 			class="group flex items-center justify-center text-sm hover:underline"
 		>
 			<span
-				class="inline-block h-4 w-4 fill-neutral-800 group-hover:fill-red-700"
+				class="inline-block h-4 w-4 fill-neutral-800 group-hover:fill-amber-500"
 			>
 				<svg
 					xmlns="http://www.w3.org/2000/svg"
@@ -36,15 +36,23 @@
 		<div
 			class="row-start-3 flex justify-center gap-4 text-sm text-neutral-500 md:row-start-auto md:justify-end"
 		>
-			<a
-				href="/osobni-udaje"
-				class="block hover:text-neutral-700 hover:underline"
+			<button
+				id="cookie-f-button"
+				class="link-strikethrough block hover:text-neutral-700"
 			>
-				Osobní údaje
-			</a>
-			<a href="#" class="block hover:text-neutral-700 hover:underline"
-				>Cookies</a
-			>
+				Cookies
+			</button>
+			{{ range .Site.Menus.footer }}
+				<a
+					{{ if .Params.id }}
+						id="Cookies"
+					{{ end }}
+					href="{{ .URL }}"
+					class="link-strikethrough block hover:text-neutral-700"
+				>
+					{{ .Name }}
+				</a>
+			{{ end }}
 		</div>
 	</div>
 </footer>
