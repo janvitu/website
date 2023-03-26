@@ -1,0 +1,21 @@
+{
+	"testimonials": "Testimonials",
+	"form": {
+		"name": "First name",
+		"surname": "Second name",
+		"email": "Email",
+		"phone": "Phone",
+		"company": "Company",
+		"message": "Message",
+		"button": "Send",
+		"legal": {
+			"text": "By clicking the button, I agree with the collection and processing of my personal data as described in the",
+			"link-text": "Privacy policy"
+		}
+	},
+	"contact-footer": {
+		"text": "Got a project?",
+		"link-text": "Let's colaborate!"
+	},
+	"project-process-heading": "How i handle a project"
+}
