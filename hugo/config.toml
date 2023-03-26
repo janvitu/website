@@ -1,22 +1,73 @@
 
-defaultContentLanguage = "en"
-languageCode = "en"
+defaultContentLanguage = "cs"
+languageCode = "cs"
 [languages]
   [languages.en]
     languageName = "English"
     weight = 1
+    [languages.en.menu]
+      [[languages.en.menu.main]]
+        identifier = "homepage"
+        name = "Homepage"
+        url = "/en/"
+        [languages.en.menu.main.params]
+          hidden = "true"
+      [[languages.en.menu.main]]
+        identifier = "about"
+        name = "About"
+        url = "/en/about/"
+        weight = 1
+      [[languages.en.menu.main]]
+        identifier = "blog"
+        name = "Blog"
+        url = "/en/blog/"
+        weight = 2
+      [[languages.en.menu.main]]
+        identifier = "contact"
+        name = "Contact"
+        url = "/en/contact/"
+        weight = 3
+      [[languages.en.menu.footer]]
+        identifier = "privacy-policy"
+        name = "Privacy policy"
+        url = "/en/privacy-policy/"
+        weight = 1
   [languages.cs]
     languageName = "Čeština"
     weight = 2
+    [languages.cs.menu]
+      [[languages.cs.menu.main]]
+        identifier = "homepage"
+        name = "Domovská stránka"
+        url = "/"
+        [languages.cs.menu.main.params]
+          hidden = "true"
+
+      [[languages.cs.menu.main]]
+        identifier = "about"
+        name = "O mně"
+        url = "/about/"
+        weight = 1
+      [[languages.cs.menu.main]]
+        identifier = "blog"
+        name = "Blog"
+        url = "/blog/"
+        weight = 2
+      [[languages.cs.menu.main]]
+        identifier = "contact"
+        name = "Kontakt"
+        url = "/contact/"
+        weight = 3
+      [[languages.cs.menu.footer]]
+        identifier = "privacy-policy"
+        name = "Osobní údaje"
+        url = "/privacy-policy/"
+        weight = 1
 
 title = "JanVitu"
 publishDir = "../dist"
 enableEmoji = true
 timeZone = "Europe/Prague"
-
-[params.testimonials]
-  enabled = true
-  title = "Testimonials"
 
 
 [minify]
