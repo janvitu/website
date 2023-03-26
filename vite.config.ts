@@ -1,6 +1,6 @@
 import { defineConfig } from "vite";
 import solidPlugin from "vite-plugin-solid";
-import { readdir, rm, writeFile, copyFile } from "fs/promises";
+import { readdir, copyFile } from "fs/promises";
 
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -16,6 +16,7 @@ export default defineConfig({
 
 function syncToHugo() {
 	return {
+		name: "sync-to-hugo",
 		closeBundle: async () => {
 			const assetsJsDir = "./app/dist/assets";
 			const assets = await readdir(assetsJsDir);
