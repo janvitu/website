@@ -1,0 +1,20 @@
+{
+	"testimonials": "Reference",
+	"form": {
+		"name": "Jméno",
+		"surname": "Příjmení",
+		"email": "Email",
+		"phone": "Telefonní číslo",
+		"company": "Společnost",
+		"message": "Zpráva",
+		"button": "Odeslat",
+		"legal": {
+			"text": "Odesláním formuláře souhlasíte se ",
+			"link-text": "zpracováním osobních údajů"
+		}
+	},
+	"contact-footer": {
+		"text": "Máte projekt?",
+		"link-text": "Pojďme spolupracovat!"
+	}
+}

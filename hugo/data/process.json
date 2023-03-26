@@ -1,0 +1,51 @@
+{
+	"en": [
+		{
+			"id": "1",
+			"icon": "svg/CubesStacked.svg",
+			"heading": "Brief",
+			"text": [
+				"Send me detailed brief wit the following information: who you are, core values, your business goals, what you sell, requirements, scope of the project, timeframes and deadlines and also everything else you think that is important."
+			]
+		},
+		{
+			"id": "2",
+			"icon": "svg/MagnifyingGlass.svg",
+			"heading": "Evaluation & Debrief",
+			"text": [
+				"I will take a closer look to your brief and assess the terms and requirements. If everything is aligned, we will have an online meeting to further discuss the project detail and how to proceed."
+			]
+		},
+		{
+			"id": "3",
+			"icon": "svg/Progress.svg",
+			"heading": "KickOff & Workshop",
+			"text": [
+				"We take care of administration and formaly start the project. We discuss aproaches and concepts to find a solutions that fits your needs."
+			]
+		},
+		{
+			"id": "4",
+			"icon": "svg/Shapes.svg",
+			"heading": "Design",
+			"text": [
+				"This is where the fun begins. I will work on art direciton, concept and design. In the first phase I present a moodboard and 2 to 3 screens – To show how the final project will look and feel.",
+				"After we approve the direction I will design the entire project."
+			]
+		},
+		{
+			"id": "5",
+			"icon": "svg/Timeline.svg",
+			"heading": "Development",
+			"text": [
+				"After main design and mood is approved, the transformation to code wil start. I will upadte you regulary on the status of development so you always have a clear insight into the process – also so we can change things that does not work or that are not perfect."
+			]
+		},
+		{
+			"id": "6",
+			"icon": "svg/BinaryCheck.svg",
+			"heading": "Quality & Assurance",
+			"text": ["– And also i am able to take care of your product afterwards."]
+		}
+	]
+}
