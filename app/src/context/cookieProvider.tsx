@@ -15,6 +15,8 @@ type consentType = {
 type consentContextType = {
 	state: Accessor<consentType>;
 	setState: Setter<consentType>;
+	consetFilled: Accessor<boolean>;
+	setConsentFIlled: Setter<boolean>;
 };
 
 export const CookieContext = createContext<consentContextType>();
@@ -24,7 +26,14 @@ export function CookieProvider(props) {
 		analytics_storage: false,
 		ad_storage: false,
 	});
-	const store: consentContextType = { state, setState };
+	const [consetFilled, setConsentFIlled] = createSignal(false);
+
+	const store: consentContextType = {
+		state,
+		setState,
+		consetFilled,
+		setConsentFIlled,
+	};
 
 	return (
 		<CookieContext.Provider value={store}>
@@ -39,5 +48,10 @@ export function useCookieContext(): consentContextType {
 	if (!context) {
 		throw new Error("useCookieContext: cannot find a CookieContext");
 	}
-	return { state: context.state, setState: context.setState };
+	return {
+		state: context.state,
+		setState: context.setState,
+		consetFilled: context.consetFilled,
+		setConsentFIlled: context.setConsentFIlled,
+	};
 }

@@ -1,4 +1,4 @@
-import { createSignal, onMount } from "solid-js";
+import { createSignal, onMount, Show } from "solid-js";
 import { useCookieContext } from "./src/context/cookieProvider";
 import { CookieBanner } from "./src/CookieBanner";
 import { CookieDialog } from "./src/CookieDialog";
@@ -32,7 +32,8 @@ export const App = () => {
 	});
 
 	const [consentDialog, setConsentDialog] = createSignal(false);
-	const [consetFilled, setConsentFIlled] = createSignal(!!consetCookie);
+
+	if (consetCookie) consent.setConsentFIlled(true);
 
 	const updateConset = (adStorage: boolean, analyticsStorage: boolean) => {
 		consent.setState({
@@ -40,8 +41,10 @@ export const App = () => {
 			ad_storage: adStorage,
 		});
 		setConsentCookies(adStorage, analyticsStorage);
-		setConsentFIlled(true);
+		consent.setConsentFIlled(true);
+		setConsentDialog(false);
 	};
+
 	const openDialog = () => {
 		setConsentDialog(true);
 	};
@@ -53,29 +56,30 @@ export const App = () => {
 			});
 	});
 	return (
-		<div class="fixed left-[8.333vw] right-[8.333vw] bottom-4 z-50 max-h-[80vh] overflow-hidden border-2 border-neutral-600 bg-white sm:left-auto">
-			<div
-				class={`${
-					consetFilled() || consentDialog() ? "hidden" : "flex"
-				} flex-col p-3 sm:right-4 sm:flex-row sm:items-center`}
-			>
-				<CookieBanner
-					content={langContent.cookieBanner}
-					setConsent={updateConset}
-					openDialog={openDialog}
-				/>
+		<Show when={!consent.consetFilled() || consentDialog()}>
+			<div class="fixed left-[8.333vw] right-[8.333vw] bottom-4 z-50 max-h-[80vh] overflow-hidden border-2 border-neutral-600 bg-white sm:left-auto">
+				<div
+					class={`${
+						consent.consetFilled() || consentDialog() ? "hidden" : "flex"
+					} flex-col p-3 sm:right-4 sm:flex-row sm:items-center`}
+				>
+					<CookieBanner
+						content={langContent.cookieBanner}
+						setConsent={updateConset}
+						openDialog={openDialog}
+					/>
+				</div>
+				<div
+					class={`${
+						consentDialog() ? "flex flex-col" : "hidden"
+					} h-full sm:right-4`}
+				>
+					<CookieDialog
+						content={langContent.cookieDialog}
+						setConsent={updateConset}
+					/>
+				</div>
 			</div>
-			<div
-				class={`${
-					consentDialog() ? "flex flex-col" : "hidden"
-				} h-full sm:right-4`}
-			>
-				<CookieDialog
-					content={langContent.cookieDialog}
-					consent={consent}
-					setConsent={updateConset}
-				/>
-			</div>
-		</div>
+		</Show>
 	);
 };
