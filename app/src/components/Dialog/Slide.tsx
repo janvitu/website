@@ -11,7 +11,7 @@ type SlideProps = {
 
 export const Slide = ({ activeSlide, content }: SlideProps) => {
 	return (
-		<div class="h-auto max-w-xl overflow-auto pt-5">
+		<div class="custom-scroll mr-1 flex max-w-xl overflow-auto px-3 pt-5">
 			<Switch>
 				<Match when={activeSlide() === "about"}>
 					<About content={content.about} />
@@ -19,7 +19,7 @@ export const Slide = ({ activeSlide, content }: SlideProps) => {
 				<Match when={activeSlide() === "detail"}>
 					<Detail content={content.details} />
 				</Match>
-				<Match when={activeSlide() === "about"}>
+				<Match when={activeSlide() === "consent"}>
 					<Consent content={content.consent} />
 				</Match>
 			</Switch>
