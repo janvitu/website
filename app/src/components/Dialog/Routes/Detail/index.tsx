@@ -11,7 +11,7 @@ export const Detail = ({
 
 	return (
 		<div class="min-h-auto">
-			<div class="space-y-8 overflow-y-auto overflow-x-hidden px-px">
+			<div class="space-y-8 px-px">
 				<CookieKindDetail
 					heading={content.necesaryCookies.heading}
 					text={content.necesaryCookies.text}

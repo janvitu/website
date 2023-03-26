@@ -1,6 +1,6 @@
 export const SlideRouter = ({ setActiveSlide }: any) => {
 	return (
-		<div class="grid grid-cols-3 gap-4">
+		<div class="grid grid-cols-3 gap-4 px-3">
 			<button
 				class="p-2"
 				onClick={() => {

@@ -53,7 +53,7 @@ export const App = () => {
 			});
 	});
 	return (
-		<div class="fixed left-[8.333vw] right-[8.333vw] bottom-4 max-h-[80vh] border-2 border-neutral-600 bg-white sm:left-auto">
+		<div class="fixed left-[8.333vw] right-[8.333vw] bottom-4 z-50 max-h-[80vh] overflow-hidden border-2 border-neutral-600 bg-white sm:left-auto">
 			<div
 				class={`${
 					consetFilled() || consentDialog() ? "hidden" : "flex"
@@ -66,7 +66,9 @@ export const App = () => {
 				/>
 			</div>
 			<div
-				class={`${consentDialog() ? "block" : "hidden"} px-3 pb-3 sm:right-4 `}
+				class={`${
+					consentDialog() ? "flex flex-col" : "hidden"
+				} h-full sm:right-4`}
 			>
 				<CookieDialog
 					content={langContent.cookieDialog}
