@@ -1,6 +1,8 @@
+import { useCookieContext } from "../../context/cookieProvider";
 import { ButtonFilled, ButtonOutlined } from "../Buttons";
 
-export const DialogButtons = ({ setConsent, consent }: any) => {
+export const DialogButtons = ({ setConsent }: any) => {
+	const { state } = useCookieContext();
 	return (
 		<div class="grid grid-cols-3 gap-4 px-3 pt-5 pb-3">
 			<ButtonFilled
@@ -12,7 +14,7 @@ export const DialogButtons = ({ setConsent, consent }: any) => {
 			</ButtonFilled>
 			<ButtonOutlined
 				onClick={() => {
-					setConsent(consent().ad_storage, consent().analytics_storage);
+					setConsent(state().ad_storage, state().analytics_storage);
 				}}
 			>
 				Confirm
