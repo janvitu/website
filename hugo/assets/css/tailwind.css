@@ -10,31 +10,90 @@
 	body {
 		@apply relative bg-neutral-100;
 	}
+	.base-grid {
+		@apply grid grid-cols-12;
+	}
+	h1 {
+		@apply text-4xl leading-10 sm:text-5xl md:text-7xl xl:text-8xl;
+	}
+	h2 {
+		@apply text-3xl leading-tight sm:text-4xl md:text-5xl xl:text-6xl;
+	}
 }
 
 @layer components {
-	.hamburger {
-		@apply absolute right-0 top-[50%] block h-4 w-4 -translate-y-1/2 transform cursor-pointer;
+	.testimonials {
+		@apply py-24 md:py-32;
 	}
-	.hamburger span {
-		@apply left-0 bg-white transition-all duration-150;
+	.testimonials__controls {
+		@apply col-start-2 col-end-12 row-start-3 flex grid-cols-2 items-center gap-7 md:col-start-4 md:col-end-9;
+		@apply mt-7 md:mt-16;
 	}
-	.hamburger span:first-child {
-		@apply absolute top-1/3 h-px w-full -translate-y-1/2;
+	.testimonials__item {
+		@apply origin-left transform;
 	}
-	.hamburger span:nth-child(2) {
-		@apply absolute top-2/3 h-px w-full -translate-y-1/2;
-	}
-	.hamburger.toggled span:first-child {
-		@apply absolute top-1/2 h-px w-full -translate-y-1/2 -rotate-45;
-	}
-	.hamburger.toggled span:nth-child(2) {
-		@apply absolute top-1/2 h-px w-full -translate-y-1/2 rotate-45;
-	}
-	.hamburger-content {
+	.testimonials__item--hidden {
 		@apply hidden;
 	}
-	.hamburger.toggled + .hamburger-content {
-		@apply absolute right-0 block w-10 bg-blue-500;
+	.testimonials__controls__indication-item {
+		@apply mr-2 h-[10px] w-[10px] rounded-full bg-neutral-800;
+	}
+	.testimonials__controls__indication {
+		@apply flex flex-row items-center;
+	}
+	.testimonials__controls__indication-item--disabled {
+		@apply bg-neutral-400;
+	}
+	.testimonials__controls__indication-line {
+		@apply mx-[2px] mr-[10px] h-px bg-neutral-800;
+	}
+	.indication-line--hidden {
+		/* @apply mx-0 mr-0; */
+	}
+
+	.testimonials__button {
+		@apply h-10 w-10 rounded-full border border-neutral-800 bg-white hover:bg-neutral-50;
+	}
+	.testimonials__button--disabled {
+		@apply opacity-40 hover:cursor-not-allowed;
+	}
+
+	.text-bg {
+		@apply absolute top-0 left-0 z-50 block h-full w-full origin-left transform;
+		@apply bg-neutral-800;
+		@apply scale-x-0;
+	}
+
+	.text-strikethrough {
+		@apply relative;
+		@apply before:absolute before:-inset-x-1 before:top-1/2 before:h-[2px] before:-translate-y-1/2 before:transform;
+	}
+
+	.text-strikethrough--interactive {
+		@apply before:origin-center before:scale-x-0 before:bg-neutral-900 before:transition-all;
+		@apply hover:before:scale-x-100;
+	}
+
+	.text-strikethrough--interactive.text-strikethrough--active {
+		@apply before:scale-x-100;
+	}
+
+	.link-strikethrough {
+		@apply text-strikethrough;
+		@apply text-strikethrough--interactive;
+	}
+	.link-strikethrough--active {
+		@apply before:scale-x-100;
+	}
+
+	.link-strike-arrow {
+	}
+
+	.center--horizontal-vertical {
+		@apply flex items-center justify-center;
+	}
+
+	.checkbox-switch {
+		@apply invisible h-0 w-0;
 	}
 }
