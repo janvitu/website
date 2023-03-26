@@ -1,0 +1,107 @@
+<section>
+	<form>
+		<div class="base-grid">
+			<div
+				class="col-start-3 col-end-12 grid grid-cols-1 gap-x-6 gap-y-6 sm:col-end-11 md:col-start-4 md:col-end-11 md:grid-cols-2 lg:col-end-9"
+			>
+				<div>
+					<label for="firstname" class="text-sm">{{ i18n "form.name" }}</label>
+					<div class="relative">
+						<input
+							class="w-full border border-neutral-400 bg-neutral-50 py-2 pl-3 pr-4"
+							type="text"
+							name="firstname"
+							id="firstname"
+							required
+							aria-required="true"
+							aria-invalid="false"
+						/>
+					</div>
+				</div>
+				<div>
+					<label for="secondname" class="text-sm">
+						{{ i18n "form.surname" }}
+					</label>
+					<div class="relative">
+						<input
+							class="w-full border border-neutral-400 bg-neutral-50 py-2 pl-3 pr-4"
+							type="text"
+							name="secondname"
+							id="secondname"
+							required
+							aria-required="true"
+							aria-invalid="false"
+						/>
+					</div>
+				</div>
+				<div class="col-span-full">
+					<label for="email" class="text-sm">{{ i18n "form.email" }}</label>
+					<div class="relative">
+						<input
+							class="w-full border border-neutral-400 bg-neutral-50 py-2 pl-3 pr-4"
+							type="text"
+							name="email"
+							id="email"
+							required
+							aria-required="true"
+							aria-invalid="false"
+						/>
+					</div>
+				</div>
+				<div>
+					<label for="phone" class="text-sm">{{ i18n "form.phone" }}</label>
+					<div class="relative">
+						<input
+							class="w-full border border-neutral-400 bg-neutral-50 py-2 pl-3 pr-4"
+							type="text"
+							name="phone"
+							id="phone"
+							aria-required="false"
+							aria-invalid="false"
+						/>
+					</div>
+				</div>
+				<div>
+					<label for="company" class="text-sm">{{ i18n "form.company" }}</label>
+					<div class="relative">
+						<input
+							class="w-full border border-neutral-400 bg-neutral-50 py-2 pl-3 pr-4"
+							type="text"
+							name="company"
+							id="company"
+							aria-required="false"
+							aria-invalid="false"
+						/>
+					</div>
+				</div>
+				<div class="col-span-full">
+					<label for="message" class="text-sm">{{ i18n "form.message" }}</label>
+					<div class="relative">
+						<textarea
+							class="w-full border border-neutral-400 bg-neutral-50 py-2 pl-3 pr-4"
+							type="text"
+							name="message"
+							id="message"
+							rows="7"
+							autocomplete="off"
+						></textarea>
+					</div>
+				</div>
+				<button
+					class="col-span-full border border-neutral-500 bg-neutral-50 py-3 transition-colors hover:bg-neutral-700 hover:text-neutral-50"
+				>
+					{{ i18n "form.button" }}
+				</button>
+				<p class="col-span-full text-neutral-600">
+					{{ i18n "form.legal.text" }}
+					{{ $privacyURL := ($.Site.GetPage "privacy-policy").RelPermalink }}
+					<a
+						href="{{ $privacyURL }}"
+						class="font-bold underline hover:text-neutral-800"
+						>{{ i18n "form.legal.link-text" }}</a
+					>.
+				</p>
+			</div>
+		</div>
+	</form>
+</section>

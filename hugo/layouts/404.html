@@ -1,3 +1,21 @@
 {{ define "main" }}
-	<div>404</div>
+	<section class="relative h-screen">
+		<div class="grid h-full grid-cols-12 pt-[38vh] pb-[10vh]">
+			<div
+				class="col-start-2 col-end-12 mt-[5vh] flex flex-col whitespace-nowrap md:col-start-3"
+			>
+				<h1 class="font-bold">404</h1>
+				<span
+					class="whitespace-nowrap text-base font-light md:text-4xl xl:text-5xl"
+					>This site does not exist</span
+				>
+				<a
+					href="{{ ($.Site.GetPage `/`).RelPermalink }}"
+					class="mt-4 w-max cursor-pointer border border-neutral-900 bg-neutral-700 px-6 py-3 text-neutral-50 transition-colors hover:bg-neutral-900 hover:text-neutral-50"
+				>
+					Back to homepage
+				</a>
+			</div>
+		</div>
+	</section>
 {{ end }}

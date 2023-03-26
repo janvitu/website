@@ -1,0 +1,15 @@
+<a
+	href="{{ .Get `href` }}"
+	class="group relative cursor-pointer overflow-visible text-base font-semibold md:text-3xl"
+>
+	<span
+		class="whitespace-nowrap pl-24 pr-5 after:absolute after:left-0 after:top-1/2 after:h-[2px] after:w-[88px] after:-translate-y-1/2 after:transform after:bg-neutral-900 after:transition-all group-hover:after:w-full"
+	>
+		<div
+			class="absolute top-1/2 left-20 right-auto inline-block aspect-[3/4] h-[15px] w-auto -translate-y-1/2 transform transition-all group-hover:left-[calc(100%-8px)] "
+		>
+			{{ partial "svg/Chevron.svg" . }}
+		</div>
+		{{ .Get "text" }}
+	</span>
+</a>

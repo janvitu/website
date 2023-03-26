@@ -1,0 +1,7 @@
+{{ define "main" }}
+	{{ partial "contact/contactSide.html" . }}
+	{{ .Content }}
+
+	{{ partial "contact/contactForm.html" . }}
+	{{ $contactScript := resources.Get "ts/contact.ts" | js.Build "js/contact.js" | fingerprint }}  <script src="{{$contactScript.Permalink}}"></script>
+{{ end }}

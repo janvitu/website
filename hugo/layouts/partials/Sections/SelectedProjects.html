@@ -1,0 +1,32 @@
+<section class="py-24 md:py-32">
+	<div class="base-grid">
+		<h2
+			class="relative col-start-2 col-end-12 flex flex-row items-end justify-end whitespace-nowrap text-right font-bold"
+		>
+			<div class="mr-4 mb-1 h-[32px] fill-neutral-800 md:h-[64px]">
+				{{ partial "svg/ArrowDownLeft.svg" }}
+			</div>
+			{{ if eq .Site.Language.Lang "en" }}
+				Selected projects
+			{{ end }}
+			{{ if eq .Site.Language.Lang "cs" }}
+				Vybrané projekty
+			{{ end }}
+		</h2>
+	</div>
+	<div>
+		{{ range first 3 (where .Site.RegularPages "Section" "work").ByDate.Reverse }}
+			{{ $thumbnailImgPath := (print .RelPermalink .Params.thumbnail) }}
+			<figure>
+				<a href="{{ .RelPermalink }}">
+					<img src="{{ $thumbnailImgPath }}" alt="{{ .Params.Project }}" />
+				</a>
+				<figcaption>
+					<a href="{{ .RelPermalink }}">
+						{{ .Params.Project }}
+					</a>
+				</figcaption>
+			</figure>
+		{{ end }}
+	</div>
+</section>
