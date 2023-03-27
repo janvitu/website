@@ -11,7 +11,7 @@ export type LangData = Data["en"];
 export const App = () => {
 	const html = document.querySelector("html");
 	const cookieBtn = document.getElementById("cookie-f-button");
-	let lang = "en";
+	let lang = "cs";
 	if (html) lang = html.lang;
 
 	//@ts-ignore
