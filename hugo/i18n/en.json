@@ -1,12 +1,31 @@
 {
 	"testimonials": "Testimonials",
+	"post": {
+		"readingTime": "read"
+	},
+	"blog": {
+		"featured": "Featured",
+		"latestPosts": "Latest posts"
+	},
 	"form": {
-		"name": "First name",
-		"surname": "Second name",
-		"email": "Email",
-		"phone": "Phone",
-		"company": "Company",
-		"message": "Message",
+		"name": {
+			"label": "First name",
+			"error": { "empty": "The field cannot be empty" }
+		},
+		"surname": {
+			"label": "Second name",
+			"error": { "empty": "The field cannot be empty" }
+		},
+		"email": {
+			"label": "Email",
+			"error": {
+				"empty": "The field cannot be empty",
+				"format": "Please enter valid form"
+			}
+		},
+		"phone": { "label": "Phone" },
+		"company": { "label": "Company" },
+		"message": { "label": "Message" },
 		"button": "Send",
 		"legal": {
 			"text": "By clicking the button, I agree with the collection and processing of my personal data as described in the",
@@ -17,5 +36,9 @@
 		"text": "Got a project?",
 		"link-text": "Let's colaborate!"
 	},
-	"project-process-heading": "How i handle a project"
+	"project-process-heading": "How i handle a project",
+	"404": {
+		"text": "Tato stránka neexistuje",
+		"cta": "Zpět na domovskou stránku"
+	}
 }

@@ -101,4 +101,9 @@
 		@apply h-full w-1 rounded-full;
 		@apply bg-neutral-800;
 	}
+
+	.prose a {
+		@apply italic decoration-amber-300;
+		@apply link-strikethrough;
+	}
 }

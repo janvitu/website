@@ -1,0 +1,64 @@
+{{ define "main" }}
+	<div class="pt-14 md:pt-20">
+		<div class="base-grid">
+			<div class="col-start-3 col-end-12 sm:col-start-3 sm:col-end-11">
+				<div class="border-y border-neutral-800 pb-6 md:pb-10">
+					<p class="py-6 text-lg font-bold uppercase md:py-10">
+						{{ i18n "blog.featured" }}
+					</p>
+					{{ with  first 1 (where .Site.RegularPages "Section" "blog") }}
+						{{ with index . 0 }}
+							{{ $readTime := mul (div (countwords .Content) 220.0) 60 }}
+
+							{{ $minutes := math.Floor (div $readTime 60) }}
+							<a
+								class="text-2xl font-bold hover:underline md:text-4xl"
+								href="{{ .RelPermalink }}"
+							>
+								{{ .Title }}</a
+							>
+							<p class="mt-2 text-sm">
+								{{ dateFormat "02.01.2006" .PublishDate }} – {{ $minutes }} min
+								{{ i18n "post.readingTime" }}
+							</p>
+						{{ end }}
+					{{ end }}
+				</div>
+				<section class="grid-cols-10 md:grid">
+					<div class="col-start-1 col-end-7">
+						<p class="py-6 text-lg font-bold uppercase md:py-10">
+							{{ i18n "blog.latestPosts" }}
+						</p>
+						<ul class="flex flex-col">
+							{{ range (where .Site.RegularPages "Section" "blog").ByDate.Reverse }}
+								<li>
+									{{ $readTime := mul (div (countwords .Content) 220.0) 60 }}
+
+									{{ $minutes := math.Floor (div $readTime 60) }}
+
+									{{ range $index, $value := .Params.tags }}
+										<span class="block-inline text-sm font-medium uppercase"
+											>{{ $value }}
+										</span>
+									{{ end }}
+									<a
+										class="block text-xl font-bold hover:underline md:text-2xl"
+										href="{{ .RelPermalink }}"
+										>{{ .Title }}</a
+									>
+									<p class="mt-2 text-sm">
+										{{ dateFormat "02.01.2006" .PublishDate }} –
+										{{ $minutes }}
+										min
+										{{ i18n "post.readingTime" }}
+									</p>
+									<hr class="my-6 border-neutral-400" />
+								</li>
+							{{ end }}
+						</ul>
+					</div>
+				</section>
+			</div>
+		</div>
+	</div>
+{{ end }}

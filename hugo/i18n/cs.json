@@ -1,20 +1,57 @@
 {
 	"testimonials": "Reference",
+	"post": {
+		"readingTime": "čtení"
+	},
+	"blog": {
+		"featured": "Doporučené",
+		"latestPosts": "Nejnovější příspěvky"
+	},
 	"form": {
-		"name": "Jméno",
-		"surname": "Příjmení",
-		"email": "Email",
-		"phone": "Telefonní číslo",
-		"company": "Společnost",
-		"message": "Zpráva",
+		"name": {
+			"label": "Jméno",
+			"error": { "empty": "Pole nesmí být prázdné" }
+		},
+		"surname": {
+			"label": "Příjmení",
+			"error": { "empty": "Pole nesmí být prázdné" }
+		},
+		"email": {
+			"label": "Email",
+			"error": {
+				"empty": "Pole nesmí být prázdné",
+				"format": "Chybný formát emailu"
+			}
+		},
+		"phone": {
+			"label": "Telefonní číslo",
+			"error": {
+				"empty": "Pole nesmí být prázdné",
+				"format": "Chybný formát telefonu"
+			}
+		},
+		"company": {
+			"label": "Společnost",
+			"error": { "empty": "Pole nesmí být prázdné" }
+		},
+		"message": {
+			"label": "Zpráva",
+			"error": { "empty": "Pole nesmí být prázdné" }
+		},
 		"button": "Odeslat",
 		"legal": {
 			"text": "Odesláním formuláře souhlasíte se ",
 			"link-text": "zpracováním osobních údajů"
-		}
+		},
+		"optional": "nepovinné"
 	},
 	"contact-footer": {
 		"text": "Máte projekt?",
 		"link-text": "Pojďme spolupracovat!"
+	},
+	"project-process-heading": "Jak přistupuju k projektům",
+	"404": {
+		"text": "Tato stránka neexistuje",
+		"cta": "Zpět na domovskou stránku"
 	}
 }

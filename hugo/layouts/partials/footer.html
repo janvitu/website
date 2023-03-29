@@ -44,9 +44,6 @@
 			</button>
 			{{ range .Site.Menus.footer }}
 				<a
-					{{ if .Params.id }}
-						id="Cookies"
-					{{ end }}
 					href="{{ .URL }}"
 					class="link-strikethrough block hover:text-neutral-700"
 				>

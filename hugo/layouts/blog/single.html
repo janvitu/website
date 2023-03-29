@@ -1,0 +1,34 @@
+{{ define "main" }}
+	<div class="pt-32 md:pt-32">
+		<article class="base-grid">
+			<header class="col-start-2 col-end-12 sm:col-start-3">
+				<div>
+					<h1 class="mt-8 font-bold">{{ .Title }}</h1>
+					{{ $readTime := mul (div (countwords .Content) 220.0) 60 }}
+
+					{{ $minutes := math.Floor (div $readTime 60) }}
+					{{/*  {{ $lastTag := (index (last 1 .Params.tags) 0) }}  */}}
+					<p class="mt-2 text-sm">
+						{{ dateFormat "02.01.2006" .PublishDate }} – {{ $minutes }} min
+						{{ i18n "post.readingTime" }} |
+						{{ range $index, $value := .Params.tags }}
+							<span class="font-medium uppercase"
+								>{{ $value }}
+								{{/*  {{ if ne $lastTag $value }},{{ end }}  */}}
+							</span>
+						{{ end }}
+
+					</p>
+				</div>
+				<p class="max-w-xl mt-6 prose sm:prose-lg lg:prose-xl">
+					{{ .Params.summary }}
+				</p>
+			</header>
+			<div
+				class="col-start-3 col-end-12 mt-12 prose sm:prose-lg lg:prose-xl sm:col-start-4 sm:col-end-9"
+			>
+				{{ .Content }}
+			</div>
+		</article>
+	</div>
+{{ end }}

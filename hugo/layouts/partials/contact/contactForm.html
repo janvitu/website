@@ -1,11 +1,18 @@
 <section>
-	<form>
+	<form name="contact" method="POST" netlify-honeypot="bot-field" netlify>
 		<div class="base-grid">
 			<div
-				class="col-start-3 col-end-12 grid grid-cols-1 gap-x-6 gap-y-6 sm:col-end-11 md:col-start-4 md:col-end-11 md:grid-cols-2 lg:col-end-9"
+				class="col-start-3 col-end-12 grid grid-cols-1 gap-x-6 gap-y-8 sm:col-end-11 md:col-start-4 md:col-end-11 md:grid-cols-2 lg:col-end-9"
 			>
+				<p class="hidden">
+					<label>
+						Don’t fill this out if you’re human: <input name="bot-field" />
+					</label>
+				</p>
 				<div>
-					<label for="firstname" class="text-sm">{{ i18n "form.name" }}</label>
+					<label for="firstname" class="text-sm"
+						>{{ i18n "form.name.label" }}</label
+					>
 					<div class="relative">
 						<input
 							class="w-full border border-neutral-400 bg-neutral-50 py-2 pl-3 pr-4"
@@ -16,11 +23,19 @@
 							aria-required="true"
 							aria-invalid="false"
 						/>
+						{{/* error message */}}
+						<div
+							class="absolute bottom-0 w-full translate-y-full transform text-left italic text-red-600"
+						>
+							<span class="w-ful hidden text-sm" data-validation-empty="true">
+								{{ i18n "form.name.error.empty" }}
+							</span>
+						</div>
 					</div>
 				</div>
 				<div>
 					<label for="secondname" class="text-sm">
-						{{ i18n "form.surname" }}
+						{{ i18n "form.surname.label" }}
 					</label>
 					<div class="relative">
 						<input
@@ -32,10 +47,20 @@
 							aria-required="true"
 							aria-invalid="false"
 						/>
+						{{/* error message */}}
+						<div
+							class="absolute bottom-0 w-full translate-y-full transform text-left italic text-red-600"
+						>
+							<span class="w-ful hidden text-sm" data-validation-empty="true">
+								{{ i18n "form.surname.error.empty" }}
+							</span>
+						</div>
 					</div>
 				</div>
 				<div class="col-span-full">
-					<label for="email" class="text-sm">{{ i18n "form.email" }}</label>
+					<label for="email" class="text-sm"
+						>{{ i18n "form.email.label" }}</label
+					>
 					<div class="relative">
 						<input
 							class="w-full border border-neutral-400 bg-neutral-50 py-2 pl-3 pr-4"
@@ -46,10 +71,26 @@
 							aria-required="true"
 							aria-invalid="false"
 						/>
+						{{/* error message */}}
+						<div
+							class="absolute bottom-0 w-full translate-y-full transform text-left italic text-red-600"
+						>
+							<span class="w-ful hidden text-sm" data-validation-empty="true">
+								{{ i18n "form.email.error.empty" }}
+							</span>
+							<span class="w-ful hidden text-sm" data-validation-format="true">
+								{{ i18n "form.email.error.format" }}
+							</span>
+						</div>
 					</div>
 				</div>
 				<div>
-					<label for="phone" class="text-sm">{{ i18n "form.phone" }}</label>
+					<label for="phone" class="text-sm">
+						{{ i18n "form.phone.label" }}
+						<span class="align-top text-xs text-neutral-400">
+							&nbsp;({{ i18n "form.optional" }})
+						</span>
+					</label>
 					<div class="relative">
 						<input
 							class="w-full border border-neutral-400 bg-neutral-50 py-2 pl-3 pr-4"
@@ -59,10 +100,23 @@
 							aria-required="false"
 							aria-invalid="false"
 						/>
+						{{/* error message */}}
+						<div
+							class="absolute bottom-0 w-full translate-y-full transform text-left italic text-red-600"
+						>
+							<span class="w-ful hidden text-sm" data-validation-format="true">
+								{{ i18n "form.email.error.format" }}
+							</span>
+						</div>
 					</div>
 				</div>
 				<div>
-					<label for="company" class="text-sm">{{ i18n "form.company" }}</label>
+					<label for="company" class="text-sm">
+						{{ i18n "form.company.label" }}
+						<span class="align-top text-xs text-neutral-400">
+							&nbsp;({{ i18n "form.optional" }})
+						</span>
+					</label>
 					<div class="relative">
 						<input
 							class="w-full border border-neutral-400 bg-neutral-50 py-2 pl-3 pr-4"
@@ -75,7 +129,9 @@
 					</div>
 				</div>
 				<div class="col-span-full">
-					<label for="message" class="text-sm">{{ i18n "form.message" }}</label>
+					<label for="message" class="text-sm"
+						>{{ i18n "form.message.label" }}</label
+					>
 					<div class="relative">
 						<textarea
 							class="w-full border border-neutral-400 bg-neutral-50 py-2 pl-3 pr-4"
@@ -84,13 +140,28 @@
 							id="message"
 							rows="7"
 							autocomplete="off"
+							required
 						></textarea>
+						{{/* error message */}}
+						<div
+							class="absolute bottom-0 w-full translate-y-full transform text-left italic text-red-600"
+						>
+							<span class="w-ful hidden text-sm" data-validation-empty="true">
+								{{ i18n "form.message.error.empty" }}
+							</span>
+						</div>
 					</div>
 				</div>
 				<button
-					class="col-span-full border border-neutral-500 bg-neutral-50 py-3 transition-colors hover:bg-neutral-700 hover:text-neutral-50"
+					type="submit"
+					class="col-span-full border border-neutral-500 bg-neutral-50 fill-neutral-500 py-3 transition-colors hover:bg-neutral-700 hover:fill-neutral-50 hover:text-neutral-50"
 				>
-					{{ i18n "form.button" }}
+					<div class="relative inline-block">
+						<span class="invisible absolute -left-4 top-1 inline-block h-3">
+							{{ partial "svg/Checkmark.svg" . }}
+						</span>
+						{{ i18n "form.button" }}
+					</div>
 				</button>
 				<p class="col-span-full text-neutral-600">
 					{{ i18n "form.legal.text" }}
