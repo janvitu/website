@@ -4,11 +4,26 @@
 	<body>
 		{{ partial "grid.html" . }}
 		{{ partial "header.html" . }}
-		<main class="mt-14 md:mt-20">
+		<main class="pt-14 md:pt-20">
 			{{ block "main" . }}
-				{{ .Content }}
+				<article class="base-grid">
+					<header class="col-start-2 col-end-12 sm:col-start-3">
+						<h1 class="mt-8 font-bold">{{ .Title }}</h1>
+					</header>
+					<div
+						class="prose col-start-3 col-end-12 mt-12 sm:prose-lg lg:prose-xl sm:col-start-4 sm:col-end-9"
+					>
+						{{ .Content }}
+					</div>
+				</article>
 			{{ end }}
 		</main>
 		{{ partial "footer.html" . }}
+
+
+		<div id="cookie-consent"></div>
+
+		{{ $solidJS := resources.Get "js/CookieBanner/index.js" | fingerprint }} <script src="{{$solidJS.Permalink}}"></script>
+		{{ $indexJS := resources.Get "ts/index.ts" | js.Build "js/index.js" | fingerprint }} <script src="{{$indexJS.Permalink}}"></script>
 	</body>
 </html>

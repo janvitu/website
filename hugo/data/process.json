@@ -47,5 +47,54 @@
 			"heading": "Quality & Assurance",
 			"text": ["– And also i am able to take care of your product afterwards."]
 		}
+	],
+	"cs": [
+		{
+			"id": "1",
+			"icon": "svg/CubesStacked.svg",
+			"heading": "Brief",
+			"text": [
+				"Pošlete mi podrobný brief s následujícími informacemi: kdo jste, vaše hlavní hodnoty, vaše obchodní cíle, co prodáváte, požadavky, rozsah projektu, časový rámec a termíny a také vše ostatní, co považujete za důležité."
+			]
+		},
+		{
+			"id": "2",
+			"icon": "svg/MagnifyingGlass.svg",
+			"heading": "Vyhodnocení & Debrief",
+			"text": [
+				"Podrobněji se seznámím s vaším zadáním a posoudím podmínky a požadavky. Pokud bude vše v pořádku, uskutečníme online schůzku, na které probereme detaily projektu a další postup."
+			]
+		},
+		{
+			"id": "3",
+			"icon": "svg/Progress.svg",
+			"heading": "Zahájení projektu & Workshop",
+			"text": [
+				"Společně postaráme o administrativu a formálně zahájíme projekt. Probereme možnosti spolupráce a různé přístupy k řešení, abychom našli takové, které bude vyhovovat vašim potřebám."
+			]
+		},
+		{
+			"id": "4",
+			"icon": "svg/Shapes.svg",
+			"heading": "Design",
+			"text": [
+				"Tady začíná ta pravá zábava. Budu pracovat na výtvarné režii, konceptu a designu. V první fázi představím moodboard a 2 až 3 obrazovky - abych ukázal, jak bude finální projekt vypadat a působit.",
+				"Po schválení směru navrhnu celý projekt."
+			]
+		},
+		{
+			"id": "5",
+			"icon": "svg/Timeline.svg",
+			"heading": "Vývoj",
+			"text": [
+				"Po schválení hlavního návrhu a nálady se začne s jeho transformací do kódu. Pravidelně vás budu informovat o stavu vývoje, abyste měli vždy jasný přehled o procesu - a také proto, abychom mohli změnit věci, které nefungují nebo nejsou dokonalé."
+			]
+		},
+		{
+			"id": "6",
+			"icon": "svg/BinaryCheck.svg",
+			"heading": "Kvalita & Zabezpečení",
+			"text": ["– And also i am able to take care of your product afterwards."]
+		}
 	]
 }
