@@ -1,6 +1,10 @@
-
+title = "JanVitu"
+publishDir = "../dist"
+enableEmoji = true
+timeZone = "Europe/Prague"
 defaultContentLanguage = "cs"
 languageCode = "cs"
+
 [languages]
   [languages.en]
     languageName = "English"
@@ -63,11 +67,6 @@ languageCode = "cs"
         name = "Osobní údaje"
         url = "/privacy-policy/"
         weight = 1
-
-title = "JanVitu"
-publishDir = "../dist"
-enableEmoji = true
-timeZone = "Europe/Prague"
 
 
 [minify]
