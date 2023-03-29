@@ -1,6 +1,6 @@
 import { defineConfig } from "vite";
 import solidPlugin from "vite-plugin-solid";
-import { readdir, copyFile } from "fs/promises";
+import { readdir, copyFile, mkdir } from "fs/promises";
 
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -21,7 +21,10 @@ function syncToHugo() {
 			const assetsJsDir = "./app/dist/assets";
 			const assets = await readdir(assetsJsDir);
 			const js = assets.filter((name) => name.match(/(index*.).*\w+/))[0];
-			console.log({ js });
+			try {
+				await mkdir("./hugo/assets/js/CookieBanner", { recursive: true });
+			} catch {}
+
 			await copyFile(
 				`./app/dist/assets/${js}`,
 				"./hugo/assets/js/CookieBanner/index.js",

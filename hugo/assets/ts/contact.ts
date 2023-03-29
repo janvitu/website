@@ -7,18 +7,7 @@ document.addEventListener("DOMContentLoaded", () => {
 	if (copyElement) copyElement.addEventListener("click", coppyContent);
 
 	const phoneRegex = /^((\+420)? ?[1-9][0-9]{2} ?[0-9]{3} ?[0-9]{3}){0,1}$/;
-	type formContentItemType = {
-		element: Element;
-		schema: z.ZodSchema;
-	};
-	type formContentType = {
-		name: formContentItemType;
-		surname: formContentItemType;
-		email: formContentItemType;
-		phone: formContentItemType;
-		company: formContentItemType;
-		message: formContentItemType;
-	};
+
 	const formContent = {
 		name: {
 			element: <HTMLInputElement>document.getElementById("firstname"),
@@ -83,7 +72,6 @@ document.addEventListener("DOMContentLoaded", () => {
 		let validation = elementSchema.schema.safeParse(element.value);
 
 		if (validation.success === false) {
-			console.log(validation.error.issues[0].message);
 			if (validation.error.issues[0].message === "EMPTY") {
 				if (errorElementEmpty) errorElementEmpty.classList.remove("hidden");
 				if (errorElementFormat) errorElementFormat.classList.add("hidden");
@@ -110,7 +98,7 @@ document.addEventListener("DOMContentLoaded", () => {
 			message: formContent.message.schema,
 		});
 
-		const formData = {
+		const formDataValidate = {
 			name: formContent.name.element.value,
 			surname: formContent.surname.element.value,
 			email: formContent.email.element.value,
@@ -118,7 +106,7 @@ document.addEventListener("DOMContentLoaded", () => {
 			company: formContent.company.element.value,
 			message: formContent.message.element.value,
 		};
-		const isValidData = formValidation.parse(formData);
+		const isValidData = formValidation.parse(formDataValidate);
 
 		if (!isValidData) {
 			validateInputValue("name");
@@ -128,6 +116,9 @@ document.addEventListener("DOMContentLoaded", () => {
 			validateInputValue("message");
 			return;
 		}
+
+		const myForm = event.target;
+		const formData = new FormData(myForm);
 
 		fetch("/", {
 			method: "POST",
@@ -139,6 +130,7 @@ document.addEventListener("DOMContentLoaded", () => {
 				button.classList.remove(
 					"hover:bg-neutral-700",
 					"hover:text-neutral-50",
+					"bg-neutral-50",
 				);
 				button.classList.add(
 					"cursor-not-allowed",

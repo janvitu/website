@@ -1,5 +1,4 @@
 export const Consent = ({ content }: any) => {
-	console.log(content);
 	return (
 		<div>
 			<h2 class="mb-3 text-base font-bold">{content.heading}</h2>
