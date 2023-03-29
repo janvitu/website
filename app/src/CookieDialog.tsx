@@ -9,7 +9,11 @@ export const CookieDialog = ({ content, setConsent }: any) => {
 
 	return (
 		<div class="flex h-full max-h-[80vh] grid-rows-[max-content,minmax(0px,_auto),max-content] flex-col">
-			<SlideRouter content={content} setActiveSlide={setActiveSlide} />
+			<SlideRouter
+				activeSlide={activeSlide}
+				content={content}
+				setActiveSlide={setActiveSlide}
+			/>
 			<Slide activeSlide={activeSlide} content={content} />
 			<DialogButtons setConsent={setConsent} />
 		</div>
