@@ -21,6 +21,7 @@ function syncToHugo() {
 			const assetsJsDir = "./app/dist/assets";
 			const assets = await readdir(assetsJsDir);
 			const js = assets.filter((name) => name.match(/(index*.).*\w+/))[0];
+			console.log({ js });
 			await copyFile(
 				`./app/dist/assets/${js}`,
 				"./hugo/assets/js/CookieBanner/index.js",
