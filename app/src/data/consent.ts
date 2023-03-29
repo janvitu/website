@@ -10,27 +10,27 @@ export const consentData = {
 		},
 		cookieDialog: {
 			consent: {
-				key: "Consent",
+				key: "Souhlas",
 				heading: "Tento web používá soubory cookies",
-				text: "Soubory cookie používáme k personalizaci obsahu a reklam, k poskytování funkcí sociálních médií a k analýze návštěvnosti. Informace o vašem používání našich stránek sdílíme také s našimi partnery v oblasti sociálních médií, reklamy a analýzy, kteří je mohou kombinovat s dalšími informacemi, které jste jim poskytli nebo které získali z vašeho používání jejich služeb.",
+				text: "Soubory cookie používám k personalizaci obsahu a reklam, k poskytování funkcí sociálních médií a k analýze návštěvnosti.",
 			},
 			details: {
-				key: "Details",
+				key: "Detail",
 				necesaryCookies: {
-					heading: "Necesary",
-					text: "Necessary cookies help make a website usable by enabling basic functions like page navigation and access to secure areas of the website. The website cannot function properly without these cookies.",
+					heading: "Nezbytné",
+					text: "Nezbytné soubory cookie pomáhají zajistit použitelnost webových stránek tím, že umožňují základní funkce, jako je navigace na stránce a přístup do zabezpečených oblastí webových stránek. Bez těchto souborů cookie nemůže webová stránka správně fungovat.",
 				},
 				analyticsCookies: {
-					heading: "Statystics",
-					text: "Statistic cookies help website owners to understand how visitors interact with websites by collecting and reporting information anonymously.",
+					heading: "Statistické",
+					text: "Statistické soubory cookie pomáhají majitelům webových stránek pochopit, jak návštěvníci interagují s webovými stránkami, a to prostřednictvím anonymního shromažďování a vykazování informací.",
 				},
 				marketingCookies: {
-					heading: "Marketing",
-					text: "Marketing cookies are used to track visitors across websites. The intention is to display ads that are relevant and engaging for the individual user and thereby more valuable for publishers and third party advertisers.",
+					heading: "Marketingové",
+					text: "Marketingové soubory cookie se používají ke sledování návštěvníků na různých webových stránkách. Záměrem je zobrazovat reklamy, které jsou relevantní a zajímavé pro jednotlivé uživatele, a tím hodnotnější pro vydavatele a inzerenty třetích stran.",
 				},
 			},
 			about: {
-				key: "About",
+				key: "O cookies",
 				list: [
 					"Soubory cookie jsou malé textové soubory, které mohou webové stránky používat k zpříjemnění práce uživatele.",
 					"Podle zákona můžeme ukládat soubory cookie do vašeho zařízení, pokud jsou nezbytně nutné pro provoz těchto stránek. Pro všechny ostatní typy souborů cookie potřebujeme váš souhlas.",
@@ -53,7 +53,7 @@ export const consentData = {
 			consent: {
 				key: "Consent",
 				heading: "This website uses cookies",
-				text: "We use cookies to personalize content and ads, to provide social media features and to analyze our traffic. We also share information about your use of our site with our social media, advertising and analytics partners who may combine it with other information that you’ve provided to them or that they’ve collected from your use of their services.",
+				text: "We use cookies to personalize content and ads, to provide social media features and to analyze our traffic.",
 			},
 			details: {
 				key: "Details",
