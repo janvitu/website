@@ -13,29 +13,24 @@ languageCode = "cs"
       [[languages.en.menu.main]]
         identifier = "homepage"
         name = "Homepage"
-        url = "/en/"
+        url = "/"
         [languages.en.menu.main.params]
           hidden = "true"
       [[languages.en.menu.main]]
         identifier = "about"
         name = "About"
-        url = "/en/about/"
+        url = "/about/"
         weight = 1
       [[languages.en.menu.main]]
         identifier = "blog"
         name = "Blog"
-        url = "/en/blog/"
+        url = "/blog/"
         weight = 2
       [[languages.en.menu.main]]
         identifier = "contact"
         name = "Contact"
-        url = "/en/contact/"
+        url = "/contact/"
         weight = 3
-      [[languages.en.menu.footer]]
-        identifier = "privacy-policy"
-        name = "Privacy policy"
-        url = "/en/privacy-policy/"
-        weight = 1
   [languages.cs]
     languageName = "Čeština"
     weight = 2
@@ -43,31 +38,25 @@ languageCode = "cs"
       [[languages.cs.menu.main]]
         identifier = "homepage"
         name = "Domovská stránka"
-        url = "/"
+        url = "/cs/"
         [languages.cs.menu.main.params]
           hidden = "true"
 
       [[languages.cs.menu.main]]
         identifier = "about"
         name = "O mně"
-        url = "/about/"
+        url = "/cs/about/"
         weight = 1
       [[languages.cs.menu.main]]
         identifier = "blog"
         name = "Blog"
-        url = "/blog/"
+        url = "/cs/blog/"
         weight = 2
       [[languages.cs.menu.main]]
         identifier = "contact"
         name = "Kontakt"
-        url = "/contact/"
+        url = "/cs/contact/"
         weight = 3
-      [[languages.cs.menu.footer]]
-        identifier = "privacy-policy"
-        name = "Osobní údaje"
-        url = "/privacy-policy/"
-        weight = 1
-
 
 [minify]
   minifyOutput = true

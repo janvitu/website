@@ -165,12 +165,6 @@
 				</button>
 				<p class="col-span-full text-neutral-600">
 					{{ i18n "form.legal.text" }}
-					{{ $privacyURL := ($.Site.GetPage "privacy-policy").RelPermalink }}
-					<a
-						href="{{ $privacyURL }}"
-						class="font-bold underline hover:text-neutral-800"
-						>{{ i18n "form.legal.link-text" }}</a
-					>.
 				</p>
 			</div>
 		</div>

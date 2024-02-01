@@ -45,7 +45,9 @@
 			"id": "6",
 			"icon": "svg/BinaryCheck.svg",
 			"heading": "Quality & Assurance",
-			"text": ["– And also i am able to take care of your product afterwards."]
+			"text": [
+				"I monitor the product and its functioning and find out what works and what doesn't work. Thanks to this, I adjust the products to keep only the best. No extra stuff, no chaos."
+			]
 		}
 	],
 	"cs": [
@@ -93,8 +95,10 @@
 		{
 			"id": "6",
 			"icon": "svg/BinaryCheck.svg",
-			"heading": "Kvalita & Zabezpečení",
-			"text": ["– And also i am able to take care of your product afterwards."]
+			"heading": "Ověření výsledku & správa",
+			"text": [
+				"Produkt a jeho fungování monitoruji a zjišťuji co funguje a co naopak nefunguje. Díky tomu upravuji produkty, aby zůstalo jen to nejlepší. Žádné zbytečnosti navíc žádný chaos."
+			]
 		}
 	]
 }

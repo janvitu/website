@@ -14,10 +14,12 @@
 		@apply grid grid-cols-12;
 	}
 	h1 {
-		@apply text-4xl leading-10 sm:text-5xl md:text-7xl xl:text-8xl;
+		font-size: clamp(2.25rem, 8vw, 6rem);
+		@apply leading-none;
 	}
 	h2 {
-		@apply text-3xl leading-tight sm:text-4xl md:text-5xl xl:text-6xl;
+		font-size: clamp(1.5rem, 4.5vw, 3.75rem);
+		@apply leading-tight;
 	}
 }
 
