@@ -17,7 +17,9 @@ export const setCookie = (
 export const getCookie = (cookieName: string) => {
 	const name = cookieName + "=";
 	const decodedCookie = decodeURIComponent(document.cookie);
-	const cookieArray = decodedCookie.split(";");
+	const cookieArray = decodedCookie
+		.split(";")
+		.map((cookie) => cookie.split(" ").join(""));
 	const cookie = cookieArray
 		.find((c) => c.indexOf(name) == 0)
 		?.substring(name.length);

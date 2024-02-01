@@ -7,8 +7,9 @@
 				<h1 class="font-bold">404</h1>
 				<span
 					class="whitespace-nowrap text-base font-light md:text-4xl xl:text-5xl"
-					>{{ i18n "404.text" }}</span
 				>
+					{{ i18n "404.text" }}
+				</span>
 				<a
 					href="{{ ($.Site.GetPage `/`).RelPermalink }}"
 					class="mt-4 w-max cursor-pointer border border-neutral-900 bg-neutral-700 px-6 py-3 text-neutral-50 transition-colors hover:bg-neutral-900 hover:text-neutral-50"
