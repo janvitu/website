@@ -2,8 +2,8 @@ title = "JanVitu"
 publishDir = "../dist"
 enableEmoji = true
 timeZone = "Europe/Prague"
-defaultContentLanguage = "cs"
-languageCode = "cs"
+defaultContentLanguage = "en"
+languageCode = "en"
 
 [languages]
   [languages.en]
