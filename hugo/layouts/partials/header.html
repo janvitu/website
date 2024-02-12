@@ -9,46 +9,8 @@
 			<header
 				class="fixed inset-x-0 top-[20px] z-50 grid w-screen grid-cols-12 place-items-start"
 			>
-				{{/* Lang */}}
-				<div
-					class="relative col-span-2 col-start-2 grid grid-cols-3 place-items-center justify-self-center text-[11px] sm:mr-1 sm:justify-self-end md:text-base"
-				>
-					<span class="block">
-						<a
-							class="{{ if eq .Page.Language.Lang "cs" }}
-								font-bold text-strikethrough text-strikethrough--interactive
-								text-strikethrough--active
-							{{ else }}
-								font-normal
-							{{ end }} text-strikethrough text-strikethrough--interactive hover:text-neutral-800"
-							href="{{ range where .Translations "Lang" "cs" }}
-								{{ .RelPermalink }}
-							{{ end }}"
-						>
-							CZ
-						</a>
-					</span>
-					<span class="h-[13px] w-px bg-neutral-800 md:h-[19px]"></span>
-					<span class="block">
-						{{ if not (where .AllTranslations "Language.Lang" "cs") }}
-							<span class="cursor-not-allowed">EN</span>
-						{{ else }}
-							<a
-								class="{{ if eq .Page.Language.Lang "en" }}
-									font-bold text-strikethrough text-strikethrough--interactive
-									text-strikethrough--active
-								{{ else }}
-									font-normal
-								{{ end }} text-strikethrough text-strikethrough--interactive"
-								href="{{ range where .Translations "Lang" "en" }}
-									{{ .RelPermalink }}
-								{{ end }}"
-							>
-								EN
-							</a>
-						{{ end }}
-					</span>
-				</div>
+				{{ partial "nav/langSwitch.html" . }}
+
 
 				<nav class="col-span-6 col-start-5 ml-1">
 					<ul
@@ -56,16 +18,24 @@
 					>
 						{{ range .Site.Menus.main }}
 							{{ if ne .Params.hidden "true" }}
-								<li>
-									<a
-										class="link-strikethrough {{ if eq $.Page.RelPermalink .URL }}
-											link-strikethrough--active
-										{{ end }}"
-										href="{{ .URL }}"
-									>
-										{{ .Name }}
-									</a>
-								</li>
+								{{ if ne .Params.disabled "true" }}
+									<li>
+										<a
+											class="link-strikethrough {{ if eq $.Page.RelPermalink .URL }}
+												link-strikethrough--active
+											{{ end }}"
+											href="{{ .URL }}"
+										>
+											{{ .Name }}
+										</a>
+									</li>
+								{{ else }}
+									<li>
+										<span class="cursor-not-allowed text-neutral-400">
+											{{ .Name }}
+										</span>
+									</li>
+								{{ end }}
 							{{ end }}
 						{{ end }}
 

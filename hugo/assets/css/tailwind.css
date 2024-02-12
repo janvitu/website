@@ -14,7 +14,7 @@
 		@apply grid grid-cols-12;
 	}
 	h1 {
-		font-size: clamp(2.25rem, 8vw, 6rem);
+		font-size: clamp(1.75rem, 8vw, 6rem);
 		@apply leading-none;
 	}
 	h2 {
