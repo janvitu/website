@@ -8,10 +8,8 @@
 		"dev:hugo": "cd ./hugo && hugo server -D",
 		"build:tailwind": "tailwindcss -i ./hugo/assets/css/tailwind.css -o ./hugo/assets/css/tw.css --minify",
 		"build:hugo": "cd ./hugo && hugo",
-		"dev:solid": "vite build --watch",
-		"build:solid": "vite build",
-		"build:assets": "npm run build:tailwind & npm run build:solid",
-		"dev": "concurrently --names 'TAILWIND,SOLID,HUGO' -c 'cyan,blue,green'  'npm run dev:tailwind' 'npm run dev:solid' 'npm run dev:hugo'",
+		"build:assets": "npm run build:tailwind",
+		"dev": "concurrently --names 'TAILWIND,HUGO' -c 'cyan,green'  'npm run dev:tailwind' 'npm run dev:hugo'",
 		"build": "npm run build:assets && npm run build:hugo"
 	},
 	"author": "",

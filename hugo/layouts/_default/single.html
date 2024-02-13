@@ -20,10 +20,6 @@
 		</main>
 		{{ partial "footer.html" . }}
 
-
-		<div id="cookie-consent"></div>
-
-		{{ $solidJS := resources.Get "js/CookieBanner/index.js" | fingerprint }} <script src="{{$solidJS.Permalink}}"></script>
 		{{ $indexJS := resources.Get "ts/index.ts" | js.Build "js/index.js" | fingerprint }} <script src="{{$indexJS.Permalink}}"></script>
 	</body>
 </html>
