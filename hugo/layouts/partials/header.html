@@ -12,30 +12,22 @@
 				{{ partial "nav/langSwitch.html" . }}
 
 
-				<nav class="col-span-6 col-start-5 ml-1">
+				<nav class="col-start-5 col-end-12 ml-1 sm:col-end-11">
 					<ul
 						class="flex gap-4 text-base font-semibold text-neutral-800 md:gap-10 md:text-2xl"
 					>
 						{{ range .Site.Menus.main }}
 							{{ if ne .Params.hidden "true" }}
-								{{ if ne .Params.disabled "true" }}
-									<li>
-										<a
-											class="link-strikethrough {{ if eq $.Page.RelPermalink .URL }}
-												link-strikethrough--active
-											{{ end }}"
-											href="{{ .URL }}"
-										>
-											{{ .Name }}
-										</a>
-									</li>
-								{{ else }}
-									<li>
-										<span class="cursor-not-allowed text-neutral-400">
-											{{ .Name }}
-										</span>
-									</li>
-								{{ end }}
+								<li>
+									<a
+										class="link-strikethrough {{ if eq $.Page.RelPermalink .URL }}
+											link-strikethrough--active
+										{{ end }} whitespace-nowrap"
+										href="{{ .URL }}"
+									>
+										{{ .Name }}
+									</a>
+								</li>
 							{{ end }}
 						{{ end }}
 

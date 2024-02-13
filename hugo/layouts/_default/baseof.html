@@ -2,7 +2,6 @@
 <html lang="{{ .Site.Language }}">
 	{{ partial "head.html" . }}
 	<body class="overflow-x-hidden">
-		{{ partial "analytics/gtmBody.html" }}
 		{{ partial "grid.html" . }}
 		{{ partial "header.html" . }}
 		{{ partial "contact/contactSide.html" . }}
@@ -13,10 +12,6 @@
 		</main>
 		{{ partial "footer.html" . }}
 
-
-		<div id="cookie-consent"></div>
-
-		{{ $solidJS := resources.Get "js/CookieBanner/index.js" | fingerprint }} <script src="{{$solidJS.Permalink}}" defer></script>
 		{{ $indexJS := resources.Get "ts/index.ts" | js.Build "js/index.js" | fingerprint }} <script src="{{$indexJS.Permalink}}" defer></script>
 	</body>
 </html>
