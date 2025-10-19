@@ -1,13 +1,16 @@
-<section class="pt-24 pb-48">
-	<h2
-		class="text-center text-3xl font-medium sm:text-5xl md:text-7xl lg:text-8xl"
+<section class="pt-24 pb-48 text-center">
+	<span class="text-base md:text-2xl lg:text-3xl text-[#ff4309]">Make it real.</span>
+  <h2
+		class="text-center"
 	>
-		{{ i18n "contact-footer.text" }}<br />
-		{{ $contacURL := ($.Site.GetPage `contact`).RelPermalink }}
-		<a
-			href="{{ $contacURL }}"
-			class="inline-block font-bold underline hover:cursor-pointer"
-			>{{ i18n "contact-footer.link-text" }}</a
-		>
+		  One story. One motion.	
 	</h2>
+  {{ $contacURL := ($.Site.GetPage `contact`).RelPermalink }}
+  <span class="text-[clamp(1.5rem,4.5vw,3.75rem)]">
+    <a
+  			href="{{ $contacURL }}"
+  			class="inline-block font-bold underline hover:cursor-pointer hover:text-[#ff4309] transition-colors duration-300"
+  			>{{ i18n "contact-footer.link-text" }}</a
+  	>
+  </span>
 </section>

@@ -1,5 +1,5 @@
 module.exports = {
-	content: ["./hugo/**/*.{html,md,svg,tsx,ts}", "./app/**/*.{tsx,ts}"],
+	content: ["./hugo/**/*.{html,md,svg,tsx,ts}"],
 	theme: {
 		extend: {
 			zIndex: {

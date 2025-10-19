@@ -4,11 +4,11 @@
 	<span class="block">
 		<a
 			class="{{ if eq .Page.Language.Lang "cs" }}
-				font-bold text-strikethrough text-strikethrough--interactive
-				text-strikethrough--active
+				font-bold strikethrough-text strikethrough-text--interactive
+				strikethrough-text--active
 			{{ else }}
 				font-normal
-			{{ end }} text-strikethrough text-strikethrough--interactive hover:text-neutral-800"
+			{{ end }} strikethrough-text strikethrough-text--interactive hover:text-neutral-800"
 			href="{{ range where .Translations "Lang" "cs" }}
 				{{ .RelPermalink }}
 			{{ end }}"
@@ -23,11 +23,11 @@
 		{{ else }}
 			<a
 				class="{{ if eq .Page.Language.Lang "en" }}
-					font-bold text-strikethrough text-strikethrough--interactive
-					text-strikethrough--active
+					font-bold strikethrough-text strikethrough-text--interactive
+					strikethrough-text--active
 				{{ else }}
 					font-normal
-				{{ end }} text-strikethrough text-strikethrough--interactive"
+				{{ end }} strikethrough-text strikethrough-text--interactive"
 				href="{{ range where .Translations "Lang" "en" }}
 					{{ .RelPermalink }}
 				{{ end }}"

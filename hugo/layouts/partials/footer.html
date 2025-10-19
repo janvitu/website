@@ -33,17 +33,5 @@
 			</span>
 			<span class="ml-4">Zpět na začátek</span>
 		</button>
-		<div
-			class="row-start-3 flex justify-center gap-4 text-sm text-neutral-500 md:row-start-auto md:justify-end"
-		>
-			{{ range .Site.Menus.footer }}
-				<a
-					href="{{ .URL }}"
-					class="link-strikethrough block hover:text-neutral-700"
-				>
-					{{ .Name }}
-				</a>
-			{{ end }}
-		</div>
 	</div>
 </footer>
