@@ -1,0 +1,46 @@
+<article
+	class="{{ if .isFirst }}
+		md:grid-cols-[3fr,2fr]
+	{{ else }}
+		md:grid-cols-2
+	{{ end }} col-start-1 col-end-13 grid grid-flow-row items-center gap-6 py-7 md:col-start-2
+  md:col-end-12
+    md:gap-12 md:py-10"
+>
+	<a href="{{ .context.RelPermalink }}" class="block aspect-video">
+		<img src="{{ .context.RelPermalink }}cover.webp" alt width="" height="" />
+	</a>
+	<div class="grid grid-flow-row gap-3 md:gap-4">
+		<a
+			href="{{ .context.RelPermalink }}"
+			class="{{ if .isFirst }}
+				md:text-4xl
+			{{ else }}
+				md:text-xl
+			{{ end }} text-2xl font-bold uppercase hover:underline"
+		>
+			{{ .context.Title }}
+		</a>
+		<div class="flex">
+			<p class="text-sunset text-xs uppercase ">
+				{{ $categories := .context.Params.Categories }}
+				{{ range $index, $element := $categories }}
+					<a
+						href="{{ relLangURL `/` }}blog/{{ $element }}"
+						class="hover:underline"
+					>
+						{{ $element }}</a
+					>{{ if not (eq (add $index 1) (len $categories)) }},&nbsp;{{ end }}
+				{{ end }}
+
+			</p>
+			<p class="text-xs uppercase">
+				<soan class="text"> ⋅</soan>
+				{{ $wordsPerMinute := 185 }}
+				{{ $readingTime := div .context.WordCount $wordsPerMinute }}
+				{{ if lt $readingTime 1 }}{{ $readingTime = 1 }}{{ end }}
+				{{ $readingTime }} min
+			</p>
+		</div>
+	</div>
+</article>

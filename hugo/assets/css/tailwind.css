@@ -1,111 +1,117 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
 
-@layer base {
-	html {
-		font-family: Gilroy;
-		@apply text-neutral-800;
-	}
-	body {
-		@apply relative bg-neutral-100;
-	}
-	.base-grid {
-		@apply grid grid-cols-12;
-	}
-	h1 {
-		font-size: clamp(1.75rem, 8vw, 6rem);
-		@apply leading-none;
-	}
-	h2 {
-		font-size: clamp(1.5rem, 4.5vw, 3.75rem);
-		@apply leading-tight;
-	}
+html {
+	font-family: Gilroy;
+	@apply text-neutral-800;
+}
+body {
+	@apply relative bg-neutral-100;
+}
+.base-grid {
+	@apply grid grid-cols-12;
+}
+h1 {
+	font-size: clamp(1.75rem, 6vw, 6rem);
+	@apply leading-none;
+}
+h2 {
+	font-size: clamp(1.5rem, 4.5vw, 3.75rem);
+	@apply leading-tight;
 }
 
-@layer components {
-	.testimonials {
-		@apply py-24 md:py-32;
-	}
-	.testimonials__controls {
-		@apply col-start-2 col-end-12 row-start-3 flex grid-cols-2 items-center gap-7 md:col-start-4 md:col-end-9;
-		@apply mt-7 md:mt-16;
-	}
-	.testimonials__item {
-		@apply origin-left transform;
-	}
-	.testimonials__item--hidden {
-		@apply hidden;
-	}
-	.testimonials__controls__indication-item {
-		@apply mr-2 h-[10px] w-[10px] rounded-full bg-neutral-800;
-	}
-	.testimonials__controls__indication {
-		@apply flex flex-row items-center;
-	}
-	.testimonials__controls__indication-item--disabled {
-		@apply bg-neutral-400;
-	}
-	.testimonials__controls__indication-line {
-		@apply mx-[2px] mr-[10px] h-px bg-neutral-800;
-	}
-	.indication-line--hidden {
-		/* @apply mx-0 mr-0; */
-	}
+/* COMPONENTS */
+.testimonials {
+	@apply py-24 md:py-32;
+}
+.testimonials__controls {
+	@apply col-start-2 col-end-12 row-start-3 flex grid-cols-2 items-center gap-7 md:col-start-4 md:col-end-9;
+	@apply mt-7 md:mt-16;
+}
+.testimonials__item {
+	@apply origin-left transform;
+}
+.testimonials__item--hidden {
+	@apply hidden;
+}
+.testimonials__controls__indication-item {
+	@apply mr-2 h-[10px] w-[10px] rounded-full bg-neutral-800;
+}
+.testimonials__controls__indication {
+	@apply flex flex-row items-center;
+}
+.testimonials__controls__indication-item--disabled {
+	@apply bg-neutral-400;
+}
+.testimonials__controls__indication-line {
+	@apply mx-[2px] mr-[10px] h-px bg-neutral-800;
+}
+.indication-line--hidden {
+	/* @apply mx-0 mr-0; */
+}
 
-	.testimonials__button {
-		@apply h-10 w-10 rounded-full border border-neutral-800 bg-white hover:bg-neutral-50;
-	}
-	.testimonials__button--disabled {
-		@apply opacity-40 hover:cursor-not-allowed;
-	}
+.testimonials__button {
+	@apply h-10 w-10 rounded-full border border-neutral-800 bg-white hover:bg-neutral-50;
+}
+.testimonials__button--disabled {
+	@apply opacity-40 hover:cursor-not-allowed;
+}
 
-	.text-bg {
-		@apply absolute top-0 left-0 z-50 block h-full w-full origin-left transform;
-		@apply bg-neutral-800;
-		@apply scale-x-0;
-	}
+.text-bg {
+	@apply absolute top-0 left-0 z-50 block h-full w-full origin-left transform;
+	@apply bg-neutral-800;
+	@apply scale-x-0;
+}
 
-	.text-strikethrough {
-		@apply relative;
-		@apply before:absolute before:-inset-x-1 before:top-1/2 before:h-[2px] before:-translate-y-1/2 before:transform;
-	}
+.text-strikethrough {
+	@apply relative;
+	@apply before:absolute before:-inset-x-1 before:top-1/2 before:h-[2px] before:-translate-y-1/2 before:transform;
+}
 
-	.text-strikethrough--interactive {
-		@apply before:origin-center before:scale-x-0 before:bg-neutral-900 before:transition-all;
-		@apply hover:before:scale-x-100;
-	}
+.text-strikethrough--interactive {
+	@apply before:origin-center before:scale-x-0 before:bg-neutral-900 before:transition-all;
+	@apply hover:before:scale-x-100;
+}
 
-	.text-strikethrough--interactive.text-strikethrough--active {
-		@apply before:scale-x-100;
-	}
+.text-strikethrough--interactive.text-strikethrough--active {
+	@apply before:scale-x-100;
+}
 
-	.link-strikethrough {
-		@apply text-strikethrough;
-		@apply text-strikethrough--interactive;
-	}
-	.link-strikethrough--active {
-		@apply before:scale-x-100;
-	}
+.link-strikethrough {
+	/* text-strikethrough */
+	@apply relative;
+	@apply before:absolute before:-inset-x-1 before:top-1/2 before:h-[2px] before:-translate-y-1/2 before:transform;
+	/* text-strikethrough--interactive */
+	@apply before:origin-center before:scale-x-0 before:bg-neutral-900 before:transition-all;
+	@apply hover:before:scale-x-100 hover:text-[#ff4309] hover:before:bg-[#ff4309];
+	@apply transition-colors;
+}
+.link-strikethrough--active {
+	@apply before:scale-x-100;
+	@apply text-[#ff4309] before:bg-[#ff4309];
+}
 
-	.link-strike-arrow {
-	}
+.link-strike-arrow {
+}
 
-	.center--horizontal-vertical {
-		@apply flex items-center justify-center;
-	}
+.center--horizontal-vertical {
+	@apply flex items-center justify-center;
+}
 
-	.checkbox-switch {
-		@apply invisible h-0 w-0;
-	}
+.checkbox-switch {
+	@apply invisible h-0 w-0;
+}
 
-	.custom-scroll::-webkit-scrollbar {
-		@apply h-full w-1 rounded-full;
-		@apply bg-neutral-800;
-	}
+.custom-scroll::-webkit-scrollbar {
+	@apply h-full w-1 rounded-full;
+	@apply bg-neutral-800;
+}
 
-	.prose a {
-		@apply italic decoration-amber-300;
-		@apply link-strikethrough;
-	}
+.prose a {
+	@apply italic decoration-amber-300;
+	/* text-strikethrough */
+	@apply relative;
+	@apply before:absolute before:-inset-x-1 before:top-1/2 before:h-[2px] before:-translate-y-1/2 before:transform;
+	/* text-strikethrough--interactive */
+	@apply before:origin-center before:scale-x-0 before:bg-neutral-900 before:transition-all;
+	@apply hover:before:scale-x-100;
 }

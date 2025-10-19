@@ -16,47 +16,56 @@ languageCode = "en"
         url = "/"
         [languages.en.menu.main.params]
           hidden = "true"
+      # [[languages.en.menu.main]]
+      #   identifier = "work"
+      #   name = "Work"
+      #   url = "/work/"
+      #   weight = 1
       [[languages.en.menu.main]]
         identifier = "about"
         name = "About"
         url = "/about/"
-        weight = 1
+        weight = 2
       [[languages.en.menu.main]]
         identifier = "blog"
         name = "Blog"
         url = "/blog/"
-        weight = 2
+        weight = 3
       [[languages.en.menu.main]]
         identifier = "contact"
         name = "Contact"
         url = "/contact/"
-        weight = 3
-  [languages.cs]
-    languageName = "Čeština"
-    weight = 2
-    [languages.cs.menu]
-      [[languages.cs.menu.main]]
-        identifier = "homepage"
-        name = "Domovská stránka"
-        url = "/cs/"
-        [languages.cs.menu.main.params]
-          hidden = "true"
-
-      [[languages.cs.menu.main]]
-        identifier = "about"
-        name = "O mně"
-        url = "/cs/about/"
-        weight = 1
-      [[languages.cs.menu.main]]
-        identifier = "blog"
-        name = "Blog"
-        url = "/cs/blog/"
-        weight = 2
-      [[languages.cs.menu.main]]
-        identifier = "contact"
-        name = "Kontakt"
-        url = "/cs/contact/"
-        weight = 3
+        weight = 4
+  # [languages.cs]
+  #   languageName = "Čeština"
+  #   weight = 2
+  #   [languages.cs.menu]
+  #     [[languages.cs.menu.main]]
+  #       identifier = "homepage"
+  #       name = "Domovská stránka"
+  #       url = "/cs/"
+  #       [languages.cs.menu.main.params]
+  #         hidden = "true"
+  #     [[languages.cs.menu.main]]
+  #       identifier = "work"
+  #       name = "Práce"
+  #       url = "/cs/work/"
+  #       weight = 1
+  #     [[languages.cs.menu.main]]
+  #       identifier = "about"
+  #       name = "O mně"
+  #       url = "/cs/about/"
+  #       weight = 2
+  #     [[languages.cs.menu.main]]
+  #       identifier = "blog"
+  #       name = "Blog"
+  #       url = "/cs/blog/"
+  #       weight = 3
+  #     [[languages.cs.menu.main]]
+  #       identifier = "contact"
+  #       name = "Kontakt"
+  #       url = "/cs/contact/"
+  #       weight = 4
 
 [minify]
   minifyOutput = true

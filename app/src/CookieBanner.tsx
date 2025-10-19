@@ -8,7 +8,7 @@ export const CookieBanner = ({ content, setConsent, openDialog }: any) => {
 				{content.content.text}{" "}
 				<button
 					onClick={openDialog}
-					class="text-strikethrough text-strikethrough--interactive font-medium uppercase"
+					class="strikethrough-text strikethrough-text--interactive font-medium uppercase"
 				>
 					{content.content.manageToggle}
 				</button>
