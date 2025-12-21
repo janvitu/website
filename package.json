@@ -1,40 +1,42 @@
 {
-	"name": "portfolio-website",
-	"version": "1.0.0",
-	"description": "Portfolio project created with hugo",
-	"main": "index.js",
-	"scripts": {
-		"dev:tailwind": "tailwindcss -i hugo/assets/css/tailwind.css -o hugo/assets/css/tw.css -w",
-		"dev:hugo": "cd ./hugo && hugo server -D",
-		"build:tailwind": "tailwindcss -i hugo/assets/css/tailwind.css -o hugo/assets/css/tw.css --minify",
-		"build:hugo": "cd ./hugo && hugo",
-		"build:assets": "npm run build:tailwind",
-		"dev": "concurrently --names 'TAILWIND,HUGO' -c 'cyan,green'  'npm run dev:tailwind' 'npm run dev:hugo'",
-		"build": "npm run build:assets && npm run build:hugo"
-	},
-	"author": "",
-	"license": "ISC",
-	"devDependencies": {
-		"@tailwindcss/typography": "^0.5.16",
-		"@types/node": "^22.15.30",
-		"concurrently": "^9.1.2",
-		"postcss": "^8.5.4",
-		"postcss-cli": "^11.0.1",
-		"prettier": "^3.5.3",
-		"prettier-plugin-go-template": "^0.0.15",
-		"prettier-plugin-tailwindcss": "^0.6.14",
-		"tailwindcss": "^4.1.12",
-		"typescript": "^5.8.3",
-		"vite": "^6.3.5",
-		"vite-plugin-solid": "^2.11.6"
-	},
-	"dependencies": {
-		"@netlify/functions": "^4.1.4",
-		"@tailwindcss/cli": "^4.1.12",
-		"motion": "^12.16.0",
-		"package-lock.json": "^1.0.0",
-		"package.json": "^2.0.1",
-		"solid-js": "^1.9.7",
-		"zod": "^3.25.56"
-	}
+  "name": "portfolio-website",
+  "version": "1.0.0",
+  "description": "Portfolio project created with hugo",
+  "main": "index.js",
+  "scripts": {
+    "dev:tailwind": "tailwindcss -i hugo/assets/css/tailwind.css -o hugo/assets/css/tw.css -w",
+    "dev:hugo": "cd ./hugo && hugo server -D",
+    "dev:solid": "vite",
+    "build:solid": "vite build",
+    "build:tailwind": "tailwindcss -i hugo/assets/css/tailwind.css -o hugo/assets/css/tw.css --minify",
+    "build:hugo": "cd ./hugo && hugo",
+    "build:assets": "npm run build:tailwind",
+    "dev": "concurrently --names 'TAILWIND,HUGO' -c 'cyan,green' 'npm run dev:tailwind' 'npm run dev:hugo'",
+    "build": "npm run build:assets && npm run build:hugo"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@tailwindcss/typography": "^0.5.16",
+    "@types/node": "^22.15.30",
+    "concurrently": "^9.1.2",
+    "postcss": "^8.5.4",
+    "postcss-cli": "^11.0.1",
+    "prettier": "^3.5.3",
+    "prettier-plugin-go-template": "^0.0.15",
+    "prettier-plugin-tailwindcss": "^0.6.14",
+    "tailwindcss": "^4.1.12",
+    "typescript": "^5.8.3",
+    "vite": "^6.3.5",
+    "vite-plugin-solid": "^2.11.6"
+  },
+  "dependencies": {
+    "@netlify/functions": "^4.1.4",
+    "@tailwindcss/cli": "^4.1.12",
+    "motion": "^12.16.0",
+    "package-lock.json": "^1.0.0",
+    "package.json": "^2.0.1",
+    "solid-js": "^1.9.7",
+    "zod": "^3.25.56"
+  }
 }
