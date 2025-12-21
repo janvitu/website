@@ -1,4 +1,5 @@
 {{ define "main" }}
 	{{ .Content }}
 	{{ partial "Sections/contactFooter.html" . }}
+  {{ $glossaryJS := resources.Get "ts/glossary.ts" | js.Build "js/glossary.js" | fingerprint }} <script src="{{$glossaryJS.Permalink}}"></script>
 {{ end }}
