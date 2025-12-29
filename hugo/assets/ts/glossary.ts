@@ -1,10 +1,9 @@
-import { on } from "events";
 import { animate, stagger } from "motion";
 
 function wrapWordsInSpans(element: HTMLElement): HTMLElement[] {
 	const spans: HTMLElement[] = [];
 	const walker = document.createTreeWalker(element, NodeFilter.SHOW_TEXT, null);
-	let node;
+	let node: Node;
 	while ((node = walker.nextNode())) {
 		const text = node.textContent || "";
 		if (text.trim()) {
