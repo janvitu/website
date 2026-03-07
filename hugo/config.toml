@@ -26,11 +26,11 @@ languageCode = "en"
         name = "About"
         url = "/about/"
         weight = 2
-      [[languages.en.menu.main]]
-        identifier = "blog"
-        name = "Blog"
-        url = "/blog/"
-        weight = 3
+      # [[languages.en.menu.main]]
+      #   identifier = "blog"
+      #   name = "Blog"
+      #   url = "/blog/"
+      #   weight = 3
       [[languages.en.menu.main]]
         identifier = "contact"
         name = "Contact"
