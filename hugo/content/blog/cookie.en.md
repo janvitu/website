@@ -20,7 +20,7 @@ gtag("js", new Date());
 gtag("consent", "default", {
 	ad_storage: "denied",
 	analytics_storage: "denied",
-	personaliyation_storage: "denied",
+	personalization_storage: "denied",
 });
 ```
 
