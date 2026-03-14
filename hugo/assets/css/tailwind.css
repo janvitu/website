@@ -1,5 +1,9 @@
 @import "tailwindcss";
 
+@theme {
+	--color-accent: #ff4309;
+}
+
 html {
 	font-family: Gilroy;
 	@apply text-neutral-800;
@@ -51,6 +55,7 @@ h2 {
 
 .testimonials__button {
 	@apply h-10 w-10 rounded-full border border-neutral-800 bg-white hover:bg-neutral-50;
+	@apply focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent;
 }
 .testimonials__button--disabled {
 	@apply opacity-40 hover:cursor-not-allowed;
@@ -82,12 +87,13 @@ h2 {
 	@apply before:absolute before:-inset-x-1 before:top-1/2 before:h-[2px] before:-translate-y-1/2 before:transform;
 	/* text-strikethrough--interactive */
 	@apply before:origin-center before:scale-x-0 before:bg-neutral-900 before:transition-all;
-	@apply hover:before:scale-x-100 hover:text-[#ff4309] hover:before:bg-[#ff4309];
+	@apply hover:before:scale-x-100 hover:text-accent hover:before:bg-accent;
 	@apply transition-colors;
+	@apply focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent;
 }
 .link-strikethrough--active {
 	@apply before:scale-x-100;
-	@apply text-[#ff4309] before:bg-[#ff4309];
+	@apply text-accent before:bg-accent;
 }
 
 .link-strike-arrow {
@@ -100,6 +106,7 @@ h2 {
 .checkbox-switch {
 	@apply invisible h-0 w-0;
 }
+
 
 .custom-scroll::-webkit-scrollbar {
 	@apply h-full w-1 rounded-full;
@@ -114,4 +121,15 @@ h2 {
 	/* text-strikethrough--interactive */
 	@apply before:origin-center before:scale-x-0 before:bg-neutral-900 before:transition-all;
 	@apply hover:before:scale-x-100;
+}
+
+@media (prefers-reduced-motion: reduce) {
+	*,
+	*::before,
+	*::after {
+		animation-duration: 0.01ms !important;
+		animation-iteration-count: 1 !important;
+		transition-duration: 0.01ms !important;
+		scroll-behavior: auto !important;
+	}
 }
