@@ -1,13 +1,13 @@
 import { scrollToTop } from "./utils";
-import { animate, stagger } from "motion";
+import { animate } from "motion";
 
 document.addEventListener("DOMContentLoaded", () => {
 	const scrollToTopButton = document.getElementById("scrolltotop");
 	scrollToTopButton?.addEventListener("click", scrollToTop);
-	const scrollIndicator = document.getElementById("scroll-indication");
 
-	if (scrollIndicator)
-		animate(
+	const scrollIndicator = document.getElementById("scroll-indication");
+	if (scrollIndicator) {
+		const controls = animate(
 			"#scroll-indication>span",
 			{ y: [2, -2] },
 			{
@@ -15,7 +15,20 @@ document.addEventListener("DOMContentLoaded", () => {
 				delay: 5,
 				repeat: Infinity,
 				repeatType: "reverse",
-				easing: "ease-in-out",
+				easing: "ease-out",
 			},
 		);
+
+		// Stop the animation once the indicator scrolls out of view
+		const observer = new IntersectionObserver(
+			(entries) => {
+				if (!entries[0].isIntersecting) {
+					controls.stop();
+					observer.disconnect();
+				}
+			},
+			{ threshold: 0 },
+		);
+		observer.observe(scrollIndicator);
+	}
 });

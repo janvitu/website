@@ -1,10 +1,10 @@
-import { coppyContent } from "./utils";
+import { copyContent } from "./utils";
 import { z } from "zod";
 import { $ } from "./selector";
 
 document.addEventListener("DOMContentLoaded", () => {
 	const copyElement = document.getElementById("copyitem");
-	if (copyElement) copyElement.addEventListener("click", coppyContent);
+	if (copyElement) copyElement.addEventListener("click", copyContent);
 
 	const phoneRegex = /^((\+420)? ?[1-9][0-9]{2} ?[0-9]{3} ?[0-9]{3}){0,1}$/;
 
@@ -138,8 +138,7 @@ document.addEventListener("DOMContentLoaded", () => {
 					"hover:fill-neutral-50",
 				);
 				button.querySelector("span").classList.remove("hidden");
-				console.log("Form successfully submitted");
-			})
+				})
 			.catch((error) => console.error(error));
 	}
 });

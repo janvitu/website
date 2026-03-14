@@ -3,7 +3,7 @@ export const scrollToTop = () => {
 	document.documentElement.scrollTop = 0;
 };
 
-export const coppyContent = (e: MouseEvent) => {
+export const copyContent = (e: MouseEvent) => {
 	const target = e.target as HTMLElement;
 	navigator.clipboard.writeText(target.innerHTML);
 };
