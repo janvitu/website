@@ -1,5 +1,5 @@
 <header
-	class="fixed inset-x-0 top-[20px] z-[1000] grid w-screen grid-cols-12 place-items-start"
+	class="fixed inset-x-0 top-[20px] z-[1000] grid w-full grid-cols-12 place-items-start"
 >
 	<nav class="col-start-5 col-end-12 ml-1 sm:col-end-11" aria-label="Main navigation">
 		<ul
@@ -11,6 +11,7 @@
 						<a
 							class="link-strikethrough {{ if eq $.Page.RelPermalink .URL }}link-strikethrough--active{{ end }} whitespace-nowrap"
 							href="{{ .URL }}"
+							{{ if eq $.Page.RelPermalink .URL }}aria-current="page"{{ end }}
 						>
 							{{ .Name }}
 						</a>

@@ -20,6 +20,6 @@
 		</main>
 		{{ partial "footer.html" . }}
 
-		{{ $indexJS := resources.Get "ts/index.ts" | js.Build "js/index.js" | fingerprint }} <script src="{{$indexJS.Permalink}}"></script>
+		{{ $indexJS := resources.Get "ts/index.ts" | js.Build "js/index.js" | fingerprint }} <script src="{{$indexJS.Permalink}}" defer></script>
 	</body>
 </html>
