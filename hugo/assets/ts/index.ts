@@ -5,8 +5,12 @@ document.addEventListener("DOMContentLoaded", () => {
 	const scrollToTopButton = document.getElementById("scrolltotop");
 	scrollToTopButton?.addEventListener("click", scrollToTop);
 
+	const prefersReducedMotion = window.matchMedia(
+		"(prefers-reduced-motion: reduce)",
+	).matches;
+
 	const scrollIndicator = document.getElementById("scroll-indication");
-	if (scrollIndicator) {
+	if (scrollIndicator && !prefersReducedMotion) {
 		const controls = animate(
 			"#scroll-indication>span",
 			{ y: [2, -2] },

@@ -49,9 +49,6 @@ h2 {
 .testimonials__controls__indication-line {
 	@apply mx-[2px] mr-[10px] h-px bg-neutral-800;
 }
-.indication-line--hidden {
-	/* @apply mx-0 mr-0; */
-}
 
 .testimonials__button {
 	@apply h-10 w-10 rounded-full border border-neutral-800 bg-white hover:bg-neutral-50;
@@ -96,8 +93,6 @@ h2 {
 	@apply text-accent before:bg-accent;
 }
 
-.link-strike-arrow {
-}
 
 .center--horizontal-vertical {
 	@apply flex items-center justify-center;
