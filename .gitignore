@@ -21,7 +21,9 @@ $RECYCLE.BIN/
 
 hugo/assets/js/CookieBanner
 
+# AI
 .claude/
+.impeccable.md
 
 # Local Netlify folder
 .netlify
