@@ -3,7 +3,7 @@
 		<h2
 			class="relative col-start-2 col-end-12 flex flex-row items-end justify-end whitespace-nowrap text-right font-bold"
 		>
-			<div class="mr-4 mb-1 h-[32px] fill-neutral-800 md:h-[64px]">
+			<div class="mr-4 mb-1 h-[32px] fill-neutral-800 md:h-[64px]" aria-hidden="true">
 				{{ partial "svg/ArrowDownLeft.svg" }}
 			</div>
 			{{ if eq .Site.Language.Lang "en" }}
@@ -19,7 +19,7 @@
 			{{ $thumbnailImgPath := (print .RelPermalink .Params.thumbnail) }}
 			<figure>
 				<a href="{{ .RelPermalink }}">
-					<img src="{{ $thumbnailImgPath }}" alt="{{ .Params.Project }}" />
+					<img src="{{ $thumbnailImgPath }}" alt="{{ .Params.Project }}" loading="lazy" />
 				</a>
 				<figcaption>
 					<a href="{{ .RelPermalink }}">

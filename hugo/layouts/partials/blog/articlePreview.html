@@ -8,7 +8,7 @@
     md:gap-12 md:py-10"
 >
 	<a href="{{ .context.RelPermalink }}" class="block aspect-video focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent">
-		<img src="{{ .context.RelPermalink }}cover.webp" alt="{{ .context.Title }}" width="" height="" />
+		<img src="{{ .context.RelPermalink }}cover.webp" alt="{{ .context.Title }}" loading="lazy" />
 	</a>
 	<div class="grid grid-flow-row gap-3 md:gap-4">
 		<a
@@ -22,7 +22,7 @@
 			{{ .context.Title }}
 		</a>
 		<div class="flex">
-			<p class="text-sunset text-xs uppercase ">
+			<p class="text-sunset text-xs uppercase">
 				{{ $categories := .context.Params.Categories }}
 				{{ range $index, $element := $categories }}
 					<a
