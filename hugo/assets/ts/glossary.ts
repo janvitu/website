@@ -1,5 +1,9 @@
 import { animate, stagger } from "motion";
 
+const prefersReducedMotion = window.matchMedia(
+	"(prefers-reduced-motion: reduce)",
+).matches;
+
 function wrapWordsInSpans(element: HTMLElement): HTMLElement[] {
 	const spans: HTMLElement[] = [];
 	const walker = document.createTreeWalker(element, NodeFilter.SHOW_TEXT, null);
@@ -43,22 +47,43 @@ document.addEventListener("DOMContentLoaded", () => {
 		glossaryContent.style.opacity = "0";
 		glossaryContent.style.pointerEvents = "none";
 
+		title.setAttribute("role", "button");
+		title.setAttribute("tabindex", "0");
+		title.setAttribute("aria-expanded", "false");
+
 		const onEnter = () => {
 			title.style.zIndex = "1000";
+			title.setAttribute("aria-expanded", "true");
 			glossaryContent.classList.remove("hidden");
-			animate(glossaryContent, { opacity: [0, 1] } as any, { duration: 0.2 });
-			animate(wordSpans, { opacity: [0, 1], y: [10, 0] } as any, {
-				duration: 0.3,
-				delay: stagger(0.05),
-				ease: "easeOut",
-			});
+			if (prefersReducedMotion) {
+				glossaryContent.style.opacity = "1";
+				wordSpans.forEach((s) => {
+					s.style.opacity = "1";
+					s.style.transform = "translateY(0)";
+				});
+			} else {
+				animate(glossaryContent, { opacity: [0, 1] } as any, {
+					duration: 0.2,
+				});
+				animate(wordSpans, { opacity: [0, 1], y: [10, 0] } as any, {
+					duration: 0.3,
+					delay: stagger(0.05),
+					ease: "easeOut",
+				});
+			}
 		};
 		const onLeave = () => {
-			animate(glossaryContent, { opacity: [1, 0] } as any, {
-				duration: 0.2,
-			}).then(() => {
+			title.setAttribute("aria-expanded", "false");
+			if (prefersReducedMotion) {
+				glossaryContent.style.opacity = "0";
 				title.style.zIndex = "0";
-			});
+			} else {
+				animate(glossaryContent, { opacity: [1, 0] } as any, {
+					duration: 0.2,
+				}).then(() => {
+					title.style.zIndex = "0";
+				});
+			}
 		};
 
 		const wordSpans = wrapWordsInSpans(glossaryContent);
@@ -67,5 +92,18 @@ document.addEventListener("DOMContentLoaded", () => {
 		title.addEventListener("mouseleave", onLeave);
 		title.addEventListener("touchstart", onEnter);
 		title.addEventListener("touchend", onLeave);
+
+		title.addEventListener("keydown", (e: KeyboardEvent) => {
+			if (e.key === "Enter" || e.key === " ") {
+				e.preventDefault();
+				const expanded = title.getAttribute("aria-expanded") === "true";
+				expanded ? onLeave() : onEnter();
+			} else if (
+				e.key === "Escape" &&
+				title.getAttribute("aria-expanded") === "true"
+			) {
+				onLeave();
+			}
+		});
 	});
 });
