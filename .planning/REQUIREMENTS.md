@@ -9,9 +9,9 @@ Requirements for initial release. Each maps to roadmap phases.
 
 ### Dark Theme
 
-- [ ] **THEME-01**: Page has scoped dark color scheme via CSS custom properties on `[data-theme="terminal"]`
-- [ ] **THEME-02**: Background grid lines visible but subtle on dark background
-- [ ] **THEME-03**: Focus indicators visible on dark background (accent color or white outline)
+- [x] **THEME-01**: Page has scoped dark color scheme via CSS custom properties on `[data-theme="terminal"]`
+- [x] **THEME-02**: Background grid lines visible but subtle on dark background
+- [x] **THEME-03**: Focus indicators visible on dark background (accent color or white outline)
 
 ### Terminal Chrome
 
@@ -73,9 +73,9 @@ Which phases cover which requirements. Updated during roadmap creation.
 
 | Requirement | Phase | Status |
 |-------------|-------|--------|
-| THEME-01 | Phase 1 | Pending |
-| THEME-02 | Phase 1 | Pending |
-| THEME-03 | Phase 1 | Pending |
+| THEME-01 | Phase 1 | Complete |
+| THEME-02 | Phase 1 | Complete |
+| THEME-03 | Phase 1 | Complete |
 | TERM-01 | Phase 2 | Pending |
 | TERM-02 | Phase 2 | Pending |
 | TERM-04 | Phase 2 | Pending |

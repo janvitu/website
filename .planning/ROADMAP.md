@@ -12,7 +12,7 @@ Six focused phases deliver a dark-themed `/how-i-ai` page with terminal window a
 
 Decimal phases appear between their surrounding integers in numeric order.
 
-- [ ] **Phase 1: Dark Theme Foundation** - Scoped CSS custom properties establish the dark terminal context
+- [x] **Phase 1: Dark Theme Foundation** - Scoped CSS custom properties establish the dark terminal context (completed 2026-03-29)
 - [ ] **Phase 2: Terminal Chrome** - Title bar, status bar, and glow make the page look like a terminal window
 - [ ] **Phase 3: Responsive Chrome** - Terminal layout holds up on mobile with simplified chrome
 - [ ] **Phase 4: Tab Structure & Content** - Four-tab skeleton with placeholder content stored in Hugo
@@ -32,7 +32,7 @@ Decimal phases appear between their surrounding integers in numeric order.
   4. No global CSS variables or Tailwind globals are modified - dark styles live under `[data-theme="terminal"]`
 **Plans**: 1 plan
 Plans:
-- [ ] 01-01-PLAN.md -- Hugo layouts + content file + dark theme CSS custom properties
+- [x] 01-01-PLAN.md -- Hugo layouts + content file + dark theme CSS custom properties
 **UI hint**: yes
 
 ### Phase 2: Terminal Chrome
@@ -99,7 +99,7 @@ Phases execute in numeric order: 1 -> 2 -> 3 -> 4 -> 5 -> 6
 
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
-| 1. Dark Theme Foundation | 0/1 | Planning complete | - |
+| 1. Dark Theme Foundation | 1/1 | Complete   | 2026-03-29 |
 | 2. Terminal Chrome | 0/? | Not started | - |
 | 3. Responsive Chrome | 0/? | Not started | - |
 | 4. Tab Structure & Content | 0/? | Not started | - |
