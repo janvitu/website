@@ -15,10 +15,10 @@ Requirements for initial release. Each maps to roadmap phases.
 
 ### Terminal Chrome
 
-- [ ] **TERM-01**: Title bar with colored dots (red/yellow/green) and page title in monospace
-- [ ] **TERM-02**: Status bar at bottom showing Claude AI model info with green indicator
+- [x] **TERM-01**: Title bar with colored dots (red/yellow/green) and page title in monospace
+- [x] **TERM-02**: Status bar at bottom showing Claude AI model info with green indicator
 - [ ] **TERM-03**: Terminal frame responsive on mobile (simplified chrome on small screens)
-- [ ] **TERM-04**: Subtle background glow behind terminal window
+- [x] **TERM-04**: Subtle background glow behind terminal window
 
 ### Tab System
 
@@ -76,9 +76,9 @@ Which phases cover which requirements. Updated during roadmap creation.
 | THEME-01 | Phase 1 | Complete |
 | THEME-02 | Phase 1 | Complete |
 | THEME-03 | Phase 1 | Complete |
-| TERM-01 | Phase 2 | Pending |
-| TERM-02 | Phase 2 | Pending |
-| TERM-04 | Phase 2 | Pending |
+| TERM-01 | Phase 2 | Complete |
+| TERM-02 | Phase 2 | Complete |
+| TERM-04 | Phase 2 | Complete |
 | TERM-03 | Phase 3 | Pending |
 | TABS-01 | Phase 4 | Pending |
 | CONT-01 | Phase 4 | Pending |
