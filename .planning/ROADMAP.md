@@ -30,7 +30,9 @@ Decimal phases appear between their surrounding integers in numeric order.
   2. The background grid lines are visible (subtle but present) on the dark background
   3. Focused interactive elements show a visible focus ring (accent color or white outline)
   4. No global CSS variables or Tailwind globals are modified - dark styles live under `[data-theme="terminal"]`
-**Plans**: TBD
+**Plans**: 1 plan
+Plans:
+- [ ] 01-01-PLAN.md -- Hugo layouts + content file + dark theme CSS custom properties
 **UI hint**: yes
 
 ### Phase 2: Terminal Chrome
@@ -93,11 +95,11 @@ Decimal phases appear between their surrounding integers in numeric order.
 ## Progress
 
 **Execution Order:**
-Phases execute in numeric order: 1 → 2 → 3 → 4 → 5 → 6
+Phases execute in numeric order: 1 -> 2 -> 3 -> 4 -> 5 -> 6
 
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
-| 1. Dark Theme Foundation | 0/? | Not started | - |
+| 1. Dark Theme Foundation | 0/1 | Planning complete | - |
 | 2. Terminal Chrome | 0/? | Not started | - |
 | 3. Responsive Chrome | 0/? | Not started | - |
 | 4. Tab Structure & Content | 0/? | Not started | - |
