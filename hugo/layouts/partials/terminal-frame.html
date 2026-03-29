@@ -1,7 +1,7 @@
-<div class="base-grid" style="padding-top: 48px; padding-bottom: 48px;">
+<div class="base-grid" style="padding-top: 96px; padding-bottom: 48px;">
 	<div
 		class="terminal-glow col-start-3 col-end-11 flex flex-col overflow-hidden rounded-lg border border-solid"
-		style="border-color: var(--color-border); background-color: var(--color-bg-surface); height: var(--terminal-height); min-height: 400px; border-radius: 8px;"
+		style="border-color: var(--color-border); background-color: var(--color-bg-surface); height: var(--terminal-height); min-height: 65vh; border-radius: 8px;"
 		role="region"
 		aria-label="Terminal window"
 	>
@@ -44,17 +44,10 @@
 				<span style="width: 8px; height: 8px; border-radius: 50%; background-color: #27c93f; display: inline-block;"></span>
 				<span>claude-code</span>
 			</div>
-			{{/* Center: pagination counter in accent orange with neon glow */}}
-			<div
-				style="font-family: ui-monospace, 'SF Mono', Menlo, monospace; font-size: 14px; line-height: 1.2; color: var(--color-accent); text-shadow: 0 0 8px rgba(255, 67, 9, 0.6);"
-			>
-				1/4
-			</div>
-			{{/* Right: model info */}}
-			<div
-				style="font-family: ui-monospace, 'SF Mono', Menlo, monospace; font-size: 14px; line-height: 1.2; color: var(--color-text-muted);"
-			>
-				Opus 4.6 &middot; Thinking...
+			{{/* Right: pagination + model info */}}
+			<div class="flex items-center" style="gap: 12px; font-family: ui-monospace, 'SF Mono', Menlo, monospace; font-size: 14px; line-height: 1.2;">
+				<span style="color: var(--color-accent); text-shadow: 0 0 8px rgba(255, 67, 9, 0.6);">1/4</span>
+				<span style="color: var(--color-text-muted);">Opus 4.6 &middot; Thinking...</span>
 			</div>
 		</div>
 
