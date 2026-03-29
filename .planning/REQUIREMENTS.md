@@ -73,27 +73,27 @@ Which phases cover which requirements. Updated during roadmap creation.
 
 | Requirement | Phase | Status |
 |-------------|-------|--------|
-| THEME-01 | - | Pending |
-| THEME-02 | - | Pending |
-| THEME-03 | - | Pending |
-| TERM-01 | - | Pending |
-| TERM-02 | - | Pending |
-| TERM-03 | - | Pending |
-| TERM-04 | - | Pending |
-| TABS-01 | - | Pending |
-| TABS-02 | - | Pending |
-| TABS-03 | - | Pending |
-| NAV-01 | - | Pending |
-| NAV-02 | - | Pending |
-| NAV-03 | - | Pending |
-| CONT-01 | - | Pending |
-| CONT-02 | - | Pending |
+| THEME-01 | Phase 1 | Pending |
+| THEME-02 | Phase 1 | Pending |
+| THEME-03 | Phase 1 | Pending |
+| TERM-01 | Phase 2 | Pending |
+| TERM-02 | Phase 2 | Pending |
+| TERM-04 | Phase 2 | Pending |
+| TERM-03 | Phase 3 | Pending |
+| TABS-01 | Phase 4 | Pending |
+| CONT-01 | Phase 4 | Pending |
+| CONT-02 | Phase 4 | Pending |
+| TABS-02 | Phase 5 | Pending |
+| TABS-03 | Phase 5 | Pending |
+| NAV-01 | Phase 6 | Pending |
+| NAV-02 | Phase 6 | Pending |
+| NAV-03 | Phase 6 | Pending |
 
 **Coverage:**
 - v1 requirements: 15 total
-- Mapped to phases: 0
-- Unmapped: 15
+- Mapped to phases: 15
+- Unmapped: 0
 
 ---
 *Requirements defined: 2026-03-29*
-*Last updated: 2026-03-29 after initial definition*
+*Last updated: 2026-03-29 after roadmap creation - full traceability complete*
