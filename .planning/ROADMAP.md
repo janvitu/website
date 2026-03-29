@@ -43,7 +43,9 @@ Plans:
   1. A title bar is visible at the top of the terminal frame with red/yellow/green dots and a monospace page title
   2. A status bar is visible at the bottom showing "claude" and model information with a green indicator dot
   3. A subtle background glow is visible behind the terminal window
-**Plans**: TBD
+**Plans**: 1 plan
+Plans:
+- [ ] 02-01-PLAN.md -- Terminal frame partial with title bar, status bar, and background glow
 **UI hint**: yes
 
 ### Phase 3: Responsive Chrome
@@ -100,7 +102,7 @@ Phases execute in numeric order: 1 -> 2 -> 3 -> 4 -> 5 -> 6
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
 | 1. Dark Theme Foundation | 1/1 | Complete   | 2026-03-29 |
-| 2. Terminal Chrome | 0/? | Not started | - |
+| 2. Terminal Chrome | 0/1 | Not started | - |
 | 3. Responsive Chrome | 0/? | Not started | - |
 | 4. Tab Structure & Content | 0/? | Not started | - |
 | 5. Tab Interactivity | 0/? | Not started | - |
