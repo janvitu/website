@@ -27,8 +27,8 @@ A single, well-organized place to share and maintain my evolving AI workflow - t
 
 ### Active
 
-- [ ] Dark-themed `/how-i-ai` page with terminal window aesthetic
-- [ ] Terminal chrome: title bar at top, status bar at bottom showing "claude" and model info
+- ✓ Dark-themed `/how-i-ai` page with terminal window aesthetic - Validated in Phase 2: Terminal Chrome
+- ✓ Terminal chrome: title bar at top, status bar at bottom showing "claude" and model info - Validated in Phase 2: Terminal Chrome
 - [ ] Tabbed navigation with 4 tabs: My Stack, Setup, Workflow, Tips
 - [ ] Tab content switching (click tabs to show different content)
 - [ ] Scaffold placeholder content for all 4 tabs
@@ -70,7 +70,7 @@ A single, well-organized place to share and maintain my evolving AI workflow - t
 |----------|-----------|---------|
 | Dark theme scoped to page only | Rest of site is light, this page represents a different "mode" | `data-theme="terminal"` on `<body>` via section-specific baseof.html — confirmed Phase 1 |
 | Vanilla TS for tabs (not SolidJS) | Simple tab switching doesn't need a reactive framework | - Pending Phase 5 |
-| Terminal window aesthetic | Matches AI/dev tooling vibe, inspired by reference screenshot | - Pending Phase 2 |
+| Terminal window aesthetic | Matches AI/dev tooling vibe, inspired by reference screenshot | `terminal-frame.html` partial with title bar, status bar, glow — confirmed Phase 2 |
 | Nav button with diode indicator | Visually distinct from other nav items, signals "new/different" | - Pending Phase 6 |
 
 ## Evolution
