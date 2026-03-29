@@ -56,7 +56,7 @@ Source: CONTEXT.md D-02, D-09; default 8-point scale otherwise
 | Role | Size | Weight | Line Height | Font Stack | Usage |
 |------|------|--------|-------------|------------|-------|
 | Body | 16px | 400 regular | 1.5 | Gilroy | Default page text (content area, future tab content) |
-| Label | 14px | 400 regular | 1.2 | `ui-monospace, 'SF Mono', Menlo, monospace` | Title bar path (`~/how-i-ai`), status bar text (`claude-code`, `[1/4]`, `Opus 4.6 · Thinking...`) |
+| Label | 14px | 400 regular | 1.2 | `ui-monospace, 'SF Mono', Menlo, monospace` | Title bar path (`~/how-i-ai`), status bar text (`claude-code`, `1/4`, `Opus 4.6 · Thinking...`) |
 | Muted label | 12px | 400 regular | 1.2 | `ui-monospace, 'SF Mono', Menlo, monospace` | Secondary status bar text that is not the highlighted pagination counter |
 | Heading | 20px | 600 semibold | 1.2 | Gilroy | Section headings inside terminal content area (Phase 4+; declared here for continuity) |
 
@@ -77,11 +77,11 @@ Source: CONTEXT.md D-01, D-03 through D-07; CLAUDE.md (Gilroy font); default mon
 | Border | `#3a3a3a` | `--color-border` | Card border (1px solid); separator line between title bar and content area; separator line between content area and status bar |
 | Text primary | `#e0e0e0` | `--color-text` | Title bar path text; status bar `claude-code` and model info text |
 | Text muted | `#888888` | `--color-text-muted` | Status bar secondary copy that is not the pagination counter |
-| Accent (10%) | `#ff4309` | `--color-accent` | Pagination counter `[1/4]` neon orange highlight; glow color behind terminal card (at low opacity) |
+| Accent (10%) | `#ff4309` | `--color-accent` | Pagination counter `1/4` neon orange highlight; glow color behind terminal card (at low opacity) |
 | Destructive | n/a | n/a | No destructive actions in this phase |
 
 Accent reserved for:
-1. The `[1/4]` pagination counter in the status bar — text color + `text-shadow` glow
+1. The `1/4` pagination counter in the status bar — text color + `text-shadow` glow
 2. The background glow behind the terminal card — `radial-gradient` at `rgba(255, 67, 9, 0.06)` centered behind the card (subtle, monitor-backlight feel)
 
 Traffic light dots use fixed values (not CSS variables), as specified in CONTEXT.md:
@@ -110,7 +110,7 @@ Source: CONTEXT.md D-02, D-07, D-12; tailwind.css `[data-theme="terminal"]` bloc
             │    └── {{ .Content }} / tab panels (Phase 4)
             └── status-bar        (fixed height: 36px, pinned bottom)
                  ├── left:   ● claude-code
-                 ├── center: [1/4]  (accent-colored)
+                 ├── center: 1/4  (accent-colored)
                  └── right:  Opus 4.6 · Thinking...
 ```
 
@@ -174,7 +174,7 @@ This phase delivers structural chrome only. There are no CTAs, no empty states, 
 |---------|------|
 | Title bar path | `~/how-i-ai` |
 | Status bar left | `● claude-code` (Unicode bullet U+25CF as the green indicator dot) |
-| Status bar center | `[1/4]` |
+| Status bar center | `1/4` |
 | Status bar right | `Opus 4.6 · Thinking...` |
 | Primary CTA | none — this phase has no user-actionable elements |
 | Empty state | none — content area is not empty (placeholder content from Phase 1 `_index.en.html`) |
@@ -232,7 +232,7 @@ No external registries. All components are custom Hugo partials + Tailwind utili
 | Traffic light dot colors | CONTEXT.md D-02 |
 | Title bar text `~/how-i-ai` | CONTEXT.md D-01 |
 | Status bar layout and copy | CONTEXT.md D-03 through D-07 |
-| `[1/4]` pagination accent color | CONTEXT.md D-07 |
+| `1/4` pagination accent color | CONTEXT.md D-07 |
 | Card column span `col-start-3 col-end-11` | CONTEXT.md D-09 |
 | Card height viewport-based, content `overflow-y-auto` | CONTEXT.md D-10 |
 | Status bar pinned bottom | CONTEXT.md D-11 |

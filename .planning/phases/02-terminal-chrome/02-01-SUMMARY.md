@@ -43,7 +43,7 @@ patterns-established:
 requirements-completed: [TERM-01, TERM-02, TERM-04]
 
 # Metrics
-duration: ~20min
+duration: ~35min
 completed: 2026-03-29
 ---
 
@@ -53,10 +53,10 @@ completed: 2026-03-29
 
 ## Performance
 
-- **Duration:** ~20 min
+- **Duration:** ~35 min
 - **Started:** 2026-03-29T10:30:00Z
-- **Completed:** 2026-03-29 (Task 3 pending human visual verification)
-- **Tasks:** 2 of 3 complete (Task 3 is a checkpoint:human-verify gate)
+- **Completed:** 2026-03-29T11:05:00Z
+- **Tasks:** 3 of 3 complete
 - **Files modified:** 4
 
 ## Accomplishments
@@ -65,7 +65,7 @@ completed: 2026-03-29
 - Added `.terminal-glow` CSS class with `::before` radial-gradient pseudo-element (rgba(255,67,9,0.06) at 80% x 60% ellipse) for subtle warm monitor-backlight glow behind the card
 - Added `--terminal-height` CSS custom property (`calc(100dvh - 80px - 128px - 96px)`) keeping the card filling the viewport between header and footer
 - Wired `terminal-frame.html` into `hugo/layouts/how-i-ai/list.html` and cleaned `_index.en.html` content file of its grid wrapper (terminal-frame provides all structural layout)
-- Hugo build succeeds: `dist/how-i-ai/index.html` contains `terminal-glow`, `claude-code`, `~/how-i-ai`
+- Human visual verification passed: terminal card, title bar, status bar, and glow all confirmed correct; minor padding/min-height/pagination alignment tweaks applied post-review
 
 ## Task Commits
 
@@ -73,7 +73,7 @@ Each task was committed atomically:
 
 1. **Task 1: Add terminal chrome CSS and create terminal-frame partial** - `618aa1e` (feat)
 2. **Task 2: Wire terminal-frame partial into list.html and update content file** - `a0736ee` (feat)
-3. **Task 3: Visual verification of terminal chrome** - PENDING checkpoint:human-verify
+3. **Task 3: Visual verification of terminal chrome** - `173476f` (fix) -- post-review tweaks: padding, min-height, pagination alignment
 
 ## Files Created/Modified
 
@@ -90,11 +90,11 @@ Each task was committed atomically:
 
 ## Deviations from Plan
 
-None - plan executed exactly as written.
+None - plan executed exactly as written. Post-review fix commit (`173476f`) refined spacing and alignment after human visual verification; this is part of the checkpoint:human-verify flow, not an unplanned deviation.
 
 ## Issues Encountered
 
-None - Hugo build succeeded on first attempt, all acceptance criteria passed.
+None - Hugo build succeeded on first attempt, all acceptance criteria passed. Human visual review approved with only minor cosmetic tweaks.
 
 ## User Setup Required
 
@@ -102,10 +102,10 @@ None - no external service configuration required.
 
 ## Next Phase Readiness
 
-- Terminal frame partial is wired and building correctly
-- Ready for Phase 3 (tab navigation scaffold) once Task 3 visual checkpoint is approved
+- Terminal frame partial is wired, building correctly, and visually verified
+- Ready for Phase 3 (tab navigation scaffold)
 - The content area currently renders the placeholder _index.en.html content; Phase 4 will replace this with tabbed content
 
 ---
 *Phase: 02-terminal-chrome*
-*Completed: 2026-03-29 (partial -- Task 3 checkpoint pending)*
+*Completed: 2026-03-29*

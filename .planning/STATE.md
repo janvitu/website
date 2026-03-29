@@ -2,10 +2,10 @@
 gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
-status: executing
-stopped_at: "02-01-PLAN.md Task 3 checkpoint:human-verify"
-last_updated: "2026-03-29T10:25:06.155Z"
-last_activity: 2026-03-29 -- Phase 02 execution started
+status: verifying
+stopped_at: Completed 02-01-PLAN.md (all 3 tasks complete, human-verified)
+last_updated: "2026-03-29T10:35:50.074Z"
+last_activity: 2026-03-29
 progress:
   total_phases: 6
   completed_phases: 2
@@ -27,8 +27,8 @@ See: .planning/PROJECT.md (updated 2026-03-29)
 
 Phase: 02 (terminal-chrome) — EXECUTING
 Plan: 1 of 1
-Status: Executing Phase 02
-Last activity: 2026-03-29 -- Phase 02 execution started
+Status: Phase complete — ready for verification
+Last activity: 2026-03-29
 
 Progress: [░░░░░░░░░░] 0%
 
@@ -53,6 +53,8 @@ Progress: [░░░░░░░░░░] 0%
 
 *Updated after each plan completion*
 | Phase 01-dark-theme-foundation P01 | 35 | 3 tasks | 4 files |
+| Phase 02-terminal-chrome P01 | 525585min | 3 tasks | 4 files |
+| Phase 02-terminal-chrome P01 | 35min | 3 tasks | 4 files |
 
 ## Accumulated Context
 
@@ -67,6 +69,9 @@ Recent decisions affecting current work:
 - [Phase 01-dark-theme-foundation]: Hugo section layout lookup (how-i-ai/baseof.html) overrides _default without config changes
 - [Phase 01-dark-theme-foundation]: Dark theme scoped via [data-theme=terminal] on body - CSS specificity (0,1,0) beats body element (0,0,1), no global style changes
 - [Phase 02-terminal-chrome]: Terminal chrome collapsed into single partial (terminal-frame.html) vs three partials -- inline HTML more readable for static markup with no conditional logic
+- [Phase 02-terminal-chrome]: Terminal chrome collapsed into single partial (terminal-frame.html) vs three partials -- inline HTML more readable for static markup with no conditional logic
+- [Phase 02-terminal-chrome]: Traffic light dot colors hardcoded as hex (#ff5f56, #ffbd2e, #27c93f) -- macOS conventions, not design tokens requiring CSS variables
+- [Phase 02-terminal-chrome]: terminal-height hardcoded via calc(100dvh minus header and footer) because Phase 1 did not declare header/footer heights as CSS variables
 
 ### Pending Todos
 
@@ -78,6 +83,6 @@ None yet.
 
 ## Session Continuity
 
-Last session: 2026-03-29T10:25:01.228Z
-Stopped at: 02-01-PLAN.md Task 3 checkpoint:human-verify
+Last session: 2026-03-29T10:35:50.071Z
+Stopped at: Completed 02-01-PLAN.md (all 3 tasks complete, human-verified)
 Resume file: None
