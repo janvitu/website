@@ -75,9 +75,27 @@ h2 {
 	--color-border: #3a3a3a;
 	--color-text: #e0e0e0;
 	--color-text-muted: #888888;
+	--terminal-height: calc(100dvh - 80px - 128px - 96px);
 
 	background-color: #1a1a1a;
 	color: #e0e0e0;
+}
+
+/* TERMINAL CHROME */
+[data-theme="terminal"] .terminal-glow {
+	position: relative;
+}
+[data-theme="terminal"] .terminal-glow::before {
+	content: "";
+	position: absolute;
+	inset: -10%;
+	z-index: -1;
+	background: radial-gradient(
+		ellipse 80% 60% at 50% 50%,
+		rgba(255, 67, 9, 0.06) 0%,
+		transparent 70%
+	);
+	pointer-events: none;
 }
 
 [data-theme="terminal"] .grid > div {
