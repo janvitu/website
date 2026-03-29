@@ -19,6 +19,12 @@ A single, well-organized place to share and maintain my evolving AI workflow - t
 - ✓ Gilroy font family - existing
 - ✓ Responsive design patterns - existing
 
+### Validated
+
+- ✓ Dark color scheme scoped to `/how-i-ai` only via `[data-theme="terminal"]` on `<body>` - Validated in Phase 1: Dark Theme Foundation
+- ✓ Background grid preserved on dark theme (grid lines recolored to `#3a3a3a`) - Validated in Phase 1: Dark Theme Foundation
+- ✓ Focus indicators accessible on dark background (white 2px outline) - Validated in Phase 1: Dark Theme Foundation
+
 ### Active
 
 - [ ] Dark-themed `/how-i-ai` page with terminal window aesthetic
@@ -26,10 +32,8 @@ A single, well-organized place to share and maintain my evolving AI workflow - t
 - [ ] Tabbed navigation with 4 tabs: My Stack, Setup, Workflow, Tips
 - [ ] Tab content switching (click tabs to show different content)
 - [ ] Scaffold placeholder content for all 4 tabs
-- [ ] Background grid preserved on dark theme
 - [ ] Navigation entry: distinctive button-style item with diode/LED indicator, modern and minimal
 - [ ] Design fits within existing site's visual language (Gilroy font, accent color, grid system)
-- [ ] Dark color scheme that contrasts with the rest of the site's light theme
 - [ ] Monospace typography elements for terminal feel
 - [ ] Future-ready structure for adding article-style resources
 
@@ -64,10 +68,10 @@ A single, well-organized place to share and maintain my evolving AI workflow - t
 
 | Decision | Rationale | Outcome |
 |----------|-----------|---------|
-| Dark theme scoped to page only | Rest of site is light, this page represents a different "mode" | - Pending |
-| Vanilla TS for tabs (not SolidJS) | Simple tab switching doesn't need a reactive framework | - Pending |
-| Terminal window aesthetic | Matches AI/dev tooling vibe, inspired by reference screenshot | - Pending |
-| Nav button with diode indicator | Visually distinct from other nav items, signals "new/different" | - Pending |
+| Dark theme scoped to page only | Rest of site is light, this page represents a different "mode" | `data-theme="terminal"` on `<body>` via section-specific baseof.html — confirmed Phase 1 |
+| Vanilla TS for tabs (not SolidJS) | Simple tab switching doesn't need a reactive framework | - Pending Phase 5 |
+| Terminal window aesthetic | Matches AI/dev tooling vibe, inspired by reference screenshot | - Pending Phase 2 |
+| Nav button with diode indicator | Visually distinct from other nav items, signals "new/different" | - Pending Phase 6 |
 
 ## Evolution
 
@@ -87,4 +91,4 @@ This document evolves at phase transitions and milestone boundaries.
 4. Update Context with current state
 
 ---
-*Last updated: 2026-03-28 after initialization*
+*Last updated: 2026-03-29 — Phase 1 (Dark Theme Foundation) complete*
