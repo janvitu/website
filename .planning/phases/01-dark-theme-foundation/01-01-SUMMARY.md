@@ -41,20 +41,20 @@ patterns-established:
 requirements-completed: [THEME-01, THEME-02, THEME-03]
 
 # Metrics
-duration: 2min
+duration: 35min
 completed: 2026-03-29
 ---
 
 # Phase 01 Plan 01: Dark Theme Foundation Summary
 
-**Scoped dark theme (#1a1a1a background, #3a3a3a grid lines, white focus ring) for /how-i-ai via Hugo section layout override and [data-theme="terminal"] CSS selector - zero global style changes**
+**Scoped dark theme (#1a1a1a background, #3a3a3a grid lines, white focus ring) for /how-i-ai via Hugo section layout override and [data-theme="terminal"] CSS selector - zero global style changes, human-verified**
 
 ## Performance
 
-- **Duration:** ~2 min
-- **Started:** 2026-03-29T09:17:16Z
-- **Completed:** 2026-03-29T09:18:38Z (Tasks 1-2; awaiting checkpoint Task 3)
-- **Tasks:** 2 of 3 complete (Task 3 is checkpoint:human-verify)
+- **Duration:** ~35 min
+- **Started:** 2026-03-29T09:00:00Z
+- **Completed:** 2026-03-29T09:19:24Z
+- **Tasks:** 3 of 3 complete
 - **Files modified:** 4
 
 ## Accomplishments
@@ -62,6 +62,7 @@ completed: 2026-03-29
 - Created Hugo section layout (how-i-ai/baseof.html) with data-theme="terminal" on body - zero config changes needed
 - Added dark theme CSS block to tailwind.css with 5 custom properties, grid line override, and white focus ring
 - /how-i-ai route built and available in dist/ with dark theme attribute in rendered HTML
+- Human-verified: /how-i-ai renders dark (#1a1a1a), /about stays light (neutral-100), no theme bleed
 
 ## Task Commits
 
@@ -69,8 +70,7 @@ Each task was committed atomically:
 
 1. **Task 1: Create Hugo layout and content files for /how-i-ai** - `475cb63` (feat)
 2. **Task 2: Add dark theme CSS custom properties and overrides to tailwind.css** - `2d1fe9b` (feat)
-
-*Task 3 (checkpoint:human-verify) - awaiting visual verification*
+3. **Task 3: Verify dark theme renders correctly** - checkpoint:human-verify (approved, no code commit)
 
 ## Files Created/Modified
 
@@ -107,6 +107,15 @@ None - no external service configuration required.
 - CSS custom properties (--color-bg, --color-bg-surface, --color-border, --color-text, --color-text-muted) available for use in subsequent phases
 - /how-i-ai route exists and renders correctly
 
+## Self-Check: PASSED
+
+- `dist/how-i-ai/index.html` - FOUND
+- `data-theme=terminal` in dist output - FOUND (Hugo minifies attribute quotes, valid HTML)
+- `[data-theme="terminal"]` in tailwind.css - FOUND (3 occurrences)
+- `hugo/layouts/_default/baseof.html` - NOT modified (confirmed via git diff)
+- `hugo/layouts/partials/grid.html` - NOT modified (confirmed via git diff)
+- `npm run build` - PASSED (exit code 0, 36 pages)
+
 ---
 *Phase: 01-dark-theme-foundation*
-*Completed: 2026-03-29 (pending checkpoint Task 3 visual verification)*
+*Completed: 2026-03-29*
