@@ -58,7 +58,7 @@ Plans:
   3. The layout passes a visual check at 375px width (iPhone SE)
 **Plans**: 1 plan
 Plans:
-- [ ] 03-01-PLAN.md -- Responsive Tailwind classes on terminal chrome + mobile height override
+- [x] 03-01-PLAN.md -- Responsive Tailwind classes on terminal chrome + mobile height override
 **UI hint**: yes
 
 ### Phase 4: Tab Structure & Content
