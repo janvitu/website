@@ -56,7 +56,9 @@ Plans:
   1. On a mobile viewport the terminal frame is visible and readable without horizontal overflow
   2. The chrome (title bar, status bar) simplifies on small screens - either condensed or reduced in detail
   3. The layout passes a visual check at 375px width (iPhone SE)
-**Plans**: TBD
+**Plans**: 1 plan
+Plans:
+- [ ] 03-01-PLAN.md -- Responsive Tailwind classes on terminal chrome + mobile height override
 **UI hint**: yes
 
 ### Phase 4: Tab Structure & Content
@@ -103,7 +105,7 @@ Phases execute in numeric order: 1 -> 2 -> 3 -> 4 -> 5 -> 6
 |-------|----------------|--------|-----------|
 | 1. Dark Theme Foundation | 1/1 | Complete   | 2026-03-29 |
 | 2. Terminal Chrome | 1/1 | Complete   | 2026-03-29 |
-| 3. Responsive Chrome | 0/? | Not started | - |
+| 3. Responsive Chrome | 0/1 | Not started | - |
 | 4. Tab Structure & Content | 0/? | Not started | - |
 | 5. Tab Interactivity | 0/? | Not started | - |
 | 6. Navigation Entry | 0/? | Not started | - |
