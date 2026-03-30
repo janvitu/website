@@ -29,6 +29,7 @@ A single, well-organized place to share and maintain my evolving AI workflow - t
 
 - ✓ Dark-themed `/how-i-ai` page with terminal window aesthetic - Validated in Phase 2: Terminal Chrome
 - ✓ Terminal chrome: title bar at top, status bar at bottom showing "claude" and model info - Validated in Phase 2: Terminal Chrome
+- ✓ Terminal chrome responsive at 375px (mobile-first grid, simplified title/status bar, 80svh height) - Validated in Phase 3: Responsive Chrome
 - [ ] Tabbed navigation with 4 tabs: My Stack, Setup, Workflow, Tips
 - [ ] Tab content switching (click tabs to show different content)
 - [ ] Scaffold placeholder content for all 4 tabs
@@ -91,4 +92,4 @@ This document evolves at phase transitions and milestone boundaries.
 4. Update Context with current state
 
 ---
-*Last updated: 2026-03-29 — Phase 1 (Dark Theme Foundation) complete*
+*Last updated: 2026-03-30 — Phase 3 (Responsive Chrome) complete*
