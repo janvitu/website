@@ -81,6 +81,12 @@ h2 {
 	color: #e0e0e0;
 }
 
+@media (max-width: 767px) {
+	[data-theme="terminal"] {
+		--terminal-height: 80svh;
+	}
+}
+
 /* TERMINAL CHROME */
 [data-theme="terminal"] .terminal-glow {
 	position: relative;
