@@ -42,8 +42,8 @@ Declared values (multiples of 4, consistent with existing terminal chrome):
 | 3xl | 64px | not used in this phase |
 
 Exceptions:
-- Tab button vertical padding: 10px top/bottom (not on scale — matches existing title bar 40px height rhythm; keep at 10px)
 - Tab strip height: 40px — matches title bar row height for visual consistency
+- Tab button: `height: 40px`, `display: flex`, `align-items: center`, `padding: 0 16px` (first tab: `padding: 0 16px 0 0`) — height constraint drives vertical centering; no vertical padding declaration
 - Status bar height: 36px — pre-existing, do not change
 - Title bar height: 40px — pre-existing, do not change
 
@@ -55,15 +55,15 @@ Source: terminal-frame.html (existing padding values), CONTEXT.md D-02, RESEARCH
 
 | Role | Size | Weight | Line Height | Font | Usage |
 |------|------|--------|-------------|------|-------|
-| Display (H1) | clamp(2rem, 5vw, 4rem) | 700 (bold) | 1.1 | Gilroy | Page heading "How I AI" above terminal frame |
-| Body | 16px (1rem) | 400 (regular) | 1.5 | Gilroy | Tab panel body text, paragraphs |
+| Display (H1) | clamp(2rem, 5vw, 4rem) | 600 (semibold) | 1.1 | Gilroy | Page heading "How I AI" above terminal frame |
+| Body + Tagline | 16px (1rem) | 400 (regular) | 1.5 | Gilroy | Tab panel body text, paragraphs, H1 tagline |
 | Label (tab button) | 13px | 400 (regular) | 1.2 | ui-monospace, 'SF Mono', Menlo, monospace | Tab strip button labels |
-| Subheading (H2/H3) | 20px / 16px | 600 (semibold) | 1.3 | Gilroy | Tab panel section headings |
+| Subheading (H2/H3) | 20px | 600 (semibold) | 1.3 | Gilroy | Tab panel section headings |
 
 Notes:
 - Tab label font: **monospace** (matches terminal chrome aesthetic — title bar and status bar already use `ui-monospace, 'SF Mono', Menlo, monospace`). Source: RESEARCH.md "Note on font choice" + Claude's Discretion from CONTEXT.md.
-- H1 tagline: 18px (1.125rem), weight 400, line-height 1.5, color `var(--color-text-muted)`. Source: RESEARCH.md Pattern 4.
-- Two weights only: 400 (regular) and 600/700 (semibold/bold). No other weights.
+- H1 tagline: 16px (1rem), weight 400, line-height 1.5, color `var(--color-text-muted)`. Differentiated from body text by color alone, not size.
+- Two weights only: 400 (regular) and 600 (semibold). No other weights.
 
 ---
 
@@ -95,8 +95,8 @@ These are the new UI elements introduced in Phase 4. No third-party components.
 
 - Location: above terminal frame card, within `base-grid` column span
 - Column span: `col-start-2 col-end-12` (mobile), `md:col-start-3 md:col-end-11` (desktop)
-- H1 text: "How I AI" — `clamp(2rem, 5vw, 4rem)`, color `var(--color-text)`, weight 700
-- Tagline text: "A living knowledge base — tools, setup, workflow, and learnings from daily AI-assisted product work." — 18px, color `var(--color-text-muted)`, weight 400, line-height 1.5
+- H1 text: "How I AI" — `clamp(2rem, 5vw, 4rem)`, color `var(--color-text)`, weight 600
+- Tagline text: "A living knowledge base — tools, setup, workflow, and learnings from daily AI-assisted product work." — 16px, color `var(--color-text-muted)`, weight 400, line-height 1.5
 - Top padding: `pt-16` mobile / `md:pt-24` desktop (above H1 block); bottom padding: `pb-0` (terminal frame already has `pt-12 md:pt-24`)
 - Source: CONTEXT.md D-01, RESEARCH.md Pattern 4
 
@@ -121,7 +121,7 @@ Tabs: **My Stack**, **Setup**, **Workflow**, **Tips** (in this order, left to ri
 | Focus-visible | white `outline: 2px solid #ffffff` (pre-existing dark theme rule) | — | — |
 
 - Font: `ui-monospace, 'SF Mono', Menlo, monospace`, 13px, weight 400, line-height 1.2
-- Padding: `10px 16px` (first tab: `10px 16px 10px 0` — flush left)
+- Size: `height: 40px`, `display: flex`, `align-items: center`, `padding: 0 16px` (first tab: `padding: 0 16px 0 0` — flush left)
 - `background: none`, `border: none` (reset button defaults), `cursor: pointer`
 - ARIA per button: `role="tab"`, `id="tab-{id}"`, `aria-controls="panel-{id}"`, `aria-selected="true|false"`, `data-tab="{id}"`
 - IDs: `tab-my-stack`, `tab-setup`, `tab-workflow`, `tab-tips`
