@@ -31,10 +31,11 @@ decisions:
   - "initTabs uses querySelectorAll with ARIA role selectors -- ties JS to semantic HTML, not class names"
   - "Defensive first-panel activation on load -- belt-and-suspenders with shortcode active=true"
   - "No URL hash sync, no transitions -- deferred to Phase 5 per D-07"
+requirements-completed: [TABS-01]
 metrics:
-  duration: 1min
+  duration: 5min
   completed_date: "2026-04-01"
-  tasks_completed: 1
+  tasks_completed: 2
   files_changed: 2
 ---
 
@@ -80,6 +81,25 @@ Commits verified:
 
 Build: npm run build passes in 75ms, 34 pages.
 
-## Awaiting Human Verification
+## Human Verification: APPROVED
 
-Task 2 is a `checkpoint:human-verify` gate. The complete Phase 4 deliverable (H1 intro block, 4-tab strip, placeholder content, click-to-switch behavior) requires browser verification before the plan is marked complete.
+Task 2 browser verification was approved by the human. Confirmed:
+- H1 "How I AI" heading and tagline visible above terminal frame
+- No duplicate H1 inside terminal content area
+- 4 tab buttons (My Stack, Setup, Workflow, Tips) visible in the tab strip
+- Tab strip sits between title bar and content area
+- "My Stack" tab active on page load with accent orange underline
+- Clicking each tab shows its panel and hides the others
+- Each tab has realistic placeholder content
+- Status bar `1/4` remains visible at bottom
+- Keyboard navigation through tabs works
+- Mobile layout does not overflow horizontally
+
+## Next Phase Readiness
+
+Phase 4 is complete. Phase 5 (Tab Interactivity) can begin:
+- URL hash sync on tab change
+- Direct hash URL loading the correct tab
+- Smooth CSS transitions on panel change
+
+The DOM structure (ARIA roles, data-tab attributes, panel IDs) is in place. Phase 5 only needs to extend the existing `initTabs` logic.
