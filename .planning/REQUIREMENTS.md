@@ -22,7 +22,7 @@ Requirements for initial release. Each maps to roadmap phases.
 
 ### Tab System
 
-- [ ] **TABS-01**: 4 tabs: My Stack, Setup, Workflow, Tips - click to switch content
+- [x] **TABS-01**: 4 tabs: My Stack, Setup, Workflow, Tips - click to switch content
 - [ ] **TABS-02**: URL hash sync (e.g. `/how-i-ai#setup` links directly to tab)
 - [ ] **TABS-03**: Smooth CSS transitions when switching tabs
 
@@ -34,8 +34,8 @@ Requirements for initial release. Each maps to roadmap phases.
 
 ### Content
 
-- [ ] **CONT-01**: Placeholder content scaffolded for all 4 tabs
-- [ ] **CONT-02**: Content stored in Hugo content file (future-proof, not hardcoded in layout)
+- [x] **CONT-01**: Placeholder content scaffolded for all 4 tabs
+- [x] **CONT-02**: Content stored in Hugo content file (future-proof, not hardcoded in layout)
 
 ## v2 Requirements
 
@@ -80,9 +80,9 @@ Which phases cover which requirements. Updated during roadmap creation.
 | TERM-02 | Phase 2 | Complete |
 | TERM-04 | Phase 2 | Complete |
 | TERM-03 | Phase 3 | Pending |
-| TABS-01 | Phase 4 | Pending |
-| CONT-01 | Phase 4 | Pending |
-| CONT-02 | Phase 4 | Pending |
+| TABS-01 | Phase 4 | Complete |
+| CONT-01 | Phase 4 | Complete |
+| CONT-02 | Phase 4 | Complete |
 | TABS-02 | Phase 5 | Pending |
 | TABS-03 | Phase 5 | Pending |
 | NAV-01 | Phase 6 | Pending |
