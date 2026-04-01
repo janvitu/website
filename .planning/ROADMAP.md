@@ -15,7 +15,7 @@ Decimal phases appear between their surrounding integers in numeric order.
 - [x] **Phase 1: Dark Theme Foundation** - Scoped CSS custom properties establish the dark terminal context (completed 2026-03-29)
 - [x] **Phase 2: Terminal Chrome** - Title bar, status bar, and glow make the page look like a terminal window (completed 2026-03-29)
 - [ ] **Phase 3: Responsive Chrome** - Terminal layout holds up on mobile with simplified chrome
-- [ ] **Phase 4: Tab Structure & Content** - Four-tab skeleton with placeholder content stored in Hugo
+- [x] **Phase 4: Tab Structure & Content** - Four-tab skeleton with placeholder content stored in Hugo (completed 2026-04-01)
 - [ ] **Phase 5: Tab Interactivity** - Click-to-switch tabs with URL hash sync and smooth transitions
 - [ ] **Phase 6: Navigation Entry** - Accessible nav link styled as a distinctive LED button
 
@@ -106,6 +106,6 @@ Phases execute in numeric order: 1 -> 2 -> 3 -> 4 -> 5 -> 6
 | 1. Dark Theme Foundation | 1/1 | Complete   | 2026-03-29 |
 | 2. Terminal Chrome | 1/1 | Complete   | 2026-03-29 |
 | 3. Responsive Chrome | 0/1 | Not started | - |
-| 4. Tab Structure & Content | 1/2 | In Progress|  |
+| 4. Tab Structure & Content | 2/2 | Complete   | 2026-04-01 |
 | 5. Tab Interactivity | 0/? | Not started | - |
 | 6. Navigation Entry | 0/? | Not started | - |
