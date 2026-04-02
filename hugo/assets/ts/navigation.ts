@@ -105,7 +105,23 @@ document.addEventListener("DOMContentLoaded", () => {
     if (prefersReducedMotion) {
       resetState();
     } else {
+      // Animate everything out in parallel for smooth exit
       activeAnimation = animate(overlay, { opacity: [1, 0] } as any, { duration: 0.2 });
+
+      if (isDesktop()) {
+        animate(
+          desktopLabels,
+          { opacity: [1, 0], x: [0, 10] } as any,
+          { duration: 0.2, delay: stagger(0.02), ease: "easeIn" },
+        );
+      } else {
+        animate(
+          mobileLabels,
+          { opacity: [1, 0], y: [0, 10] } as any,
+          { duration: 0.2, delay: stagger(0.02), ease: "easeIn" },
+        );
+      }
+
       activeAnimation.then(() => {
         activeAnimation = null;
         resetState();
@@ -117,10 +133,67 @@ document.addEventListener("DOMContentLoaded", () => {
   toggle.addEventListener("mouseenter", onEnter);
   toggle.addEventListener("mouseleave", onLeave);
 
-  // Mobile: touch
-  toggle.addEventListener("touchstart", onEnter, { passive: true });
-  toggle.addEventListener("touchend", onLeave, { passive: true });
+  // Mobile: press-and-hold pattern
+  // touchstart → open nav
+  // touchmove → highlight item under finger
+  // touchend → navigate to highlighted item, or close if none
 
-  // Mobile: tap overlay to close
+  let highlightedLink: HTMLAnchorElement | null = null;
+
+  const clearHighlight = () => {
+    if (highlightedLink) {
+      highlightedLink.classList.remove("link-strikethrough--active");
+      highlightedLink = null;
+    }
+  };
+
+  const getNavLinkAtPoint = (x: number, y: number): HTMLAnchorElement | null => {
+    const elements = document.elementsFromPoint(x, y);
+    for (const el of elements) {
+      // Check if it's a mobile nav link or its child span
+      const link = el.closest(".nav-label-mobile") as HTMLAnchorElement | null;
+      if (link) return link;
+    }
+    return null;
+  };
+
+  toggle.addEventListener("touchstart", (e: TouchEvent) => {
+    e.preventDefault();
+    onEnter();
+  }, { passive: false });
+
+  document.addEventListener("touchmove", (e: TouchEvent) => {
+    if (!isOpen) return;
+    e.preventDefault();
+
+    const touch = e.touches[0];
+    const link = getNavLinkAtPoint(touch.clientX, touch.clientY);
+
+    if (link !== highlightedLink) {
+      clearHighlight();
+      if (link) {
+        highlightedLink = link;
+        link.classList.add("link-strikethrough--active");
+      }
+    }
+  }, { passive: false });
+
+  document.addEventListener("touchend", (e: TouchEvent) => {
+    if (!isOpen) return;
+    e.preventDefault();
+
+    if (highlightedLink) {
+      const href = highlightedLink.getAttribute("href");
+      clearHighlight();
+      onLeave();
+      if (href) {
+        window.location.href = href;
+      }
+    } else {
+      onLeave();
+    }
+  }, { passive: false });
+
+  // Tap overlay to close (for click events, e.g. assistive tech)
   overlay.addEventListener("click", onLeave);
 });

@@ -4,32 +4,25 @@
   <!-- Nav overlay (frosted backdrop) -->
   <div
     data-nav-overlay
-    class="fixed inset-0 bg-white/60 backdrop-blur-xs z-[1099] opacity-0 pointer-events-none flex flex-col items-center"
+    class="fixed inset-0 bg-white/60 backdrop-blur-xs z-[1099] opacity-0 pointer-events-none flex flex-col items-center select-none"
   >
-    <!-- Mobile-only: logo + centered nav inside overlay -->
+    <!-- Mobile-only: centered nav inside overlay -->
     <div class="md:hidden flex flex-col h-full w-full items-center">
-      <div class="w-2/3 min-w-[20px] max-w-[56px] pt-5 fill-neutral-800">
-        <a href="{{ ($.Site.GetPage `/`).RelPermalink }}" aria-label="Home">
-          {{ partial "svg/Logo.svg" }}
-        </a>
-      </div>
       <nav
         class="flex-1 flex items-center justify-center"
         aria-label="Mobile navigation"
       >
         <ul class="flex flex-col gap-6 items-center">
           {{ range .Site.Menus.main }}
-            {{ if ne .Params.hidden "true" }}
               <li>
                 <a
                   href="{{ .URL }}"
-                  class="nav-label-mobile text-base font-semibold text-neutral-800 whitespace-nowrap"
+                  class="nav-label-mobile link-strikethrough{{ if eq $.Page.RelPermalink .URL }} link-strikethrough--active{{ end }} text-base font-semibold text-neutral-800 whitespace-nowrap"
                   {{ if eq $.Page.RelPermalink .URL }}aria-current="page"{{ end }}
                 >
-                  {{ .Name }}
+                  <span class="relative block">{{ .Name }}</span>
                 </a>
               </li>
-            {{ end }}
           {{ end }}
         </ul>
       </nav>
@@ -39,10 +32,11 @@
   <!-- Nav column - entire trigger zone -->
   <div
     data-nav-toggle
-    class="col-start-12 col-end-13 flex flex-col h-full z-[1100] pointer-events-auto"
+    class="col-start-12 col-end-13 flex flex-col h-full z-[1100] pointer-events-auto select-none"
   >
     <!-- Logo (top) -->
     <div
+      data-nav-logo
       class="w-2/3 min-w-[20px] max-w-[56px] place-self-center pt-5 fill-neutral-800 transition-colors duration-150 hover:fill-accent"
     >
       <a
@@ -59,22 +53,20 @@
       class="flex-1 flex items-center justify-center"
       aria-label="Main navigation"
     >
-      <ul class="flex flex-col gap-6 items-end">
+      <ul class="flex flex-col gap-6 items-center">
         {{ range .Site.Menus.main }}
-          {{ if ne .Params.hidden "true" }}
-            <li class="flex items-center gap-4">
+            <li class="relative flex items-center justify-center">
               <a
                 href="{{ .URL }}"
-                class="nav-label hidden md:inline-block text-2xl font-semibold text-neutral-800 whitespace-nowrap"
+                class="nav-label link-strikethrough{{ if eq $.Page.RelPermalink .URL }} link-strikethrough--active{{ end }} hidden md:inline-block absolute right-full mr-4 text-2xl font-semibold text-neutral-800 whitespace-nowrap"
                 {{ if eq $.Page.RelPermalink .URL }}aria-current="page"{{ end }}
               >
-                {{ .Name }}
+                <span class="relative block">{{ .Name }}</span>
               </a>
               <span
                 class="nav-dot{{ if eq $.Page.RelPermalink .URL }} nav-dot--active{{ end }}"
               ></span>
             </li>
-          {{ end }}
         {{ end }}
       </ul>
     </nav>
