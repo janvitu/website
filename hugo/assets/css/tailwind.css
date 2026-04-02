@@ -39,7 +39,7 @@ h2 {
 	@apply before:scale-x-100;
 }
 
-.link-strikethrough {
+.link-strikethrough > span {
 	/* text-strikethrough */
 	@apply relative;
 	@apply before:absolute before:-inset-x-1 before:top-1/2 before:h-[2px] before:-translate-y-1/2 before:transform;
@@ -49,13 +49,31 @@ h2 {
 	@apply transition-colors;
 	@apply focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent;
 }
-.link-strikethrough--active {
+.link-strikethrough--active > span {
 	@apply before:scale-x-100;
 	@apply text-accent before:bg-accent;
 }
 
 .center--horizontal-vertical {
 	@apply flex items-center justify-center;
+}
+
+/* Navigation dots */
+.nav-dot {
+	@apply relative block w-1.5 h-1.5 rounded-full bg-neutral-500 flex-shrink-0;
+}
+
+.nav-dot::after {
+	content: '';
+	@apply absolute inset-[-5px] rounded-full border border-neutral-300;
+}
+
+.nav-dot--active {
+	@apply bg-accent;
+}
+
+.nav-dot--active::after {
+	@apply border-accent;
 }
 
 .prose a {
