@@ -34,6 +34,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const resetState = () => {
     overlay.style.pointerEvents = "none";
     overlay.style.opacity = "0";
+    overlay.style.zIndex = "";
     desktopLabels.forEach((label) => {
       label.style.opacity = "0";
       label.style.transform = "translateX(10px)";
@@ -82,7 +83,8 @@ document.addEventListener("DOMContentLoaded", () => {
         });
       }
     } else {
-      // Mobile: reveal centered labels inside overlay
+      // Mobile: bring overlay above dots so they're behind the glass
+      overlay.style.zIndex = "1200";
       if (prefersReducedMotion) {
         mobileLabels.forEach((label) => {
           label.style.opacity = "1";
