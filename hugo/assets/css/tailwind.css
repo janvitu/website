@@ -65,7 +65,7 @@ h2 {
 
 .nav-dot::after {
 	content: '';
-	@apply absolute inset-[-5px] rounded-full border border-neutral-300;
+	@apply absolute inset-[-2px] rounded-full border border-neutral-300;
 }
 
 .nav-dot--active {
