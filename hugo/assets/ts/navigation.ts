@@ -29,10 +29,31 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   let isOpen = false;
+  let activeAnimation: any = null;
+
+  const resetState = () => {
+    overlay.style.pointerEvents = "none";
+    overlay.style.opacity = "0";
+    desktopLabels.forEach((label) => {
+      label.style.opacity = "0";
+      label.style.transform = "translateX(10px)";
+      label.style.pointerEvents = "none";
+    });
+    mobileLabels.forEach((label) => {
+      label.style.opacity = "0";
+      label.style.transform = "translateY(10px)";
+    });
+  };
 
   const onEnter = () => {
     if (isOpen) return;
     isOpen = true;
+
+    // Cancel any in-flight leave animation
+    if (activeAnimation) {
+      activeAnimation.cancel();
+      activeAnimation = null;
+    }
 
     // Fade in overlay
     overlay.style.pointerEvents = "auto";
@@ -82,32 +103,13 @@ document.addEventListener("DOMContentLoaded", () => {
     isOpen = false;
 
     if (prefersReducedMotion) {
-      overlay.style.opacity = "0";
-      overlay.style.pointerEvents = "none";
-      desktopLabels.forEach((label) => {
-        label.style.opacity = "0";
-        label.style.transform = "translateX(10px)";
-        label.style.pointerEvents = "none";
-      });
-      mobileLabels.forEach((label) => {
-        label.style.opacity = "0";
-        label.style.transform = "translateY(10px)";
-      });
+      resetState();
     } else {
-      animate(overlay, { opacity: [1, 0] } as any, { duration: 0.2 }).then(
-        () => {
-          overlay.style.pointerEvents = "none";
-          desktopLabels.forEach((label) => {
-            label.style.opacity = "0";
-            label.style.transform = "translateX(10px)";
-            label.style.pointerEvents = "none";
-          });
-          mobileLabels.forEach((label) => {
-            label.style.opacity = "0";
-            label.style.transform = "translateY(10px)";
-          });
-        },
-      );
+      activeAnimation = animate(overlay, { opacity: [1, 0] } as any, { duration: 0.2 });
+      activeAnimation.then(() => {
+        activeAnimation = null;
+        resetState();
+      });
     }
   };
 
@@ -118,4 +120,7 @@ document.addEventListener("DOMContentLoaded", () => {
   // Mobile: touch
   toggle.addEventListener("touchstart", onEnter, { passive: true });
   toggle.addEventListener("touchend", onLeave, { passive: true });
+
+  // Mobile: tap overlay to close
+  overlay.addEventListener("click", onLeave);
 });
