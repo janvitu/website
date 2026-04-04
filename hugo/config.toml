@@ -12,10 +12,9 @@ languageCode = "en"
     [languages.en.menu]
       [[languages.en.menu.main]]
         identifier = "homepage"
-        name = "Homepage"
+        name = "Home"
         url = "/"
-        [languages.en.menu.main.params]
-          hidden = "true"
+        weight = 1
       # [[languages.en.menu.main]]
       #   identifier = "work"
       #   name = "Work"

@@ -6,7 +6,7 @@
 				<a
 					class="{{ if eq $.Page.RelPermalink (print (relLangURL `/`) `blog/`) }}
 						underline
-					{{ end }} cursor-pointer text-xs font-medium uppercase hover:underline focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
+					{{ end }} cursor-pointer text-xs font-medium uppercase hover:underline focus-accent"
 					href="{{ relLangURL `/` }}blog/"
 				>
 					{{ i18n "blog.all" }}
@@ -19,7 +19,7 @@
 				{{ end }}
 				<li>
 					<a
-						class="{{ $activePageLinkClass }} cursor-pointer text-xs font-medium uppercase hover:underline focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
+						class="{{ $activePageLinkClass }} cursor-pointer text-xs font-medium uppercase hover:underline focus-accent"
 						href="{{ relLangURL `/` }}blog/{{ $key }}/"
 					>
 						{{ $key }}
