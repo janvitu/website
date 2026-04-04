@@ -34,15 +34,15 @@ function wrapWordsInSpans(element: HTMLElement): HTMLElement[] {
 }
 
 document.addEventListener("DOMContentLoaded", () => {
-	const glosaryContainers = document.querySelectorAll<HTMLElement>(
-		"[data-glosary-toggle]",
+	const glossaryContainers = document.querySelectorAll<HTMLElement>(
+		"[data-glossary-toggle]",
 	);
-	glosaryContainers.forEach((glosary) => {
-		const title = glosary.querySelector<HTMLElement>(
-			"[data-glosary-title]>span",
+	glossaryContainers.forEach((glossary) => {
+		const title = glossary.querySelector<HTMLElement>(
+			"[data-glossary-title]>span",
 		);
 		const glossaryContent =
-			glosary.querySelector<HTMLElement>("[data-glosary]");
+			glossary.querySelector<HTMLElement>("[data-glossary]");
 
 		if (!glossaryContent || !title) return;
 
