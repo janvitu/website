@@ -60,6 +60,17 @@ h2 {
 	@apply flex items-center justify-center;
 }
 
+/* How I AI LED button */
+.how-i-ai-nav-button:hover {
+	background-color: rgba(255, 67, 9, 0.08);
+}
+.how-i-ai-nav-button:hover .led-dot {
+	box-shadow: 0 0 6px rgba(255, 67, 9, 0.8), 0 0 12px rgba(255, 67, 9, 0.4);
+}
+.how-i-ai-nav-button[aria-current="page"] {
+	background-color: rgba(255, 67, 9, 0.1);
+}
+
 /* Navigation dots */
 .nav-dot {
 	@apply relative block w-1.5 h-1.5 rounded-full bg-neutral-500 flex-shrink-0;
