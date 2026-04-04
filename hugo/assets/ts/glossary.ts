@@ -44,6 +44,8 @@ document.addEventListener("DOMContentLoaded", () => {
 		const glossaryContent =
 			glosary.querySelector<HTMLElement>("[data-glosary]");
 
+		if (!glossaryContent || !title) return;
+
 		glossaryContent.style.opacity = "0";
 		glossaryContent.style.pointerEvents = "none";
 
