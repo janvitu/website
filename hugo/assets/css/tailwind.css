@@ -61,14 +61,36 @@ h2 {
 }
 
 /* How I AI LED button */
-.how-i-ai-nav-button {
-	box-shadow: 0 0 10px color-mix(in srgb, var(--color-accent) 35%, transparent),
-		0 0 24px color-mix(in srgb, var(--color-accent) 15%, transparent);
+@property --border-angle {
+	syntax: "<angle>";
+	inherits: false;
+	initial-value: 0deg;
 }
-.how-i-ai-nav-button:hover,
-.how-i-ai-nav-button[aria-current="page"] {
-	box-shadow: 0 0 14px color-mix(in srgb, var(--color-accent) 55%, transparent),
-		0 0 32px color-mix(in srgb, var(--color-accent) 25%, transparent);
+
+@keyframes spin-border {
+	to {
+		--border-angle: 360deg;
+	}
+}
+
+.how-i-ai-nav-button {
+	position: relative;
+}
+.how-i-ai-nav-button::before {
+	content: "";
+	position: absolute;
+	inset: -1px;
+	border-radius: 9999px;
+	background: conic-gradient(
+		from var(--border-angle),
+		transparent 0%,
+		transparent 70%,
+		var(--color-accent) 85%,
+		color-mix(in srgb, var(--color-accent) 60%, transparent) 90%,
+		transparent 100%
+	);
+	z-index: -1;
+	animation: spin-border 4s linear infinite;
 }
 .led-dot {
 	box-shadow: 0 0 4px color-mix(in srgb, var(--color-accent) 60%, transparent),
