@@ -23,7 +23,16 @@ export const initTabs = (): void => {
 		});
 
 		tabPanels.forEach((panel) => {
-			panel.hidden = panel.getAttribute("data-tab-id") !== targetId;
+			if (panel.getAttribute("data-tab-id") === targetId) {
+				panel.hidden = false;
+				panel.classList.add("tab-entering");
+				requestAnimationFrame(() => {
+					panel.classList.remove("tab-entering");
+				});
+			} else {
+				panel.hidden = true;
+				panel.classList.remove("tab-entering");
+			}
 		});
 
 		if (updateHash) {
