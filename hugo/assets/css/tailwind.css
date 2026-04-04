@@ -44,10 +44,12 @@ h2 {
 }
 
 .link-strikethrough > span {
-	@apply text-strikethrough text-strikethrough--interactive;
+	@apply relative;
+	@apply before:absolute before:-inset-x-1 before:top-1/2 before:h-[2px] before:-translate-y-1/2 before:transform;
+	@apply before:origin-center before:scale-x-0 before:bg-neutral-900 before:transition-all;
 	@apply hover:before:scale-x-100 hover:text-accent hover:before:bg-accent;
 	@apply transition-colors;
-	@apply focus-accent;
+	@apply focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent;
 }
 .link-strikethrough--active > span {
 	@apply before:scale-x-100;
@@ -89,7 +91,9 @@ h2 {
 
 .prose a {
 	@apply italic decoration-amber-300;
-	@apply text-strikethrough text-strikethrough--interactive;
+	@apply relative;
+	@apply before:absolute before:-inset-x-1 before:top-1/2 before:h-[2px] before:-translate-y-1/2 before:transform;
+	@apply before:origin-center before:scale-x-0 before:bg-neutral-900 before:transition-all;
 	@apply hover:before:scale-x-100;
 }
 
