@@ -162,6 +162,17 @@ h2 {
 	outline-offset: 2px;
 }
 
+/* TAB PANEL TRANSITIONS */
+[data-theme="terminal"] [role="tabpanel"] {
+	transition: opacity 0.15s ease-in-out;
+}
+[data-theme="terminal"] [role="tabpanel"][hidden] {
+	display: none;
+}
+[data-theme="terminal"] [role="tabpanel"].tab-entering {
+	opacity: 0;
+}
+
 @media (prefers-reduced-motion: reduce) {
 	*,
 	*::before,
