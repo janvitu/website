@@ -1,5 +1,6 @@
 import { scrollToTop, prefersReducedMotion } from "./utils";
 import { animate } from "motion";
+import { initTabs } from "./tabs";
 
 document.addEventListener("DOMContentLoaded", () => {
 	const scrollToTopButton = document.getElementById("scrolltotop");
@@ -31,4 +32,6 @@ document.addEventListener("DOMContentLoaded", () => {
 		);
 		observer.observe(scrollIndicator);
 	}
+
+	initTabs();
 });
