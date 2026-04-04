@@ -6,7 +6,11 @@ export const initTabs = (): void => {
 
 	if (tabButtons.length === 0) return;
 
-	const activateTab = (targetId: string): void => {
+	const validIds = new Set(
+		Array.from(tabButtons, (btn) => btn.getAttribute("data-tab")),
+	);
+
+	const activateTab = (targetId: string, updateHash = true): void => {
 		tabButtons.forEach((btn) => {
 			const isTarget = btn.getAttribute("data-tab") === targetId;
 			btn.setAttribute("aria-selected", isTarget ? "true" : "false");
@@ -21,6 +25,10 @@ export const initTabs = (): void => {
 		tabPanels.forEach((panel) => {
 			panel.hidden = panel.getAttribute("data-tab-id") !== targetId;
 		});
+
+		if (updateHash) {
+			history.replaceState(null, "", `#${targetId}`);
+		}
 	};
 
 	tabButtons.forEach((button) => {
@@ -29,5 +37,19 @@ export const initTabs = (): void => {
 			if (!targetId) return;
 			activateTab(targetId);
 		});
+	});
+
+	// Activate tab from URL hash on load
+	const hash = window.location.hash.slice(1);
+	if (hash && validIds.has(hash)) {
+		activateTab(hash, false);
+	}
+
+	// Listen for hash changes (back/forward navigation)
+	window.addEventListener("hashchange", () => {
+		const newHash = window.location.hash.slice(1);
+		if (newHash && validIds.has(newHash)) {
+			activateTab(newHash, false);
+		}
 	});
 };
