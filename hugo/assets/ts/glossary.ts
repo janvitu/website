@@ -53,7 +53,16 @@ document.addEventListener("DOMContentLoaded", () => {
 		title.setAttribute("tabindex", "0");
 		title.setAttribute("aria-expanded", "false");
 
+		let wordSpans: HTMLElement[] = [];
+		let hasWrapped = false;
+
 		const onEnter = () => {
+			// Lazy-wrap words on first open
+			if (!hasWrapped) {
+				wordSpans = wrapWordsInSpans(glossaryContent);
+				hasWrapped = true;
+			}
+
 			title.style.zIndex = "1000";
 			title.setAttribute("aria-expanded", "true");
 			glossaryContent.classList.remove("hidden");
@@ -76,6 +85,10 @@ document.addEventListener("DOMContentLoaded", () => {
 		};
 		const onLeave = () => {
 			title.setAttribute("aria-expanded", "false");
+			// Reset word spans opacity for next open
+			wordSpans.forEach((s) => {
+				s.style.opacity = "0";
+			});
 			if (prefersReducedMotion) {
 				glossaryContent.style.opacity = "0";
 				title.style.zIndex = "0";
@@ -87,8 +100,6 @@ document.addEventListener("DOMContentLoaded", () => {
 				});
 			}
 		};
-
-		const wordSpans = wrapWordsInSpans(glossaryContent);
 
 		title.addEventListener("mouseenter", onEnter);
 		title.addEventListener("mouseleave", onLeave);
