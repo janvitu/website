@@ -15,19 +15,6 @@ document.addEventListener("DOMContentLoaded", () => {
   const desktopLabels = toggle.querySelectorAll<HTMLElement>(".nav-label");
   const mobileLabels = overlay.querySelectorAll<HTMLElement>(".nav-label-mobile");
 
-  // Hide desktop labels by default (JS-only behavior)
-  desktopLabels.forEach((label) => {
-    label.style.opacity = "0";
-    label.style.transform = "translateX(10px)";
-    label.style.pointerEvents = "none";
-  });
-
-  // Hide mobile labels by default
-  mobileLabels.forEach((label) => {
-    label.style.opacity = "0";
-    label.style.transform = "translateY(10px)";
-  });
-
   let isOpen = false;
   let activeAnimation: any = null;
 

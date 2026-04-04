@@ -76,6 +76,17 @@ h2 {
 	@apply border-accent;
 }
 
+/* Navigation labels - initial hidden state moved to CSS to prevent FOUI */
+.nav-label {
+	@apply opacity-0 pointer-events-none;
+	transform: translateX(10px);
+}
+
+.nav-label-mobile {
+	@apply opacity-0 pointer-events-none;
+	transform: translateY(10px);
+}
+
 .prose a {
 	@apply italic decoration-amber-300;
 	/* text-strikethrough */
