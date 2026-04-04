@@ -15,6 +15,6 @@
 		</main>
 		{{ partial "footer.html" . }}
 
-		{{ $indexJS := resources.Get "ts/index.ts" | js.Build "js/index.js" | fingerprint }} <script src="{{$indexJS.Permalink}}" defer></script>
+		{{ $mainJS := resources.Get "ts/main.ts" | js.Build }} <script src="{{ $mainJS.RelPermalink }}" defer></script>
 	</body>
 </html>

@@ -1,8 +1,5 @@
 import { animate, stagger } from "motion";
-
-const prefersReducedMotion = window.matchMedia(
-	"(prefers-reduced-motion: reduce)",
-).matches;
+import { prefersReducedMotion } from "./utils";
 
 function wrapWordsInSpans(element: HTMLElement): HTMLElement[] {
 	const spans: HTMLElement[] = [];
@@ -34,15 +31,17 @@ function wrapWordsInSpans(element: HTMLElement): HTMLElement[] {
 }
 
 document.addEventListener("DOMContentLoaded", () => {
-	const glosaryContainers = document.querySelectorAll<HTMLElement>(
-		"[data-glosary-toggle]",
+	const glossaryContainers = document.querySelectorAll<HTMLElement>(
+		"[data-glossary-toggle]",
 	);
-	glosaryContainers.forEach((glosary) => {
-		const title = glosary.querySelector<HTMLElement>(
-			"[data-glosary-title]>span",
+	glossaryContainers.forEach((glossary) => {
+		const title = glossary.querySelector<HTMLElement>(
+			"[data-glossary-title]>span",
 		);
 		const glossaryContent =
-			glosary.querySelector<HTMLElement>("[data-glosary]");
+			glossary.querySelector<HTMLElement>("[data-glossary]");
+
+		if (!glossaryContent || !title) return;
 
 		glossaryContent.style.opacity = "0";
 		glossaryContent.style.pointerEvents = "none";
@@ -51,7 +50,16 @@ document.addEventListener("DOMContentLoaded", () => {
 		title.setAttribute("tabindex", "0");
 		title.setAttribute("aria-expanded", "false");
 
+		let wordSpans: HTMLElement[] = [];
+		let hasWrapped = false;
+
 		const onEnter = () => {
+			// Lazy-wrap words on first open
+			if (!hasWrapped) {
+				wordSpans = wrapWordsInSpans(glossaryContent);
+				hasWrapped = true;
+			}
+
 			title.style.zIndex = "1000";
 			title.setAttribute("aria-expanded", "true");
 			glossaryContent.classList.remove("hidden");
@@ -74,6 +82,10 @@ document.addEventListener("DOMContentLoaded", () => {
 		};
 		const onLeave = () => {
 			title.setAttribute("aria-expanded", "false");
+			// Reset word spans opacity for next open
+			wordSpans.forEach((s) => {
+				s.style.opacity = "0";
+			});
 			if (prefersReducedMotion) {
 				glossaryContent.style.opacity = "0";
 				title.style.zIndex = "0";
@@ -85,8 +97,6 @@ document.addEventListener("DOMContentLoaded", () => {
 				});
 			}
 		};
-
-		const wordSpans = wrapWordsInSpans(glossaryContent);
 
 		title.addEventListener("mouseenter", onEnter);
 		title.addEventListener("mouseleave", onLeave);

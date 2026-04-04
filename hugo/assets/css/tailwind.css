@@ -39,17 +39,17 @@ h2 {
 	@apply before:scale-x-100;
 }
 
-.link-strikethrough {
-	/* text-strikethrough */
-	@apply relative;
-	@apply before:absolute before:-inset-x-1 before:top-1/2 before:h-[2px] before:-translate-y-1/2 before:transform;
-	/* text-strikethrough--interactive */
-	@apply before:origin-center before:scale-x-0 before:bg-neutral-900 before:transition-all;
-	@apply hover:before:scale-x-100 hover:text-accent hover:before:bg-accent;
-	@apply transition-colors;
+.focus-accent {
 	@apply focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent;
 }
-.link-strikethrough--active {
+
+.link-strikethrough > span {
+	@apply text-strikethrough text-strikethrough--interactive;
+	@apply hover:before:scale-x-100 hover:text-accent hover:before:bg-accent;
+	@apply transition-colors;
+	@apply focus-accent;
+}
+.link-strikethrough--active > span {
 	@apply before:scale-x-100;
 	@apply text-accent before:bg-accent;
 }
@@ -58,13 +58,38 @@ h2 {
 	@apply flex items-center justify-center;
 }
 
+/* Navigation dots */
+.nav-dot {
+	@apply relative block w-1.5 h-1.5 rounded-full bg-neutral-500 flex-shrink-0;
+}
+
+.nav-dot::after {
+	content: '';
+	@apply absolute inset-[-2px] rounded-full border border-neutral-300;
+}
+
+.nav-dot--active {
+	@apply bg-accent;
+}
+
+.nav-dot--active::after {
+	@apply border-accent;
+}
+
+/* Navigation labels - initial hidden state moved to CSS to prevent FOUI */
+.nav-label {
+	@apply opacity-0 pointer-events-none;
+	transform: translateX(10px);
+}
+
+.nav-label-mobile {
+	@apply opacity-0 pointer-events-none;
+	transform: translateY(10px);
+}
+
 .prose a {
 	@apply italic decoration-amber-300;
-	/* text-strikethrough */
-	@apply relative;
-	@apply before:absolute before:-inset-x-1 before:top-1/2 before:h-[2px] before:-translate-y-1/2 before:transform;
-	/* text-strikethrough--interactive */
-	@apply before:origin-center before:scale-x-0 before:bg-neutral-900 before:transition-all;
+	@apply text-strikethrough text-strikethrough--interactive;
 	@apply hover:before:scale-x-100;
 }
 

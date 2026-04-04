@@ -24,6 +24,7 @@ hugo/assets/js/CookieBanner
 # AI
 .claude/
 .impeccable.md
+.planning/
 
 # Local Netlify folder
 .netlify
