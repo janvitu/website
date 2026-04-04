@@ -75,6 +75,7 @@ h2 {
 
 .how-i-ai-nav-button {
 	position: relative;
+	z-index: 0;
 }
 .how-i-ai-nav-button::before {
 	content: "";
