@@ -39,15 +39,15 @@ h2 {
 	@apply before:scale-x-100;
 }
 
+.focus-accent {
+	@apply focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent;
+}
+
 .link-strikethrough > span {
-	/* text-strikethrough */
-	@apply relative;
-	@apply before:absolute before:-inset-x-1 before:top-1/2 before:h-[2px] before:-translate-y-1/2 before:transform;
-	/* text-strikethrough--interactive */
-	@apply before:origin-center before:scale-x-0 before:bg-neutral-900 before:transition-all;
+	@apply text-strikethrough text-strikethrough--interactive;
 	@apply hover:before:scale-x-100 hover:text-accent hover:before:bg-accent;
 	@apply transition-colors;
-	@apply focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent;
+	@apply focus-accent;
 }
 .link-strikethrough--active > span {
 	@apply before:scale-x-100;
@@ -89,11 +89,7 @@ h2 {
 
 .prose a {
 	@apply italic decoration-amber-300;
-	/* text-strikethrough */
-	@apply relative;
-	@apply before:absolute before:-inset-x-1 before:top-1/2 before:h-[2px] before:-translate-y-1/2 before:transform;
-	/* text-strikethrough--interactive */
-	@apply before:origin-center before:scale-x-0 before:bg-neutral-900 before:transition-all;
+	@apply text-strikethrough text-strikethrough--interactive;
 	@apply hover:before:scale-x-100;
 }
 

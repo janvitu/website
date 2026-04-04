@@ -1,8 +1,5 @@
 import { animate, stagger } from "motion";
-
-const prefersReducedMotion = window.matchMedia(
-	"(prefers-reduced-motion: reduce)",
-).matches;
+import { prefersReducedMotion } from "./utils";
 
 function wrapWordsInSpans(element: HTMLElement): HTMLElement[] {
 	const spans: HTMLElement[] = [];

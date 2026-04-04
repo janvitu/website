@@ -1,8 +1,12 @@
 import { animate, stagger } from "motion";
+import { prefersReducedMotion } from "./utils";
 
-const prefersReducedMotion = window.matchMedia(
-  "(prefers-reduced-motion: reduce)",
-).matches;
+// Animation timing constants
+const ANIM_OVERLAY_FADE = 0.2;
+const ANIM_LABELS_IN = 0.3;
+const ANIM_LABELS_OUT = 0.2;
+const ANIM_STAGGER_IN = 0.05;
+const ANIM_STAGGER_OUT = 0.02;
 
 const isDesktop = () => window.matchMedia("(min-width: 768px)").matches;
 
@@ -48,7 +52,7 @@ document.addEventListener("DOMContentLoaded", () => {
     if (prefersReducedMotion) {
       overlay.style.opacity = "1";
     } else {
-      animate(overlay, { opacity: [0, 1] } as any, { duration: 0.2 });
+      animate(overlay, { opacity: [0, 1] } as any, { duration: ANIM_OVERLAY_FADE });
     }
 
     if (isDesktop()) {
@@ -63,7 +67,7 @@ document.addEventListener("DOMContentLoaded", () => {
         animate(
           desktopLabels,
           { opacity: [0, 1], x: [10, 0] } as any,
-          { duration: 0.3, delay: stagger(0.05), ease: "easeOut" },
+          { duration: ANIM_LABELS_IN, delay: stagger(ANIM_STAGGER_IN), ease: "easeOut" },
         );
         desktopLabels.forEach((label) => {
           label.style.pointerEvents = "auto";
@@ -81,7 +85,7 @@ document.addEventListener("DOMContentLoaded", () => {
         animate(
           mobileLabels,
           { opacity: [0, 1], y: [10, 0] } as any,
-          { duration: 0.3, delay: stagger(0.05), ease: "easeOut" },
+          { duration: ANIM_LABELS_IN, delay: stagger(ANIM_STAGGER_IN), ease: "easeOut" },
         );
       }
     }
@@ -95,19 +99,19 @@ document.addEventListener("DOMContentLoaded", () => {
       resetState();
     } else {
       // Animate everything out in parallel for smooth exit
-      activeAnimation = animate(overlay, { opacity: [1, 0] } as any, { duration: 0.2 });
+      activeAnimation = animate(overlay, { opacity: [1, 0] } as any, { duration: ANIM_OVERLAY_FADE });
 
       if (isDesktop()) {
         animate(
           desktopLabels,
           { opacity: [1, 0], x: [0, 10] } as any,
-          { duration: 0.2, delay: stagger(0.02), ease: "easeIn" },
+          { duration: ANIM_LABELS_OUT, delay: stagger(ANIM_STAGGER_OUT), ease: "easeIn" },
         );
       } else {
         animate(
           mobileLabels,
           { opacity: [1, 0], y: [0, 10] } as any,
-          { duration: 0.2, delay: stagger(0.02), ease: "easeIn" },
+          { duration: ANIM_LABELS_OUT, delay: stagger(ANIM_STAGGER_OUT), ease: "easeIn" },
         );
       }
 
@@ -121,6 +125,10 @@ document.addEventListener("DOMContentLoaded", () => {
   // Desktop: hover
   toggle.addEventListener("mouseenter", onEnter);
   toggle.addEventListener("mouseleave", onLeave);
+
+  // Keyboard: focus within nav area
+  toggle.addEventListener("focusin", onEnter);
+  toggle.addEventListener("focusout", onLeave);
 
   // Mobile: press-and-hold pattern
   // touchstart → open nav
