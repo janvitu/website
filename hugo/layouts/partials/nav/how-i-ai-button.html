@@ -1,0 +1,14 @@
+{{/* LED-style top-center button linking to /how-i-ai */}}
+<a
+	href="/how-i-ai/"
+	class="how-i-ai-nav-button inline-flex items-center gap-2 rounded-md px-3 py-1.5 text-sm font-semibold whitespace-nowrap transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
+	style="border: 1px solid var(--color-accent, #ff4309); color: var(--color-accent, #ff4309);"
+	{{ if eq .RelPermalink "/how-i-ai/" }}aria-current="page"{{ end }}
+>
+	<span
+		class="led-dot"
+		style="width: 6px; height: 6px; border-radius: 50%; background-color: var(--color-accent, #ff4309); box-shadow: 0 0 4px rgba(255, 67, 9, 0.6), 0 0 8px rgba(255, 67, 9, 0.3); display: inline-block; flex-shrink: 0;"
+		aria-hidden="true"
+	></span>
+	How I AI
+</a>
