@@ -61,14 +61,23 @@ h2 {
 }
 
 /* How I AI LED button */
-.how-i-ai-nav-button:hover {
-	box-shadow: 0 0 14px rgba(255, 67, 9, 0.55), 0 0 32px rgba(255, 67, 9, 0.25);
+.how-i-ai-nav-button {
+	box-shadow: 0 0 10px color-mix(in srgb, var(--color-accent) 35%, transparent),
+		0 0 24px color-mix(in srgb, var(--color-accent) 15%, transparent);
 }
-.how-i-ai-nav-button:hover .led-dot {
-	box-shadow: 0 0 6px rgba(255, 67, 9, 0.8), 0 0 12px rgba(255, 67, 9, 0.4);
-}
+.how-i-ai-nav-button:hover,
 .how-i-ai-nav-button[aria-current="page"] {
-	box-shadow: 0 0 14px rgba(255, 67, 9, 0.55), 0 0 32px rgba(255, 67, 9, 0.25);
+	box-shadow: 0 0 14px color-mix(in srgb, var(--color-accent) 55%, transparent),
+		0 0 32px color-mix(in srgb, var(--color-accent) 25%, transparent);
+}
+.led-dot {
+	box-shadow: 0 0 4px color-mix(in srgb, var(--color-accent) 60%, transparent),
+		0 0 8px color-mix(in srgb, var(--color-accent) 30%, transparent);
+}
+.how-i-ai-nav-button:hover .led-dot,
+.how-i-ai-nav-button[aria-current="page"] .led-dot {
+	box-shadow: 0 0 6px color-mix(in srgb, var(--color-accent) 80%, transparent),
+		0 0 12px color-mix(in srgb, var(--color-accent) 40%, transparent);
 }
 
 /* Navigation dots */
