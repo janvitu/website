@@ -9,7 +9,7 @@
 				text-strikethrough--active
 			{{ else }}
 				font-normal
-			{{ end }} text-strikethrough text-strikethrough--interactive hover:text-neutral-800 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
+			{{ end }} text-strikethrough text-strikethrough--interactive hover:text-neutral-800 focus-accent"
 			href="{{ range where .Translations "Lang" "cs" }}
 				{{ .RelPermalink }}
 			{{ end }}"
@@ -29,7 +29,7 @@
 					text-strikethrough--active
 				{{ else }}
 					font-normal
-				{{ end }} text-strikethrough text-strikethrough--interactive focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
+				{{ end }} text-strikethrough text-strikethrough--interactive focus-accent"
 				href="{{ range where .Translations "Lang" "en" }}
 					{{ .RelPermalink }}
 				{{ end }}"

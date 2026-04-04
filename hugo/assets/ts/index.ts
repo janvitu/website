@@ -1,13 +1,9 @@
-import { scrollToTop } from "./utils";
+import { scrollToTop, prefersReducedMotion } from "./utils";
 import { animate } from "motion";
 
 document.addEventListener("DOMContentLoaded", () => {
 	const scrollToTopButton = document.getElementById("scrolltotop");
 	scrollToTopButton?.addEventListener("click", scrollToTop);
-
-	const prefersReducedMotion = window.matchMedia(
-		"(prefers-reduced-motion: reduce)",
-	).matches;
 
 	const scrollIndicator = document.getElementById("scroll-indication");
 	if (scrollIndicator && !prefersReducedMotion) {
