@@ -159,13 +159,8 @@ document.addEventListener("DOMContentLoaded", () => {
     return null;
   };
 
-  toggle.addEventListener("touchstart", (e: TouchEvent) => {
-    e.preventDefault();
-    onEnter();
-  }, { passive: false });
-
-  document.addEventListener("touchmove", (e: TouchEvent) => {
-    if (!isOpen) return;
+  // Touch gesture handlers (attached/removed dynamically)
+  const handleTouchMove = (e: TouchEvent) => {
     e.preventDefault();
 
     const touch = e.touches[0];
@@ -178,11 +173,14 @@ document.addEventListener("DOMContentLoaded", () => {
         link.classList.add("link-strikethrough--active");
       }
     }
-  }, { passive: false });
+  };
 
-  document.addEventListener("touchend", (e: TouchEvent) => {
-    if (!isOpen) return;
+  const handleTouchEnd = (e: TouchEvent) => {
     e.preventDefault();
+
+    // Remove listeners immediately (while touch is still active)
+    document.removeEventListener("touchmove", handleTouchMove, { passive: false } as any);
+    document.removeEventListener("touchend", handleTouchEnd, { passive: false } as any);
 
     if (highlightedLink) {
       const href = highlightedLink.getAttribute("href");
@@ -194,6 +192,15 @@ document.addEventListener("DOMContentLoaded", () => {
     } else {
       onLeave();
     }
+  };
+
+  toggle.addEventListener("touchstart", (e: TouchEvent) => {
+    e.preventDefault();
+    onEnter();
+
+    // Attach listeners for this gesture
+    document.addEventListener("touchmove", handleTouchMove, { passive: false });
+    document.addEventListener("touchend", handleTouchEnd, { passive: false });
   }, { passive: false });
 
   // Tap overlay to close (for click events, e.g. assistive tech)
