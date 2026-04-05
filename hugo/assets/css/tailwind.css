@@ -5,6 +5,13 @@
 	--color-sunset: #d4763a;
 }
 
+:root {
+	--nav-overlay-bg: rgba(255, 255, 255, 0.6);
+	--nav-text: #262626;
+	--nav-dot-color: #737373;
+	--nav-dot-border: #d4d4d4;
+}
+
 html {
 	font-family: Gilroy;
 	@apply text-neutral-800;
@@ -39,17 +46,19 @@ h2 {
 	@apply before:scale-x-100;
 }
 
-.link-strikethrough {
-	/* text-strikethrough */
+.focus-accent {
+	@apply focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent;
+}
+
+.link-strikethrough > span {
 	@apply relative;
 	@apply before:absolute before:-inset-x-1 before:top-1/2 before:h-[2px] before:-translate-y-1/2 before:transform;
-	/* text-strikethrough--interactive */
 	@apply before:origin-center before:scale-x-0 before:bg-neutral-900 before:transition-all;
 	@apply hover:before:scale-x-100 hover:text-accent hover:before:bg-accent;
 	@apply transition-colors;
 	@apply focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent;
 }
-.link-strikethrough--active {
+.link-strikethrough--active > span {
 	@apply before:scale-x-100;
 	@apply text-accent before:bg-accent;
 }
@@ -58,14 +67,149 @@ h2 {
 	@apply flex items-center justify-center;
 }
 
+/* How I AI LED button */
+@property --border-angle {
+	syntax: "<angle>";
+	inherits: false;
+	initial-value: 0deg;
+}
+
+@keyframes spin-border {
+	to {
+		--border-angle: 360deg;
+	}
+}
+
+.how-i-ai-nav-button::before {
+	background: conic-gradient(
+		from var(--border-angle),
+		transparent 0%,
+		transparent 70%,
+		var(--color-accent) 85%,
+		color-mix(in srgb, var(--color-accent) 60%, transparent) 90%,
+		transparent 100%
+	);
+}
+.led-dot {
+	box-shadow:
+		0 0 4px color-mix(in srgb, var(--color-accent) 60%, transparent),
+		0 0 8px color-mix(in srgb, var(--color-accent) 30%, transparent);
+}
+.how-i-ai-nav-button:hover .led-dot,
+.how-i-ai-nav-button[aria-current="page"] .led-dot {
+	box-shadow:
+		0 0 6px color-mix(in srgb, var(--color-accent) 80%, transparent),
+		0 0 12px color-mix(in srgb, var(--color-accent) 40%, transparent);
+}
+
+/* Nav overlay - background adapts per page theme via --nav-overlay-bg */
+[data-nav-overlay] {
+	background-color: var(--nav-overlay-bg);
+}
+
+/* Navigation dots */
+.nav-dot {
+	@apply relative block w-1.5 h-1.5 rounded-full flex-shrink-0;
+	background-color: var(--nav-dot-color);
+}
+
+.nav-dot::after {
+	content: "";
+	@apply absolute inset-[-2px] rounded-full border;
+	border-color: var(--nav-dot-border);
+}
+
+.nav-dot--active {
+	@apply bg-accent;
+}
+
+.nav-dot--active::after {
+	@apply border-accent;
+}
+
+/* Navigation labels - initial hidden state moved to CSS to prevent FOUI */
+.nav-label {
+	@apply opacity-0 pointer-events-none;
+	transform: translateX(10px);
+}
+
+.nav-label-mobile {
+	@apply opacity-0 pointer-events-none;
+	transform: translateY(10px);
+}
+
 .prose a {
 	@apply italic decoration-amber-300;
-	/* text-strikethrough */
 	@apply relative;
 	@apply before:absolute before:-inset-x-1 before:top-1/2 before:h-[2px] before:-translate-y-1/2 before:transform;
-	/* text-strikethrough--interactive */
 	@apply before:origin-center before:scale-x-0 before:bg-neutral-900 before:transition-all;
 	@apply hover:before:scale-x-100;
+}
+
+/* Terminal tab buttons */
+.tab-button {
+	@apply h-10 flex items-center px-4 font-mono text-[13px] leading-[1.2] bg-transparent cursor-pointer;
+	@apply border-b-2;
+}
+
+/* DARK THEME -- scoped to /how-i-ai terminal page only */
+[data-theme="terminal"] {
+	--color-bg: #1a1a1a;
+	--color-bg-surface: #252525;
+	--color-border: #3a3a3a;
+	--color-text: #e0e0e0;
+	--color-text-muted: #888888;
+	--terminal-height: calc(100dvh - 80px - 128px - 96px);
+	--nav-overlay-bg: rgba(26, 26, 26, 0.9);
+	--nav-text: #e0e0e0;
+	--nav-dot-color: #888888;
+	--nav-dot-border: #3a3a3a;
+
+	background-color: #1a1a1a;
+	color: #e0e0e0;
+}
+
+@media (max-width: 767px) {
+	[data-theme="terminal"] {
+		--terminal-height: 80svh;
+	}
+}
+
+/* TERMINAL CHROME */
+[data-theme="terminal"] .terminal-glow {
+	position: relative;
+}
+[data-theme="terminal"] .terminal-glow::before {
+	content: "";
+	position: absolute;
+	inset: -10%;
+	z-index: -1;
+	background: radial-gradient(
+		ellipse 80% 60% at 50% 50%,
+		rgba(255, 67, 9, 0.06) 0%,
+		transparent 70%
+	);
+	pointer-events: none;
+}
+
+[data-theme="terminal"] .grid > div {
+	border-color: #3a3a3a;
+}
+
+[data-theme="terminal"] :focus-visible {
+	outline: 2px solid #ffffff;
+	outline-offset: 2px;
+}
+
+/* TAB PANEL TRANSITIONS */
+[data-theme="terminal"] [role="tabpanel"] {
+	transition: opacity 0.15s ease-in-out;
+}
+[data-theme="terminal"] [role="tabpanel"][hidden] {
+	display: none;
+}
+[data-theme="terminal"] [role="tabpanel"].tab-entering {
+	opacity: 0;
 }
 
 @media (prefers-reduced-motion: reduce) {

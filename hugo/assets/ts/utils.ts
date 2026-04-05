@@ -1,6 +1,12 @@
+export const prefersReducedMotion = window.matchMedia(
+	"(prefers-reduced-motion: reduce)",
+).matches;
+
 export const scrollToTop = () => {
-	document.body.scrollTop = 0;
-	document.documentElement.scrollTop = 0;
+	window.scrollTo({
+		top: 0,
+		behavior: prefersReducedMotion ? "auto" : "smooth",
+	});
 };
 
 export const copyContent = (e: MouseEvent) => {
