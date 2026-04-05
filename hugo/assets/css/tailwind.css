@@ -5,6 +5,13 @@
 	--color-sunset: #d4763a;
 }
 
+:root {
+	--nav-overlay-bg: rgba(255, 255, 255, 0.6);
+	--nav-text: #262626;
+	--nav-dot-color: #737373;
+	--nav-dot-border: #d4d4d4;
+}
+
 html {
 	font-family: Gilroy;
 	@apply text-neutral-800;
@@ -84,23 +91,32 @@ h2 {
 	);
 }
 .led-dot {
-	box-shadow: 0 0 4px color-mix(in srgb, var(--color-accent) 60%, transparent),
+	box-shadow:
+		0 0 4px color-mix(in srgb, var(--color-accent) 60%, transparent),
 		0 0 8px color-mix(in srgb, var(--color-accent) 30%, transparent);
 }
 .how-i-ai-nav-button:hover .led-dot,
 .how-i-ai-nav-button[aria-current="page"] .led-dot {
-	box-shadow: 0 0 6px color-mix(in srgb, var(--color-accent) 80%, transparent),
+	box-shadow:
+		0 0 6px color-mix(in srgb, var(--color-accent) 80%, transparent),
 		0 0 12px color-mix(in srgb, var(--color-accent) 40%, transparent);
+}
+
+/* Nav overlay - background adapts per page theme via --nav-overlay-bg */
+[data-nav-overlay] {
+	background-color: var(--nav-overlay-bg);
 }
 
 /* Navigation dots */
 .nav-dot {
-	@apply relative block w-1.5 h-1.5 rounded-full bg-neutral-500 flex-shrink-0;
+	@apply relative block w-1.5 h-1.5 rounded-full flex-shrink-0;
+	background-color: var(--nav-dot-color);
 }
 
 .nav-dot::after {
-	content: '';
-	@apply absolute inset-[-2px] rounded-full border border-neutral-300;
+	content: "";
+	@apply absolute inset-[-2px] rounded-full border;
+	border-color: var(--nav-dot-border);
 }
 
 .nav-dot--active {
@@ -130,6 +146,12 @@ h2 {
 	@apply hover:before:scale-x-100;
 }
 
+/* Terminal tab buttons */
+.tab-button {
+	@apply h-10 flex items-center px-4 font-mono text-[13px] leading-[1.2] bg-transparent cursor-pointer;
+	@apply border-b-2;
+}
+
 /* DARK THEME -- scoped to /how-i-ai terminal page only */
 [data-theme="terminal"] {
 	--color-bg: #1a1a1a;
@@ -138,6 +160,10 @@ h2 {
 	--color-text: #e0e0e0;
 	--color-text-muted: #888888;
 	--terminal-height: calc(100dvh - 80px - 128px - 96px);
+	--nav-overlay-bg: rgba(26, 26, 26, 0.9);
+	--nav-text: #e0e0e0;
+	--nav-dot-color: #888888;
+	--nav-dot-border: #3a3a3a;
 
 	background-color: #1a1a1a;
 	color: #e0e0e0;
