@@ -26,6 +26,9 @@ const canonical = new URL(Astro.url.pathname, Astro.site).toString();
 	{noindex && <meta name="robots" content="noindex" />}
 	<link rel="canonical" href={canonical} />
 
+	<!-- Fonts: static file at stable URL (mimics Hugo) so browser caches font declarations across navigations -->
+	<link rel="stylesheet" href="/css/fonts.css" type="text/css" />
+
 	<!-- Fonts preload -->
 	<link
 		rel="preload"

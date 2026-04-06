@@ -1,7 +1,7 @@
 [dev]
-  comand = "npm run dev"
+  command = "npm run dev"
   base="."
-  targetPort = 1313
+  targetPort = 4321
   functions="functions/"
 [build]
   command="npm run build"
