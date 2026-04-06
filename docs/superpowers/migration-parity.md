@@ -4,7 +4,7 @@ For each route, build both stacks (`pnpm build:hugo`, `pnpm build:astro`), serve
 
 ## Routes
 - [x] `/` (homepage)
-- [ ] `/about/`
+- [x] `/about/`
 - [ ] `/contact/`
 - [ ] `/privacy-policy/`
 - [ ] `/how-i-ai/`
