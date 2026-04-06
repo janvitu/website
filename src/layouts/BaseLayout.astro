@@ -4,6 +4,7 @@ import Nav from "../components/Nav.astro";
 import Footer from "../components/Footer.astro";
 import HowIAiButton from "../components/HowIAiButton.astro";
 import ContactSide from "../components/ContactSide.astro";
+import Grid from "../components/Grid.astro";
 
 interface Props {
 	title: string;
@@ -26,6 +27,7 @@ const locale = Astro.currentLocale ?? "en";
 		>
 			Skip to content
 		</a>
+		<Grid />
 		<HowIAiButton />
 		<Nav />
 		<ContactSide />
