@@ -7,7 +7,7 @@ For each route, build both stacks (`pnpm build:hugo`, `pnpm build:astro`), serve
 - [x] `/about/`
 - [x] `/contact/`
 - [x] `/privacy-policy/`
-- [ ] `/how-i-ai/`
+- [x] `/how-i-ai/`
 - [x] `/work/`
 - [x] `/work/<each slug>/` — N/A: no individual work entries (static list page only)
 - [x] `/blog/`
@@ -23,6 +23,6 @@ For each route, build both stacks (`pnpm build:hugo`, `pnpm build:astro`), serve
 - [ ] Scroll-to-top button works
 - [ ] Scroll indicator animation works
 - [ ] Glossary tooltips work
-- [ ] How-I-AI tab switching works (incl. URL hash sync)
-- [ ] How-I-AI nav LED button visible on every page
+- [x] How-I-AI tab switching works (incl. URL hash sync)
+- [x] How-I-AI nav LED button visible on every page
 - [ ] Lighthouse score parity (perf, a11y, SEO within 5 points)
