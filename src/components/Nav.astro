@@ -1,5 +1,96 @@
 ---
-// stub - implemented in Task 11
+// Port of hugo/layouts/partials/header.html
+import Logo from "./svg/Logo.astro";
+
+const path = Astro.url.pathname;
+
+const links = [
+	{ href: "/", label: "Home" },
+	{ href: "/work/", label: "Work" },
+	{ href: "/about/", label: "About" },
+	{ href: "/contact/", label: "Contact" },
+];
+
+function isActive(href: string): boolean {
+	if (href === "/") return path === "/" || path === "";
+	return path === href || path.startsWith(href);
+}
 ---
 
-<nav>nav stub</nav>
+<header
+	class="fixed inset-x-0 bottom-0 top-0 z-[1000] grid w-full grid-cols-12 pointer-events-none"
+>
+	<!-- Nav overlay (frosted backdrop) -->
+	<div
+		data-nav-overlay
+		class="fixed inset-0 backdrop-blur-xs z-[1099] opacity-0 pointer-events-none flex flex-col items-center select-none"
+	>
+		<!-- Mobile-only: centered nav inside overlay -->
+		<div class="md:hidden flex flex-col h-full w-full items-center">
+			<nav
+				class="flex-1 flex items-center justify-center"
+				aria-label="Mobile navigation"
+			>
+				<ul class="flex flex-col gap-6 items-center">
+					{
+						links.map((link) => (
+							<li>
+								<a
+									href={link.href}
+									class={`nav-label-mobile link-strikethrough${isActive(link.href) ? " link-strikethrough--active" : ""} text-base font-semibold text-[var(--nav-text)] whitespace-nowrap`}
+									aria-current={isActive(link.href) ? "page" : undefined}
+								>
+									<span class="relative block">{link.label}</span>
+								</a>
+							</li>
+						))
+					}
+				</ul>
+			</nav>
+		</div>
+	</div>
+
+	<!-- Nav column - entire trigger zone -->
+	<div
+		data-nav-toggle
+		class="col-start-12 col-end-13 flex flex-col h-full z-[1100] pointer-events-auto select-none"
+	>
+		<!-- Logo (top) -->
+		<div
+			data-nav-logo
+			class="w-2/3 min-w-[20px] max-w-[56px] place-self-center pt-5 fill-[var(--nav-text)] transition-colors duration-150 hover:fill-accent"
+		>
+			<a href="/" aria-label="Home" class="focus-accent">
+				<Logo />
+			</a>
+		</div>
+
+		<!-- Navigation (centered) -->
+		<nav
+			class="flex-1 flex items-center justify-center"
+			aria-label="Main navigation"
+		>
+			<ul class="flex flex-col gap-6 items-center">
+				{
+					links.map((link) => (
+						<li class="relative flex items-center justify-center">
+							<a
+								href={link.href}
+								class={`nav-label link-strikethrough${isActive(link.href) ? " link-strikethrough--active" : ""} hidden md:inline-block absolute right-full mr-4 text-2xl font-semibold text-[var(--nav-text)] whitespace-nowrap`}
+								aria-current={isActive(link.href) ? "page" : undefined}
+							>
+								<span class="relative block">{link.label}</span>
+							</a>
+							<span
+								class={`nav-dot${isActive(link.href) ? " nav-dot--active" : ""}`}
+							></span>
+						</li>
+					))
+				}
+			</ul>
+		</nav>
+
+		<!-- Bottom spacer (reserved for future social links) -->
+		<div class="pb-5"></div>
+	</div>
+</header>
