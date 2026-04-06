@@ -27,7 +27,6 @@ document.addEventListener("DOMContentLoaded", () => {
   const resetState = () => {
     overlay.style.pointerEvents = "none";
     overlay.style.opacity = "0";
-    dots.forEach((dot) => { dot.style.opacity = ""; });
     desktopLabels.forEach((label) => {
       label.style.opacity = "0";
       label.style.transform = "translateX(10px)";
@@ -76,9 +75,7 @@ document.addEventListener("DOMContentLoaded", () => {
         });
       }
     } else {
-      // Mobile: hide dots so they disappear behind the glass;
-      // the logo (z-1100 toggle > z-1099 overlay) stays visible on top.
-      dots.forEach((dot) => { dot.style.opacity = "0"; });
+      // Mobile: dots remain visible behind the glass (nav is z-1098, overlay is z-1099)
       if (prefersReducedMotion) {
         mobileLabels.forEach((label) => {
           label.style.opacity = "1";
@@ -146,6 +143,8 @@ document.addEventListener("DOMContentLoaded", () => {
         if (navLogoWrapper) navLogoWrapper.style.fill = "";
       } else {
         highlightedLink.classList.remove("link-strikethrough--active");
+        const kanji = highlightedLink.parentElement?.querySelector<HTMLElement>(".nav-mobile-kanji");
+        if (kanji) kanji.style.opacity = "";
       }
       highlightedLink = null;
     }
@@ -176,6 +175,8 @@ document.addEventListener("DOMContentLoaded", () => {
           if (navLogoWrapper) navLogoWrapper.style.fill = "var(--color-accent)";
         } else {
           link.classList.add("link-strikethrough--active");
+          const kanji = link.parentElement?.querySelector<HTMLElement>(".nav-mobile-kanji");
+          if (kanji) kanji.style.opacity = "1";
         }
       }
     }
