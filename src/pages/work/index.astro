@@ -1,0 +1,143 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import Chevron from "../../components/svg/Chevron.astro";
+---
+
+<BaseLayout
+	title="Jan Vítů — Work"
+	description="Show up. Do the work. Own the outcome."
+>
+	<section class="min-h-[100svh]">
+		<div class="base-grid pt-[38vh] pb-[20vh]">
+			<div class="col-start-2 col-end-12 md:col-start-3 md:col-end-11">
+				<h1 class="font-black leading-none">
+					Show up.<br />
+					Do the work.<br />
+					Own the outcome.
+				</h1>
+				<p class="mt-8 text-xl text-neutral-600 md:text-2xl">
+					As someone with skin in the game, I own what happens next.
+				</p>
+			</div>
+		</div>
+	</section>
+
+	<section class="pb-24 md:pb-32">
+		<div class="base-grid gap-y-8">
+
+			<!-- Product -->
+			<div
+				class="bg-neutral-100 relative col-start-2 col-end-10 md:col-start-3 md:col-end-7 overflow-hidden min-h-[640px] flex flex-col justify-end"
+			>
+				<img
+					src="/images/iceberg.avif"
+					alt=""
+					aria-hidden="true"
+					class="absolute inset-0 w-full h-full object-cover mix-blend-multiply"
+				/>
+				<div
+					class="absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-neutral-100 to-transparent"
+				></div>
+				<div class="relative p-8 md:p-12">
+					<h2 class="text-2xl font-black uppercase tracking-tight md:text-3xl">
+						Product
+					</h2>
+					<p class="mt-2 text-neutral-600">
+						Discovery to delivery. Operating model. Culture that sticks.
+					</p>
+					<a
+						href="/work/product"
+						class="group relative cursor-pointer overflow-visible text-base font-semibold md:text-3xl focus-accent"
+					>
+						<span
+							class="whitespace-nowrap pl-24 pr-5 after:absolute after:left-0 after:top-1/2 after:h-[2px] after:w-[88px] after:-translate-y-1/2 after:transform after:bg-neutral-900 after:transition-all after:duration-200 group-hover:after:w-full"
+						>
+							<span
+								class="absolute top-1/2 left-20 right-auto inline-block aspect-[3/4] h-[15px] w-auto -translate-y-1/2 transform transition-all duration-200 group-hover:left-[calc(100%-8px)]"
+							>
+								<Chevron />
+							</span>
+							Explore product work
+						</span>
+					</a>
+				</div>
+			</div>
+
+			<!-- GTM -->
+			<div
+				class="bg-neutral-100 col-start-2 col-end-12 md:col-start-8 md:col-end-12 border border-neutral-200 p-8 md:p-12 flex flex-col justify-between min-h-[480px]"
+			>
+				<div class="flex-1 flex items-center justify-center">
+					<!-- Mountain illustration placeholder -->
+					<div
+						class="w-full h-48 bg-neutral-100 flex items-center justify-center text-neutral-400 text-sm"
+					>
+						Mountain illustration
+					</div>
+				</div>
+				<div class="mt-8">
+					<h2 class="text-2xl font-black uppercase tracking-tight md:text-3xl">
+						Go To Market
+					</h2>
+					<p class="mt-2 text-neutral-600">
+						One ecosystem. Not three teams pointing at each other.
+					</p>
+					<a
+						href="/work/gtm"
+						class="group relative cursor-pointer overflow-visible text-base font-semibold md:text-3xl focus-accent"
+					>
+						<span
+							class="whitespace-nowrap pl-24 pr-5 after:absolute after:left-0 after:top-1/2 after:h-[2px] after:w-[88px] after:-translate-y-1/2 after:transform after:bg-neutral-900 after:transition-all after:duration-200 group-hover:after:w-full"
+						>
+							<span
+								class="absolute top-1/2 left-20 right-auto inline-block aspect-[3/4] h-[15px] w-auto -translate-y-1/2 transform transition-all duration-200 group-hover:left-[calc(100%-8px)]"
+							>
+								<Chevron />
+							</span>
+							Explore GTM
+						</span>
+					</a>
+				</div>
+			</div>
+
+			<!-- Marketing -->
+			<div
+				class="bg-neutral-100 col-start-2 col-end-12 md:col-start-3 md:col-end-10 border border-neutral-200 p-8 md:p-12 flex flex-col justify-between min-h-[480px]"
+			>
+				<div class="flex-1 flex items-center justify-center">
+					<!-- Moon/water/fog illustration placeholder -->
+					<div
+						class="w-full h-48 bg-neutral-100 flex items-center justify-center text-neutral-400 text-sm"
+					>
+						Moon, water and fog illustration
+					</div>
+				</div>
+				<div class="mt-8">
+					<h2 class="text-2xl font-black uppercase tracking-tight md:text-3xl">
+						Marketing
+					</h2>
+					<p class="mt-2 text-neutral-600">
+						Strategy and execution. The connective tissue that runs through
+						everything.
+					</p>
+					<a
+						href="/work/marketing"
+						class="group relative cursor-pointer overflow-visible text-base font-semibold md:text-3xl focus-accent"
+					>
+						<span
+							class="whitespace-nowrap pl-24 pr-5 after:absolute after:left-0 after:top-1/2 after:h-[2px] after:w-[88px] after:-translate-y-1/2 after:transform after:bg-neutral-900 after:transition-all after:duration-200 group-hover:after:w-full"
+						>
+							<span
+								class="absolute top-1/2 left-20 right-auto inline-block aspect-[3/4] h-[15px] w-auto -translate-y-1/2 transform transition-all duration-200 group-hover:left-[calc(100%-8px)]"
+							>
+								<Chevron />
+							</span>
+							Explore marketing
+						</span>
+					</a>
+				</div>
+			</div>
+
+		</div>
+	</section>
+</BaseLayout>
