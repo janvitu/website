@@ -1,10 +1,10 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
-import { getEntry } from "astro:content";
+import { getEntry, render } from "astro:content";
 
 const entry = await getEntry("pages", "privacy-policy");
 if (!entry) throw new Error("privacy-policy entry not found");
-const { Content } = await entry.render();
+const { Content } = await render(entry);
 ---
 
 <BaseLayout title="Privacy Policy">

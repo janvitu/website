@@ -38,14 +38,14 @@
 	},
 	"dependencies": {
 		"@astrojs/check": "^0.9.8",
-		"@astrojs/netlify": "^6.6.5",
+		"@astrojs/netlify": "^7.0.6",
 		"@netlify/functions": "^4.1.4",
 		"@tailwindcss/cli": "^4.1.12",
-		"astro": "^5.18.1",
+		"astro": "^6.1.4",
 		"motion": "^12.16.0",
 		"package-lock.json": "^1.0.0",
 		"package.json": "^2.0.1",
 		"solid-js": "^1.9.7",
-		"zod": "^3.25.56"
+		"zod": "^4.3.6"
 	}
 }
