@@ -1,6 +1,6 @@
 ---
-import BaseLayout from "../layouts/BaseLayout.astro";
-import { getT } from "../i18n/getT";
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import { getT } from "@/i18n/getT";
 
 const t = getT(Astro.currentLocale);
 ---
@@ -37,7 +37,7 @@ const t = getT(Astro.currentLocale);
 	</section>
 
 	<script>
-		import { copyContent } from "../scripts/utils";
+		import { copyContent } from "@/scripts/utils";
 
 		const copyElement = document.getElementById("copyitem");
 		copyElement?.addEventListener("click", copyContent as EventListener);

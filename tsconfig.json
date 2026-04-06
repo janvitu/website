@@ -4,7 +4,8 @@
     "jsx": "preserve",
     "baseUrl": ".",
     "paths": {
-      "~/*": ["src/*"]
+      "~/*": ["src/*"],
+      "@/*": ["src/*"]
     }
   },
   "include": ["src/**/*", "astro.config.mjs", ".astro/types.d.ts"],
