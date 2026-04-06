@@ -10,7 +10,7 @@ interface Props {
 const { entry, isFirst = false } = Astro.props;
 const { title, tags, date, publishDate } = entry.data;
 const postDate = date ?? publishDate;
-const wordCount = entry.body.split(/\s+/).length;
+const wordCount = (entry.body ?? "").split(/\s+/).length;
 
 const formattedDate = postDate
 	? postDate.toLocaleDateString("cs-CZ", {
@@ -20,7 +20,7 @@ const formattedDate = postDate
 		})
 	: null;
 
-const slug = entry.slug;
+const slug = entry.id;
 const href = `/blog/${slug}/`;
 ---
 

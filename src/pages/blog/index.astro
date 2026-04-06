@@ -48,7 +48,7 @@ const currentPath = Astro.url.pathname;
 									<>
 										<a
 											class="text-2xl font-bold hover:underline md:text-4xl"
-											href={`/blog/${featured.slug}/`}
+											href={`/blog/${featured.id}/`}
 										>
 											{featured.data.title}
 										</a>
@@ -99,7 +99,7 @@ const currentPath = Astro.url.pathname;
 												))}
 												<a
 													class="block text-xl font-bold hover:underline md:text-2xl"
-													href={`/blog/${post.slug}/`}
+													href={`/blog/${post.id}/`}
 												>
 													{post.data.title}
 												</a>
