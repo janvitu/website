@@ -12,7 +12,12 @@
 		"build:hugo": "cd ./hugo && hugo",
 		"build:assets": "npm run build:tailwind",
 		"dev": "concurrently --names 'TAILWIND,HUGO' -c 'cyan,green' 'npm run dev:tailwind' 'npm run dev:hugo'",
-		"build": "npm run build:assets && npm run build:hugo"
+		"build": "npm run build:assets && npm run build:hugo",
+		"dev:astro": "astro dev",
+		"build:astro": "astro build",
+		"preview:astro": "astro preview",
+		"astro": "astro",
+		"check:astro": "astro check"
 	},
 	"author": "",
 	"license": "ISC",
@@ -31,8 +36,11 @@
 		"vite-plugin-solid": "^2.11.6"
 	},
 	"dependencies": {
+		"@astrojs/check": "^0.9.8",
+		"@astrojs/netlify": "^6.6.5",
 		"@netlify/functions": "^4.1.4",
 		"@tailwindcss/cli": "^4.1.12",
+		"astro": "^5.18.1",
 		"motion": "^12.16.0",
 		"package-lock.json": "^1.0.0",
 		"package.json": "^2.0.1",
