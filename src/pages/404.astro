@@ -1,0 +1,30 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { getT } from "../i18n/getT";
+
+const locale = Astro.currentLocale ?? "en";
+const t = getT(locale);
+---
+
+<BaseLayout title="404 Not Found">
+	<section class="relative h-screen">
+		<div class="grid h-full grid-cols-12 pt-[38vh] pb-[10vh]">
+			<div
+				class="col-start-2 col-end-12 mt-[5vh] flex flex-col whitespace-nowrap md:col-start-3"
+			>
+				<h1 class="font-bold">404</h1>
+				<span
+					class="whitespace-nowrap text-base font-light md:text-4xl xl:text-5xl"
+				>
+					{t("404.text")}
+				</span>
+				<a
+					href="/"
+					class="mt-4 w-max cursor-pointer border border-neutral-900 bg-neutral-700 px-6 py-3 text-neutral-50 transition-colors hover:bg-neutral-900 hover:text-neutral-50 focus-accent"
+				>
+					{t("404.cta")}
+				</a>
+			</div>
+		</div>
+	</section>
+</BaseLayout>

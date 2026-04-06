@@ -12,7 +12,7 @@ For each route, build both stacks (`pnpm build:hugo`, `pnpm build:astro`), serve
 - [x] `/work/<each slug>/` — N/A: no individual work entries (static list page only)
 - [x] `/blog/`
 - [x] `/blog/<each slug>/`
-- [ ] `/404` page
+- [x] `/404` page
 - [ ] Favicons + meta tags
 - [ ] Open Graph tags
 - [ ] robots.txt / sitemap
