@@ -13,9 +13,9 @@ For each route, build both stacks (`pnpm build:hugo`, `pnpm build:astro`), serve
 - [x] `/blog/`
 - [x] `/blog/<each slug>/`
 - [x] `/404` page
-- [ ] Favicons + meta tags
-- [ ] Open Graph tags
-- [ ] robots.txt / sitemap
+- [x] Favicons + meta tags
+- [x] Open Graph tags
+- [ ] robots.txt / sitemap (robots.txt missing; sitemap not generated; note: @astrojs/sitemap not installed)
 
 ## Cross-cutting
 - [ ] Fonts load (Gilroy) and render identically
