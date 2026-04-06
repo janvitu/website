@@ -26,5 +26,8 @@ hugo/assets/js/CookieBanner
 .impeccable.md
 .planning/
 
+# Astro generated
+.astro/
+
 # Local Netlify folder
 .netlify
