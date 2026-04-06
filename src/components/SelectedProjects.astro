@@ -1,0 +1,45 @@
+---
+import { getT } from "../i18n/getT";
+import ArrowDownLeft from "./svg/ArrowDownLeft.astro";
+
+const t = getT(Astro.currentLocale);
+
+// TODO: wire up content collections in Task 18
+// For now, projects is empty; SelectedProjects is also commented out in Hugo index.html
+const projects: { permalink: string; thumbnail: string; project: string }[] =
+	[];
+---
+
+<section class="py-24 md:py-32">
+	<div class="base-grid">
+		<h2
+			class="relative col-start-2 col-end-12 flex flex-row items-end justify-end whitespace-nowrap text-right font-bold"
+		>
+			<div
+				class="mr-4 mb-1 h-[32px] fill-neutral-800 md:h-[64px]"
+				aria-hidden="true"
+			>
+				<ArrowDownLeft />
+			</div>
+			{t("selected-projects", "Selected projects")}
+		</h2>
+	</div>
+	<div>
+		{
+			projects.map((p) => (
+				<figure>
+					<a href={p.permalink}>
+						<img
+							src={p.permalink + p.thumbnail}
+							alt={p.project}
+							loading="lazy"
+						/>
+					</a>
+					<figcaption>
+						<a href={p.permalink}>{p.project}</a>
+					</figcaption>
+				</figure>
+			))
+		}
+	</div>
+</section>
