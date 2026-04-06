@@ -18,6 +18,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const desktopLabels = toggle.querySelectorAll<HTMLElement>(".nav-label");
   const mobileLabels = overlay.querySelectorAll<HTMLElement>(".nav-label-mobile");
+  const dots = toggle.querySelectorAll<HTMLElement>(".nav-dot");
+  const navLogoWrapper = document.querySelector<HTMLElement>("[data-nav-logo]");
 
   let isOpen = false;
   let activeAnimation: any = null;
@@ -25,7 +27,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const resetState = () => {
     overlay.style.pointerEvents = "none";
     overlay.style.opacity = "0";
-    overlay.style.zIndex = "";
+    dots.forEach((dot) => { dot.style.opacity = ""; });
     desktopLabels.forEach((label) => {
       label.style.opacity = "0";
       label.style.transform = "translateX(10px)";
@@ -74,8 +76,9 @@ document.addEventListener("DOMContentLoaded", () => {
         });
       }
     } else {
-      // Mobile: bring overlay above dots so they're behind the glass
-      overlay.style.zIndex = "1200";
+      // Mobile: hide dots so they disappear behind the glass;
+      // the logo (z-1100 toggle > z-1099 overlay) stays visible on top.
+      dots.forEach((dot) => { dot.style.opacity = "0"; });
       if (prefersReducedMotion) {
         mobileLabels.forEach((label) => {
           label.style.opacity = "1";
@@ -131,7 +134,7 @@ document.addEventListener("DOMContentLoaded", () => {
   toggle.addEventListener("focusout", onLeave);
 
   // Mobile: press-and-hold pattern
-  // touchstart → open nav
+  // touchstart → open nav (or navigate home if on logo)
   // touchmove → highlight item under finger
   // touchend → navigate to highlighted item, or close if none
 
@@ -139,7 +142,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const clearHighlight = () => {
     if (highlightedLink) {
-      highlightedLink.classList.remove("link-strikethrough--active");
+      if (highlightedLink.hasAttribute("data-nav-logo-link")) {
+        if (navLogoWrapper) navLogoWrapper.style.fill = "";
+      } else {
+        highlightedLink.classList.remove("link-strikethrough--active");
+      }
       highlightedLink = null;
     }
   };
@@ -147,8 +154,8 @@ document.addEventListener("DOMContentLoaded", () => {
   const getNavLinkAtPoint = (x: number, y: number): HTMLAnchorElement | null => {
     const elements = document.elementsFromPoint(x, y);
     for (const el of elements) {
-      // Check if it's a mobile nav link or its child span
-      const link = el.closest(".nav-label-mobile") as HTMLAnchorElement | null;
+      // Check for mobile nav links or the logo link
+      const link = el.closest(".nav-label-mobile, [data-nav-logo-link]") as HTMLAnchorElement | null;
       if (link) return link;
     }
     return null;
@@ -165,7 +172,11 @@ document.addEventListener("DOMContentLoaded", () => {
       clearHighlight();
       if (link) {
         highlightedLink = link;
-        link.classList.add("link-strikethrough--active");
+        if (link.hasAttribute("data-nav-logo-link")) {
+          if (navLogoWrapper) navLogoWrapper.style.fill = "var(--color-accent)";
+        } else {
+          link.classList.add("link-strikethrough--active");
+        }
       }
     }
   };
@@ -177,8 +188,14 @@ document.addEventListener("DOMContentLoaded", () => {
     document.removeEventListener("touchmove", handleTouchMove, { passive: false } as any);
     document.removeEventListener("touchend", handleTouchEnd, { passive: false } as any);
 
-    if (highlightedLink) {
-      const href = highlightedLink.getAttribute("href");
+    // Also check the release position: covers taps (no touchmove) where the
+    // finger lands on a link at the same point it started (e.g. logo tap)
+    const touch = e.changedTouches[0];
+    const releaseLink = touch ? getNavLinkAtPoint(touch.clientX, touch.clientY) : null;
+    const targetLink = highlightedLink ?? releaseLink;
+
+    if (targetLink) {
+      const href = targetLink.getAttribute("href");
       clearHighlight();
       onLeave();
       if (href) {
@@ -191,6 +208,16 @@ document.addEventListener("DOMContentLoaded", () => {
 
   toggle.addEventListener("touchstart", (e: TouchEvent) => {
     e.preventDefault();
+
+    // If the touch starts directly on the logo, navigate home immediately
+    // without opening the nav overlay
+    const touch = e.touches[0];
+    const startLink = getNavLinkAtPoint(touch.clientX, touch.clientY);
+    if (startLink?.hasAttribute("data-nav-logo-link")) {
+      window.location.href = startLink.getAttribute("href") ?? "/";
+      return;
+    }
+
     onEnter();
 
     // Attach listeners for this gesture

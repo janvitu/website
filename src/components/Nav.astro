@@ -25,7 +25,7 @@ function isActive(href: string): boolean {
 		data-nav-overlay
 		class="fixed inset-0 backdrop-blur-xs z-[1099] opacity-0 pointer-events-none flex flex-col items-center select-none"
 	>
-		<!-- Mobile-only: centered nav inside overlay -->
+		<!-- Mobile-only: centered nav links inside overlay -->
 		<div class="md:hidden flex flex-col h-full w-full items-center">
 			<nav
 				class="flex-1 flex items-center justify-center"
@@ -55,12 +55,12 @@ function isActive(href: string): boolean {
 		data-nav-toggle
 		class="col-start-12 col-end-13 flex flex-col h-full z-[1100] pointer-events-auto select-none"
 	>
-		<!-- Logo (top) -->
+		<!-- Logo (top) — always above overlay; gesture-aware via data-nav-logo-link -->
 		<div
 			data-nav-logo
 			class="w-2/3 min-w-[20px] max-w-[56px] place-self-center pt-5 fill-[var(--nav-text)] transition-colors duration-150 hover:fill-accent"
 		>
-			<a href="/" aria-label="Home" class="focus-accent">
+			<a href="/" aria-label="Home" class="focus-accent" data-nav-logo-link>
 				<Logo />
 			</a>
 		</div>
