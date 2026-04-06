@@ -20,13 +20,4 @@ const blog = defineCollection({
 	}),
 });
 
-const work = defineCollection({
-	type: "content",
-	schema: z.object({
-		title: z.string().optional(),
-		date: z.coerce.date().optional(),
-		description: z.string().optional(),
-	}),
-});
-
-export const collections = { pages, blog, work };
+export const collections = { pages, blog };
