@@ -1,8 +1,8 @@
 ---
-import BaseLayout from "../layouts/BaseLayout.astro";
-import ContactFooter from "../components/ContactFooter.astro";
-import Chevron from "../components/svg/Chevron.astro";
-import { getT } from "../i18n/getT";
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import ContactFooter from "@/components/ContactFooter.astro";
+import ArrowLink from "@/components/ArrowLink.astro";
+import { getT } from "@/i18n/getT";
 
 const t = getT(Astro.currentLocale);
 ---
@@ -16,6 +16,12 @@ const t = getT(Astro.currentLocale);
 >
 	<!-- Hero -->
 	<section class="relative h-screen">
+		<img
+			src="/images/wave.avif"
+			alt=""
+			aria-hidden="true"
+			class="absolute -right-16 top-[30vh] w-full md:top-28 md:-right-24 md:w-2/3 object-contain mix-blend-multiply pointer-events-none"
+		/>
 		<div class="grid h-full grid-cols-12 pt-[32vh] pb-[10vh]">
 			<div
 				class="col-start-2 row-start-1 mt-[5vh] whitespace-nowrap md:col-start-3"
@@ -63,8 +69,11 @@ const t = getT(Astro.currentLocale);
 				Strategy turns passion into direction. And direction is what makes ideas
 				last.
 			</p>
+			<div class="col-start-2 col-end-12 row-start-4 mt-5 whitespace-nowrap md:col-start-4 md:col-end-9 md:mt-10 md:text-3xl">
+				<ArrowLink href="/work" label="See my work" />
+			</div>
 			<div
-				class="col-start-2 col-end-12 row-start-4 mt-5 whitespace-nowrap md:col-start-4 md:col-end-9 md:mt-10 md:text-3xl"
+				class="col-start-2 col-end-12 row-start-5 mt-5 whitespace-nowrap md:col-start-4 md:col-end-9 md:mt-10 md:text-3xl"
 			>
 				<span
 					class="text-sm font-bold text-neutral-900 sm:text-base md:col-start-4 md:col-end-9 md:mt-5 md:text-xl"
@@ -72,7 +81,7 @@ const t = getT(Astro.currentLocale);
 				>
 			</div>
 			<div
-				class="col-start-2 col-end-12 row-start-5 mt-10 md:col-start-4 md:col-end-9"
+				class="col-start-2 col-end-12 row-start-6 mt-10 md:col-start-4 md:col-end-9"
 			>
 				<div class="w-full">
 					<div class="flex flex-wrap gap-6 xl:gap-8 xl:flex-nowrap">
@@ -133,21 +142,7 @@ const t = getT(Astro.currentLocale);
 			<div
 				class="col-start-2 col-end-12 row-start-4 mt-5 whitespace-nowrap md:col-start-4 md:col-end-9 md:mt-10 md:text-3xl"
 			>
-				<a
-					href="/about"
-					class="group relative cursor-pointer overflow-visible text-base font-semibold md:text-3xl focus-accent"
-				>
-					<span
-						class="whitespace-nowrap pl-24 pr-5 after:absolute after:left-0 after:top-1/2 after:h-[2px] after:w-[88px] after:-translate-y-1/2 after:transform after:bg-neutral-900 after:transition-all after:duration-200 group-hover:after:w-full"
-					>
-						<span
-							class="absolute top-1/2 left-20 right-auto inline-block aspect-[3/4] h-[15px] w-auto -translate-y-1/2 transform transition-all duration-200 group-hover:left-[calc(100%-8px)]"
-						>
-							<Chevron />
-						</span>
-						About me
-					</span>
-				</a>
+				<ArrowLink href="/about" label="About me" />
 			</div>
 			<div
 				class="col-start-4 col-end-12 md:col-start-9 md:col-end-12 md:row-span-4 md:px-4"

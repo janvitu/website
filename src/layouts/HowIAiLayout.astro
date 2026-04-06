@@ -1,7 +1,7 @@
 ---
-import Head from "../components/Head.astro";
-import Nav from "../components/Nav.astro";
-import Footer from "../components/Footer.astro";
+import Head from "@/components/Head.astro";
+import Nav from "@/components/Nav.astro";
+import Footer from "@/components/Footer.astro";
 
 interface Props {
 	title: string;
@@ -28,10 +28,10 @@ const locale = Astro.currentLocale ?? "en";
 		</main>
 		<Footer />
 		<script>
-			import "../scripts/scroll-indicator.ts";
-			import "../scripts/glossary.ts";
-			import "../scripts/navigation.ts";
-			import { initTabs } from "../scripts/tabs.ts";
+			import "@/scripts/scroll-indicator.ts";
+			import "@/scripts/glossary.ts";
+			import "@/scripts/navigation.ts";
+			import { initTabs } from "@/scripts/tabs.ts";
 			document.addEventListener("DOMContentLoaded", () => {
 				initTabs();
 			});
