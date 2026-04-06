@@ -29,7 +29,7 @@ const currentPath = Astro.url.pathname;
 							</p>
 							{(() => {
 								const featured = posts[0];
-								const wordCount = featured.body.split(/\s+/).length;
+								const wordCount = (featured.body ?? "").split(/\s+/).length;
 								const wordsPerMinute = 185;
 								const minutes = Math.max(
 									1,
@@ -76,7 +76,7 @@ const currentPath = Astro.url.pathname;
 							) : (
 								<ul class="flex flex-col">
 									{posts.map((post) => {
-										const wordCount = post.body.split(/\s+/).length;
+										const wordCount = (post.body ?? "").split(/\s+/).length;
 										const wordsPerMinute = 185;
 										const minutes = Math.max(
 											1,
