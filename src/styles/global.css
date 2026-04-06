@@ -107,6 +107,36 @@ h2 {
 	background-color: var(--nav-overlay-bg);
 }
 
+/* Mobile overlay kanji */
+.nav-mobile-kanji {
+	opacity: 0;
+	transition: opacity 400ms ease;
+}
+
+.nav-mobile-kanji--active {
+	opacity: 1;
+}
+
+li:hover .nav-mobile-kanji {
+	opacity: 1;
+}
+
+/* Navigation kanji */
+.nav-kanji {
+	opacity: 0;
+	transition: opacity 150ms ease;
+}
+
+.nav-kanji--active {
+	opacity: 1;
+}
+
+@media (hover: hover) {
+	[data-nav-toggle] li:hover .nav-kanji {
+		opacity: 1;
+	}
+}
+
 /* Navigation dots */
 .nav-dot {
 	@apply relative block w-1.5 h-1.5 rounded-full flex-shrink-0;

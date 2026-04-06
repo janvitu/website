@@ -2,18 +2,18 @@
 // Port of hugo/layouts/partials/header.html
 import Logo from "./svg/Logo.astro";
 
-const path = Astro.url.pathname;
+const path = Astro.url.pathname.replace(/\/$/, "") || "/";
 
 const links = [
-	{ href: "/", label: "Home" },
-	{ href: "/work/", label: "Work" },
-	{ href: "/about/", label: "About" },
-	{ href: "/contact/", label: "Contact" },
+	{ href: "/", label: "Home", kanji: "家" },
+	{ href: "/work", label: "Work", kanji: "仕" },
+	{ href: "/about", label: "About", kanji: "私" },
+	{ href: "/contact", label: "Contact", kanji: "接" },
 ];
 
 function isActive(href: string): boolean {
-	if (href === "/") return path === "/" || path === "";
-	return path === href || path.startsWith(href);
+	const normalizedHref = href.replace(/\/$/, "") || "/";
+	return path === normalizedHref || path.startsWith(normalizedHref + "/");
 }
 ---
 
@@ -34,7 +34,12 @@ function isActive(href: string): boolean {
 				<ul class="flex flex-col gap-6 items-center">
 					{
 						links.map((link) => (
-							<li>
+							<li class="relative">
+								<span
+									class={`nav-mobile-kanji absolute right-full top-1/2 -translate-y-1/2 mr-2 text-sm select-none leading-none pointer-events-none${isActive(link.href) ? " nav-mobile-kanji--active" : ""}`}
+									style="color: var(--color-accent);"
+									aria-hidden="true"
+								>{link.kanji}</span>
 								<a
 									href={link.href}
 									class={`nav-label-mobile link-strikethrough${isActive(link.href) ? " link-strikethrough--active" : ""} text-base font-semibold text-[var(--nav-text)] whitespace-nowrap`}
@@ -67,30 +72,43 @@ function isActive(href: string): boolean {
 
 		<!-- Navigation (centered) -->
 		<nav
-			class="flex-1 flex items-center justify-center"
+			class="flex-1 flex items-center justify-center z-[1098]"
 			aria-label="Main navigation"
 		>
-			<ul class="flex flex-col gap-6 items-center">
+			<ul class="flex flex-col gap-3 items-center">
 				{
 					links.map((link) => (
-						<li class="relative flex items-center justify-center">
-							<a
-								href={link.href}
-								class={`nav-label link-strikethrough${isActive(link.href) ? " link-strikethrough--active" : ""} hidden md:inline-block absolute right-full mr-4 text-2xl font-semibold text-[var(--nav-text)] whitespace-nowrap`}
-								aria-current={isActive(link.href) ? "page" : undefined}
-							>
-								<span class="relative block">{link.label}</span>
-							</a>
+						<li class="flex flex-col items-center">
 							<span
-								class={`nav-dot${isActive(link.href) ? " nav-dot--active" : ""}`}
-							></span>
+								class={`nav-kanji block text-sm select-none leading-none mb-1.5${isActive(link.href) ? " nav-kanji--active" : ""}`}
+								style="color: var(--color-accent);"
+								aria-hidden="true"
+							>{link.kanji}</span>
+							<div class="relative flex items-center justify-center">
+								<a
+									href={link.href}
+									class={`nav-label link-strikethrough${isActive(link.href) ? " link-strikethrough--active" : ""} hidden md:inline-block absolute right-full mr-4 text-2xl font-semibold text-[var(--nav-text)] whitespace-nowrap`}
+									aria-current={isActive(link.href) ? "page" : undefined}
+								>
+									<span class="relative block">{link.label}</span>
+								</a>
+								<span
+									class={`nav-dot${isActive(link.href) ? " nav-dot--active" : ""}`}
+								></span>
+							</div>
 						</li>
 					))
 				}
 			</ul>
 		</nav>
 
-		<!-- Bottom spacer (reserved for future social links) -->
-		<div class="pb-5"></div>
+		<!-- MENU label -->
+		<div class="flex justify-center pb-5">
+			<span
+				class="text-[9px] tracking-[0.2em] uppercase select-none"
+				style="writing-mode: vertical-rl; transform: rotate(180deg); color: var(--nav-dot-color);"
+				aria-hidden="true"
+			>menu</span>
+		</div>
 	</div>
 </header>
