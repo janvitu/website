@@ -3,7 +3,7 @@
 For each route, build both stacks (`pnpm build:hugo`, `pnpm build:astro`), serve them locally, and visually compare. Tick only after side-by-side verification.
 
 ## Routes
-- [ ] `/` (homepage)
+- [x] `/` (homepage)
 - [ ] `/about/`
 - [ ] `/contact/`
 - [ ] `/privacy-policy/`
