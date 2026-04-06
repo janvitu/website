@@ -1,0 +1,23 @@
+---
+// Czech routes are reserved but not yet emitted; render English only.
+// Port of hugo/layouts/partials/nav/langSwitch.html
+---
+
+<nav
+	aria-label="Language"
+	class="relative col-span-2 col-start-2 grid grid-cols-3 place-items-center justify-self-center text-[11px] sm:mr-1 sm:justify-self-end md:text-base"
+>
+	<span class="block">
+		{/* CZ link reserved - Czech routes not yet emitted */}
+		<span class="cursor-not-allowed">CZ</span>
+	</span>
+	<span class="h-[13px] w-px bg-neutral-800 md:h-[19px]"></span>
+	<span class="block">
+		<span
+			class="font-bold text-strikethrough text-strikethrough--interactive text-strikethrough--active"
+			aria-current="page"
+		>
+			EN
+		</span>
+	</span>
+</nav>
