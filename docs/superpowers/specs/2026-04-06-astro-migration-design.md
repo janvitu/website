@@ -2,7 +2,7 @@
 
 **Date:** 2026-04-06
 **Status:** Approved, pending implementation plan
-**Branch:** `feat/astro-migration`
+**Branch:** `feat/astro-migration` (all work stays on this branch — no merging to `main` until the user has thoroughly examined the final output)
 
 ## Goal
 
@@ -129,6 +129,7 @@ The user explicitly asked for a fresh project but with risk mitigation. Key inva
    - Deletes `hugo/`, `app/`, `vite.config.ts`, `tsconfig.node.json`
    - Removes Hugo/Vite scripts from `package.json`
 6. **Easy rollback:** the cutover is a single commit; `git revert` restores Hugo immediately.
+7. **No merge to `main` without explicit user sign-off.** All migration work — including the cutover commit — lives on `feat/astro-migration`. The branch is only merged after the user has thoroughly examined the final output and approves.
 
 ## Migration Order (smallest blast radius first)
 
