@@ -1,8 +1,0 @@
-{{/* Preload the two Gilroy weights used above the fold (Regular + Black) */}}
-<link rel="preload" href="/fonts/Gilroy/Gilroy-Regular.woff2" as="font" type="font/woff2" crossorigin />
-<link rel="preload" href="/fonts/Gilroy/Gilroy-Black.woff2" as="font" type="font/woff2" crossorigin />
-
-<link rel="stylesheet" href="/css/style.css" type="text/css" />
-<link rel="stylesheet" href="/css/fonts.css" type="text/css" />
-{{ $css := resources.Get "css/tw.css" | fingerprint }}
-<link rel="stylesheet" href="{{ $css.RelPermalink }}" type="text/css" />

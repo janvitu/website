@@ -20,5 +20,4 @@ export default defineConfig({
   vite: {
     plugins: [tailwindcss()],
   },
-  outDir: "./dist-astro",
 });

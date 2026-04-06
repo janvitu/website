@@ -1,6 +1,0 @@
-{{/* Calculate reading time in minutes from word count */}}
-{{/* Usage: {{ partial "readingTime.html" .WordCount }} */}}
-{{ $wordsPerMinute := 185 }}
-{{ $readingTime := math.Floor (div . $wordsPerMinute) }}
-{{ if lt $readingTime 1 }}{{ $readingTime = 1 }}{{ end }}
-{{ $readingTime }}
