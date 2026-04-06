@@ -4,7 +4,7 @@ import tailwindcss from "@tailwindcss/vite";
 
 export default defineConfig({
   site: "https://janvitu.com",
-  output: "hybrid",
+  output: "static",
   adapter: netlify(),
   trailingSlash: "always",
   build: {
