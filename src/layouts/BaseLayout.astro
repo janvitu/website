@@ -31,5 +31,10 @@ const locale = Astro.currentLocale ?? "en";
 			<slot />
 		</main>
 		<Footer />
+		<script>
+			import "../scripts/scroll-indicator.ts";
+			import "../scripts/glossary.ts";
+			import "../scripts/navigation.ts";
+		</script>
 	</body>
 </html>
