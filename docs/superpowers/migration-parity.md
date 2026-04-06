@@ -6,7 +6,7 @@ For each route, build both stacks (`pnpm build:hugo`, `pnpm build:astro`), serve
 - [x] `/` (homepage)
 - [x] `/about/`
 - [x] `/contact/`
-- [ ] `/privacy-policy/`
+- [x] `/privacy-policy/`
 - [ ] `/how-i-ai/`
 - [ ] `/work/`
 - [ ] `/work/<each slug>/`
