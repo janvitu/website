@@ -1,5 +1,13 @@
 ---
-// stub - implemented in Task 12
+const path = Astro.url.pathname;
+const isActive = path === "/how-i-ai/" || path.startsWith("/how-i-ai/");
 ---
 
-<a href="/how-i-ai/">How I AI</a>
+<a
+	href="/how-i-ai/"
+	class="how-i-ai-nav-button group relative inline-flex items-center gap-2 rounded-full px-4 py-1.5 text-sm font-semibold whitespace-nowrap transition-all bg-neutral-900 text-neutral-200 before:content-[''] before:absolute before:-inset-px before:rounded-full before:z-[-1] before:[animation:spin-border_4s_linear_infinite] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
+	aria-current={isActive ? "page" : undefined}
+>
+	<span class="led-dot w-1.5 h-1.5 rounded-full bg-accent shrink-0" aria-hidden="true"></span>
+	How I AI
+</a>
