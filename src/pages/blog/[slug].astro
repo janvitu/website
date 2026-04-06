@@ -1,0 +1,73 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import { getCollection, type CollectionEntry } from "astro:content";
+
+export async function getStaticPaths() {
+	const posts = await getCollection("blog");
+	return posts.map((post) => ({
+		params: { slug: post.slug },
+		props: { post },
+	}));
+}
+
+interface Props {
+	post: CollectionEntry<"blog">;
+}
+
+const { post } = Astro.props;
+const { Content } = await post.render();
+
+const { title, description, tags, date, publishDate } = post.data;
+const postDate = date ?? publishDate;
+const formattedDate = postDate
+	? postDate.toLocaleDateString("cs-CZ", {
+			day: "2-digit",
+			month: "2-digit",
+			year: "numeric",
+		})
+	: null;
+
+const wordCount = post.body.split(/\s+/).length;
+const wordsPerMinute = 185;
+const minutes = Math.max(1, Math.floor(wordCount / wordsPerMinute));
+---
+
+<BaseLayout title={title} description={description}>
+	<div class="pt-32 md:pt-32">
+		<article class="base-grid">
+			<header class="col-start-2 col-end-12 sm:col-start-3">
+				<div>
+					<h1 class="mt-8 font-bold">{title}</h1>
+					{
+						formattedDate && (
+							<p class="mt-2 text-sm">
+								{formattedDate} – {minutes} min read
+								{tags && tags.length > 0 && (
+									<>
+										{" "}
+										|{" "}
+										{tags.map((tag) => (
+											<span class="font-medium uppercase">{tag} </span>
+										))}
+									</>
+								)}
+							</p>
+						)
+					}
+				</div>
+				{
+					description && (
+						<p class="mt-6 max-w-xl prose sm:prose-lg lg:prose-xl">
+							{description}
+						</p>
+					)
+				}
+			</header>
+			<div
+				class="col-start-3 col-end-12 mt-12 prose sm:prose-lg lg:prose-xl sm:col-start-4 sm:col-end-9"
+			>
+				<Content />
+			</div>
+		</article>
+	</div>
+</BaseLayout>

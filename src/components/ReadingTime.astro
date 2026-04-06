@@ -1,0 +1,11 @@
+---
+interface Props {
+	wordCount: number;
+}
+
+const { wordCount } = Astro.props;
+const wordsPerMinute = 185;
+const minutes = Math.max(1, Math.floor(wordCount / wordsPerMinute));
+---
+
+<span>{minutes}</span>

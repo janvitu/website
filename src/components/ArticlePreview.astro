@@ -1,0 +1,73 @@
+---
+import type { CollectionEntry } from "astro:content";
+import ReadingTime from "./ReadingTime.astro";
+
+interface Props {
+	entry: CollectionEntry<"blog">;
+	isFirst?: boolean;
+}
+
+const { entry, isFirst = false } = Astro.props;
+const { title, tags, date, publishDate } = entry.data;
+const postDate = date ?? publishDate;
+const wordCount = entry.body.split(/\s+/).length;
+
+const formattedDate = postDate
+	? postDate.toLocaleDateString("cs-CZ", {
+			day: "2-digit",
+			month: "2-digit",
+			year: "numeric",
+		})
+	: null;
+
+const slug = entry.slug;
+const href = `/blog/${slug}/`;
+---
+
+<article
+	class:list={[
+		"col-start-1 col-end-13 grid grid-flow-row items-center gap-6 py-7 md:col-start-2 md:col-end-12 md:gap-12 md:py-10",
+		isFirst ? "md:grid-cols-[3fr,2fr]" : "md:grid-cols-2",
+	]}
+>
+	<a href={href} class="block aspect-video focus-accent">
+		<img
+			src={`${href}cover.webp`}
+			alt={title}
+			loading="lazy"
+			class="h-full w-full object-cover"
+		/>
+	</a>
+	<div class="grid grid-flow-row gap-3 md:gap-4">
+		<a
+			href={href}
+			class:list={[
+				"text-2xl font-bold uppercase hover:underline focus-accent",
+				isFirst ? "md:text-4xl" : "md:text-xl",
+			]}
+		>
+			{title}
+		</a>
+		<div class="flex">
+			{
+				tags && tags.length > 0 && (
+					<p class="text-sunset text-xs uppercase">
+						{tags.map((tag, index) => (
+							<>
+								<a href={`/blog/${tag}/`} class="hover:underline focus-accent">
+									{tag}
+								</a>
+								{index < tags.length - 1 && ",\u00a0"}
+							</>
+						))}
+					</p>
+				)
+			}
+			<p class="text-xs uppercase">
+				<span class="text"> ⋅</span>
+				<ReadingTime wordCount={wordCount} /> min
+			</p>
+		</div>
+		{formattedDate && <p class="text-sm">{formattedDate}</p>}
+	</div>
+</article>
