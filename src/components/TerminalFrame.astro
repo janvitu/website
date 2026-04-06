@@ -1,0 +1,121 @@
+---
+// Terminal window chrome: title bar, tab strip, scrollable content, status bar.
+// All dark-theme styling is driven by [data-theme="terminal"] in tailwind.css.
+---
+
+<!-- H1 page intro -- above terminal frame -->
+<div class="base-grid pt-16 md:pt-24">
+	<div class="col-start-2 col-end-12 md:col-start-3 md:col-end-11">
+		<h1
+			class="text-[var(--color-text)] text-[clamp(2rem,5vw,4rem)] font-semibold leading-[1.1]"
+		>
+			How I AI
+		</h1>
+		<p class="mt-3 text-[var(--color-text-muted)] text-base leading-normal">
+			A living knowledge base -- tools, setup, workflow, and learnings from
+			daily AI-assisted product work.
+		</p>
+	</div>
+</div>
+
+<div class="base-grid pt-12 pb-6 md:pt-24 md:pb-12">
+	<div
+		class="terminal-glow col-start-2 col-end-12 md:col-start-3 md:col-end-11 flex flex-col overflow-hidden rounded-lg border border-solid border-[var(--color-border)] bg-[var(--color-bg-surface)] h-[var(--terminal-height)] min-h-[65vh]"
+		role="region"
+		aria-label="Terminal window"
+	>
+		<!-- Title bar - macOS traffic light dots + monospace path -->
+		<div
+			class="flex items-center justify-between md:justify-start shrink-0 h-10 px-4 border-b border-[var(--color-border)]"
+			aria-hidden="true"
+		>
+			<div class="flex items-center gap-2">
+				<span class="w-3 h-3 rounded-full bg-[#ff5f56] inline-block"></span>
+				<span class="w-3 h-3 rounded-full bg-[#ffbd2e] inline-block"></span>
+				<span class="w-3 h-3 rounded-full bg-[#27c93f] inline-block"></span>
+			</div>
+			<span
+				class="md:flex-1 md:text-center font-mono text-sm leading-[1.2] text-[var(--color-text)]"
+				>~/how-i-ai</span
+			>
+			<!-- Invisible spacer: keeps title text centered (3 dots × 12px + 2 gaps × 8px + 4px rounding = 56px) -->
+			<div class="hidden md:block w-14"></div>
+		</div>
+
+		<!-- Tab strip -- between title bar and content area -->
+		<div
+			role="tablist"
+			aria-label="How I AI sections"
+			class="flex items-center shrink-0 h-10 px-4 border-b border-[var(--color-border)]"
+		>
+			<button
+				role="tab"
+				id="tab-my-stack"
+				aria-controls="panel-my-stack"
+				aria-selected="true"
+				class="tab-button text-[var(--color-text)] border-[var(--color-accent)]"
+				data-tab="my-stack"
+			>
+				My Stack
+			</button>
+			<button
+				role="tab"
+				id="tab-setup"
+				aria-controls="panel-setup"
+				aria-selected="false"
+				class="tab-button text-[var(--color-text-muted)] border-transparent"
+				data-tab="setup"
+			>
+				Setup
+			</button>
+			<button
+				role="tab"
+				id="tab-workflow"
+				aria-controls="panel-workflow"
+				aria-selected="false"
+				class="tab-button text-[var(--color-text-muted)] border-transparent"
+				data-tab="workflow"
+			>
+				Workflow
+			</button>
+			<button
+				role="tab"
+				id="tab-tips"
+				aria-controls="panel-tips"
+				aria-selected="false"
+				class="tab-button text-[var(--color-text-muted)] border-transparent"
+				data-tab="tips"
+			>
+				Tips
+			</button>
+		</div>
+
+		<!-- Content area - scrollable -->
+		<div class="flex-1 overflow-y-auto py-8 px-6">
+			<slot />
+		</div>
+
+		<!-- Status bar - pinned bottom -->
+		<div
+			class="flex items-center justify-between shrink-0 h-9 px-4 border-t border-[var(--color-border)]"
+			aria-hidden="true"
+		>
+			<!-- Left: green indicator dot + claude-code -->
+			<div
+				class="flex items-center gap-2 font-mono text-sm leading-[1.2] text-[var(--color-text)]"
+			>
+				<span class="w-2 h-2 rounded-full bg-[#27c93f] inline-block"></span>
+				<span>claude-code</span>
+			</div>
+			<!-- Right: pagination + model info -->
+			<div class="flex items-center gap-3 font-mono text-sm leading-[1.2]">
+				<span class="text-accent [text-shadow:0_0_8px_rgba(255,67,9,0.6)]"
+					>1/4</span
+				>
+				<span class="hidden md:inline text-[var(--color-text-muted)]"
+					>Opus 4.6 &middot; Thinking...</span
+				>
+			</div>
+		</div>
+	</div>
+</div>
