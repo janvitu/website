@@ -10,8 +10,8 @@ For each route, build both stacks (`pnpm build:hugo`, `pnpm build:astro`), serve
 - [ ] `/how-i-ai/`
 - [x] `/work/`
 - [x] `/work/<each slug>/` — N/A: no individual work entries (static list page only)
-- [ ] `/blog/`
-- [ ] `/blog/<each slug>/`
+- [x] `/blog/`
+- [x] `/blog/<each slug>/`
 - [ ] `/404` page
 - [ ] Favicons + meta tags
 - [ ] Open Graph tags

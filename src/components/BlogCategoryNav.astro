@@ -1,0 +1,61 @@
+---
+import { getCollection } from "astro:content";
+import { getT } from "../i18n/getT";
+
+interface Props {
+	currentPath?: string;
+}
+
+const { currentPath = "" } = Astro.props;
+const t = getT(Astro.currentLocale);
+
+// Collect all unique tags from non-draft posts to use as categories
+const posts = await getCollection("blog", ({ data }) => !data.draft);
+const allTags = [
+	...new Set(posts.flatMap((post) => post.data.tags ?? [])),
+].sort();
+
+const isAllActive = currentPath === "/blog/" || currentPath === "/blog";
+---
+
+<div class="base-grid grid-flow-row">
+	<hr class="in-grid" />
+	<nav
+		class="col-start-2 col-end-12 overflow-x-scroll py-5 md:py-7"
+		aria-label="Blog categories"
+	>
+		<ul class="flex gap-10">
+			<li>
+				<a
+					class:list={[
+						"cursor-pointer text-xs font-medium uppercase hover:underline focus-accent",
+						{ underline: isAllActive },
+					]}
+					href="/blog/"
+				>
+					{t("blog.all", "All")}
+				</a>
+			</li>
+			{
+				allTags.map((tag) => {
+					const tagPath = `/blog/${tag}/`;
+					const isActive = currentPath === tagPath;
+					return (
+						<li>
+							<a
+								class:list={[
+									"cursor-pointer text-xs font-medium uppercase hover:underline focus-accent",
+									{ underline: isActive },
+								]}
+								href={tagPath}
+							>
+								{tag}
+							</a>
+						</li>
+					);
+				})
+			}
+		</ul>
+	</nav>
+	<hr class="in-grid" />
+</div>
