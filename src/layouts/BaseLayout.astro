@@ -1,0 +1,35 @@
+---
+import Head from "../components/Head.astro";
+import Nav from "../components/Nav.astro";
+import Footer from "../components/Footer.astro";
+import HowIAiButton from "../components/HowIAiButton.astro";
+
+interface Props {
+	title: string;
+	description?: string;
+	ogImage?: string;
+	bodyClass?: string;
+}
+
+const { title, description, ogImage, bodyClass = "" } = Astro.props;
+const locale = Astro.currentLocale ?? "en";
+---
+
+<!doctype html>
+<html lang={locale}>
+	<Head title={title} description={description} ogImage={ogImage} />
+	<body class={bodyClass}>
+		<a
+			href="#main"
+			class="sr-only focus:not-sr-only focus:fixed focus:top-2 focus:left-2 focus:z-[9999] focus:bg-neutral-800 focus:px-4 focus:py-2 focus:text-neutral-50"
+		>
+			Skip to content
+		</a>
+		<HowIAiButton />
+		<Nav />
+		<main id="main">
+			<slot />
+		</main>
+		<Footer />
+	</body>
+</html>
