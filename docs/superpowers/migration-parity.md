@@ -25,4 +25,22 @@ For each route, build both stacks (`pnpm build:hugo`, `pnpm build:astro`), serve
 - [ ] Glossary tooltips work
 - [x] How-I-AI tab switching works (incl. URL hash sync)
 - [x] How-I-AI nav LED button visible on every page
-- [ ] Lighthouse score parity (perf, a11y, SEO within 5 points)
+- [ ] Lighthouse score parity (perf, a11y, SEO within 5 points) ← PENDING HUMAN VERIFICATION
+
+## Lighthouse Parity Scores
+
+> **Status:** Pending human verification. Run Lighthouse manually on both builds after cutover.
+>
+> Instructions:
+> 1. Run `pnpm preview:astro` (Astro on port 4321)
+> 2. Run `python3 -m http.server 1313 -d dist/` (Hugo on port 1313)
+> 3. Run Lighthouse in Chrome DevTools on each route listed below
+> 4. Record scores and verify Astro is within 5 points of Hugo on perf, a11y, SEO
+
+| Route | Hugo Perf | Hugo A11y | Hugo SEO | Astro Perf | Astro A11y | Astro SEO |
+|-------|-----------|-----------|----------|------------|------------|-----------|
+| `/` | - | - | - | - | - | - |
+| `/about/` | - | - | - | - | - | - |
+| `/contact/` | - | - | - | - | - | - |
+| `/blog/` | - | - | - | - | - | - |
+| `/how-i-ai/` | - | - | - | - | - | - |
