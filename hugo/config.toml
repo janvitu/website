@@ -15,16 +15,16 @@ languageCode = "en"
         name = "Home"
         url = "/"
         weight = 1
-      # [[languages.en.menu.main]]
-      #   identifier = "work"
-      #   name = "Work"
-      #   url = "/work/"
-      #   weight = 1
+      [[languages.en.menu.main]]
+        identifier = "work"
+        name = "Work"
+        url = "/work/"
+        weight = 2
       [[languages.en.menu.main]]
         identifier = "about"
         name = "About"
         url = "/about/"
-        weight = 2
+        weight = 3
       # [[languages.en.menu.main]]
       #   identifier = "blog"
       #   name = "Blog"
