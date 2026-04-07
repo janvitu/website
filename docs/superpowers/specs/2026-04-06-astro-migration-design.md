@@ -59,6 +59,7 @@ Deleted at cutover: `hugo/`, `app/`, `vite.config.ts`, `tsconfig.node.json`, all
 ## URL Preservation
 
 Hugo currently emits:
+
 - `/` (homepage)
 - `/about/`
 - `/work/`, `/work/<slug>/`
@@ -89,19 +90,23 @@ Astro file-based routing matches 1:1 via `src/pages/*.astro` and `[slug].astro` 
 `src/content/config.ts`:
 
 ```ts
-import { defineCollection, z } from 'astro:content';
+import { defineCollection, z } from "astro:content";
 
 const blog = defineCollection({
-  type: 'content',
-  schema: z.object({
-    title: z.string(),
-    date: z.date(),
-    // ... audited from existing .md frontmatter
-  }),
+	type: "content",
+	schema: z.object({
+		title: z.string(),
+		date: z.date(),
+		// ... audited from existing .md frontmatter
+	}),
 });
 
-const work = defineCollection({ /* ... */ });
-const pages = defineCollection({ /* ... */ });
+const work = defineCollection({
+	/* ... */
+});
+const pages = defineCollection({
+	/* ... */
+});
 
 export const collections = { blog, work, pages };
 ```

@@ -39,7 +39,9 @@ function isActive(href: string): boolean {
 									class={`nav-mobile-kanji absolute right-full top-1/2 -translate-y-1/2 mr-2 text-sm select-none leading-none pointer-events-none${isActive(link.href) ? " nav-mobile-kanji--active" : ""}`}
 									style="color: var(--color-accent);"
 									aria-hidden="true"
-								>{link.kanji}</span>
+								>
+									{link.kanji}
+								</span>
 								<a
 									href={link.href}
 									class={`nav-label-mobile link-strikethrough${isActive(link.href) ? " link-strikethrough--active" : ""} text-base font-semibold text-[var(--nav-text)] whitespace-nowrap`}
@@ -83,7 +85,9 @@ function isActive(href: string): boolean {
 								class={`nav-kanji block text-sm select-none leading-none mb-1.5${isActive(link.href) ? " nav-kanji--active" : ""}`}
 								style="color: var(--color-accent);"
 								aria-hidden="true"
-							>{link.kanji}</span>
+							>
+								{link.kanji}
+							</span>
 							<div class="relative flex items-center justify-center">
 								<a
 									href={link.href}
@@ -94,7 +98,7 @@ function isActive(href: string): boolean {
 								</a>
 								<span
 									class={`nav-dot${isActive(link.href) ? " nav-dot--active" : ""}`}
-								></span>
+								/>
 							</div>
 						</li>
 					))
@@ -107,8 +111,8 @@ function isActive(href: string): boolean {
 			<span
 				class="text-[9px] tracking-[0.2em] uppercase select-none"
 				style="writing-mode: vertical-rl; transform: rotate(180deg); color: var(--nav-dot-color);"
-				aria-hidden="true"
-			>menu</span>
+				aria-hidden="true">menu</span
+			>
 		</div>
 	</div>
 </header>
