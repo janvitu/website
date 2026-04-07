@@ -1,4 +1,5 @@
 <!-- GSD:project-start source:PROJECT.md -->
+
 ## Project
 
 **How I AI**
@@ -17,19 +18,25 @@ A new page on Jan's personal website at `/how-i-ai` - a living knowledge base ab
 <!-- GSD:project-end -->
 
 <!-- GSD:stack-start source:codebase/STACK.md -->
+
 ## Technology Stack
 
 ## Languages
+
 - HTML (Go Templating via Hugo) - Hugo layout templates in `hugo/layouts/`
 - TypeScript 5.8.x - Hugo vanilla TS in `hugo/assets/ts/`, SolidJS app in `app/`
 - CSS - Static styles in `hugo/static/css/`, Tailwind compiled to `hugo/assets/css/tw.css`
 - Markdown - Content files in `hugo/content/`
 - TOML - Hugo site configuration in `hugo/config.toml`
+
 ## Runtime
+
 - Node.js v23.6.0 (no lockfile version requirement enforced; no `.nvmrc` or `.node-version`)
 - pnpm (lockfileVersion 9.0)
 - Lockfile: `pnpm-lock.yaml` present and committed
+
 ## Frameworks
+
 - Hugo v0.159.0+extended - Static site generator (SSG), builds from `hugo/` into `dist/`
 - SolidJS 1.9.x - Reactive UI micro-app for cookie consent, compiled separately by Vite, mounted into Hugo pages
 - Vite 6.3.x - Bundles the SolidJS cookie consent app (`app/`), outputs to `app/dist/`
@@ -43,12 +50,16 @@ A new page on Jan's personal website at `/how-i-ai` - a living knowledge base ab
 - motion 12.16.x - Animation library (Motion One), used in `hugo/assets/ts/index.ts` for scroll indicator animations
 - zod 3.25.x - Schema validation; present in dependencies (used in cookie consent app)
 - @netlify/functions 4.1.4 - Serverless functions SDK; `netlify.toml` points `functions="functions/"` but no `functions/` directory exists in the repo (referenced via `.netlify/v1/functions/`)
+
 ## Key Dependencies
+
 - `solid-js` 1.9.x - The entire cookie consent UI (`app/`) is a SolidJS reactive application
 - `motion` 12.16.x - Used for scroll indicator bounce animation in `hugo/assets/ts/index.ts`
 - `zod` 3.25.x - Validation within cookie consent app
 - `@netlify/functions` 4.1.4 - Netlify serverless function runtime adapter (no active functions authored yet)
+
 ## Configuration
+
 - `vite.config.ts` - Vite config; root set to `app/`, target `esnext`, SolidJS plugin
 - `tailwind.config.js` - Tailwind content globs: `./hugo/**/*.{html,md,svg,tsx,ts}`; typography plugin
 - `tsconfig.json` - Strict TypeScript, `jsxImportSource: "solid-js"`, targets ESNext
@@ -57,12 +68,16 @@ A new page on Jan's personal website at `/how-i-ai` - a living knowledge base ab
 - `netlify.toml` - Build command: `npm run build`, publish dir: `dist`, functions dir: `functions/`
 - No `.env` file present in repo; no environment variables required for local development
 - No secrets infrastructure detected (no env var loading, no config referencing secrets)
+
 ## Build Outputs
+
 - Hugo builds to `dist/` (configured in `hugo/config.toml` as `publishDir = "../dist"`)
 - Vite SolidJS build to `app/dist/` (manually synced to Hugo assets - currently commented out in `vite.config.ts`)
 - Tailwind compiles to `hugo/assets/css/tw.css` (fingerprinted by Hugo at build time)
 - Hugo processes `hugo/assets/ts/index.ts` via `js.Build` into a fingerprinted JS bundle
+
 ## Platform Requirements
+
 - Node.js (v23.6.0 used locally; no enforced minimum)
 - Hugo v0.159.0+extended (required for `js.Build` and asset fingerprinting)
 - pnpm for package management
@@ -71,9 +86,11 @@ A new page on Jan's personal website at `/how-i-ai` - a living knowledge base ab
 <!-- GSD:stack-end -->
 
 <!-- GSD:conventions-start source:CONVENTIONS.md -->
+
 ## Conventions
 
 ## Naming Patterns
+
 - SolidJS components: PascalCase (e.g., `CookieBanner.tsx`, `CookieDialog.tsx`)
 - Utility modules: PascalCase for the file name (e.g., `Cookies.ts`)
 - Hugo partials: PascalCase directories, kebab-case for some files (e.g., `CookieConsent/`, `articlePreview.html`)
@@ -91,7 +108,9 @@ A new page on Jan's personal website at `/how-i-ai` - a living knowledge base ab
 - BEM-style modifier pattern with double dash for variants: `.link-strikethrough`, `.link-strikethrough--active`, `.text-strikethrough--interactive`
 - Custom utility classes in `hugo/assets/css/tailwind.css` use kebab-case
 - Tailwind utility classes used inline via `class=` (not `className=`)
+
 ## Code Style
+
 - Tool: Prettier
 - Config: `/.prettierrc` (root), `/hugo/.prettierrc` (Hugo templates)
 - Tabs for indentation (`useTabs: true`), `tabWidth: 2`
@@ -103,33 +122,46 @@ A new page on Jan's personal website at `/how-i-ai` - a living knowledge base ab
 - `isolatedModules: true`
 - `noEmit: true` (Vite handles compilation)
 - No ESLint - Prettier only
+
 ## Import Organization
+
 - Root alias: `app/` maps to the `app/` directory (configured via `tsconfig.json` `paths: { "*": ["*"] }`)
 - Example: `import { LangData } from "app/app"` in `app/src/components/Dialog/Slide.tsx`
 - Used in `app/src/components/Buttons/index.ts` to re-export both button components
 - Pattern: named re-exports only, no default exports
+
 ## Error Handling
+
 - Context guard in custom hooks - throws `Error` if context is missing:
 - Optional chaining for DOM queries: `scrollToTopButton?.addEventListener(...)`, `node.parentNode?.replaceChild(...)`
 - Loose type suppression when integrating with browser globals: `// @ts-ignore` for `gtag()` in `app/src/utils/Cookies.ts`
 - File-level `// @ts-nocheck` used in `app/src/context/cookieProvider.tsx` (avoid adding more of these)
 - Some component props typed as `any` in `CookieBanner.tsx`, `CookieDialog.tsx`, `Consent`, `About`, `DialogButtons` - this is a known quality gap, not a pattern to follow
+
 ## Logging
+
 - No `console.log` calls in production source
 - Single `console.log` in a commented-out Vite plugin in `vite.config.ts`
+
 ## Comments
+
 - Grouping CSS sections: `/* COMPONENTS */` comment blocks in `tailwind.css`
 - Explaining non-obvious logic: `// Stop the animation once the indicator scrolls out of view` in `hugo/assets/ts/index.ts`
 - Suppressing type errors: inline `// @ts-ignore` with implicit rationale
 - Hugo template comments: `{{/* comment */}}` for Go template notes
 - Not used - no JSDoc annotations anywhere in the source
+
 ## Function Design
+
 ## Module Design
+
 - Named exports only - no default exports anywhere in `app/src/`
 - Hugo TypeScript files (`hugo/assets/ts/`) use named exports for utilities, no exports for side-effect entry modules (`index.ts`, `glossary.ts`)
 - Used only at `app/src/components/Buttons/index.ts`
 - Keep barrel files to re-export only, no logic
+
 ## Hugo Template Conventions
+
 - All user-facing strings use `{{ i18n "key" }}` with a `| default "fallback"` for safety
 - Translation keys in dot-notation: `"footer.scrolltotop"`, `"lang-switch.label"`
 - Translation files: `hugo/i18n/en.json`, `hugo/i18n/cs.json`
@@ -146,15 +178,19 @@ A new page on Jan's personal website at `/how-i-ai` - a living knowledge base ab
 <!-- GSD:conventions-end -->
 
 <!-- GSD:architecture-start source:ARCHITECTURE.md -->
+
 ## Architecture
 
 ## Pattern Overview
+
 - Hugo static site generator handles all page rendering and routing
 - SolidJS micro-app compiled separately handles the cookie consent UI island
 - Tailwind CSS compiled as an asset pipeline step, consumed by Hugo
 - TypeScript scripts compiled by Hugo's `js.Build` pipeline at build time
 - No server-side logic; deployment to Netlify static hosting with optional Netlify Functions
+
 ## Layers
+
 - Purpose: Source of truth for page content and metadata
 - Location: `hugo/content/`
 - Contains: Markdown (`.md`) and HTML content files, organized by section (blog, about, contact, work)
@@ -185,10 +221,14 @@ A new page on Jan's personal website at `/how-i-ai` - a living knowledge base ab
 - Contains: `process.json` (Czech), `process.en.json` (English) - process step cards used on homepage
 - Depends on: Nothing
 - Used by: `hugo/layouts/partials/process.html`
+
 ## Data Flow
+
 - SolidJS `createContext` + `createSignal` in `app/src/context/cookieProvider.tsx` manages cookie consent state across the island
 - Hugo pages carry no client-side shared state; each page is stateless after render
+
 ## Key Abstractions
+
 - Purpose: Reusable template fragments injected into layouts
 - Examples: `hugo/layouts/partials/header.html`, `hugo/layouts/partials/footer.html`, `hugo/layouts/partials/head.html`, `hugo/layouts/partials/process.html`
 - Pattern: `{{ partial "name.html" . }}` - always pass the current page context (`.`)
@@ -204,7 +244,9 @@ A new page on Jan's personal website at `/how-i-ai` - a living knowledge base ab
 - Purpose: All display text in Hugo templates
 - Examples: `hugo/i18n/en.json`, `hugo/i18n/cs.json`
 - Pattern: `{{ i18n "key" }}` in templates; `{{ i18n "nested.key" }}` for nested keys
+
 ## Entry Points
+
 - Location: `hugo/config.toml`
 - Triggers: `npm run build:hugo` (or `dev:hugo`)
 - Responsibilities: Defines site title, languages, menus, publish dir (`../dist`), and minification
@@ -217,31 +259,38 @@ A new page on Jan's personal website at `/how-i-ai` - a living knowledge base ab
 - Location: `hugo/assets/ts/index.ts`
 - Triggers: Hugo `js.Build` during build; `defer` script load at runtime
 - Responsibilities: Scroll-to-top button wiring, scroll indicator animation using `motion`
+
 ## Error Handling
+
 - SolidJS context: `useCookieContext` throws `Error` if consumed outside `CookieProvider`
 - Cookie parsing: `getCookie` returns `undefined` on miss; `App` defaults to `{ analytics_storage: false, ad_storage: false }`
 - Hugo build: Template errors surface as build-time failures stopping deployment
+
 ## Cross-Cutting Concerns
+
 <!-- GSD:architecture-end -->
 
 <!-- GSD:workflow-start source:GSD defaults -->
+
 ## GSD Workflow Enforcement
 
 Before using Edit, Write, or other file-changing tools, start work through a GSD command so planning artifacts and execution context stay in sync.
 
 Use these entry points:
+
 - `/gsd:quick` for small fixes, doc updates, and ad-hoc tasks
 - `/gsd:debug` for investigation and bug fixing
 - `/gsd:execute-phase` for planned phase work
 
 Do not make direct repo edits outside a GSD workflow unless the user explicitly asks to bypass it.
+
 <!-- GSD:workflow-end -->
 
-
-
 <!-- GSD:profile-start -->
+
 ## Developer Profile
 
 > Profile not yet configured. Run `/gsd:profile-user` to generate your developer profile.
 > This section is managed by `generate-claude-profile` -- do not edit manually.
+
 <!-- GSD:profile-end -->

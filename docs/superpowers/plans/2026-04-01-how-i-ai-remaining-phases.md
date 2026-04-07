@@ -13,25 +13,28 @@
 ## File Structure
 
 ### Files to Create
-| File | Responsibility |
-|------|---------------|
-| `hugo/assets/ts/tabs.ts` | Tab switching logic: click handlers, hash sync, transitions |
-| `hugo/layouts/partials/nav/how-i-ai-button.html` | LED-style nav button partial for the how-i-ai link |
+
+| File                                             | Responsibility                                              |
+| ------------------------------------------------ | ----------------------------------------------------------- |
+| `hugo/assets/ts/tabs.ts`                         | Tab switching logic: click handlers, hash sync, transitions |
+| `hugo/layouts/partials/nav/how-i-ai-button.html` | LED-style nav button partial for the how-i-ai link          |
 
 ### Files to Modify
-| File | Changes |
-|------|---------|
-| `hugo/assets/ts/index.ts` | Import and call `initTabs()` |
-| `hugo/assets/css/tailwind.css` | Add tab panel transition styles + LED button styles |
-| `hugo/layouts/partials/terminal-frame.html` | Add transition classes to content area |
-| `hugo/layouts/partials/header.html` | Render LED button after standard nav items |
-| `hugo/config.toml` | Add how-i-ai menu entry |
+
+| File                                        | Changes                                             |
+| ------------------------------------------- | --------------------------------------------------- |
+| `hugo/assets/ts/index.ts`                   | Import and call `initTabs()`                        |
+| `hugo/assets/css/tailwind.css`              | Add tab panel transition styles + LED button styles |
+| `hugo/layouts/partials/terminal-frame.html` | Add transition classes to content area              |
+| `hugo/layouts/partials/header.html`         | Render LED button after standard nav items          |
+| `hugo/config.toml`                          | Add how-i-ai menu entry                             |
 
 ---
 
 ## Task 1: Create `tabs.ts` with basic tab switching
 
 **Files:**
+
 - Create: `hugo/assets/ts/tabs.ts`
 - Modify: `hugo/assets/ts/index.ts`
 
@@ -76,6 +79,7 @@ export const initTabs = (): void => {
 ```
 
 Key details:
+
 - Named export (project convention -- no default exports)
 - Uses `querySelectorAll` with ARIA role selectors to match the DOM contract from Phase 4-01
 - `activateTab` extracted as inner function -- will be extended with hash sync in Task 3
@@ -97,7 +101,7 @@ import { initTabs } from "./tabs";
 Add this call at the end of the `DOMContentLoaded` callback body (after the observer block, before the closing `});`):
 
 ```typescript
-	initTabs();
+initTabs();
 ```
 
 Do NOT restructure any existing code. Only add the import and the function call.
@@ -132,6 +136,7 @@ Expected: Hugo dev server starts at `http://localhost:1313`
 - [ ] **Step 2: Open the page and verify tab switching**
 
 Open `http://localhost:1313/how-i-ai` in a browser. Check:
+
 1. "My Stack" tab is active by default (accent orange underline, bright text)
 2. Click "Setup" -- Setup content appears, My Stack hides, Setup tab gets orange underline
 3. Click "Workflow" -- Workflow content appears, Setup hides
@@ -146,6 +151,7 @@ Open `http://localhost:1313/how-i-ai` in a browser. Check:
 ## Task 3: Add URL hash sync to tab switching
 
 **Files:**
+
 - Modify: `hugo/assets/ts/tabs.ts`
 
 - [ ] **Step 1: Extend `activateTab` to update URL hash, and add hash-based activation on load**
@@ -211,6 +217,7 @@ export const initTabs = (): void => {
 ```
 
 Key details:
+
 - `validIds` set prevents activation of arbitrary hash values
 - `history.replaceState` instead of `pushState` -- avoids polluting browser history with every tab click
 - `updateHash` parameter: `false` when activating from hash (prevents redundant hash write)
@@ -238,6 +245,7 @@ navigates between tabs via hashchange listener."
 ## Task 4: Add smooth CSS transitions when switching tabs
 
 **Files:**
+
 - Modify: `hugo/assets/css/tailwind.css`
 - Modify: `hugo/assets/ts/tabs.ts`
 
@@ -259,6 +267,7 @@ In `hugo/assets/css/tailwind.css`, add this block after the `[data-theme="termin
 ```
 
 Key details:
+
 - Short 150ms fade-in -- fast enough to feel snappy, visible enough to soften the switch
 - Hidden panels use `display: none` (matches existing `hidden` attribute behavior)
 - `.tab-entering` class applied briefly by JS to trigger the fade-in from 0 to 1
@@ -268,29 +277,30 @@ Key details:
 In `hugo/assets/ts/tabs.ts`, update the `activateTab` function. Replace the `tabPanels.forEach` block:
 
 ```typescript
-		tabPanels.forEach((panel) => {
-			panel.hidden = panel.getAttribute("data-tab-id") !== targetId;
-		});
+tabPanels.forEach((panel) => {
+	panel.hidden = panel.getAttribute("data-tab-id") !== targetId;
+});
 ```
 
 With:
 
 ```typescript
-		tabPanels.forEach((panel) => {
-			if (panel.getAttribute("data-tab-id") === targetId) {
-				panel.hidden = false;
-				panel.classList.add("tab-entering");
-				requestAnimationFrame(() => {
-					panel.classList.remove("tab-entering");
-				});
-			} else {
-				panel.hidden = true;
-				panel.classList.remove("tab-entering");
-			}
+tabPanels.forEach((panel) => {
+	if (panel.getAttribute("data-tab-id") === targetId) {
+		panel.hidden = false;
+		panel.classList.add("tab-entering");
+		requestAnimationFrame(() => {
+			panel.classList.remove("tab-entering");
 		});
+	} else {
+		panel.hidden = true;
+		panel.classList.remove("tab-entering");
+	}
+});
 ```
 
 Key details:
+
 - `requestAnimationFrame` ensures the browser paints `opacity: 0` before removing the class triggers the CSS transition to `opacity: 1`
 - Hidden panels are hidden immediately (no fade-out -- matches terminal tab behavior)
 - The `.tab-entering` class is removed in the next frame, letting CSS `transition: opacity 0.15s` animate from 0 to 1
@@ -339,6 +349,7 @@ Run: `npm run dev`
 ## Task 6: Add `how-i-ai` menu entry in Hugo config
 
 **Files:**
+
 - Modify: `hugo/config.toml`
 
 - [ ] **Step 1: Add the menu entry**
@@ -356,6 +367,7 @@ In `hugo/config.toml`, add a new menu entry after the "Contact" entry (inside `[
 ```
 
 Key details:
+
 - `weight = 5` places it after Contact (weight 4)
 - Custom param `style = "led-button"` lets the header template detect this item and render it differently
 - The `name` uses the same "How I AI" title as the page
@@ -381,6 +393,7 @@ render a distinctive button style."
 ## Task 7: Create the LED button nav partial
 
 **Files:**
+
 - Create: `hugo/layouts/partials/nav/how-i-ai-button.html`
 
 - [ ] **Step 1: Create the LED button partial**
@@ -393,7 +406,15 @@ Create `hugo/layouts/partials/nav/how-i-ai-button.html`:
 	href="{{ .URL }}"
 	class="how-i-ai-nav-button inline-flex items-center gap-2 rounded-md px-3 py-1.5 text-sm font-semibold whitespace-nowrap transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
 	style="border: 1px solid var(--color-accent, #ff4309); color: var(--color-accent, #ff4309);"
-	{{ if eq $.Page.RelPermalink .URL }}aria-current="page"{{ end }}
+	{{
+	if
+	eq
+	$.Page.RelPermalink
+	.URL
+	}}aria-current="page"
+	{{
+	end
+	}}
 >
 	<span
 		class="led-dot"
@@ -405,6 +426,7 @@ Create `hugo/layouts/partials/nav/how-i-ai-button.html`:
 ```
 
 Key details:
+
 - `inline-flex items-center gap-2` for LED dot + text alignment
 - Accent-colored border gives button feel without background (keeps it light/modern)
 - LED dot: 6px circle with accent color + double box-shadow for glow effect
@@ -424,6 +446,7 @@ Expected: PASS
 ## Task 8: Update `header.html` to render the LED button
 
 **Files:**
+
 - Modify: `hugo/layouts/partials/header.html`
 
 - [ ] **Step 1: Add conditional rendering for LED-button style items**
@@ -431,32 +454,39 @@ Expected: PASS
 In `hugo/layouts/partials/header.html`, replace the nav `<ul>` loop (lines 5-19):
 
 ```html
-		<ul
-			class="flex items-center gap-4 text-base font-semibold text-neutral-800 md:gap-10 md:text-2xl"
+<ul
+	class="flex items-center gap-4 text-base font-semibold text-neutral-800 md:gap-10 md:text-2xl"
+>
+	{{ range .Site.Menus.main }} {{ if ne .Params.hidden "true" }} {{ if eq
+	.Params.style "led-button" }}
+	<li>
+		{{ partial "nav/how-i-ai-button.html" (dict "URL" .URL "Name" .Name "Page"
+		$.Page) }}
+	</li>
+	{{ else }}
+	<li>
+		<a
+			class="link-strikethrough {{ if eq $.Page.RelPermalink .URL }}link-strikethrough--active{{ end }} whitespace-nowrap"
+			href="{{ .URL }}"
+			{{
+			if
+			eq
+			$.Page.RelPermalink
+			.URL
+			}}aria-current="page"
+			{{
+			end
+			}}
 		>
-			{{ range .Site.Menus.main }}
-				{{ if ne .Params.hidden "true" }}
-					{{ if eq .Params.style "led-button" }}
-						<li>
-							{{ partial "nav/how-i-ai-button.html" (dict "URL" .URL "Name" .Name "Page" $.Page) }}
-						</li>
-					{{ else }}
-						<li>
-							<a
-								class="link-strikethrough {{ if eq $.Page.RelPermalink .URL }}link-strikethrough--active{{ end }} whitespace-nowrap"
-								href="{{ .URL }}"
-								{{ if eq $.Page.RelPermalink .URL }}aria-current="page"{{ end }}
-							>
-								{{ .Name }}
-							</a>
-						</li>
-					{{ end }}
-				{{ end }}
-			{{ end }}
-		</ul>
+			{{ .Name }}
+		</a>
+	</li>
+	{{ end }} {{ end }} {{ end }}
+</ul>
 ```
 
 Key details:
+
 - Items with `style = "led-button"` param render via the LED button partial
 - All other items render exactly as before (no visual change to existing nav)
 - Context dict passes `.URL`, `.Name`, and `$.Page` to the partial
@@ -483,6 +513,7 @@ focus/aria attributes. Other nav items unchanged."
 ## Task 9: Add LED button CSS for hover and active-page states
 
 **Files:**
+
 - Modify: `hugo/assets/css/tailwind.css`
 
 - [ ] **Step 1: Add LED button styles**
@@ -494,7 +525,9 @@ In `hugo/assets/css/tailwind.css`, add this block after the `/* COMPONENTS */` s
 	background-color: rgba(255, 67, 9, 0.08);
 }
 .how-i-ai-nav-button:hover .led-dot {
-	box-shadow: 0 0 6px rgba(255, 67, 9, 0.8), 0 0 12px rgba(255, 67, 9, 0.4);
+	box-shadow:
+		0 0 6px rgba(255, 67, 9, 0.8),
+		0 0 12px rgba(255, 67, 9, 0.4);
 }
 .how-i-ai-nav-button[aria-current="page"] {
 	background-color: rgba(255, 67, 9, 0.1);
@@ -502,6 +535,7 @@ In `hugo/assets/css/tailwind.css`, add this block after the `/* COMPONENTS */` s
 ```
 
 Key details:
+
 - Hover: subtle accent tint background + intensified LED glow
 - Active page: slightly stronger accent tint (persistent)
 - No color change on the text or border -- just background tint and glow intensity
@@ -563,21 +597,23 @@ Run: `npm run dev`
 
 ### Spec Coverage
 
-| Requirement | Task | Status |
-|-------------|------|--------|
-| TABS-01 (click to switch) | Task 1 | Covered -- `activateTab` toggles panels and visual state |
-| TABS-02 (URL hash sync) | Task 3 | Covered -- `replaceState` + `hashchange` listener |
-| TABS-03 (smooth transitions) | Task 4 | Covered -- CSS opacity transition 150ms |
-| NAV-01 (accessible from nav) | Task 6 | Covered -- menu entry in config.toml |
-| NAV-02 (distinct button style) | Tasks 7, 8 | Covered -- accent border + LED partial |
-| NAV-03 (LED indicator dot) | Task 7 | Covered -- 6px dot with box-shadow glow |
+| Requirement                    | Task       | Status                                                   |
+| ------------------------------ | ---------- | -------------------------------------------------------- |
+| TABS-01 (click to switch)      | Task 1     | Covered -- `activateTab` toggles panels and visual state |
+| TABS-02 (URL hash sync)        | Task 3     | Covered -- `replaceState` + `hashchange` listener        |
+| TABS-03 (smooth transitions)   | Task 4     | Covered -- CSS opacity transition 150ms                  |
+| NAV-01 (accessible from nav)   | Task 6     | Covered -- menu entry in config.toml                     |
+| NAV-02 (distinct button style) | Tasks 7, 8 | Covered -- accent border + LED partial                   |
+| NAV-03 (LED indicator dot)     | Task 7     | Covered -- 6px dot with box-shadow glow                  |
 
 ### Placeholder Scan
+
 - No "TBD", "TODO", "implement later" in any task
 - All code blocks contain complete, copy-paste-ready code
 - All commands include expected output
 
 ### Type Consistency
+
 - `initTabs` -- same name in `tabs.ts` export and `index.ts` import
 - `activateTab` -- internal function, consistent signature throughout
 - `data-tab` attribute on buttons matched by `getAttribute("data-tab")` in JS

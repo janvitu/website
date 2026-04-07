@@ -109,6 +109,7 @@ website/
 ### Task 1: Create parity checklist
 
 **Files:**
+
 - Create: `docs/superpowers/migration-parity.md`
 
 - [ ] **Step 1: Write the checklist file**
@@ -119,6 +120,7 @@ website/
 For each route, build both stacks (`pnpm build:hugo`, `pnpm build:astro`), serve them locally, and visually compare. Tick only after side-by-side verification.
 
 ## Routes
+
 - [ ] `/` (homepage)
 - [ ] `/about/`
 - [ ] `/contact/`
@@ -134,6 +136,7 @@ For each route, build both stacks (`pnpm build:hugo`, `pnpm build:astro`), serve
 - [ ] robots.txt / sitemap
 
 ## Cross-cutting
+
 - [ ] Fonts load (Gilroy) and render identically
 - [ ] Tailwind custom utilities (`.base-grid`, `.link-strikethrough`, `.center--horizontal-vertical`)
 - [ ] Scroll-to-top button works
@@ -156,6 +159,7 @@ git commit -m "docs: add migration parity checklist"
 ### Task 2: Install Astro and integrations
 
 **Files:**
+
 - Modify: `package.json`
 - Modify: `pnpm-lock.yaml` (auto)
 
@@ -200,6 +204,7 @@ git commit -m "chore: install astro 5 and netlify adapter"
 ### Task 3: Create `astro.config.mjs`
 
 **Files:**
+
 - Create: `astro.config.mjs`
 - Create: `src/env.d.ts`
 
@@ -211,24 +216,24 @@ import netlify from "@astrojs/netlify";
 import tailwindcss from "@tailwindcss/vite";
 
 export default defineConfig({
-  site: "https://janvitu.com",
-  output: "hybrid",
-  adapter: netlify(),
-  trailingSlash: "always",
-  build: {
-    format: "directory",
-  },
-  i18n: {
-    defaultLocale: "en",
-    locales: ["en", "cs"],
-    routing: {
-      prefixDefaultLocale: false,
-    },
-  },
-  vite: {
-    plugins: [tailwindcss()],
-  },
-  outDir: "./dist-astro",
+	site: "https://janvitu.com",
+	output: "hybrid",
+	adapter: netlify(),
+	trailingSlash: "always",
+	build: {
+		format: "directory",
+	},
+	i18n: {
+		defaultLocale: "en",
+		locales: ["en", "cs"],
+		routing: {
+			prefixDefaultLocale: false,
+		},
+	},
+	vite: {
+		plugins: [tailwindcss()],
+	},
+	outDir: "./dist-astro",
 });
 ```
 
@@ -259,22 +264,23 @@ git commit -m "feat(astro): add astro config, hybrid output, i18n routing"
 ### Task 4: Update `tsconfig.json` for Astro
 
 **Files:**
+
 - Modify: `tsconfig.json`
 
 - [ ] **Step 1: Replace `tsconfig.json` contents**
 
 ```json
 {
-  "extends": "astro/tsconfigs/strict",
-  "compilerOptions": {
-    "jsx": "preserve",
-    "baseUrl": ".",
-    "paths": {
-      "~/*": ["src/*"]
-    }
-  },
-  "include": ["src/**/*", "astro.config.mjs", ".astro/types.d.ts"],
-  "exclude": ["dist", "dist-astro", "hugo", "app"]
+	"extends": "astro/tsconfigs/strict",
+	"compilerOptions": {
+		"jsx": "preserve",
+		"baseUrl": ".",
+		"paths": {
+			"~/*": ["src/*"]
+		}
+	},
+	"include": ["src/**/*", "astro.config.mjs", ".astro/types.d.ts"],
+	"exclude": ["dist", "dist-astro", "hugo", "app"]
 }
 ```
 
@@ -306,6 +312,7 @@ git commit -m "chore(ts): switch tsconfig to astro strict preset"
 ### Task 5: Update Tailwind content globs
 
 **Files:**
+
 - Modify: `tailwind.config.js`
 - Create: `src/styles/global.css`
 
@@ -346,6 +353,7 @@ git commit -m "chore(tw): expand content globs to src/, add astro entry css"
 ### Task 6: Port custom CSS verbatim
 
 **Files:**
+
 - Create: `src/styles/global.css` (append)
 - Create: `src/styles/fonts.css`
 - Create: `src/styles/legacy.css`
@@ -353,6 +361,7 @@ git commit -m "chore(tw): expand content globs to src/, add astro entry css"
 - [ ] **Step 1: Read source files**
 
 Read these and copy their contents to the new locations:
+
 - `hugo/assets/css/tailwind.css` → append everything BELOW the `@import "tailwindcss"` line into `src/styles/global.css`
 - `hugo/static/css/fonts.css` → `src/styles/fonts.css`
 - `hugo/static/css/style.css` → `src/styles/legacy.css`
@@ -381,6 +390,7 @@ git commit -m "feat(styles): port hugo custom css verbatim into src/styles"
 ### Task 7: Copy static assets to `public/`
 
 **Files:**
+
 - Create: `public/` with copied contents
 
 - [ ] **Step 1: Copy non-CSS static files**
@@ -424,6 +434,7 @@ git commit -m "feat(public): copy hugo static assets to public/"
 ### Task 8: Port i18n strings and create translator helper
 
 **Files:**
+
 - Create: `src/i18n/en.json`
 - Create: `src/i18n/cs.json`
 - Create: `src/i18n/ui.ts`
@@ -457,27 +468,25 @@ import { ui, defaultLocale, type Locale } from "./ui";
 type Dict = Record<string, unknown>;
 
 function lookup(dict: Dict, key: string): string | undefined {
-  const parts = key.split(".");
-  let cur: unknown = dict;
-  for (const p of parts) {
-    if (cur && typeof cur === "object" && p in (cur as Dict)) {
-      cur = (cur as Dict)[p];
-    } else {
-      return undefined;
-    }
-  }
-  return typeof cur === "string" ? cur : undefined;
+	const parts = key.split(".");
+	let cur: unknown = dict;
+	for (const p of parts) {
+		if (cur && typeof cur === "object" && p in (cur as Dict)) {
+			cur = (cur as Dict)[p];
+		} else {
+			return undefined;
+		}
+	}
+	return typeof cur === "string" ? cur : undefined;
 }
 
 export function getT(locale: string | undefined) {
-  const loc = (locale && locale in ui ? locale : defaultLocale) as Locale;
-  const dict = ui[loc] as Dict;
-  const fallback = ui[defaultLocale] as Dict;
-  return function t(key: string, fallbackText?: string): string {
-    return (
-      lookup(dict, key) ?? lookup(fallback, key) ?? fallbackText ?? key
-    );
-  };
+	const loc = (locale && locale in ui ? locale : defaultLocale) as Locale;
+	const dict = ui[loc] as Dict;
+	const fallback = ui[defaultLocale] as Dict;
+	return function t(key: string, fallbackText?: string): string {
+		return lookup(dict, key) ?? lookup(fallback, key) ?? fallbackText ?? key;
+	};
 }
 ```
 
@@ -501,6 +510,7 @@ git commit -m "feat(i18n): port translations and add getT helper"
 ### Task 9: Create `BaseLayout.astro`
 
 **Files:**
+
 - Create: `src/layouts/BaseLayout.astro`
 - Create: `src/components/Head.astro`
 
@@ -515,39 +525,44 @@ Read `hugo/layouts/_default/baseof.html`, `hugo/layouts/partials/head.html`, `hu
 import "../styles/global.css";
 
 interface Props {
-  title: string;
-  description?: string;
-  ogImage?: string;
-  noindex?: boolean;
+	title: string;
+	description?: string;
+	ogImage?: string;
+	noindex?: boolean;
 }
 
-const { title, description = "", ogImage = "/images/og-default.png", noindex = false } = Astro.props;
+const {
+	title,
+	description = "",
+	ogImage = "/images/og-default.png",
+	noindex = false,
+} = Astro.props;
 const canonical = new URL(Astro.url.pathname, Astro.site).toString();
 ---
 
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>{title}</title>
-  <meta name="description" content={description} />
-  {noindex && <meta name="robots" content="noindex" />}
-  <link rel="canonical" href={canonical} />
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>{title}</title>
+	<meta name="description" content={description} />
+	{noindex && <meta name="robots" content="noindex" />}
+	<link rel="canonical" href={canonical} />
 
-  <!-- Favicons -->
-  <link rel="icon" type="image/x-icon" href="/favicon.ico" />
-  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
-  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
-  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
-  <link rel="manifest" href="/site.webmanifest" />
-  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#000000" />
+	<!-- Favicons -->
+	<link rel="icon" type="image/x-icon" href="/favicon.ico" />
+	<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+	<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+	<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+	<link rel="manifest" href="/site.webmanifest" />
+	<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#000000" />
 
-  <!-- Open Graph -->
-  <meta property="og:type" content="website" />
-  <meta property="og:title" content={title} />
-  <meta property="og:description" content={description} />
-  <meta property="og:image" content={ogImage} />
-  <meta property="og:url" content={canonical} />
-  <meta name="twitter:card" content="summary_large_image" />
+	<!-- Open Graph -->
+	<meta property="og:type" content="website" />
+	<meta property="og:title" content={title} />
+	<meta property="og:description" content={description} />
+	<meta property="og:image" content={ogImage} />
+	<meta property="og:url" content={canonical} />
+	<meta name="twitter:card" content="summary_large_image" />
 </head>
 ```
 
@@ -563,10 +578,10 @@ import Footer from "../components/Footer.astro";
 import HowIAiButton from "../components/HowIAiButton.astro";
 
 interface Props {
-  title: string;
-  description?: string;
-  ogImage?: string;
-  bodyClass?: string;
+	title: string;
+	description?: string;
+	ogImage?: string;
+	bodyClass?: string;
 }
 
 const { title, description, ogImage, bodyClass = "" } = Astro.props;
@@ -575,15 +590,15 @@ const locale = Astro.currentLocale ?? "en";
 
 <!doctype html>
 <html lang={locale}>
-  <Head title={title} description={description} ogImage={ogImage} />
-  <body class={bodyClass}>
-    <HowIAiButton />
-    <Nav />
-    <main>
-      <slot />
-    </main>
-    <Footer />
-  </body>
+	<Head title={title} description={description} ogImage={ogImage} />
+	<body class={bodyClass}>
+		<HowIAiButton />
+		<Nav />
+		<main>
+			<slot />
+		</main>
+		<Footer />
+	</body>
 </html>
 ```
 
@@ -595,6 +610,7 @@ const locale = Astro.currentLocale ?? "en";
 ---
 // src/components/Nav.astro
 ---
+
 <nav>nav stub</nav>
 ```
 
@@ -602,6 +618,7 @@ const locale = Astro.currentLocale ?? "en";
 ---
 // src/components/Footer.astro
 ---
+
 <footer>footer stub</footer>
 ```
 
@@ -609,6 +626,7 @@ const locale = Astro.currentLocale ?? "en";
 ---
 // src/components/HowIAiButton.astro
 ---
+
 <a href="/how-i-ai/">How I AI</a>
 ```
 
@@ -632,6 +650,7 @@ git commit -m "feat(layout): add BaseLayout, Head, and component stubs"
 ### Task 10: Port SVG icons as Astro components
 
 **Files:**
+
 - Create: `src/components/svg/*.astro` (one per file)
 
 - [ ] **Step 1: For each SVG in `hugo/layouts/partials/svg/`**
@@ -643,10 +662,11 @@ Read the file, then Write to `src/components/svg/<Name>.astro` as:
 ```astro
 ---
 interface Props {
-  class?: string;
+	class?: string;
 }
 const { class: className = "" } = Astro.props;
 ---
+
 <!-- paste exact SVG markup, add class={className} to the root <svg> tag -->
 ```
 
@@ -668,6 +688,7 @@ git commit -m "feat(svg): port hugo svg partials as astro components"
 ### Task 11: Implement real `Nav.astro`
 
 **Files:**
+
 - Modify: `src/components/Nav.astro`
 - Create: `src/components/LangSwitch.astro`
 
@@ -687,38 +708,40 @@ const t = getT(Astro.currentLocale);
 const path = Astro.url.pathname;
 
 const links = [
-  { href: "/", key: "nav.home", label: "Home" },
-  { href: "/work/", key: "nav.work", label: "Work" },
-  { href: "/about/", key: "nav.about", label: "About" },
-  { href: "/contact/", key: "nav.contact", label: "Contact" },
+	{ href: "/", key: "nav.home", label: "Home" },
+	{ href: "/work/", key: "nav.work", label: "Work" },
+	{ href: "/about/", key: "nav.about", label: "About" },
+	{ href: "/contact/", key: "nav.contact", label: "Contact" },
 ];
 
 function isActive(href: string) {
-  if (href === "/") return path === "/";
-  return path === href || path.startsWith(href);
+	if (href === "/") return path === "/";
+	return path === href || path.startsWith(href);
 }
 ---
 
 <header aria-label="Main navigation">
-  <a href="/" aria-label="Home">
-    <Logo class="h-8 w-auto" />
-  </a>
-  <nav>
-    <ul>
-      {links.map((l) => (
-        <li>
-          <a
-            href={l.href}
-            aria-current={isActive(l.href) ? "page" : undefined}
-            class={`link-strikethrough ${isActive(l.href) ? "link-strikethrough--active" : ""}`}
-          >
-            {t(l.key, l.label)}
-          </a>
-        </li>
-      ))}
-    </ul>
-  </nav>
-  <LangSwitch />
+	<a href="/" aria-label="Home">
+		<Logo class="h-8 w-auto" />
+	</a>
+	<nav>
+		<ul>
+			{
+				links.map((l) => (
+					<li>
+						<a
+							href={l.href}
+							aria-current={isActive(l.href) ? "page" : undefined}
+							class={`link-strikethrough ${isActive(l.href) ? "link-strikethrough--active" : ""}`}
+						>
+							{t(l.key, l.label)}
+						</a>
+					</li>
+				))
+			}
+		</ul>
+	</nav>
+	<LangSwitch />
 </header>
 ```
 
@@ -732,8 +755,9 @@ Port `hugo/layouts/partials/nav/langSwitch.html` verbatim. While Czech is unrout
 ---
 // Czech routes are reserved but not yet emitted; render English only.
 ---
+
 <div class="lang-switch" aria-label="Language">
-  <span>EN</span>
+	<span>EN</span>
 </div>
 ```
 
@@ -749,6 +773,7 @@ git commit -m "feat(nav): port header nav and lang switch from hugo"
 ### Task 12: Implement real `Footer.astro` and `HowIAiButton.astro`
 
 **Files:**
+
 - Modify: `src/components/Footer.astro`
 - Modify: `src/components/HowIAiButton.astro`
 
@@ -759,6 +784,7 @@ Read `hugo/layouts/partials/footer.html` and `hugo/layouts/partials/nav/how-i-ai
 - [ ] **Step 2: Port `Footer.astro`**
 
 Translate Hugo template to Astro:
+
 - Replace `{{ i18n "x" }}` with `{t("x", "fallback")}` after importing `getT`
 - Replace `{{ partial "svg/Foo.svg" }}` with `<Foo />` (import from `./svg/Foo.astro`)
 - Keep all classes, IDs, and `data-*` attributes byte-identical
@@ -780,6 +806,7 @@ git commit -m "feat(footer,nav): port footer and How I AI LED button"
 ### Task 13: Port vanilla TS scripts
 
 **Files:**
+
 - Create: `src/scripts/scroll-indicator.ts`
 - Create: `src/scripts/glossary.ts`
 - Create: `src/scripts/tabs.ts`
@@ -805,9 +832,9 @@ In `src/layouts/BaseLayout.astro`, ABOVE the closing `</body>` tag:
 
 ```astro
 <script>
-  import "../scripts/scroll-indicator.ts";
-  import "../scripts/glossary.ts";
-  import "../scripts/navigation.ts";
+	import "../scripts/scroll-indicator.ts";
+	import "../scripts/glossary.ts";
+	import "../scripts/navigation.ts";
 </script>
 ```
 
@@ -835,6 +862,7 @@ git commit -m "feat(scripts): port vanilla ts and wire into BaseLayout"
 ### Task 14: Port `/` (homepage)
 
 **Files:**
+
 - Create: `src/pages/index.astro`
 - Create: `src/components/SelectedProjects.astro`
 - Create: `src/components/Process.astro`
@@ -851,10 +879,10 @@ Convert `hugo/data/process.en.json` to a typed export:
 
 ```ts
 export interface ProcessStep {
-  // fields from process.en.json
+	// fields from process.en.json
 }
 export const process: ProcessStep[] = [
-  // copy entries verbatim
+	// copy entries verbatim
 ];
 ```
 
@@ -863,6 +891,7 @@ export const process: ProcessStep[] = [
 - [ ] **Step 3: Port the three section components**
 
 For each of `SelectedProjects.astro`, `Process.astro`, `ContactFooter.astro`:
+
 - Translate Hugo template to Astro
 - Replace `{{ i18n "x" }}` → `{t("x", "fallback")}`
 - Replace `{{ partial "svg/Foo.svg" }}` → `<Foo />` import
@@ -882,11 +911,14 @@ import { getT } from "../i18n/getT";
 const t = getT(Astro.currentLocale);
 ---
 
-<BaseLayout title={t("home.title", "Jan Vitu")} description={t("home.description", "")}>
-  <!-- port hero from _index.en.html verbatim -->
-  <SelectedProjects />
-  <Process />
-  <ContactFooter />
+<BaseLayout
+	title={t("home.title", "Jan Vitu")}
+	description={t("home.description", "")}
+>
+	<!-- port hero from _index.en.html verbatim -->
+	<SelectedProjects />
+	<Process />
+	<ContactFooter />
 </BaseLayout>
 ```
 
@@ -899,6 +931,7 @@ pnpm dev:astro
 ```
 
 In another terminal:
+
 ```bash
 pnpm dev:hugo
 ```
@@ -921,6 +954,7 @@ git commit -m "feat(astro): port homepage with hero, projects, process, contact"
 ### Task 15: Port `/about/`
 
 **Files:**
+
 - Create: `src/pages/about.astro`
 
 - [ ] **Step 1: Read Hugo source**
@@ -938,7 +972,7 @@ const t = getT(Astro.currentLocale);
 ---
 
 <BaseLayout title={t("about.title", "About")}>
-  <!-- paste content from _index.en.html, converted to Astro -->
+	<!-- paste content from _index.en.html, converted to Astro -->
 </BaseLayout>
 ```
 
@@ -956,6 +990,7 @@ git commit -m "feat(astro): port /about page"
 ### Task 16: Port `/contact/`
 
 **Files:**
+
 - Create: `src/pages/contact.astro`
 - Create: `src/components/ContactSide.astro`
 
@@ -981,6 +1016,7 @@ git commit -m "feat(astro): port /contact page"
 ### Task 17: Port `/privacy-policy/`
 
 **Files:**
+
 - Create: `src/pages/privacy-policy.astro`
 - Create: `src/content/pages/privacy-policy.md`
 
@@ -1002,9 +1038,9 @@ const { Content } = await entry.render();
 ---
 
 <BaseLayout title="Privacy Policy">
-  <article class="prose">
-    <Content />
-  </article>
+	<article class="prose">
+		<Content />
+	</article>
 </BaseLayout>
 ```
 
@@ -1024,6 +1060,7 @@ git commit -m "feat(astro): port /privacy-policy page"
 ### Task 18: Define content collections
 
 **Files:**
+
 - Create: `src/content/config.ts`
 
 - [ ] **Step 1: Audit existing markdown frontmatter**
@@ -1036,32 +1073,32 @@ Read each `.md` in `hugo/content/blog/**` and `hugo/content/work/**` (if any). N
 import { defineCollection, z } from "astro:content";
 
 const pages = defineCollection({
-  type: "content",
-  schema: z.object({
-    title: z.string().optional(),
-  }),
+	type: "content",
+	schema: z.object({
+		title: z.string().optional(),
+	}),
 });
 
 const blog = defineCollection({
-  type: "content",
-  schema: z.object({
-    title: z.string(),
-    date: z.coerce.date(),
-    description: z.string().optional(),
-    tags: z.array(z.string()).optional(),
-    draft: z.boolean().optional(),
-    // add fields discovered in step 1
-  }),
+	type: "content",
+	schema: z.object({
+		title: z.string(),
+		date: z.coerce.date(),
+		description: z.string().optional(),
+		tags: z.array(z.string()).optional(),
+		draft: z.boolean().optional(),
+		// add fields discovered in step 1
+	}),
 });
 
 const work = defineCollection({
-  type: "content",
-  schema: z.object({
-    title: z.string(),
-    date: z.coerce.date().optional(),
-    description: z.string().optional(),
-    // add fields discovered in step 1
-  }),
+	type: "content",
+	schema: z.object({
+		title: z.string(),
+		date: z.coerce.date().optional(),
+		description: z.string().optional(),
+		// add fields discovered in step 1
+	}),
 });
 
 export const collections = { pages, blog, work };
@@ -1089,6 +1126,7 @@ git commit -m "feat(content): define pages, blog, work collections"
 ### Task 19: Port `/work/`
 
 **Files:**
+
 - Create: `src/pages/work/index.astro`
 - Create: `src/pages/work/[slug].astro`
 - Create: `src/content/work/*.md` (copied)
@@ -1121,14 +1159,16 @@ entries.sort((a, b) => +(b.data.date ?? 0) - +(a.data.date ?? 0));
 ---
 
 <BaseLayout title={t("work.title", "Work")}>
-  <!-- port _index.en.html intro markup here -->
-  <ul>
-    {entries.map((e) => (
-      <li>
-        <a href={`/work/${e.slug}/`}>{e.data.title}</a>
-      </li>
-    ))}
-  </ul>
+	<!-- port _index.en.html intro markup here -->
+	<ul>
+		{
+			entries.map((e) => (
+				<li>
+					<a href={`/work/${e.slug}/`}>{e.data.title}</a>
+				</li>
+			))
+		}
+	</ul>
 </BaseLayout>
 ```
 
@@ -1140,23 +1180,25 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
 import { getCollection, type CollectionEntry } from "astro:content";
 
 export async function getStaticPaths() {
-  const entries = await getCollection("work");
-  return entries.map((entry) => ({
-    params: { slug: entry.slug },
-    props: { entry },
-  }));
+	const entries = await getCollection("work");
+	return entries.map((entry) => ({
+		params: { slug: entry.slug },
+		props: { entry },
+	}));
 }
 
-interface Props { entry: CollectionEntry<"work">; }
+interface Props {
+	entry: CollectionEntry<"work">;
+}
 const { entry } = Astro.props;
 const { Content } = await entry.render();
 ---
 
 <BaseLayout title={entry.data.title} description={entry.data.description}>
-  <article class="prose">
-    <h1>{entry.data.title}</h1>
-    <Content />
-  </article>
+	<article class="prose">
+		<h1>{entry.data.title}</h1>
+		<Content />
+	</article>
 </BaseLayout>
 ```
 
@@ -1176,6 +1218,7 @@ git commit -m "feat(astro): port /work index and detail pages"
 ### Task 20: Port `/blog/`
 
 **Files:**
+
 - Create: `src/pages/blog/index.astro`
 - Create: `src/pages/blog/[slug].astro`
 - Create: `src/components/ArticlePreview.astro`
@@ -1225,6 +1268,7 @@ git commit -m "feat(astro): port /blog index, detail, and components"
 ### Task 21: Port `404.astro`
 
 **Files:**
+
 - Create: `src/pages/404.astro`
 
 - [ ] **Step 1: Read `hugo/layouts/404.html`**
@@ -1235,8 +1279,9 @@ git commit -m "feat(astro): port /blog index, detail, and components"
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
 ---
+
 <BaseLayout title="404 Not Found">
-  <!-- ported 404 markup -->
+	<!-- ported 404 markup -->
 </BaseLayout>
 ```
 
@@ -1254,6 +1299,7 @@ git commit -m "feat(astro): port 404 page"
 ### Task 22: Port `/how-i-ai/`
 
 **Files:**
+
 - Create: `src/pages/how-i-ai/index.astro`
 - Create: `src/layouts/HowIAiLayout.astro`
 - Create: `src/components/TerminalFrame.astro`
@@ -1261,6 +1307,7 @@ git commit -m "feat(astro): port 404 page"
 - [ ] **Step 1: Read all How-I-AI sources**
 
 Read:
+
 - `hugo/layouts/how-i-ai/baseof.html`
 - `hugo/layouts/how-i-ai/list.html`
 - `hugo/content/how-i-ai/_index.en.html`
@@ -1280,23 +1327,27 @@ import Nav from "../components/Nav.astro";
 import Footer from "../components/Footer.astro";
 import HowIAiButton from "../components/HowIAiButton.astro";
 
-interface Props { title: string; description?: string; }
+interface Props {
+	title: string;
+	description?: string;
+}
 const { title, description } = Astro.props;
 ---
+
 <!doctype html>
 <html lang="en" class="dark">
-  <Head title={title} description={description} />
-  <body class="how-i-ai-theme">
-    <HowIAiButton />
-    <Nav />
-    <main>
-      <slot />
-    </main>
-    <Footer />
-    <script>
-      import "../scripts/tabs.ts";
-    </script>
-  </body>
+	<Head title={title} description={description} />
+	<body class="how-i-ai-theme">
+		<HowIAiButton />
+		<Nav />
+		<main>
+			<slot />
+		</main>
+		<Footer />
+		<script>
+			import "../scripts/tabs.ts";
+		</script>
+	</body>
 </html>
 ```
 
@@ -1313,9 +1364,10 @@ Translate `hugo/layouts/partials/terminal-frame.html` to Astro. Preserve every c
 import HowIAiLayout from "../../layouts/HowIAiLayout.astro";
 import TerminalFrame from "../../components/TerminalFrame.astro";
 ---
+
 <HowIAiLayout title="How I AI">
-  <!-- paste content from how-i-ai/list.html and _index.en.html, translated to astro -->
-  <!-- preserve all data-* attributes (data-tab, data-tab-panel, etc.) for tabs.ts -->
+	<!-- paste content from how-i-ai/list.html and _index.en.html, translated to astro -->
+	<!-- preserve all data-* attributes (data-tab, data-tab-panel, etc.) for tabs.ts -->
 </HowIAiLayout>
 ```
 
@@ -1324,6 +1376,7 @@ The tabs script reads `data-tab` and `data-tab-panel` attributes — they MUST b
 - [ ] **Step 5: Visual parity check**
 
 Compare `/how-i-ai/` carefully:
+
 - Tab clicks switch panels
 - URL hash updates on tab switch
 - Loading the page with `#tools` (or whichever) auto-selects that tab
@@ -1342,6 +1395,7 @@ git commit -m "feat(astro): port /how-i-ai page with terminal frame and tabs"
 ### Task 23: Port shortcodes used in markdown
 
 **Files:**
+
 - Create: `src/components/markdown/LinkStrike.astro`
 - Create: `src/components/markdown/Tab.astro`
 - Possibly modify content `.md` → `.mdx`
@@ -1351,6 +1405,7 @@ git commit -m "feat(astro): port /how-i-ai page with terminal frame and tabs"
 Search for `{{< linkStrike` and `{{< tab` in `src/content/`:
 
 ```bash
+
 ```
 
 Use Grep tool: pattern `\{\{<` in `src/content`. List every file that uses a shortcode.
@@ -1373,6 +1428,7 @@ pnpm add @astrojs/mdx
 ```
 
 Add to `astro.config.mjs`:
+
 ```js
 import mdx from "@astrojs/mdx";
 // integrations: [mdx()]
@@ -1394,6 +1450,7 @@ git commit -m "feat(astro): port hugo shortcodes as mdx components"
 ### Task 24: Full Astro build
 
 **Files:**
+
 - (none)
 
 - [ ] **Step 1: Build**
@@ -1423,6 +1480,7 @@ Walk through every URL one more time.
 - [ ] **Step 4: Commit any fixes**
 
 If you made fixes:
+
 ```bash
 git add -A
 git commit -m "fix(astro): address build/preview issues"
@@ -1466,12 +1524,14 @@ Every item must be checked. If anything is unchecked, go back and fix it. Do NOT
 ### Task 27: Switch Astro output to `dist/`
 
 **Files:**
+
 - Modify: `astro.config.mjs`
 - Modify: `.gitignore` (if needed)
 
 - [ ] **Step 1: Change `outDir`**
 
 In `astro.config.mjs`:
+
 ```js
 // remove: outDir: "./dist-astro",
 ```
@@ -1495,6 +1555,7 @@ Expected: Astro output in `dist/`.
 ### Task 28: Update `netlify.toml` and `package.json`
 
 **Files:**
+
 - Modify: `netlify.toml`
 - Modify: `package.json`
 
@@ -1523,6 +1584,7 @@ Expected: Astro output, no Hugo invocation.
 ### Task 29: Delete Hugo and Vite/Solid app
 
 **Files:**
+
 - Delete: `hugo/`
 - Delete: `app/`
 - Delete: `vite.config.ts`
@@ -1583,6 +1645,7 @@ git status
 ```
 
 Expected staged changes:
+
 - `astro.config.mjs` (outDir removed)
 - `netlify.toml` (command + publish updated)
 - `package.json` + `pnpm-lock.yaml` (scripts and deps cleaned)

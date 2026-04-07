@@ -29,6 +29,7 @@ Engineer → Tech Lead → CTO → Product → GTM. Technical depth that lets Ja
 **What it is:** Jan embeds into a company and does the product work — from discovery to delivery. He brings a product operating model with him and shapes it to the needs of the company. He is not an advisor who hands off a framework. He drives the work directly, alongside the team.
 
 **What's inside:**
+
 - Product discovery — understanding the problem space, user needs, market context
 - Product strategy — what to build, why, in what order
 - Roadmap and prioritization — making hard calls with incomplete information
@@ -51,6 +52,7 @@ Most product people either do strategy or execution. Jan does both, inside the c
 **What it is:** Jan builds and runs go to market as one coherent system. Not sales + marketing + customer care as separate departments pointing at each other — one ecosystem driven by a shared strategy and shared messaging.
 
 **The model:** Jan uses an extended bowtie model.
+
 - Classic bowtie: acquisition funnel on the left, conversion at the knot, retention and expansion on the right
 - **Jan's extension:** marketing is missing or underrepresented at both ends in the standard view
   - Left side (acquisition): marketing should be actively supporting sales, not just generating leads and stepping back
@@ -70,6 +72,7 @@ Can be done as a standalone engagement without product work.
 **What it is:** Marketing strategy and execution. Jan can be an individual contributor — building the strategy, doing the work alongside the team, overseeing it.
 
 **What's inside:**
+
 - Marketing strategy — where to play, how to win, what to say and to whom
 - Go to market communication — making sure the message is consistent across all channels and all teams
 - Paid marketing — strategy and execution
@@ -96,16 +99,19 @@ Marketing done by someone who understands product deeply and thinks in systems. 
 ## Design Direction
 
 ### Aesthetic
+
 Sumi-e ink wash — sparse, gestural, large white negative space, ink textures and splatters. Monochromatic (blacks, grays) + accent #ff4309. Fits the existing light site background.
 
 Reference: mountains and pine trees, dark foreground fading to misty background, single moon circle as graphic accent. Asymmetric composition — things have different visual weight, some sharp and dark, others dissolving into suggestion.
 
 Sumi-e logic maps to service hierarchy:
+
 - **Product** — dark, sharp, heavy foreground
 - **GTM** — mid-tone, present but lighter
 - **Marketing** — lightest, atmospheric, fades like the misty background trees
 
 ### /work Hero
+
 No illustration. Clean. White space does the work.
 
 ```
@@ -117,7 +123,9 @@ As someone with skin in the game, I own what happens next.
 ```
 
 ### /work Overview Page
+
 Three service cards below the hero. Each has:
+
 - A distinctive ink wash illustration (the visual IS the identity of the service)
 - Bold service name
 - One sharp line describing it
@@ -130,6 +138,7 @@ Not three equal cards in a grid — asymmetric, different visual weights, compos
 ### Illustrations — Three Landscapes
 
 **Product → Iceberg**
+
 - Ink wash iceberg, no labels
 - Above water: what clients see — the product, the roadmap, the delivery
 - Below water: what makes it work — operating model, culture, discovery, GTM alignment, marketing, the bowtie, team rituals
@@ -137,6 +146,7 @@ Not three equal cards in a grid — asymmetric, different visual weights, compos
 - The hidden mass IS the point — no words needed
 
 **GTM → Mountain**
+
 - A mountain with multiple visible paths/ridges
 - The summit is the goal — different paths, different risk profiles, same destination
 - Fast path: aggressive, steep, more rewarding
@@ -145,6 +155,7 @@ Not three equal cards in a grid — asymmetric, different visual weights, compos
 - The mountain doesn't judge the path
 
 **Marketing → Moon, Water and Fog**
+
 - One ink wash composition: moon reflected in still water, fog sitting on the surface
 - Moon — the message, what gives light and direction
 - Water — takes the shape of everything, connects, flows through the whole system
@@ -153,12 +164,15 @@ Not three equal cards in a grid — asymmetric, different visual weights, compos
 - Lightest of the three compositions, most atmospheric
 
 ### Why These Three Work Together
+
 Three completely different landscapes. All ink wash. All telling their story without a word.
+
 - Iceberg = depth hidden beneath the surface
 - Mountain = the climb, the path, the summit
 - Moon/water/fog = atmosphere, perception, the felt experience
 
 ### Illustration Approach
+
 - Ink wash PNG artwork — most authentic to the sumi-e reference
 - Requires actual artwork — to be sourced or created
 - SVG or CSS/canvas as fallback
