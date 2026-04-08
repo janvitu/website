@@ -82,7 +82,7 @@ function isActive(href: string): boolean {
 					links.map((link) => (
 						<li class="flex flex-col items-center">
 							<span
-								class={`nav-kanji block text-sm select-none leading-none mb-1.5${isActive(link.href) ? " nav-kanji--active" : ""}`}
+								class={`nav-kanji block text-sm select-none leading-none mb-1.5 ${isActive(link.href) ? "nav-kanji--active" : ""}`}
 								style="color: var(--color-accent);"
 								aria-hidden="true"
 							>
@@ -91,13 +91,13 @@ function isActive(href: string): boolean {
 							<div class="relative flex items-center justify-center">
 								<a
 									href={link.href}
-									class={`nav-label link-strikethrough${isActive(link.href) ? " link-strikethrough--active" : ""} hidden md:inline-block absolute right-full mr-4 text-2xl font-semibold text-[var(--nav-text)] whitespace-nowrap`}
+									class={`nav-label link-strikethrough ${isActive(link.href) ? "link-strikethrough--active" : ""} hidden md:inline-block absolute right-full mr-4 text-2xl font-semibold text-[var(--nav-text)] whitespace-nowrap`}
 									aria-current={isActive(link.href) ? "page" : undefined}
 								>
 									<span class="relative block">{link.label}</span>
 								</a>
 								<span
-									class={`nav-dot${isActive(link.href) ? " nav-dot--active" : ""}`}
+									class={`nav-dot ${isActive(link.href) ? "nav-dot--active" : ""}`}
 								/>
 							</div>
 						</li>
@@ -108,11 +108,16 @@ function isActive(href: string): boolean {
 
 		<!-- MENU label -->
 		<div class="flex justify-center pb-5">
-			<span
-				class="text-[9px] tracking-[0.2em] uppercase select-none"
+			<button
+				data-nav-menu-btn
+				type="button"
+				class="text-[9px] tracking-[0.2em] uppercase select-none bg-transparent border-none cursor-pointer p-0"
 				style="writing-mode: vertical-rl; transform: rotate(180deg); color: var(--nav-dot-color);"
-				aria-hidden="true">menu</span
+				aria-label="Toggle menu"
+				aria-expanded="false"
 			>
+				menu
+			</button>
 		</div>
 	</div>
 </header>
