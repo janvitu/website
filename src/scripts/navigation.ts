@@ -22,7 +22,12 @@ document.addEventListener("DOMContentLoaded", () => {
 	const dots = toggle.querySelectorAll<HTMLElement>(".nav-dot");
 	const navLogoWrapper = document.querySelector<HTMLElement>("[data-nav-logo]");
 
+	const menuBtn = document.querySelector<HTMLButtonElement>(
+		"[data-nav-menu-btn]",
+	);
+
 	let isOpen = false;
+	let lockedOpen = false; // true when opened via menu button tap
 	let activeAnimation: any = null;
 
 	const resetState = () => {
@@ -96,6 +101,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 	const onLeave = () => {
 		if (!isOpen) return;
+		if (lockedOpen) return; // menu button keeps it open
 		isOpen = false;
 
 		if (prefersReducedMotion) {
@@ -126,6 +132,65 @@ document.addEventListener("DOMContentLoaded", () => {
 			});
 		}
 	};
+
+	const forceClose = () => {
+		lockedOpen = false;
+		if (menuBtn) {
+			menuBtn.setAttribute("aria-expanded", "false");
+		}
+		if (!isOpen) return;
+		isOpen = false;
+
+		if (prefersReducedMotion) {
+			resetState();
+		} else {
+			activeAnimation = animate(overlay, { opacity: [1, 0] } as any, {
+				duration: ANIM_OVERLAY_FADE,
+			});
+
+			if (isDesktop()) {
+				animate(desktopLabels, { opacity: [1, 0], x: [0, 10] } as any, {
+					duration: ANIM_LABELS_OUT,
+					delay: stagger(ANIM_STAGGER_OUT),
+					ease: "easeIn",
+				});
+			} else {
+				animate(mobileLabels, { opacity: [1, 0], y: [0, 10] } as any, {
+					duration: ANIM_LABELS_OUT,
+					delay: stagger(ANIM_STAGGER_OUT),
+					ease: "easeIn",
+				});
+			}
+
+			activeAnimation.then(() => {
+				activeAnimation = null;
+				resetState();
+			});
+		}
+	};
+
+	// Mobile: menu button tap toggles nav open/closed (stays open)
+	if (menuBtn) {
+		menuBtn.addEventListener("click", (e) => {
+			e.stopPropagation();
+			if (lockedOpen) {
+				forceClose();
+			} else {
+				lockedOpen = true;
+				menuBtn.setAttribute("aria-expanded", "true");
+				onEnter();
+			}
+		});
+
+		// Prevent touchstart on menu button from triggering press-and-hold
+		menuBtn.addEventListener(
+			"touchstart",
+			(e) => {
+				e.stopPropagation();
+			},
+			{ passive: true },
+		);
+	}
 
 	// Desktop: hover
 	toggle.addEventListener("mouseenter", onEnter);
@@ -252,6 +317,13 @@ document.addEventListener("DOMContentLoaded", () => {
 		{ passive: false },
 	);
 
+	// Close menu when clicking a mobile nav link (when locked open)
+	mobileLabels.forEach((label) => {
+		label.addEventListener("click", () => {
+			if (lockedOpen) forceClose();
+		});
+	});
+
 	// Tap overlay to close (for click events, e.g. assistive tech)
-	overlay.addEventListener("click", onLeave);
+	overlay.addEventListener("click", forceClose);
 });

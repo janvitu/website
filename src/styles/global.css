@@ -168,6 +168,8 @@ li:hover .nav-mobile-kanji {
 	transform: translateY(10px);
 }
 
+
+
 .prose a {
 	@apply italic decoration-amber-300;
 	@apply relative;
@@ -198,6 +200,7 @@ li:hover .nav-mobile-kanji {
 	background-color: #1a1a1a;
 	color: #e0e0e0;
 }
+
 
 @media (max-width: 767px) {
 	[data-theme="terminal"] {
