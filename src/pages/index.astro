@@ -2,9 +2,9 @@
 import BaseLayout from "@/layouts/BaseLayout.astro";
 import ContactFooter from "@/components/ContactFooter.astro";
 import ArrowLink from "@/components/ArrowLink.astro";
-import { getT } from "@/i18n/getT";
+import { useT } from "@/i18n/getT";
 
-const t = getT(Astro.currentLocale);
+const t = useT(Astro);
 ---
 
 <BaseLayout

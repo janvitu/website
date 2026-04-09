@@ -1,16 +1,15 @@
 ---
-import { getCollection } from "astro:content";
-import { getT } from "@/i18n/getT";
+import { useT } from "@/i18n/getT";
+import { getPublishedPosts } from "@/lib/blog";
 
 interface Props {
 	currentPath?: string;
 }
 
 const { currentPath = "" } = Astro.props;
-const t = getT(Astro.currentLocale);
+const t = useT(Astro);
 
-// Collect all unique tags from non-draft posts to use as categories
-const posts = await getCollection("blog", ({ data }) => !data.draft);
+const posts = await getPublishedPosts();
 const allTags = [
 	...new Set(posts.flatMap((post) => post.data.tags ?? [])),
 ].sort();
@@ -19,7 +18,7 @@ const isAllActive = currentPath === "/blog/" || currentPath === "/blog";
 ---
 
 <div class="base-grid grid-flow-row">
-	<hr class="in-grid" />
+	<hr class="col-span-full" />
 	<nav
 		class="col-start-2 col-end-12 overflow-x-scroll py-5 md:py-7"
 		aria-label="Blog categories"
@@ -57,5 +56,5 @@ const isAllActive = currentPath === "/blog/" || currentPath === "/blog";
 			}
 		</ul>
 	</nav>
-	<hr class="in-grid" />
+	<hr class="col-span-full" />
 </div>

@@ -1,6 +1,7 @@
 ---
 import type { CollectionEntry } from "astro:content";
 import ReadingTime from "./ReadingTime.astro";
+import { formatPostDate, getPostDate } from "@/lib/blog";
 
 interface Props {
 	entry: CollectionEntry<"blog">;
@@ -8,20 +9,9 @@ interface Props {
 }
 
 const { entry, isFirst = false } = Astro.props;
-const { title, tags, date, publishDate } = entry.data;
-const postDate = date ?? publishDate;
-const wordCount = (entry.body ?? "").split(/\s+/).length;
-
-const formattedDate = postDate
-	? postDate.toLocaleDateString("cs-CZ", {
-			day: "2-digit",
-			month: "2-digit",
-			year: "numeric",
-		})
-	: null;
-
-const slug = entry.id;
-const href = `/blog/${slug}/`;
+const { title, tags } = entry.data;
+const formattedDate = formatPostDate(getPostDate(entry));
+const href = `/blog/${entry.id}/`;
 ---
 
 <article
@@ -64,8 +54,7 @@ const href = `/blog/${slug}/`;
 				)
 			}
 			<p class="text-xs uppercase">
-				<span class="text"> ⋅</span>
-				<ReadingTime wordCount={wordCount} /> min
+				 ⋅ <ReadingTime body={entry.body} /> min
 			</p>
 		</div>
 		{formattedDate && <p class="text-sm">{formattedDate}</p>}

@@ -10,33 +10,44 @@ interface Props {
 	description?: string;
 	ogImage?: string;
 	bodyClass?: string;
+	theme?: string;
+	showGrid?: boolean;
+	showContactSide?: boolean;
 }
 
-const { title, description, ogImage, bodyClass = "" } = Astro.props;
+const {
+	title,
+	description,
+	ogImage,
+	bodyClass = "",
+	theme,
+	showGrid = true,
+	showContactSide = true,
+} = Astro.props;
 const locale = Astro.currentLocale ?? "en";
 ---
 
 <!doctype html>
 <html lang={locale}>
 	<Head title={title} description={description} ogImage={ogImage} />
-	<body class={bodyClass}>
+	<body class={bodyClass} data-theme={theme}>
 		<a
 			href="#main"
 			class="sr-only focus:not-sr-only focus:fixed focus:top-2 focus:left-2 focus:z-[9999] focus:bg-neutral-800 focus:px-4 focus:py-2 focus:text-neutral-50"
 		>
 			Skip to content
 		</a>
-		<Grid />
+		{showGrid && <Grid />}
 		<Nav />
-		<ContactSide />
+		{showContactSide && <ContactSide />}
 		<main id="main">
 			<slot />
 		</main>
 		<Footer />
 		<script>
-			import "../scripts/scroll-indicator.ts";
-			import "../scripts/glossary.ts";
-			import "../scripts/navigation.ts";
+			import "@/scripts/scroll-indicator.ts";
+			import "@/scripts/glossary.ts";
+			import "@/scripts/navigation.ts";
 		</script>
 	</body>
 </html>

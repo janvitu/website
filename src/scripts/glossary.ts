@@ -1,4 +1,4 @@
-import { animate, stagger } from "motion";
+import { animate, stagger } from "@/lib/motion";
 import { prefersReducedMotion } from "./utils";
 
 function wrapWordsInSpans(element: HTMLElement): HTMLElement[] {
@@ -30,90 +30,87 @@ function wrapWordsInSpans(element: HTMLElement): HTMLElement[] {
 	return spans;
 }
 
-document.addEventListener("DOMContentLoaded", () => {
-	const glossaryContainers = document.querySelectorAll<HTMLElement>(
-		"[data-glossary-toggle]",
+const glossaryContainers = document.querySelectorAll<HTMLElement>(
+	"[data-glossary-toggle]",
+);
+glossaryContainers.forEach((glossary) => {
+	const title = glossary.querySelector<HTMLElement>(
+		"[data-glossary-title]>span",
 	);
-	glossaryContainers.forEach((glossary) => {
-		const title = glossary.querySelector<HTMLElement>(
-			"[data-glossary-title]>span",
-		);
-		const glossaryContent =
-			glossary.querySelector<HTMLElement>("[data-glossary]");
+	const glossaryContent =
+		glossary.querySelector<HTMLElement>("[data-glossary]");
 
-		if (!glossaryContent || !title) return;
+	if (!glossaryContent || !title) return;
 
-		glossaryContent.style.opacity = "0";
-		glossaryContent.style.pointerEvents = "none";
+	glossaryContent.style.opacity = "0";
+	glossaryContent.style.pointerEvents = "none";
 
-		title.setAttribute("role", "button");
-		title.setAttribute("tabindex", "0");
-		title.setAttribute("aria-expanded", "false");
+	title.setAttribute("role", "button");
+	title.setAttribute("tabindex", "0");
+	title.setAttribute("aria-expanded", "false");
 
-		let wordSpans: HTMLElement[] = [];
-		let hasWrapped = false;
+	let wordSpans: HTMLElement[] = [];
+	let hasWrapped = false;
 
-		const onEnter = () => {
-			// Lazy-wrap words on first open
-			if (!hasWrapped) {
-				wordSpans = wrapWordsInSpans(glossaryContent);
-				hasWrapped = true;
-			}
+	const onEnter = () => {
+		if (!hasWrapped) {
+			wordSpans = wrapWordsInSpans(glossaryContent);
+			hasWrapped = true;
+		}
 
-			title.style.zIndex = "1000";
-			title.setAttribute("aria-expanded", "true");
-			glossaryContent.classList.remove("hidden");
-			if (prefersReducedMotion) {
-				glossaryContent.style.opacity = "1";
-				wordSpans.forEach((s) => {
-					s.style.opacity = "1";
-					s.style.transform = "translateY(0)";
-				});
-			} else {
-				animate(glossaryContent, { opacity: [0, 1] } as any, {
-					duration: 0.2,
-				});
-				animate(wordSpans, { opacity: [0, 1], y: [10, 0] } as any, {
-					duration: 0.3,
-					delay: stagger(0.05),
-					ease: "easeOut",
-				});
-			}
-		};
-		const onLeave = () => {
-			title.setAttribute("aria-expanded", "false");
-			// Reset word spans opacity for next open
+		title.style.zIndex = "1000";
+		title.setAttribute("aria-expanded", "true");
+		glossaryContent.classList.remove("hidden");
+		if (prefersReducedMotion) {
+			glossaryContent.style.opacity = "1";
 			wordSpans.forEach((s) => {
-				s.style.opacity = "0";
+				s.style.opacity = "1";
+				s.style.transform = "translateY(0)";
 			});
-			if (prefersReducedMotion) {
-				glossaryContent.style.opacity = "0";
-				title.style.zIndex = "0";
-			} else {
-				animate(glossaryContent, { opacity: [1, 0] } as any, {
-					duration: 0.2,
-				}).then(() => {
-					title.style.zIndex = "0";
-				});
-			}
-		};
-
-		title.addEventListener("mouseenter", onEnter);
-		title.addEventListener("mouseleave", onLeave);
-		title.addEventListener("touchstart", onEnter);
-		title.addEventListener("touchend", onLeave);
-
-		title.addEventListener("keydown", (e: KeyboardEvent) => {
-			if (e.key === "Enter" || e.key === " ") {
-				e.preventDefault();
-				const expanded = title.getAttribute("aria-expanded") === "true";
-				expanded ? onLeave() : onEnter();
-			} else if (
-				e.key === "Escape" &&
-				title.getAttribute("aria-expanded") === "true"
-			) {
-				onLeave();
-			}
+		} else {
+			animate(glossaryContent, { opacity: [0, 1] }, {
+				duration: 0.2,
+			});
+			animate(wordSpans, { opacity: [0, 1], y: [10, 0] }, {
+				duration: 0.3,
+				delay: stagger(0.05),
+				ease: "easeOut",
+			});
+		}
+	};
+	const onLeave = () => {
+		title.setAttribute("aria-expanded", "false");
+		// Reset word spans opacity for next open
+		wordSpans.forEach((s) => {
+			s.style.opacity = "0";
 		});
+		if (prefersReducedMotion) {
+			glossaryContent.style.opacity = "0";
+			title.style.zIndex = "0";
+		} else {
+			animate(glossaryContent, { opacity: [1, 0] }, {
+				duration: 0.2,
+			}).then(() => {
+				title.style.zIndex = "0";
+			});
+		}
+	};
+
+	title.addEventListener("mouseenter", onEnter);
+	title.addEventListener("mouseleave", onLeave);
+	title.addEventListener("touchstart", onEnter, { passive: true });
+	title.addEventListener("touchend", onLeave, { passive: true });
+
+	title.addEventListener("keydown", (e: KeyboardEvent) => {
+		if (e.key === "Enter" || e.key === " ") {
+			e.preventDefault();
+			const expanded = title.getAttribute("aria-expanded") === "true";
+			expanded ? onLeave() : onEnter();
+		} else if (
+			e.key === "Escape" &&
+			title.getAttribute("aria-expanded") === "true"
+		) {
+			onLeave();
+		}
 	});
 });

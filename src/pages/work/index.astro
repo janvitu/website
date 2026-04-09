@@ -1,60 +1,64 @@
 ---
 import BaseLayout from "@/layouts/BaseLayout.astro";
 import ArrowLink from "@/components/ArrowLink.astro";
+import ContactFooter from "@/components/ContactFooter.astro";
 ---
 
 <BaseLayout
 	title="Jan Vítů — Work"
 	description="Show up. Do the work. Own the outcome."
 >
-	<section class="min-h-[100svh]">
+	<section class="min-h-svh">
 		<div class="base-grid pt-[38vh] pb-[20vh]">
-			<div class="col-start-2 col-end-12 md:col-start-3 md:col-end-11 text-center">
+			<div
+				class="col-start-2 col-end-12 md:col-start-3 md:col-end-11 text-center"
+			>
 				<h1 class="font-black leading-none">
 					Show up.<br />
 					Do the work.<br />
 					Own the outcome.
 				</h1>
 				<p class="mt-8 text-xl text-neutral-600 md:text-2xl">
-					As someone with skin in the game, I own what happens next.
+					As someone with <span class="font-medium">skin in the game</span>, I
+					get in the work with you.
 				</p>
 			</div>
 		</div>
 	</section>
 
+	<section class="py-24 md:py-32">
+		<div class="base-grid">
+			<blockquote
+				class="col-start-2 col-end-12 md:col-start-4 md:col-end-10 text-center backdrop-blur-xl bg-white/20 border border-white/70 shadow-xl shadow-black/5 ring-1 ring-inset ring-white/50 px-12 py-16 md:px-16 md:py-24"
+			>
+				<p
+					class="text-2xl font-extralight italic leading-relaxed md:text-4xl md:leading-relaxed"
+				>
+					"Great products do not happen by accident. They need the right focus
+					at the right time and someone willing to make the hard calls."
+				</p>
+			</blockquote>
+		</div>
+	</section>
+
 	<section class="pb-24 md:pb-32">
 		<div class="base-grid">
-			<div class="col-start-2 col-end-12 grid grid-cols-1 gap-4 md:grid-cols-3">
-				<!-- Product -->
-				<div
-					class="relative overflow-hidden min-h-[480px] backdrop-blur-xl bg-white/20 border border-white/70 shadow-xl shadow-black/5 ring-1 ring-inset ring-white/50"
-				>
-					<img
-						src="/images/iceberg.avif"
-						alt=""
-						aria-hidden="true"
-						class="absolute inset-0 h-full w-full object-contain object-top mix-blend-multiply"
-					/>
-					<div
-						class="absolute inset-x-0 bottom-0 h-2/3 bg-gradient-to-t from-white/60 to-transparent"
-					>
-					</div>
-					<div class="absolute inset-x-0 bottom-0 z-10 p-8">
-						<h2
-							class="text-2xl font-black uppercase tracking-tight md:text-3xl"
-						>
-							Product
-						</h2>
-						<p class="mt-2 text-neutral-600">
-							Discovery to delivery. Operating model. Culture that sticks.
-						</p>
-						<ArrowLink href="/work/product" label="Explore product work" />
-					</div>
-				</div>
+			<div class="col-start-2 col-end-12 mb-12 md:col-start-3 md:col-end-11">
+				<h2 class="font-black text-3xl md:text-4xl leading-tight">
+					The right focus at the right stage<br />
+					changes everything.
+				</h2>
+				<p class="mt-3 text-xl text-neutral-600 md:text-2xl">
+					From idea to traction.
+				</p>
+			</div>
 
-				<!-- GTM -->
+			<div
+				class="col-start-2 col-end-12 grid grid-cols-1 gap-4 md:grid-cols-3 md:items-end"
+			>
+				<!-- Go To Market -->
 				<div
-					class="relative overflow-hidden min-h-[480px] backdrop-blur-xl bg-white/20 border border-white/70 shadow-xl shadow-black/5 ring-1 ring-inset ring-white/50"
+					class="relative overflow-hidden min-h-120 backdrop-blur-xl bg-white/20 border border-white/70 shadow-xl shadow-black/5 ring-1 ring-inset ring-white/50"
 				>
 					<img
 						src="/images/mountain.avif"
@@ -63,25 +67,53 @@ import ArrowLink from "@/components/ArrowLink.astro";
 						class="absolute inset-0 h-full w-full object-contain object-top mix-blend-multiply"
 					/>
 					<div
-						class="absolute inset-x-0 bottom-0 h-2/3 bg-gradient-to-t from-white/60 to-transparent"
+						class="absolute inset-x-0 bottom-0 h-2/3 bg-linear-to-t from-white to-transparent"
 					>
 					</div>
 					<div class="absolute inset-x-0 bottom-0 z-10 p-8">
-						<h2
+						<h3
 							class="text-2xl font-black uppercase tracking-tight md:text-3xl"
 						>
 							Go To Market
-						</h2>
+						</h3>
 						<p class="mt-2 text-neutral-600">
-							One ecosystem. Not three teams pointing at each other.
+							The intersection of the Market, the Message, and the Model.
 						</p>
 						<ArrowLink href="/work/gtm" label="Explore GTM" />
 					</div>
 				</div>
 
+				<!-- Product — center, elevated -->
+				<div
+					class="relative overflow-hidden min-h-120 md:min-h-140 backdrop-blur-xl bg-white/20 border border-white/70 shadow-xl shadow-black/5 ring-1 ring-inset ring-white/50 md:-translate-y-8"
+				>
+					<img
+						src="/images/iceberg.avif"
+						alt=""
+						aria-hidden="true"
+						class="absolute inset-0 h-full w-full object-contain object-top mix-blend-multiply"
+					/>
+					<div
+						class="absolute inset-x-0 bottom-0 h-2/3 bg-linear-to-t from-white to-transparent"
+					>
+					</div>
+					<div class="absolute inset-x-0 bottom-0 z-10 p-8">
+						<h3
+							class="text-2xl font-black uppercase tracking-tight md:text-3xl"
+						>
+							Product
+						</h3>
+						<p class="mt-2 text-neutral-600">
+							The intersection of the customer, the technology, and the
+							business.
+						</p>
+						<ArrowLink href="/work/product" label="Explore product work" />
+					</div>
+				</div>
+
 				<!-- Marketing -->
 				<div
-					class="relative overflow-hidden min-h-[480px] backdrop-blur-xl bg-white/20 border border-white/70 shadow-xl shadow-black/5 ring-1 ring-inset ring-white/50"
+					class="relative overflow-hidden min-h-120 backdrop-blur-xl bg-white/20 border border-white/70 shadow-xl shadow-black/5 ring-1 ring-inset ring-white/50"
 				>
 					<img
 						src="/images/mist.avif"
@@ -90,18 +122,17 @@ import ArrowLink from "@/components/ArrowLink.astro";
 						class="absolute inset-0 h-full w-full object-contain object-top mix-blend-multiply"
 					/>
 					<div
-						class="absolute inset-x-0 bottom-0 h-2/3 bg-gradient-to-t from-white/60 to-transparent"
+						class="absolute inset-x-0 bottom-0 h-2/3 bg-linear-to-t from-white/60 to-transparent"
 					>
 					</div>
 					<div class="absolute inset-x-0 bottom-0 z-10 p-8">
-						<h2
+						<h3
 							class="text-2xl font-black uppercase tracking-tight md:text-3xl"
 						>
 							Marketing
-						</h2>
+						</h3>
 						<p class="mt-2 text-neutral-600">
-							Strategy and execution. The connective tissue that runs through
-							everything.
+							The intersection of a human need, a story, and the courage to act.
 						</p>
 						<ArrowLink href="/work/marketing" label="Explore marketing" />
 					</div>
@@ -109,4 +140,34 @@ import ArrowLink from "@/components/ArrowLink.astro";
 			</div>
 		</div>
 	</section>
+
+	<section class="pb-32 md:pb-48">
+		<div class="base-grid">
+			<div
+				class="col-start-2 col-end-12 space-y-6 text-lg md:text-xl max-w-[50ch] text-center mx-auto leading-relaxed"
+			>
+				<p>
+					I believe <span class="font-medium">bold ideas</span> are worth chasing.
+					Even when they are hard. And especially when they are hard.
+				</p>
+				<p>
+					I believe building something real requires <span class="font-medium"
+						>the courage to be wrong</span
+					>, <span class="font-medium">the focus to cut what does not work</span
+					>, and <span class="font-medium"
+						>the relentless pursuit of what actually matters</span
+					>.
+				</p>
+				<p>
+					I commit to telling you the truth. Making the hard calls. Staying in
+					the work until something worth believing in is built.
+				</p>
+				<p class="font-light">
+					My mission is to inspire people to do what inspires them so that
+					together we can build a world worth believing in.
+				</p>
+			</div>
+		</div>
+	</section>
+	<ContactFooter />
 </BaseLayout>

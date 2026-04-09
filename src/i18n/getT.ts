@@ -23,3 +23,7 @@ export function getT(locale: string | undefined) {
 		return lookup(dict, key) ?? lookup(fallback, key) ?? fallbackText ?? key;
 	};
 }
+
+export function useT(astro: { currentLocale?: string | undefined }) {
+	return getT(astro.currentLocale);
+}

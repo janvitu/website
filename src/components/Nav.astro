@@ -1,8 +1,8 @@
 ---
-// Port of hugo/layouts/partials/header.html
 import Logo from "./svg/Logo.astro";
+import { isActivePath } from "@/lib/path";
 
-const path = Astro.url.pathname.replace(/\/$/, "") || "/";
+const path = Astro.url.pathname;
 
 const links = [
 	{ href: "/", label: "Home", kanji: "家" },
@@ -11,10 +11,7 @@ const links = [
 	{ href: "/contact", label: "Contact", kanji: "接" },
 ];
 
-function isActive(href: string): boolean {
-	const normalizedHref = href.replace(/\/$/, "") || "/";
-	return path === normalizedHref || path.startsWith(normalizedHref + "/");
-}
+const isActive = (href: string) => isActivePath(path, href);
 ---
 
 <header
@@ -36,8 +33,7 @@ function isActive(href: string): boolean {
 						links.map((link) => (
 							<li class="relative">
 								<span
-									class={`nav-mobile-kanji absolute right-full top-1/2 -translate-y-1/2 mr-2 text-sm select-none leading-none pointer-events-none${isActive(link.href) ? " nav-mobile-kanji--active" : ""}`}
-									style="color: var(--color-accent);"
+									class={`nav-mobile-kanji text-accent absolute right-full top-1/2 -translate-y-1/2 mr-2 text-sm select-none leading-none pointer-events-none${isActive(link.href) ? " nav-mobile-kanji--active" : ""}`}
 									aria-hidden="true"
 								>
 									{link.kanji}
@@ -82,8 +78,7 @@ function isActive(href: string): boolean {
 					links.map((link) => (
 						<li class="flex flex-col items-center">
 							<span
-								class={`nav-kanji block text-sm select-none leading-none mb-1.5 ${isActive(link.href) ? "nav-kanji--active" : ""}`}
-								style="color: var(--color-accent);"
+								class={`nav-kanji text-accent block text-sm select-none leading-none mb-1.5 ${isActive(link.href) ? "nav-kanji--active" : ""}`}
 								aria-hidden="true"
 							>
 								{link.kanji}
@@ -111,8 +106,7 @@ function isActive(href: string): boolean {
 			<button
 				data-nav-menu-btn
 				type="button"
-				class="text-[9px] tracking-[0.2em] uppercase select-none bg-transparent border-none cursor-pointer p-0"
-				style="writing-mode: vertical-rl; transform: rotate(180deg); color: var(--nav-dot-color);"
+				class="nav-menu-btn text-[9px] tracking-[0.2em] uppercase select-none bg-transparent border-none cursor-pointer p-0 rotate-180"
 				aria-label="Toggle menu"
 				aria-expanded="false"
 			>

@@ -1,7 +1,5 @@
 ---
-import Head from "@/components/Head.astro";
-import Nav from "@/components/Nav.astro";
-import Footer from "@/components/Footer.astro";
+import BaseLayout from "./BaseLayout.astro";
 
 interface Props {
 	title: string;
@@ -9,32 +7,20 @@ interface Props {
 }
 
 const { title, description } = Astro.props;
-const locale = Astro.currentLocale ?? "en";
 ---
 
-<!doctype html>
-<html lang={locale}>
-	<Head title={title} description={description} />
-	<body class="overflow-x-hidden" data-theme="terminal">
-		<a
-			href="#main"
-			class="sr-only focus:not-sr-only focus:fixed focus:top-2 focus:left-2 focus:z-[9999] focus:bg-neutral-800 focus:px-4 focus:py-2 focus:text-neutral-50"
-		>
-			Skip to content
-		</a>
-		<Nav />
-		<main id="main">
-			<slot />
-		</main>
-		<Footer />
-		<script>
-			import "@/scripts/scroll-indicator.ts";
-			import "@/scripts/glossary.ts";
-			import "@/scripts/navigation.ts";
-			import { initTabs } from "@/scripts/tabs.ts";
-			document.addEventListener("DOMContentLoaded", () => {
-				initTabs();
-			});
-		</script>
-	</body>
-</html>
+<BaseLayout
+	title={title}
+	description={description}
+	theme="terminal"
+	bodyClass="overflow-x-hidden"
+	showGrid={false}
+	showContactSide={false}
+>
+	<slot />
+</BaseLayout>
+
+<script>
+	import { initTabs } from "@/scripts/tabs.ts";
+	initTabs();
+</script>
