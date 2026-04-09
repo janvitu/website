@@ -32,13 +32,21 @@ h2 {
 }
 
 /* COMPONENTS */
-.text-strikethrough {
+
+/* Shared strikethrough bar: an absolutely-positioned ::before that scales
+   from 0 to 1 on hover/active. Composed by .text-strikethrough, the
+   .link-strikethrough span, and prose links. */
+@utility strikethrough-bar {
 	@apply relative;
 	@apply before:absolute before:-inset-x-1 before:top-1/2 before:h-[2px] before:-translate-y-1/2 before:transform;
+	@apply before:origin-center before:scale-x-0 before:bg-neutral-900 before:transition-all;
+}
+
+.text-strikethrough {
+	@apply strikethrough-bar;
 }
 
 .text-strikethrough--interactive {
-	@apply before:origin-center before:scale-x-0 before:bg-neutral-900 before:transition-all;
 	@apply hover:before:scale-x-100;
 }
 
@@ -51,9 +59,7 @@ h2 {
 }
 
 .link-strikethrough > span {
-	@apply relative;
-	@apply before:absolute before:-inset-x-1 before:top-1/2 before:h-[2px] before:-translate-y-1/2 before:transform;
-	@apply before:origin-center before:scale-x-0 before:bg-neutral-900 before:transition-all;
+	@apply strikethrough-bar;
 	@apply hover:before:scale-x-100 hover:text-accent hover:before:bg-accent;
 	@apply transition-colors;
 	@apply focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent;
@@ -61,10 +67,6 @@ h2 {
 .link-strikethrough--active > span {
 	@apply before:scale-x-100;
 	@apply text-accent before:bg-accent;
-}
-
-.center--horizontal-vertical {
-	@apply flex items-center justify-center;
 }
 
 /* How I AI LED button */
@@ -137,6 +139,12 @@ li:hover .nav-mobile-kanji {
 	}
 }
 
+/* Vertical "menu" label button — writing-mode has no Tailwind utility */
+.nav-menu-btn {
+	writing-mode: vertical-rl;
+	color: var(--nav-dot-color);
+}
+
 /* Navigation dots */
 .nav-dot {
 	@apply relative block w-1.5 h-1.5 rounded-full flex-shrink-0;
@@ -168,13 +176,9 @@ li:hover .nav-mobile-kanji {
 	transform: translateY(10px);
 }
 
-
-
 .prose a {
 	@apply italic decoration-amber-300;
-	@apply relative;
-	@apply before:absolute before:-inset-x-1 before:top-1/2 before:h-[2px] before:-translate-y-1/2 before:transform;
-	@apply before:origin-center before:scale-x-0 before:bg-neutral-900 before:transition-all;
+	@apply strikethrough-bar;
 	@apply hover:before:scale-x-100;
 }
 
@@ -200,7 +204,6 @@ li:hover .nav-mobile-kanji {
 	background-color: #1a1a1a;
 	color: #e0e0e0;
 }
-
 
 @media (max-width: 767px) {
 	[data-theme="terminal"] {

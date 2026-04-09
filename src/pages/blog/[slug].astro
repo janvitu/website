@@ -1,9 +1,15 @@
 ---
 import BaseLayout from "@/layouts/BaseLayout.astro";
-import { getCollection, render, type CollectionEntry } from "astro:content";
+import { render, type CollectionEntry } from "astro:content";
+import {
+	getPublishedPosts,
+	getPostDate,
+	formatPostDate,
+	getReadingMinutes,
+} from "@/lib/blog";
 
 export async function getStaticPaths() {
-	const posts = await getCollection("blog", ({ data }) => !data.draft);
+	const posts = await getPublishedPosts();
 	return posts.map((post) => ({
 		params: { slug: post.id },
 		props: { post },
@@ -17,19 +23,9 @@ interface Props {
 const { post } = Astro.props;
 const { Content } = await render(post);
 
-const { title, description, tags, date, publishDate } = post.data;
-const postDate = date ?? publishDate;
-const formattedDate = postDate
-	? postDate.toLocaleDateString("cs-CZ", {
-			day: "2-digit",
-			month: "2-digit",
-			year: "numeric",
-		})
-	: null;
-
-const wordCount = (post.body ?? "").split(/\s+/).length;
-const wordsPerMinute = 185;
-const minutes = Math.max(1, Math.floor(wordCount / wordsPerMinute));
+const { title, description, tags } = post.data;
+const formattedDate = formatPostDate(getPostDate(post));
+const minutes = getReadingMinutes(post.body);
 ---
 
 <BaseLayout title={title} description={description}>

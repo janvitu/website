@@ -1,17 +1,13 @@
 ---
 import BaseLayout from "@/layouts/BaseLayout.astro";
-import { getCollection } from "astro:content";
 import BlogCategoryNav from "@/components/BlogCategoryNav.astro";
-import { getT } from "@/i18n/getT";
+import ArticlePreview from "@/components/ArticlePreview.astro";
+import { useT } from "@/i18n/getT";
+import { getPublishedPosts } from "@/lib/blog";
 
-const t = getT(Astro.currentLocale);
-const posts = await getCollection("blog", ({ data }) => !data.draft);
-posts.sort(
-	(a, b) =>
-		+(b.data.date ?? b.data.publishDate ?? 0) -
-		+(a.data.date ?? a.data.publishDate ?? 0),
-);
-
+const t = useT(Astro);
+const posts = await getPublishedPosts();
+const [featured, ...rest] = posts;
 const currentPath = Astro.url.pathname;
 ---
 
@@ -20,105 +16,39 @@ const currentPath = Astro.url.pathname;
 
 	<div class="pt-14 md:pt-20">
 		<div class="base-grid">
-			<div class="col-start-2 col-end-12 sm:col-start-3 sm:col-end-11">
-				{
-					posts.length > 0 && (
-						<div class="pb-6 border-y border-neutral-800 md:pb-10">
-							<p class="py-6 text-lg font-bold uppercase md:py-10">
+			{
+				featured && (
+					<div class="col-span-full">
+						<div class="base-grid">
+							<p class="col-start-2 col-end-12 py-6 text-lg font-bold uppercase md:col-start-3 md:col-end-11 md:py-10">
 								{t("blog.featured", "Featured")}
 							</p>
-							{(() => {
-								const featured = posts[0];
-								const wordCount = (featured.body ?? "").split(/\s+/).length;
-								const wordsPerMinute = 185;
-								const minutes = Math.max(
-									1,
-									Math.floor(wordCount / wordsPerMinute),
-								);
-								const postDate =
-									featured.data.date ?? featured.data.publishDate;
-								const formattedDate = postDate
-									? postDate.toLocaleDateString("cs-CZ", {
-											day: "2-digit",
-											month: "2-digit",
-											year: "numeric",
-										})
-									: null;
-								return (
-									<>
-										<a
-											class="text-2xl font-bold hover:underline md:text-4xl"
-											href={`/blog/${featured.id}/`}
-										>
-											{featured.data.title}
-										</a>
-										{formattedDate && (
-											<p class="mt-2 text-sm">
-												{formattedDate} – {minutes} min{" "}
-												{t("post.readingTime", "read")}
-											</p>
-										)}
-									</>
-								);
-							})()}
 						</div>
-					)
-				}
-
-				<section class="grid-cols-10 md:grid">
-					<div class="col-start-1 col-end-7">
-						<p class="py-6 text-lg font-bold uppercase md:py-10">
-							{t("blog.latestPosts", "Latest posts")}
-						</p>
-						{
-							posts.length === 0 ? (
-								<p class="text-neutral-500">No posts yet.</p>
-							) : (
-								<ul class="flex flex-col">
-									{posts.map((post) => {
-										const wordCount = (post.body ?? "").split(/\s+/).length;
-										const wordsPerMinute = 185;
-										const minutes = Math.max(
-											1,
-											Math.floor(wordCount / wordsPerMinute),
-										);
-										const postDate = post.data.date ?? post.data.publishDate;
-										const formattedDate = postDate
-											? postDate.toLocaleDateString("cs-CZ", {
-													day: "2-digit",
-													month: "2-digit",
-													year: "numeric",
-												})
-											: null;
-										return (
-											<li>
-												{post.data.tags?.map((tag) => (
-													<span class="text-sm font-medium uppercase block-inline">
-														{tag}
-													</span>
-												))}
-												<a
-													class="block text-xl font-bold hover:underline md:text-2xl"
-													href={`/blog/${post.id}/`}
-												>
-													{post.data.title}
-												</a>
-												{formattedDate && (
-													<p class="mt-2 text-sm">
-														{formattedDate} – {minutes} min{" "}
-														{t("post.readingTime", "read")}
-													</p>
-												)}
-												<hr class="my-6 border-neutral-400" />
-											</li>
-										);
-									})}
-								</ul>
-							)
-						}
+						<ArticlePreview entry={featured} isFirst />
 					</div>
-				</section>
-			</div>
+				)
+			}
+
+			{
+				rest.length > 0 && (
+					<div class="col-span-full">
+						<div class="base-grid">
+							<p class="col-start-2 col-end-12 py-6 text-lg font-bold uppercase md:col-start-3 md:col-end-11 md:py-10">
+								{t("blog.latestPosts", "Latest posts")}
+							</p>
+						</div>
+						{rest.map((post) => (
+							<ArticlePreview entry={post} />
+						))}
+					</div>
+				)
+			}
+
+			{
+				posts.length === 0 && (
+					<p class="col-start-2 col-end-12 text-neutral-500">No posts yet.</p>
+				)
+			}
 		</div>
 	</div>
 </BaseLayout>

@@ -1,6 +1,7 @@
 ---
-const path = Astro.url.pathname;
-const isActive = path === "/how-i-ai/" || path.startsWith("/how-i-ai/");
+import { isActivePath } from "@/lib/path";
+
+const isActive = isActivePath(Astro.url.pathname, "/how-i-ai");
 ---
 
 <a

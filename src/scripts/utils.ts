@@ -11,5 +11,5 @@ export const scrollToTop = () => {
 
 export const copyContent = (e: MouseEvent) => {
 	const target = e.target as HTMLElement;
-	navigator.clipboard.writeText(target.innerHTML);
+	navigator.clipboard.writeText(target.textContent ?? "");
 };

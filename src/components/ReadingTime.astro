@@ -1,11 +1,11 @@
 ---
+import { getReadingMinutes } from "@/lib/blog";
+
 interface Props {
-	wordCount: number;
+	body: string | undefined;
 }
 
-const { wordCount } = Astro.props;
-const wordsPerMinute = 185;
-const minutes = Math.max(1, Math.floor(wordCount / wordsPerMinute));
+const { body } = Astro.props;
 ---
 
-<span>{minutes}</span>
+<span>{getReadingMinutes(body)}</span>

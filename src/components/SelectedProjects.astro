@@ -1,11 +1,9 @@
 ---
-import { getT } from "@/i18n/getT";
+import { useT } from "@/i18n/getT";
 import ArrowDownLeft from "./svg/ArrowDownLeft.astro";
 
-const t = getT(Astro.currentLocale);
+const t = useT(Astro);
 
-// TODO: wire up content collections in Task 18
-// For now, projects is empty; SelectedProjects is also commented out in Hugo index.html
 const projects: { permalink: string; thumbnail: string; project: string }[] =
 	[];
 ---
