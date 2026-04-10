@@ -1,12 +1,14 @@
 ---
 import BaseLayout from "@/layouts/BaseLayout.astro";
 import ContactFooter from "@/components/ContactFooter.astro";
+import ArrowLink from "@/components/ArrowLink.astro";
 ---
 
 <BaseLayout
-	title="Jan Vítů — Marketing"
-	description="The intersection of a human need, a story, and the courage to act."
+	title="Jan Vitu — Marketing"
+	description="Not louder. Remarkable. Marketing that earns trust, not just attention."
 >
+	<!-- Hero -->
 	<section class="relative h-screen">
 		<img
 			src="/images/mist.avif"
@@ -21,11 +23,166 @@ import ContactFooter from "@/components/ContactFooter.astro";
 				<h1 class="font-black uppercase tracking-tight leading-none">
 					Marketing
 				</h1>
-				<p class="mt-4 max-w-[40ch] text-xl text-neutral-600 md:text-2xl">
-					The intersection of a human need, a story, and the courage to act.
+				<p
+					class="mt-4 max-w-[40ch] mx-auto text-xl text-neutral-600 md:text-2xl"
+				>
+					Not louder. Remarkable. Marketing that earns trust, not just attention.
 				</p>
 			</div>
 		</div>
 	</section>
+
+	<!-- The contrast -->
+	<section>
+		<div class="base-grid py-24 md:py-32">
+			<h2 class="col-start-2 col-end-12 md:col-start-3 md:col-end-9">
+				Most marketing <span class="text-accent">interrupts</span>
+			</h2>
+			<p
+				class="col-start-3 col-end-12 row-start-2 mt-4 text-xl text-neutral-700 sm:text-2xl md:col-start-4 md:col-end-9 md:mt-10 md:text-3xl"
+			>
+				The kind worth doing <b class="text-neutral-900">earns permission</b
+				>.
+			</p>
+			<div
+				class="col-start-3 col-end-12 row-start-3 mt-6 md:col-start-4 md:col-end-9 space-y-2 md:space-y-4"
+			>
+				<p class="text-sm text-neutral-700 sm:text-base md:text-xl">
+					More ads, more channels, more noise. That is the default playbook.
+					And it is exhausting - for the team and for the audience.
+				</p>
+				<p class="text-sm text-neutral-700 sm:text-base md:text-xl">
+					There is a different way. Instead of fighting for attention, earn it.
+					Instead of reaching everyone, matter to someone.
+				</p>
+			</div>
+		</div>
+	</section>
+
+	<!-- Principles — manifesto style -->
+	<section>
+		<div class="base-grid py-24 md:py-32">
+			<h2 class="col-start-2 col-end-12 md:col-start-3 md:col-end-9">
+				What I <span class="text-accent">believe</span>
+			</h2>
+		</div>
+
+		<div class="base-grid">
+			<div
+				class="col-start-2 col-end-12 md:col-start-3 md:col-end-11 space-y-16 md:space-y-24"
+			>
+				<div class="max-w-[55ch]">
+					<h3
+						class="text-3xl font-black leading-tight md:text-4xl md:leading-tight"
+					>
+						Find the smallest audience worth serving.
+					</h3>
+					<p class="mt-4 text-neutral-600 md:text-lg">
+						Not everyone needs to care. The right ten people who truly resonate
+						with your story will do more than ten thousand who scroll past.
+						Start small. Start specific. Earn the right to grow.
+					</p>
+				</div>
+
+				<div class="max-w-[55ch] md:ml-auto">
+					<h3
+						class="text-3xl font-black leading-tight md:text-4xl md:leading-tight"
+					>
+						Be remarkable, not loud.
+					</h3>
+					<p class="mt-4 text-neutral-600 md:text-lg">
+						Remarkable means worth remarking on. It is not about volume or
+						frequency - it is about making something people feel compelled to
+						share. If the work does not spread on its own, more spend will not
+						fix it.
+					</p>
+				</div>
+
+				<div class="max-w-[55ch]">
+					<h3
+						class="text-3xl font-black leading-tight md:text-4xl md:leading-tight"
+					>
+						Trust is built in small moments.
+					</h3>
+					<p class="mt-4 text-neutral-600 md:text-lg">
+						Every touchpoint is a promise. The email, the landing page, the first
+						interaction. Each one either builds trust or chips away at it. There
+						are no neutral moments.
+					</p>
+				</div>
+
+				<div class="max-w-[55ch] md:ml-auto">
+					<h3
+						class="text-3xl font-black leading-tight md:text-4xl md:leading-tight"
+					>
+						Stories move people. Tactics move metrics.
+					</h3>
+					<p class="mt-4 text-neutral-600 md:text-lg">
+						You need both. But if you start with the tactic, you get a campaign.
+						If you start with the story, you get a movement. The best marketing
+						makes people feel like they belong to something.
+					</p>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<!-- What I do -->
+	<section>
+		<div class="base-grid py-24 md:py-32">
+			<h2 class="col-start-2 col-end-12 md:col-start-3 md:col-end-9">
+				What I <span class="text-accent">do</span>
+			</h2>
+			<div
+				class="col-start-3 col-end-12 row-start-2 mt-6 md:col-start-4 md:col-end-10 space-y-6 md:space-y-8"
+			>
+				<div>
+					<h3 class="text-lg font-bold text-neutral-900 md:text-xl">
+						Shape the narrative
+					</h3>
+					<p class="mt-1 text-neutral-600 md:text-lg">
+						Find the core story that connects what you build to why people care.
+						Not a tagline - a point of view that runs through everything.
+					</p>
+				</div>
+				<div>
+					<h3 class="text-lg font-bold text-neutral-900 md:text-xl">
+						Find the right audience
+					</h3>
+					<p class="mt-1 text-neutral-600 md:text-lg">
+						Define who you are really for. Not demographics - the people who will
+						care enough to tell others. Then build around them.
+					</p>
+				</div>
+				<div>
+					<h3 class="text-lg font-bold text-neutral-900 md:text-xl">
+						Build permission, not just reach
+					</h3>
+					<p class="mt-1 text-neutral-600 md:text-lg">
+						Channels and campaigns matter, but only when people want to hear from
+						you. Earn attention first. Scale it second.
+					</p>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<!-- Closing -->
+	<section>
+		<div class="base-grid py-24 md:py-32">
+			<blockquote
+				class="col-start-2 col-end-12 md:col-start-4 md:col-end-10 text-center"
+			>
+				<p
+					class="text-2xl font-extralight italic leading-relaxed md:text-4xl md:leading-relaxed"
+				>
+					"People do not buy goods and services. They buy relations, stories,
+					and magic."
+				</p>
+				<footer class="mt-6 text-neutral-500 md:text-lg">- Seth Godin</footer>
+			</blockquote>
+		</div>
+	</section>
+
 	<ContactFooter />
 </BaseLayout>

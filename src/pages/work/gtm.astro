@@ -1,12 +1,14 @@
 ---
 import BaseLayout from "@/layouts/BaseLayout.astro";
 import ContactFooter from "@/components/ContactFooter.astro";
+import ArrowLink from "@/components/ArrowLink.astro";
 ---
 
 <BaseLayout
-	title="Jan Vítů — Go To Market"
-	description="The intersection of the Market, the Message, and the Model."
+	title="Jan Vitu — Go To Market"
+	description="Not a launch plan. The system that makes product, marketing, and sales compound as one."
 >
+	<!-- Hero -->
 	<section class="relative h-screen">
 		<img
 			src="/images/mountain.avif"
@@ -21,11 +23,151 @@ import ContactFooter from "@/components/ContactFooter.astro";
 				<h1 class="font-black uppercase tracking-tight leading-none">
 					Go To Market
 				</h1>
-				<p class="mt-4 max-w-[40ch] text-xl text-neutral-600 md:text-2xl">
-					The intersection of the Market, the Message, and the Model.
+				<p class="mt-4 max-w-[40ch] mx-auto text-xl text-neutral-600 md:text-2xl">
+					Not a launch plan. The system that makes product, marketing, and sales
+					compound as one.
 				</p>
 			</div>
 		</div>
 	</section>
+
+	<!-- The problem -->
+	<section>
+		<div class="base-grid py-24 md:py-32">
+			<h2 class="col-start-2 col-end-12 md:col-start-3 md:col-end-9">
+				Most GTM strategies <span class="text-accent">fail</span> for the
+				same reason
+			</h2>
+			<p
+				class="col-start-3 col-end-12 row-start-2 mt-4 text-xl text-neutral-700 sm:text-2xl md:col-start-4 md:col-end-9 md:mt-10 md:text-3xl"
+			>
+				They treat launch as a moment instead of a system.
+			</p>
+			<div
+				class="col-start-3 col-end-12 row-start-3 mt-6 md:col-start-4 md:col-end-9 space-y-2 md:space-y-4"
+			>
+				<p class="text-sm text-neutral-700 sm:text-base md:text-xl">
+					Marketing runs campaigns. Sales chases leads. Product ships features.
+					Everyone moves - but nothing compounds.
+				</p>
+				<p class="text-sm text-neutral-700 sm:text-base md:text-xl">
+					The problem is never effort. It is alignment.
+				</p>
+			</div>
+		</div>
+	</section>
+
+	<!-- The system -->
+	<section>
+		<div class="base-grid py-24 md:py-32">
+			<h2 class="col-start-2 col-end-12 md:col-start-3 md:col-end-9">
+				<b>One system.</b> Three engines.
+			</h2>
+			<div
+				class="col-start-2 col-end-12 row-start-2 mt-12 md:mt-20 grid grid-cols-1 gap-8 md:grid-cols-3 md:col-start-2 md:col-end-12"
+			>
+				<div class="space-y-3">
+					<span
+						class="block text-xs font-bold uppercase tracking-widest text-accent"
+						>Product</span
+					>
+					<h3 class="text-2xl font-black">The signal</h3>
+					<p class="text-neutral-600 md:text-lg">
+						What to build, who it is for, and why now. Product sets the direction
+						that everything else amplifies.
+					</p>
+				</div>
+				<div class="space-y-3">
+					<span
+						class="block text-xs font-bold uppercase tracking-widest text-accent"
+						>Marketing</span
+					>
+					<h3 class="text-2xl font-black">The story</h3>
+					<p class="text-neutral-600 md:text-lg">
+						The narrative that earns attention and builds trust. Not noise -
+						resonance with the right people at the right moment.
+					</p>
+				</div>
+				<div class="space-y-3">
+					<span
+						class="block text-xs font-bold uppercase tracking-widest text-accent"
+						>Sales & CS</span
+					>
+					<h3 class="text-2xl font-black">The proof</h3>
+					<p class="text-neutral-600 md:text-lg">
+						Where the promise meets reality. Every conversation, every handoff,
+						every renewal either compounds trust or breaks it.
+					</p>
+				</div>
+			</div>
+			<p
+				class="col-start-2 col-end-12 row-start-3 mt-12 text-center text-xl text-neutral-700 md:col-start-4 md:col-end-10 md:text-2xl"
+			>
+				Separately, they function. Together, they
+				<b class="text-neutral-900">compound</b>.
+			</p>
+		</div>
+	</section>
+
+	<!-- My role -->
+	<section>
+		<div class="base-grid py-24 md:py-32">
+			<h2 class="col-start-2 col-end-12 md:col-start-3 md:col-end-9">
+				What I <span class="text-accent">do</span>
+			</h2>
+			<div
+				class="col-start-3 col-end-12 row-start-2 mt-6 md:col-start-4 md:col-end-10 space-y-6 md:space-y-8"
+			>
+				<div>
+					<h3 class="text-lg font-bold text-neutral-900 md:text-xl">
+						Wire the system
+					</h3>
+					<p class="mt-1 text-neutral-600 md:text-lg">
+						Align product positioning, marketing narrative, and sales motion into
+						one coherent engine. No silos, no handoff gaps.
+					</p>
+				</div>
+				<div>
+					<h3 class="text-lg font-bold text-neutral-900 md:text-xl">
+						Find the right sequence
+					</h3>
+					<p class="mt-1 text-neutral-600 md:text-lg">
+						Not everything at once. The right market, the right message, the
+						right channel - in the right order. Sequencing is what separates
+						traction from noise.
+					</p>
+				</div>
+				<div>
+					<h3 class="text-lg font-bold text-neutral-900 md:text-xl">
+						Build the feedback loop
+					</h3>
+					<p class="mt-1 text-neutral-600 md:text-lg">
+						Sales insights sharpen marketing. Marketing signals shape product.
+						Product decisions feed back into the story. The system learns.
+					</p>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<!-- Closing -->
+	<section>
+		<div class="base-grid py-24 md:py-32">
+			<blockquote
+				class="col-start-2 col-end-12 md:col-start-4 md:col-end-10 text-center"
+			>
+				<p
+					class="text-2xl font-extralight italic leading-relaxed md:text-4xl md:leading-relaxed"
+				>
+					"A great product with a broken GTM is just a secret. A mediocre product
+					with a great GTM still wins."
+				</p>
+				<p class="mt-6 text-neutral-600 md:text-lg">
+					The goal is to have both. That is the work.
+				</p>
+			</blockquote>
+		</div>
+	</section>
+
 	<ContactFooter />
 </BaseLayout>
