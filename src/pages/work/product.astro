@@ -1,12 +1,14 @@
 ---
 import BaseLayout from "@/layouts/BaseLayout.astro";
 import ContactFooter from "@/components/ContactFooter.astro";
+import ArrowLink from "@/components/ArrowLink.astro";
 ---
 
 <BaseLayout
-	title="Jan Vítů — Product"
-	description="The intersection of the customer, the technology, and the business."
+	title="Jan Vitu — Product"
+	description="Discover what matters. Ship what works. Repeat until it compounds."
 >
+	<!-- Hero -->
 	<section class="relative h-screen">
 		<img
 			src="/images/iceberg.avif"
@@ -21,11 +23,183 @@ import ContactFooter from "@/components/ContactFooter.astro";
 				<h1 class="font-black uppercase tracking-tight leading-none">
 					Product
 				</h1>
-				<p class="mt-4 max-w-[40ch] text-xl text-neutral-600 md:text-2xl">
-					The intersection of the customer, the technology, and the business.
+				<p
+					class="mt-4 max-w-[40ch] mx-auto text-xl text-neutral-600 md:text-2xl"
+				>
+					Discover what matters. Ship what works. Repeat until it compounds.
 				</p>
 			</div>
 		</div>
 	</section>
+
+	<!-- The problem -->
+	<section>
+		<div class="base-grid py-24 md:py-32">
+			<h2 class="col-start-2 col-end-12 md:col-start-3 md:col-end-9">
+				Most teams ship <span class="text-accent">features</span>
+			</h2>
+			<p
+				class="col-start-3 col-end-12 row-start-2 mt-4 text-xl text-neutral-700 sm:text-2xl md:col-start-4 md:col-end-9 md:mt-10 md:text-3xl"
+			>
+				The best teams ship <b class="text-neutral-900">outcomes</b>.
+			</p>
+			<div
+				class="col-start-3 col-end-12 row-start-3 mt-6 md:col-start-4 md:col-end-9 space-y-2 md:space-y-4"
+			>
+				<p class="text-sm text-neutral-700 sm:text-base md:text-xl">
+					Roadmaps full of features feel productive. But velocity without
+					direction is just motion. The backlog grows, the team delivers, and
+					somehow the needle does not move.
+				</p>
+				<p class="text-sm text-neutral-700 sm:text-base md:text-xl">
+					The missing piece is rarely effort. It is discovery.
+				</p>
+			</div>
+		</div>
+	</section>
+
+	<!-- The iceberg — layered approach -->
+	<section>
+		<div class="base-grid py-24 md:py-32">
+			<h2 class="col-start-2 col-end-12 md:col-start-3 md:col-end-9">
+				What sits <b>beneath</b> the surface
+			</h2>
+			<p
+				class="col-start-3 col-end-12 row-start-2 mt-4 text-xl text-neutral-700 sm:text-2xl md:col-start-4 md:col-end-9 md:mt-10 md:text-3xl"
+			>
+				Great products are built in layers.
+			</p>
+		</div>
+
+		<div class="base-grid">
+			<div
+				class="col-start-2 col-end-12 md:col-start-3 md:col-end-11 space-y-0"
+			>
+				<!-- Layer 1 -->
+				<div
+					class="border-l-2 border-accent pl-6 py-8 md:pl-10 md:py-12 md:ml-8"
+				>
+					<span
+						class="block text-xs font-bold uppercase tracking-widest text-accent"
+						>Surface</span
+					>
+					<h3 class="mt-2 text-2xl font-black md:text-3xl">
+						The feature people see
+					</h3>
+					<p class="mt-2 max-w-[55ch] text-neutral-600 md:text-lg">
+						What the user interacts with. The screen, the flow, the moment of
+						value. This is what most teams obsess over - and ship too early.
+					</p>
+				</div>
+
+				<!-- Layer 2 -->
+				<div
+					class="border-l-2 border-neutral-300 pl-6 py-8 md:pl-10 md:py-12 md:ml-8"
+				>
+					<span
+						class="block text-xs font-bold uppercase tracking-widest text-neutral-400"
+						>Below</span
+					>
+					<h3 class="mt-2 text-2xl font-black md:text-3xl">
+						The problem worth solving
+					</h3>
+					<p class="mt-2 max-w-[55ch] text-neutral-600 md:text-lg">
+						Not every pain point deserves a solution. Continuous discovery means
+						talking to real customers, mapping their opportunities, and making
+						hard bets on which problems actually move the business.
+					</p>
+				</div>
+
+				<!-- Layer 3 -->
+				<div
+					class="border-l-2 border-neutral-200 pl-6 py-8 md:pl-10 md:py-12 md:ml-8"
+				>
+					<span
+						class="block text-xs font-bold uppercase tracking-widest text-neutral-300"
+						>Deep</span
+					>
+					<h3 class="mt-2 text-2xl font-black md:text-3xl">
+						The team that owns it
+					</h3>
+					<p class="mt-2 max-w-[55ch] text-neutral-600 md:text-lg">
+						Empowered teams do not wait for instructions. They understand the
+						mission, have context on the customer, and own the outcome - not just
+						the output. This is where compounding starts.
+					</p>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<!-- What I do -->
+	<section>
+		<div class="base-grid py-24 md:py-32">
+			<h2 class="col-start-2 col-end-12 md:col-start-3 md:col-end-9">
+				What I <span class="text-accent">do</span>
+			</h2>
+			<div
+				class="col-start-2 col-end-12 row-start-2 mt-12 md:mt-20 grid grid-cols-1 gap-8 md:grid-cols-2 md:col-start-3 md:col-end-11"
+			>
+				<div class="space-y-3">
+					<h3 class="text-lg font-bold text-neutral-900 md:text-xl">
+						Shape the discovery habit
+					</h3>
+					<p class="text-neutral-600 md:text-lg">
+						Build a continuous loop of customer conversations, opportunity
+						mapping, and assumption testing. Not a phase - a practice the team
+						runs every week.
+					</p>
+				</div>
+				<div class="space-y-3">
+					<h3 class="text-lg font-bold text-neutral-900 md:text-xl">
+						Align around outcomes
+					</h3>
+					<p class="text-neutral-600 md:text-lg">
+						Replace feature-driven roadmaps with outcome-driven bets. Clear
+						success metrics, clear ownership, clear accountability for what
+						actually moved.
+					</p>
+				</div>
+				<div class="space-y-3">
+					<h3 class="text-lg font-bold text-neutral-900 md:text-xl">
+						Empower the team
+					</h3>
+					<p class="text-neutral-600 md:text-lg">
+						Give teams the context, the autonomy, and the trust to solve problems
+						their own way. The best product decisions happen closest to the
+						customer.
+					</p>
+				</div>
+				<div class="space-y-3">
+					<h3 class="text-lg font-bold text-neutral-900 md:text-xl">
+						Close the loop
+					</h3>
+					<p class="text-neutral-600 md:text-lg">
+						Ship, measure, learn, adapt. Every cycle sharpens the team's
+						instinct. Every iteration gets closer to what actually matters.
+					</p>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<!-- Closing -->
+	<section>
+		<div class="base-grid py-24 md:py-32">
+			<blockquote
+				class="col-start-2 col-end-12 md:col-start-4 md:col-end-10 text-center"
+			>
+				<p
+					class="text-2xl font-extralight italic leading-relaxed md:text-4xl md:leading-relaxed"
+				>
+					"Fall in love with the problem, not the solution."
+				</p>
+				<p class="mt-6 text-neutral-600 md:text-lg">
+					The rest is iteration.
+				</p>
+			</blockquote>
+		</div>
+	</section>
+
 	<ContactFooter />
 </BaseLayout>

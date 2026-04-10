@@ -8,7 +8,7 @@ import WorkCard from "@/components/WorkCard.astro";
 	title="Jan Vítů — Work"
 	description="Show up. Do the work. Own the outcome."
 >
-	<section class="min-h-svh">
+	<section class="relative min-h-svh">
 		<div class="base-grid pt-[38vh] pb-[20vh]">
 			<div
 				class="col-start-2 col-end-12 md:col-start-3 md:col-end-11 text-center"
@@ -23,6 +23,13 @@ import WorkCard from "@/components/WorkCard.astro";
 					get in the work with you.
 				</p>
 			</div>
+		</div>
+		<div
+			id="scroll-indication"
+			class="absolute inset-x-0 bottom-6 grid place-content-center items-center text-sm sm:bottom-4"
+		>
+			<span>Scroll down</span>
+			<div class="mx-auto mt-4 h-16 w-[2px] bg-neutral-800"></div>
 		</div>
 	</section>
 
@@ -60,14 +67,14 @@ import WorkCard from "@/components/WorkCard.astro";
 					href="/work/gtm"
 					image="/images/mountain.avif"
 					title="Go To Market"
-					description="The intersection of the Market, the Message, and the Model."
+					description="Not a launch plan. The system that makes product, marketing, and sales compound as one."
 					label="Explore GTM"
 				/>
 				<WorkCard
 					href="/work/product"
 					image="/images/iceberg.avif"
 					title="Product"
-					description="The intersection of the customer, the technology, and the business."
+					description="Discover what matters. Ship what works. Repeat until it compounds."
 					label="Explore product work"
 					elevated
 				/>
@@ -75,7 +82,7 @@ import WorkCard from "@/components/WorkCard.astro";
 					href="/work/marketing"
 					image="/images/mist.avif"
 					title="Marketing"
-					description="The intersection of a human need, a story, and the courage to act."
+					description="Not louder. Remarkable. Marketing that earns trust, not just attention."
 					label="Explore marketing"
 				/>
 			</div>
