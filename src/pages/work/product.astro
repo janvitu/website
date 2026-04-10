@@ -14,9 +14,9 @@ import ContactFooter from "@/components/ContactFooter.astro";
 			aria-hidden="true"
 			class="absolute inset-0 h-full w-full object-contain object-top mix-blend-multiply pointer-events-none mask-[linear-gradient(to_top,transparent_0%,black_60%)] [-webkit-mask-image:linear-gradient(to_top,transparent_0%,black_60%)]"
 		/>
-		<div class="base-grid relative h-full">
+		<div class="base-grid relative place-items-center h-full">
 			<div
-				class="col-start-2 col-end-12 md:col-start-4 md:col-end-10 flex flex-col items-center justify-center pt-[33.333vh] text-center"
+				class="col-start-2 col-end-12 md:col-start-4 md:col-end-10 text-center"
 			>
 				<h1 class="font-black uppercase tracking-tight leading-none">
 					Product
@@ -27,6 +27,5 @@ import ContactFooter from "@/components/ContactFooter.astro";
 			</div>
 		</div>
 	</section>
+	<ContactFooter />
 </BaseLayout>
-
-<ContactFooter />
