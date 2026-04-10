@@ -1,0 +1,46 @@
+---
+import ArrowLink from "./ArrowLink.astro";
+
+interface Props {
+	href: string;
+	image: string;
+	title: string;
+	description: string;
+	label: string;
+	elevated?: boolean;
+}
+
+const {
+	href,
+	image,
+	title,
+	description,
+	label,
+	elevated = false,
+} = Astro.props;
+---
+
+<div
+	class:list={[
+		"relative overflow-hidden min-h-120 backdrop-blur-xl bg-white/20 border border-white/70 shadow-xl shadow-black/5 ring-1 ring-inset ring-white/50",
+		elevated && "md:min-h-140 md:-translate-y-8",
+	]}
+>
+	<img
+		src={image}
+		alt=""
+		aria-hidden="true"
+		class="absolute inset-0 h-full w-full object-contain object-top mix-blend-multiply"
+	/>
+	<div
+		class="absolute inset-x-0 bottom-0 h-2/3 bg-linear-to-t from-white to-transparent"
+	>
+	</div>
+	<div class="absolute inset-x-0 bottom-0 z-10 p-8">
+		<h3 class="text-2xl font-black uppercase tracking-tight md:text-3xl">
+			{title}
+		</h3>
+		<p class="mt-2 text-neutral-600">{description}</p>
+		<ArrowLink href={href} label={label} />
+	</div>
+</div>
