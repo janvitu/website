@@ -96,10 +96,31 @@ glossaryContainers.forEach((glossary) => {
 		}
 	};
 
-	title.addEventListener("mouseenter", onEnter);
-	title.addEventListener("mouseleave", onLeave);
-	title.addEventListener("touchstart", onEnter, { passive: true });
-	title.addEventListener("touchend", onLeave, { passive: true });
+	let isTouching = false;
+
+	title.addEventListener("mouseenter", () => {
+		if (!isTouching) onEnter();
+	});
+	title.addEventListener("mouseleave", () => {
+		if (!isTouching) onLeave();
+	});
+
+	title.addEventListener(
+		"touchstart",
+		() => {
+			isTouching = true;
+			onEnter();
+		},
+		{ passive: true },
+	);
+	const onTouchEnd = () => {
+		onLeave();
+		setTimeout(() => {
+			isTouching = false;
+		}, 300);
+	};
+	title.addEventListener("touchend", onTouchEnd, { passive: true });
+	title.addEventListener("touchcancel", onTouchEnd, { passive: true });
 
 	title.addEventListener("keydown", (e: KeyboardEvent) => {
 		if (e.key === "Enter" || e.key === " ") {
