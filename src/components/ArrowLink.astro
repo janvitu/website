@@ -4,23 +4,64 @@ import Chevron from "./svg/Chevron.astro";
 interface Props {
 	href: string;
 	label: string;
+	size?: "sm" | "default" | "responsive";
 }
 
-const { href, label } = Astro.props;
+const { href, label, size = "default" } = Astro.props;
+
+const isSmall = size === "sm";
+const isResponsive = size === "responsive";
 ---
 
 <a
 	href={href}
-	class="group relative cursor-pointer overflow-visible text-base font-semibold md:text-3xl focus-accent"
+	class:list={[
+		"group relative cursor-pointer overflow-visible font-semibold focus-accent",
+		isResponsive && "arrow-link--responsive",
+		!isResponsive &&
+			(isSmall ? "text-base md:text-xl" : "text-base md:text-3xl"),
+	]}
 >
 	<span
-		class="whitespace-nowrap pl-24 pr-5 after:absolute after:left-0 after:top-1/2 after:h-[2px] after:w-[88px] after:-translate-y-1/2 after:transform after:bg-neutral-900 after:transition-all after:duration-200 group-hover:after:w-full"
+		class:list={[
+			"whitespace-nowrap after:absolute after:left-0 after:top-1/2 after:-translate-y-1/2 after:transform after:bg-neutral-900 after:transition-all after:duration-200 group-hover:after:w-full",
+			!isResponsive &&
+				(isSmall
+					? "pl-18 pr-4 after:h-0.5 after:w-16"
+					: "pl-24 pr-5 after:h-0.5 after:w-22"),
+		]}
 	>
 		<span
-			class="absolute top-1/2 left-20 right-auto inline-block aspect-[3/4] h-[15px] w-auto -translate-y-1/2 transform transition-all duration-200 group-hover:left-[calc(100%-8px)]"
+			class:list={[
+				"absolute top-1/2 right-auto inline-block aspect-3/4 -translate-y-1/2 transform transition-all duration-200 group-hover:left-[calc(100%-8px)]",
+				!isResponsive &&
+					(isSmall ? "left-14 h-3 w-auto" : "left-20 h-3.75 w-auto"),
+			]}
 		>
 			<Chevron />
 		</span>
 		{label}
 	</span>
 </a>
+
+<style>
+	.arrow-link--responsive {
+		font-size: clamp(1rem, 0.6rem + 1.25vw, 1.875rem);
+	}
+
+	.arrow-link--responsive > span {
+		padding-left: clamp(4.5rem, 3.5rem + 2.5vw, 6rem);
+		padding-right: clamp(1rem, 0.75rem + 0.25vw, 1.25rem);
+	}
+
+	.arrow-link--responsive > span::after {
+		height: 2px;
+		width: clamp(64px, 3rem + 2.5vw, 88px);
+	}
+
+	.arrow-link--responsive > span > span {
+		left: clamp(3.5rem, 2.75rem + 2vw, 5rem);
+		height: clamp(12px, 8px + 0.3vw, 15px);
+		width: auto;
+	}
+</style>
