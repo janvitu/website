@@ -9,32 +9,31 @@ import ArrowLink from "@/components/ArrowLink.astro";
 	description="Discover what matters. Ship what works. Repeat until it compounds."
 >
 	<!-- Hero -->
-	<section class="relative h-screen">
+	<section class="relative h-screen overflow-hidden">
 		<img
 			src="/images/iceberg.avif"
 			alt=""
 			aria-hidden="true"
-			class="absolute inset-0 h-full w-full object-contain object-top mix-blend-multiply pointer-events-none mask-[linear-gradient(to_top,transparent_0%,black_60%)] [-webkit-mask-image:linear-gradient(to_top,transparent_0%,black_60%)]"
+			class="absolute top-0 left-[10%] h-full w-full object-contain object-top mix-blend-multiply pointer-events-none md:left-[15%]"
 		/>
-		<div class="base-grid relative place-items-center h-full">
-			<div
-				class="col-start-2 col-end-12 md:col-start-4 md:col-end-10 text-center"
-			>
+		<div
+			class="absolute inset-x-0 bottom-0 h-[35vh] bg-gradient-to-t from-neutral-100 via-neutral-100/90 to-transparent pointer-events-none md:hidden"
+		>
+		</div>
+		<div class="base-grid relative h-full items-end pb-[8vh] md:pb-[14vh]">
+			<div class="col-start-2 col-end-12 md:col-start-3 md:col-end-10">
 				<h1 class="font-black uppercase tracking-tight leading-none">
 					Product
 				</h1>
-				<p
-					class="mt-4 max-w-[40ch] mx-auto text-xl text-neutral-600 md:text-2xl"
-				>
+				<p class="mt-4 max-w-[45ch] text-lg text-neutral-600 md:text-2xl">
 					Discover what matters. Ship what works. Repeat until it compounds.
 				</p>
 			</div>
 		</div>
 	</section>
-
 	<!-- The problem -->
 	<section>
-		<div class="base-grid py-24 md:py-32">
+		<div class="base-grid py-32 md:py-48">
 			<h2 class="col-start-2 col-end-12 md:col-start-3 md:col-end-9">
 				Most teams ship <span class="text-accent">features</span>
 			</h2>
@@ -52,15 +51,15 @@ import ArrowLink from "@/components/ArrowLink.astro";
 					somehow the needle does not move.
 				</p>
 				<p class="text-sm text-neutral-700 sm:text-base md:text-xl">
-					The missing piece is rarely effort. It is discovery.
+					The missing piece is rarely effort. <b>It is discovery.</b>
 				</p>
 			</div>
 		</div>
 	</section>
 
-	<!-- The iceberg — layered approach -->
+	<!-- The iceberg — descending layers with increasing left indent -->
 	<section>
-		<div class="base-grid py-24 md:py-32">
+		<div class="base-grid py-24">
 			<h2 class="col-start-2 col-end-12 md:col-start-3 md:col-end-9">
 				What sits <b>beneath</b> the surface
 			</h2>
@@ -72,13 +71,9 @@ import ArrowLink from "@/components/ArrowLink.astro";
 		</div>
 
 		<div class="base-grid">
-			<div
-				class="col-start-2 col-end-12 md:col-start-3 md:col-end-11 space-y-0"
-			>
-				<!-- Layer 1 -->
-				<div
-					class="border-l-2 border-accent pl-6 py-8 md:pl-10 md:py-12 md:ml-8"
-				>
+			<div class="col-start-2 col-end-12 md:col-start-4 md:col-end-9">
+				<!-- Surface — full width, bold accent -->
+				<div class="border-l-2 border-accent pl-6 py-10 md:pl-10 md:py-14">
 					<span
 						class="block text-xs font-bold uppercase tracking-widest text-accent"
 						>Surface</span
@@ -86,16 +81,16 @@ import ArrowLink from "@/components/ArrowLink.astro";
 					<h3 class="mt-2 text-2xl font-black md:text-3xl">
 						The feature people see
 					</h3>
-					<p class="mt-2 max-w-[55ch] text-neutral-600 md:text-lg">
+					<p
+						class="mt-3 max-w-[55ch] text-neutral-600 md:text-lg leading-relaxed"
+					>
 						What the user interacts with. The screen, the flow, the moment of
 						value. This is what most teams obsess over - and ship too early.
 					</p>
 				</div>
 
-				<!-- Layer 2 -->
-				<div
-					class="border-l-2 border-neutral-300 pl-6 py-8 md:pl-10 md:py-12 md:ml-8"
-				>
+				<!-- Below — indented, faded -->
+				<div class="border-l-2 border-neutral-300 pl-6 py-10 md:pl-10 md:py-14">
 					<span
 						class="block text-xs font-bold uppercase tracking-widest text-neutral-400"
 						>Below</span
@@ -103,17 +98,17 @@ import ArrowLink from "@/components/ArrowLink.astro";
 					<h3 class="mt-2 text-2xl font-black md:text-3xl">
 						The problem worth solving
 					</h3>
-					<p class="mt-2 max-w-[55ch] text-neutral-600 md:text-lg">
+					<p
+						class="mt-3 max-w-[55ch] text-neutral-600 md:text-lg leading-relaxed"
+					>
 						Not every pain point deserves a solution. Continuous discovery means
 						talking to real customers, mapping their opportunities, and making
 						hard bets on which problems actually move the business.
 					</p>
 				</div>
 
-				<!-- Layer 3 -->
-				<div
-					class="border-l-2 border-neutral-200 pl-6 py-8 md:pl-10 md:py-12 md:ml-8"
-				>
+				<!-- Deep — more indented, most faded -->
+				<div class="border-l-2 border-neutral-200 pl-6 py-10 md:pl-10 md:py-14">
 					<span
 						class="block text-xs font-bold uppercase tracking-widest text-neutral-300"
 						>Deep</span
@@ -121,60 +116,62 @@ import ArrowLink from "@/components/ArrowLink.astro";
 					<h3 class="mt-2 text-2xl font-black md:text-3xl">
 						The team that owns it
 					</h3>
-					<p class="mt-2 max-w-[55ch] text-neutral-600 md:text-lg">
+					<p
+						class="mt-3 max-w-[55ch] text-neutral-600 md:text-lg leading-relaxed"
+					>
 						Empowered teams do not wait for instructions. They understand the
-						mission, have context on the customer, and own the outcome - not just
-						the output. This is where compounding starts.
+						mission, have context on the customer, and own the outcome - not
+						just the output. This is where compounding starts.
 					</p>
 				</div>
 			</div>
 		</div>
 	</section>
 
-	<!-- What I do -->
+	<!-- What I do — 2x2 grid -->
 	<section>
-		<div class="base-grid py-24 md:py-32">
+		<div class="base-grid py-32 md:py-48">
 			<h2 class="col-start-2 col-end-12 md:col-start-3 md:col-end-9">
 				What I <span class="text-accent">do</span>
 			</h2>
 			<div
-				class="col-start-2 col-end-12 row-start-2 mt-12 md:mt-20 grid grid-cols-1 gap-8 md:grid-cols-2 md:col-start-3 md:col-end-11"
+				class="col-start-2 col-end-12 row-start-2 mt-12 md:mt-20 grid grid-cols-1 gap-10 md:grid-cols-2 md:gap-x-12 md:gap-y-14 md:col-start-3 md:col-end-11"
 			>
-				<div class="space-y-3">
+				<div>
 					<h3 class="text-lg font-bold text-neutral-900 md:text-xl">
 						Shape the discovery habit
 					</h3>
-					<p class="text-neutral-600 md:text-lg">
+					<p class="mt-2 text-neutral-600 md:text-lg leading-relaxed">
 						Build a continuous loop of customer conversations, opportunity
 						mapping, and assumption testing. Not a phase - a practice the team
 						runs every week.
 					</p>
 				</div>
-				<div class="space-y-3">
+				<div>
 					<h3 class="text-lg font-bold text-neutral-900 md:text-xl">
 						Align around outcomes
 					</h3>
-					<p class="text-neutral-600 md:text-lg">
+					<p class="mt-2 text-neutral-600 md:text-lg leading-relaxed">
 						Replace feature-driven roadmaps with outcome-driven bets. Clear
 						success metrics, clear ownership, clear accountability for what
 						actually moved.
 					</p>
 				</div>
-				<div class="space-y-3">
+				<div>
 					<h3 class="text-lg font-bold text-neutral-900 md:text-xl">
 						Empower the team
 					</h3>
-					<p class="text-neutral-600 md:text-lg">
-						Give teams the context, the autonomy, and the trust to solve problems
-						their own way. The best product decisions happen closest to the
-						customer.
+					<p class="mt-2 text-neutral-600 md:text-lg leading-relaxed">
+						Give teams the context, the autonomy, and the trust to solve
+						problems their own way. The best product decisions happen closest to
+						the customer.
 					</p>
 				</div>
-				<div class="space-y-3">
+				<div>
 					<h3 class="text-lg font-bold text-neutral-900 md:text-xl">
 						Close the loop
 					</h3>
-					<p class="text-neutral-600 md:text-lg">
+					<p class="mt-2 text-neutral-600 md:text-lg leading-relaxed">
 						Ship, measure, learn, adapt. Every cycle sharpens the team's
 						instinct. Every iteration gets closer to what actually matters.
 					</p>
@@ -184,19 +181,17 @@ import ArrowLink from "@/components/ArrowLink.astro";
 	</section>
 
 	<!-- Closing -->
-	<section>
-		<div class="base-grid py-24 md:py-32">
+	<section class="py-24 md:py-32">
+		<div class="base-grid">
 			<blockquote
-				class="col-start-2 col-end-12 md:col-start-4 md:col-end-10 text-center"
+				class="col-start-2 col-end-12 md:col-start-4 md:col-end-10 text-center backdrop-blur-xl bg-white/20 border border-white/70 shadow-xl shadow-black/5 ring-1 ring-inset ring-white/50 px-10 py-14 md:px-16 md:py-20"
 			>
 				<p
 					class="text-2xl font-extralight italic leading-relaxed md:text-4xl md:leading-relaxed"
 				>
 					"Fall in love with the problem, not the solution."
 				</p>
-				<p class="mt-6 text-neutral-600 md:text-lg">
-					The rest is iteration.
-				</p>
+				<p class="mt-8 text-neutral-600 md:text-lg">The rest is iteration.</p>
 			</blockquote>
 		</div>
 	</section>

@@ -38,7 +38,7 @@ h2 {
    .link-strikethrough span, and prose links. */
 @utility strikethrough-bar {
 	@apply relative;
-	@apply before:absolute before:-inset-x-1 before:top-1/2 before:h-[2px] before:-translate-y-1/2 before:transform;
+	@apply before:absolute before:-inset-x-1 before:top-1/2 before:h-0.5 before:-translate-y-1/2 before:transform;
 	@apply before:origin-center before:scale-x-0 before:bg-neutral-900 before:transition-all;
 }
 
@@ -55,14 +55,14 @@ h2 {
 }
 
 .focus-accent {
-	@apply focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent;
+	@apply focus-visible:outline focus-visible:outline-offset-2 focus-visible:outline-accent;
 }
 
 .link-strikethrough > span {
 	@apply strikethrough-bar;
 	@apply hover:before:scale-x-100 hover:text-accent hover:before:bg-accent;
 	@apply transition-colors;
-	@apply focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent;
+	@apply focus-visible:outline focus-visible:outline-offset-2 focus-visible:outline-accent;
 }
 .link-strikethrough--active > span {
 	@apply before:scale-x-100;

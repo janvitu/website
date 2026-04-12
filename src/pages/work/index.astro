@@ -61,7 +61,7 @@ import WorkCard from "@/components/WorkCard.astro";
 			</div>
 
 			<div
-				class="col-start-2 col-end-12 grid grid-cols-1 gap-4 md:grid-cols-3 md:items-end"
+				class="work-cards col-start-2 col-end-12 grid grid-cols-[repeat(auto-fit,minmax(min(100%,320px),1fr))] gap-4 items-end"
 			>
 				<WorkCard
 					href="/work/gtm"
@@ -119,3 +119,16 @@ import WorkCard from "@/components/WorkCard.astro";
 	</section>
 	<ContactFooter />
 </BaseLayout>
+
+<style>
+	.work-cards > :global(:last-child) {
+		grid-column-start: -2;
+	}
+
+	@media (min-width: 768px) and (max-width: 1279px) {
+		.work-cards > :global(:last-child) {
+			min-height: 35rem;
+			transform: translateY(-2rem);
+		}
+	}
+</style>

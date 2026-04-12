@@ -8,24 +8,27 @@ import ArrowLink from "@/components/ArrowLink.astro";
 	title="Jan Vitu — Go To Market"
 	description="Not a launch plan. The system that makes product, marketing, and sales compound as one."
 >
-	<!-- Hero -->
+	<!-- Hero — left-aligned, mountain as atmosphere -->
 	<section class="relative h-screen">
 		<img
 			src="/images/mountain.avif"
 			alt=""
 			aria-hidden="true"
-			class="absolute inset-0 h-full w-full object-contain object-top mix-blend-multiply pointer-events-none mask-[linear-gradient(to_top,transparent_0%,black_60%)] [-webkit-mask-image:linear-gradient(to_top,transparent_0%,black_60%)]"
+			class="absolute right-0 top-[15vh] w-[60%] md:top-12 md:right-0 md:w-1/2 md:max-h-[92vh] object-contain mix-blend-multiply pointer-events-none"
 		/>
-		<div class="base-grid relative place-items-center h-full">
-			<div
-				class="col-start-2 col-end-12 md:col-start-4 md:col-end-10 text-center"
-			>
-				<h1 class="font-black uppercase tracking-tight leading-none">
-					Go To Market
+		<div class="base-grid relative h-full items-end pb-[20vh] md:items-center md:pb-0">
+			<div class="col-start-2 col-end-11 md:col-start-3 md:col-end-9">
+				<span
+					class="block text-xs font-bold uppercase tracking-[0.2em] text-accent mb-4 md:mb-6"
+					>Go To Market</span
+				>
+				<h1 class="font-black leading-none">
+					Not a launch plan.<br />
+					<span class="text-accent">A system.</span>
 				</h1>
-				<p class="mt-4 max-w-[40ch] mx-auto text-xl text-neutral-600 md:text-2xl">
-					Not a launch plan. The system that makes product, marketing, and sales
-					compound as one.
+				<p class="mt-6 max-w-[45ch] text-lg text-neutral-600 md:text-2xl">
+					The system that makes product, marketing, and sales compound as
+					one.
 				</p>
 			</div>
 		</div>
@@ -33,7 +36,7 @@ import ArrowLink from "@/components/ArrowLink.astro";
 
 	<!-- The problem -->
 	<section>
-		<div class="base-grid py-24 md:py-32">
+		<div class="base-grid py-32 md:py-48">
 			<h2 class="col-start-2 col-end-12 md:col-start-3 md:col-end-9">
 				Most GTM strategies <span class="text-accent">fail</span> for the
 				same reason
@@ -57,14 +60,14 @@ import ArrowLink from "@/components/ArrowLink.astro";
 		</div>
 	</section>
 
-	<!-- The system -->
+	<!-- The system — three engines -->
 	<section>
-		<div class="base-grid py-24 md:py-32">
+		<div class="base-grid py-32 md:py-48">
 			<h2 class="col-start-2 col-end-12 md:col-start-3 md:col-end-9">
 				<b>One system.</b> Three engines.
 			</h2>
 			<div
-				class="col-start-2 col-end-12 row-start-2 mt-12 md:mt-20 grid grid-cols-1 gap-8 md:grid-cols-3 md:col-start-2 md:col-end-12"
+				class="col-start-2 col-end-12 row-start-2 mt-12 md:mt-20 grid grid-cols-1 gap-12 md:grid-cols-3 md:gap-8"
 			>
 				<div class="space-y-3">
 					<span
@@ -72,7 +75,7 @@ import ArrowLink from "@/components/ArrowLink.astro";
 						>Product</span
 					>
 					<h3 class="text-2xl font-black">The signal</h3>
-					<p class="text-neutral-600 md:text-lg">
+					<p class="text-neutral-600 md:text-lg leading-relaxed">
 						What to build, who it is for, and why now. Product sets the direction
 						that everything else amplifies.
 					</p>
@@ -83,7 +86,7 @@ import ArrowLink from "@/components/ArrowLink.astro";
 						>Marketing</span
 					>
 					<h3 class="text-2xl font-black">The story</h3>
-					<p class="text-neutral-600 md:text-lg">
+					<p class="text-neutral-600 md:text-lg leading-relaxed">
 						The narrative that earns attention and builds trust. Not noise -
 						resonance with the right people at the right moment.
 					</p>
@@ -94,14 +97,14 @@ import ArrowLink from "@/components/ArrowLink.astro";
 						>Sales & CS</span
 					>
 					<h3 class="text-2xl font-black">The proof</h3>
-					<p class="text-neutral-600 md:text-lg">
+					<p class="text-neutral-600 md:text-lg leading-relaxed">
 						Where the promise meets reality. Every conversation, every handoff,
 						every renewal either compounds trust or breaks it.
 					</p>
 				</div>
 			</div>
 			<p
-				class="col-start-2 col-end-12 row-start-3 mt-12 text-center text-xl text-neutral-700 md:col-start-4 md:col-end-10 md:text-2xl"
+				class="col-start-2 col-end-12 row-start-3 mt-16 text-center text-xl text-neutral-700 md:col-start-4 md:col-end-10 md:mt-20 md:text-2xl"
 			>
 				Separately, they function. Together, they
 				<b class="text-neutral-900">compound</b>.
@@ -109,39 +112,45 @@ import ArrowLink from "@/components/ArrowLink.astro";
 		</div>
 	</section>
 
-	<!-- My role -->
+	<!-- What I do -->
 	<section>
-		<div class="base-grid py-24 md:py-32">
+		<div class="base-grid py-32 md:py-48">
 			<h2 class="col-start-2 col-end-12 md:col-start-3 md:col-end-9">
 				What I <span class="text-accent">do</span>
 			</h2>
 			<div
-				class="col-start-3 col-end-12 row-start-2 mt-6 md:col-start-4 md:col-end-10 space-y-6 md:space-y-8"
+				class="col-start-3 col-end-12 row-start-2 mt-8 md:col-start-4 md:col-end-10 md:mt-14 space-y-10 md:space-y-14"
 			>
-				<div>
+				<div
+					class="relative pl-6 md:pl-8 before:absolute before:left-0 before:top-0 before:bottom-0 before:w-[2px] before:bg-accent/30"
+				>
 					<h3 class="text-lg font-bold text-neutral-900 md:text-xl">
 						Wire the system
 					</h3>
-					<p class="mt-1 text-neutral-600 md:text-lg">
+					<p class="mt-2 text-neutral-600 md:text-lg leading-relaxed">
 						Align product positioning, marketing narrative, and sales motion into
 						one coherent engine. No silos, no handoff gaps.
 					</p>
 				</div>
-				<div>
+				<div
+					class="relative pl-6 md:pl-8 before:absolute before:left-0 before:top-0 before:bottom-0 before:w-[2px] before:bg-accent/30"
+				>
 					<h3 class="text-lg font-bold text-neutral-900 md:text-xl">
 						Find the right sequence
 					</h3>
-					<p class="mt-1 text-neutral-600 md:text-lg">
+					<p class="mt-2 text-neutral-600 md:text-lg leading-relaxed">
 						Not everything at once. The right market, the right message, the
 						right channel - in the right order. Sequencing is what separates
 						traction from noise.
 					</p>
 				</div>
-				<div>
+				<div
+					class="relative pl-6 md:pl-8 before:absolute before:left-0 before:top-0 before:bottom-0 before:w-[2px] before:bg-accent/30"
+				>
 					<h3 class="text-lg font-bold text-neutral-900 md:text-xl">
 						Build the feedback loop
 					</h3>
-					<p class="mt-1 text-neutral-600 md:text-lg">
+					<p class="mt-2 text-neutral-600 md:text-lg leading-relaxed">
 						Sales insights sharpen marketing. Marketing signals shape product.
 						Product decisions feed back into the story. The system learns.
 					</p>
@@ -150,19 +159,19 @@ import ArrowLink from "@/components/ArrowLink.astro";
 		</div>
 	</section>
 
-	<!-- Closing -->
-	<section>
-		<div class="base-grid py-24 md:py-32">
+	<!-- Closing quote -->
+	<section class="py-24 md:py-32">
+		<div class="base-grid">
 			<blockquote
-				class="col-start-2 col-end-12 md:col-start-4 md:col-end-10 text-center"
+				class="col-start-2 col-end-12 md:col-start-4 md:col-end-10 text-center backdrop-blur-xl bg-white/20 border border-white/70 shadow-xl shadow-black/5 ring-1 ring-inset ring-white/50 px-10 py-14 md:px-16 md:py-20"
 			>
 				<p
 					class="text-2xl font-extralight italic leading-relaxed md:text-4xl md:leading-relaxed"
 				>
-					"A great product with a broken GTM is just a secret. A mediocre product
-					with a great GTM still wins."
+					"A great product with a broken GTM is just a secret. A mediocre
+					product with a great GTM still wins."
 				</p>
-				<p class="mt-6 text-neutral-600 md:text-lg">
+				<p class="mt-8 text-neutral-600 md:text-lg">
 					The goal is to have both. That is the work.
 				</p>
 			</blockquote>
