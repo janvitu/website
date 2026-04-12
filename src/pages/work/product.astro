@@ -1,32 +1,35 @@
 ---
 import BaseLayout from "@/layouts/BaseLayout.astro";
 import ContactFooter from "@/components/ContactFooter.astro";
-import ArrowLink from "@/components/ArrowLink.astro";
+import WorkCard from "@/components/WorkCard.astro";
 ---
 
 <BaseLayout
 	title="Jan Vitu — Product"
 	description="Discover what matters. Ship what works. Repeat until it compounds."
 >
-	<!-- Hero -->
+	<!-- Hero — left-aligned, iceberg as atmosphere -->
 	<section class="relative h-screen overflow-hidden">
 		<img
 			src="/images/iceberg.avif"
 			alt=""
 			aria-hidden="true"
-			class="absolute top-0 left-[10%] h-full w-full object-contain object-top mix-blend-multiply pointer-events-none md:left-[15%]"
+			class="absolute -right-[5%] top-[22vh] w-[140%] md:top-12 md:right-0 md:w-1/2 md:max-h-[92vh] object-contain mix-blend-multiply pointer-events-none"
 		/>
 		<div
-			class="absolute inset-x-0 bottom-0 h-[35vh] bg-gradient-to-t from-neutral-100 via-neutral-100/90 to-transparent pointer-events-none md:hidden"
+			class="base-grid relative h-full items-end pb-[14vh] md:items-center md:pb-0"
 		>
-		</div>
-		<div class="base-grid relative h-full items-end pb-[8vh] md:pb-[14vh]">
-			<div class="col-start-2 col-end-12 md:col-start-3 md:col-end-10">
-				<h1 class="font-black uppercase tracking-tight leading-none">
-					Product
+			<div class="col-start-2 col-end-11 md:col-start-3 md:col-end-9">
+				<span
+					class="block text-xs font-bold uppercase tracking-[0.2em] text-accent mb-4 md:mb-6"
+					>Product</span
+				>
+				<h1 class="font-black leading-none">
+					Discover what matters.<br />
+					<span class="text-accent">Ship what works.</span>
 				</h1>
-				<p class="mt-4 max-w-[45ch] text-lg text-neutral-600 md:text-2xl">
-					Discover what matters. Ship what works. Repeat until it compounds.
+				<p class="mt-6 max-w-[45ch] text-lg text-neutral-600 md:text-2xl">
+					Repeat until it compounds.
 				</p>
 			</div>
 		</div>
@@ -72,6 +75,12 @@ import ArrowLink from "@/components/ArrowLink.astro";
 
 		<div class="base-grid">
 			<div class="col-start-2 col-end-12 md:col-start-4 md:col-end-9">
+				<img
+					src="/images/waterSurface.avif"
+					alt=""
+					aria-hidden="true"
+					class="w-full opacity-30 mix-blend-multiply pointer-events-none mb-4"
+				/>
 				<!-- Surface — full width, bold accent -->
 				<div class="border-l-2 border-accent pl-6 py-10 md:pl-10 md:py-14">
 					<span
@@ -184,7 +193,7 @@ import ArrowLink from "@/components/ArrowLink.astro";
 	<section class="py-24 md:py-32">
 		<div class="base-grid">
 			<blockquote
-				class="col-start-2 col-end-12 md:col-start-4 md:col-end-10 text-center backdrop-blur-xl bg-white/20 border border-white/70 shadow-xl shadow-black/5 ring-1 ring-inset ring-white/50 px-10 py-14 md:px-16 md:py-20"
+				class="col-start-2 col-end-12 md:col-start-4 md:col-end-10 text-center glass-card px-10 py-14 md:px-16 md:py-20"
 			>
 				<p
 					class="text-2xl font-extralight italic leading-relaxed md:text-4xl md:leading-relaxed"
@@ -193,6 +202,29 @@ import ArrowLink from "@/components/ArrowLink.astro";
 				</p>
 				<p class="mt-8 text-neutral-600 md:text-lg">The rest is iteration.</p>
 			</blockquote>
+		</div>
+	</section>
+
+	<section class="py-24 md:py-32">
+		<div class="base-grid">
+			<div
+				class="col-start-2 col-end-12 lg:col-start-3 lg:col-end-11 2xl:col-start-4 2xl:col-end-10 grid grid-cols-1 gap-4 md:grid-cols-2 items-end"
+			>
+				<WorkCard
+					href="/work/gtm"
+					image="/images/mountain.avif"
+					title="Go To Market"
+					description="Not a launch plan. The system that makes product, marketing, and sales compound as one."
+					label="Explore GTM"
+				/>
+				<WorkCard
+					href="/work/marketing"
+					image="/images/mist.avif"
+					title="Marketing"
+					description="Not louder. Remarkable. Marketing that earns trust, not just attention."
+					label="Explore marketing"
+				/>
+			</div>
 		</div>
 	</section>
 

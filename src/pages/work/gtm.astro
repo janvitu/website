@@ -1,7 +1,7 @@
 ---
 import BaseLayout from "@/layouts/BaseLayout.astro";
 import ContactFooter from "@/components/ContactFooter.astro";
-import ArrowLink from "@/components/ArrowLink.astro";
+import WorkCard from "@/components/WorkCard.astro";
 ---
 
 <BaseLayout
@@ -16,7 +16,9 @@ import ArrowLink from "@/components/ArrowLink.astro";
 			aria-hidden="true"
 			class="absolute right-0 top-[15vh] w-[60%] md:top-12 md:right-0 md:w-1/2 md:max-h-[92vh] object-contain mix-blend-multiply pointer-events-none"
 		/>
-		<div class="base-grid relative h-full items-end pb-[20vh] md:items-center md:pb-0">
+		<div
+			class="base-grid relative h-full items-end pb-[20vh] md:items-center md:pb-0"
+		>
 			<div class="col-start-2 col-end-11 md:col-start-3 md:col-end-9">
 				<span
 					class="block text-xs font-bold uppercase tracking-[0.2em] text-accent mb-4 md:mb-6"
@@ -27,8 +29,7 @@ import ArrowLink from "@/components/ArrowLink.astro";
 					<span class="text-accent">A system.</span>
 				</h1>
 				<p class="mt-6 max-w-[45ch] text-lg text-neutral-600 md:text-2xl">
-					The system that makes product, marketing, and sales compound as
-					one.
+					The system that makes product, marketing, and sales compound as one.
 				</p>
 			</div>
 		</div>
@@ -38,8 +39,7 @@ import ArrowLink from "@/components/ArrowLink.astro";
 	<section>
 		<div class="base-grid py-32 md:py-48">
 			<h2 class="col-start-2 col-end-12 md:col-start-3 md:col-end-9">
-				Most GTM strategies <span class="text-accent">fail</span> for the
-				same reason
+				Most GTM strategies <span class="text-accent">fail</span> for the same reason
 			</h2>
 			<p
 				class="col-start-3 col-end-12 row-start-2 mt-4 text-xl text-neutral-700 sm:text-2xl md:col-start-4 md:col-end-9 md:mt-10 md:text-3xl"
@@ -76,8 +76,8 @@ import ArrowLink from "@/components/ArrowLink.astro";
 					>
 					<h3 class="text-2xl font-black">The signal</h3>
 					<p class="text-neutral-600 md:text-lg leading-relaxed">
-						What to build, who it is for, and why now. Product sets the direction
-						that everything else amplifies.
+						What to build, who it is for, and why now. Product sets the
+						direction that everything else amplifies.
 					</p>
 				</div>
 				<div class="space-y-3">
@@ -119,22 +119,18 @@ import ArrowLink from "@/components/ArrowLink.astro";
 				What I <span class="text-accent">do</span>
 			</h2>
 			<div
-				class="col-start-3 col-end-12 row-start-2 mt-8 md:col-start-4 md:col-end-10 md:mt-14 space-y-10 md:space-y-14"
+				class="col-start-3 col-end-12 row-start-2 mt-8 md:col-start-4 md:col-end-9 md:mt-14 space-y-10 md:space-y-14"
 			>
-				<div
-					class="relative pl-6 md:pl-8 before:absolute before:left-0 before:top-0 before:bottom-0 before:w-[2px] before:bg-accent/30"
-				>
+				<div>
 					<h3 class="text-lg font-bold text-neutral-900 md:text-xl">
 						Wire the system
 					</h3>
 					<p class="mt-2 text-neutral-600 md:text-lg leading-relaxed">
-						Align product positioning, marketing narrative, and sales motion into
-						one coherent engine. No silos, no handoff gaps.
+						Align product positioning, marketing narrative, and sales motion
+						into one coherent engine. No silos, no handoff gaps.
 					</p>
 				</div>
-				<div
-					class="relative pl-6 md:pl-8 before:absolute before:left-0 before:top-0 before:bottom-0 before:w-[2px] before:bg-accent/30"
-				>
+				<div>
 					<h3 class="text-lg font-bold text-neutral-900 md:text-xl">
 						Find the right sequence
 					</h3>
@@ -144,9 +140,7 @@ import ArrowLink from "@/components/ArrowLink.astro";
 						traction from noise.
 					</p>
 				</div>
-				<div
-					class="relative pl-6 md:pl-8 before:absolute before:left-0 before:top-0 before:bottom-0 before:w-[2px] before:bg-accent/30"
-				>
+				<div>
 					<h3 class="text-lg font-bold text-neutral-900 md:text-xl">
 						Build the feedback loop
 					</h3>
@@ -163,7 +157,7 @@ import ArrowLink from "@/components/ArrowLink.astro";
 	<section class="py-24 md:py-32">
 		<div class="base-grid">
 			<blockquote
-				class="col-start-2 col-end-12 md:col-start-4 md:col-end-10 text-center backdrop-blur-xl bg-white/20 border border-white/70 shadow-xl shadow-black/5 ring-1 ring-inset ring-white/50 px-10 py-14 md:px-16 md:py-20"
+				class="col-start-2 col-end-12 md:col-start-4 md:col-end-10 text-center glass-card px-10 py-14 md:px-16 md:py-20"
 			>
 				<p
 					class="text-2xl font-extralight italic leading-relaxed md:text-4xl md:leading-relaxed"
@@ -175,6 +169,29 @@ import ArrowLink from "@/components/ArrowLink.astro";
 					The goal is to have both. That is the work.
 				</p>
 			</blockquote>
+		</div>
+	</section>
+
+	<section class="py-24 md:py-32">
+		<div class="base-grid">
+			<div
+				class="col-start-2 col-end-12 lg:col-start-3 lg:col-end-11 2xl:col-start-4 2xl:col-end-10 grid grid-cols-1 gap-4 md:grid-cols-2 items-end"
+			>
+				<WorkCard
+					href="/work/product"
+					image="/images/iceberg.avif"
+					title="Product"
+					description="Discover what matters. Ship what works. Repeat until it compounds."
+					label="Explore product work"
+				/>
+				<WorkCard
+					href="/work/marketing"
+					image="/images/mist.avif"
+					title="Marketing"
+					description="Not louder. Remarkable. Marketing that earns trust, not just attention."
+					label="Explore marketing"
+				/>
+			</div>
 		</div>
 	</section>
 

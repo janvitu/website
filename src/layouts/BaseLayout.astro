@@ -40,7 +40,7 @@ const locale = Astro.currentLocale ?? "en";
 		{showGrid && <Grid />}
 		<Nav />
 		{showContactSide && <ContactSide />}
-		<main id="main">
+		<main id="main" class="overflow-clip">
 			<slot />
 		</main>
 		<Footer />

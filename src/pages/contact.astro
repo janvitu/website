@@ -13,8 +13,14 @@ const t = useT(Astro);
 	)}
 >
 	<section
-		class="base-grid min-h-[100svh] place-content-center pb-12 pt-60 md:pb-24"
+		class="relative base-grid min-h-[100svh] place-content-center pb-12 pt-60 md:pb-24"
 	>
+		<img
+			src="/images/path.avif"
+			alt=""
+			aria-hidden="true"
+			class="absolute inset-0 h-full w-full object-contain object-top mix-blend-multiply pointer-events-none scale-125 md:scale-[2]"
+		/>
 		<h1 class="col-start-2 col-end-11 md:col-start-3">
 			Let's start something<br />
 			<span class="font-black text-accent">bold</span> together

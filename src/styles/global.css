@@ -69,6 +69,10 @@ h2 {
 	@apply text-accent before:bg-accent;
 }
 
+@utility glass-card {
+	@apply backdrop-blur-xl bg-white/20 border border-white/70 shadow-xl shadow-black/5 ring-1 ring-inset ring-white/50;
+}
+
 /* How I AI LED button */
 @property --border-angle {
 	syntax: "<angle>";
