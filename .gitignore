@@ -25,6 +25,7 @@ hugo/assets/js/CookieBanner
 .claude/
 .impeccable.md
 .planning/
+docs/
 
 # Astro generated
 .astro/

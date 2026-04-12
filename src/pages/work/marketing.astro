@@ -1,14 +1,14 @@
 ---
 import BaseLayout from "@/layouts/BaseLayout.astro";
 import ContactFooter from "@/components/ContactFooter.astro";
-import ArrowLink from "@/components/ArrowLink.astro";
+import WorkCard from "@/components/WorkCard.astro";
 ---
 
 <BaseLayout
 	title="Jan Vitu — Marketing"
 	description="Not louder. Remarkable. Marketing that earns trust, not just attention."
 >
-	<!-- Hero — oversized editorial title, mist as contained atmosphere -->
+	<!-- Hero — centered, mist as contained atmosphere -->
 	<section class="relative h-screen">
 		<img
 			src="/images/mist.avif"
@@ -20,16 +20,18 @@ import ArrowLink from "@/components/ArrowLink.astro";
 			<div
 				class="col-start-2 col-end-12 md:col-start-3 md:col-end-11 text-center"
 			>
-				<h1
-					class="font-black uppercase tracking-tight leading-none text-[clamp(2.5rem,10vw,10rem)]"
+				<span
+					class="block text-xs font-bold uppercase tracking-[0.2em] text-accent mb-4 md:mb-6"
+					>Marketing</span
 				>
-					Marketing
+				<h1 class="font-black leading-none text-[clamp(2.5rem,10vw,10rem)]">
+					Not louder.<br />
+					<span class="text-accent">Remarkable.</span>
 				</h1>
 				<p
 					class="mt-6 max-w-[40ch] mx-auto text-lg text-neutral-600 md:text-2xl"
 				>
-					Not louder. Remarkable. Marketing that earns trust, not just
-					attention.
+					Marketing that earns trust, not just attention.
 				</p>
 			</div>
 		</div>
@@ -44,15 +46,14 @@ import ArrowLink from "@/components/ArrowLink.astro";
 			<p
 				class="col-start-3 col-end-12 row-start-2 mt-4 text-xl text-neutral-700 sm:text-2xl md:col-start-4 md:col-end-9 md:mt-10 md:text-3xl"
 			>
-				The kind worth doing <b class="text-neutral-900">earns permission</b
-				>.
+				The kind worth doing <b class="text-neutral-900">earns permission</b>.
 			</p>
 			<div
 				class="col-start-3 col-end-12 row-start-3 mt-6 md:col-start-4 md:col-end-9 space-y-2 md:space-y-4"
 			>
 				<p class="text-sm text-neutral-700 sm:text-base md:text-xl">
-					More ads, more channels, more noise. That is the default playbook.
-					And it is exhausting - for the team and for the audience.
+					More ads, more channels, more noise. That is the default playbook. And
+					it is exhausting - for the team and for the audience.
 				</p>
 				<p class="text-sm text-neutral-700 sm:text-base md:text-xl">
 					There is a different way. Instead of fighting for attention, earn it.
@@ -108,9 +109,9 @@ import ArrowLink from "@/components/ArrowLink.astro";
 						Trust is built in small moments.
 					</h3>
 					<p class="mt-4 text-neutral-600 md:text-lg leading-relaxed">
-						Every touchpoint is a promise. The email, the landing page, the first
-						interaction. Each one either builds trust or chips away at it. There
-						are no neutral moments.
+						Every touchpoint is a promise. The email, the landing page, the
+						first interaction. Each one either builds trust or chips away at it.
+						There are no neutral moments.
 					</p>
 				</div>
 
@@ -137,7 +138,7 @@ import ArrowLink from "@/components/ArrowLink.astro";
 				What I <span class="text-accent">do</span>
 			</h2>
 			<div
-				class="col-start-3 col-end-12 row-start-2 mt-8 md:col-start-4 md:col-end-10 md:mt-14 space-y-10 md:space-y-14"
+				class="col-start-3 col-end-12 row-start-2 mt-8 md:col-start-4 md:col-end-9 md:mt-14 space-y-10 md:space-y-14"
 			>
 				<div>
 					<h3 class="text-lg font-bold text-neutral-900 md:text-xl">
@@ -153,8 +154,8 @@ import ArrowLink from "@/components/ArrowLink.astro";
 						Find the right audience
 					</h3>
 					<p class="mt-2 text-neutral-600 md:text-lg leading-relaxed">
-						Define who you are really for. Not demographics - the people who will
-						care enough to tell others. Then build around them.
+						Define who you are really for. Not demographics - the people who
+						will care enough to tell others. Then build around them.
 					</p>
 				</div>
 				<div>
@@ -162,8 +163,8 @@ import ArrowLink from "@/components/ArrowLink.astro";
 						Build permission, not just reach
 					</h3>
 					<p class="mt-2 text-neutral-600 md:text-lg leading-relaxed">
-						Channels and campaigns matter, but only when people want to hear from
-						you. Earn attention first. Scale it second.
+						Channels and campaigns matter, but only when people want to hear
+						from you. Earn attention first. Scale it second.
 					</p>
 				</div>
 			</div>
@@ -174,18 +175,41 @@ import ArrowLink from "@/components/ArrowLink.astro";
 	<section class="py-24 md:py-32">
 		<div class="base-grid">
 			<blockquote
-				class="col-start-2 col-end-12 md:col-start-4 md:col-end-10 text-center backdrop-blur-xl bg-white/20 border border-white/70 shadow-xl shadow-black/5 ring-1 ring-inset ring-white/50 px-10 py-14 md:px-16 md:py-20"
+				class="col-start-2 col-end-12 md:col-start-4 md:col-end-10 text-center glass-card px-10 py-14 md:px-16 md:py-20"
 			>
 				<p
 					class="text-2xl font-extralight italic leading-relaxed md:text-4xl md:leading-relaxed"
 				>
-					"People do not buy goods and services. They buy relations, stories,
-					and magic."
+					"People do not buy products. They buy the story they tell themselves
+					about who they become."
 				</p>
-				<footer class="mt-8 text-neutral-500 md:text-lg">
-					- Seth Godin
-				</footer>
+				<p class="mt-8 text-neutral-600 md:text-lg">
+					Make that story worth telling.
+				</p>
 			</blockquote>
+		</div>
+	</section>
+
+	<section class="py-24 md:py-32">
+		<div class="base-grid">
+			<div
+				class="col-start-2 col-end-12 lg:col-start-3 lg:col-end-11 2xl:col-start-4 2xl:col-end-10 grid grid-cols-1 gap-4 md:grid-cols-2 items-end"
+			>
+				<WorkCard
+					href="/work/gtm"
+					image="/images/mountain.avif"
+					title="Go To Market"
+					description="Not a launch plan. The system that makes product, marketing, and sales compound as one."
+					label="Explore GTM"
+				/>
+				<WorkCard
+					href="/work/product"
+					image="/images/iceberg.avif"
+					title="Product"
+					description="Discover what matters. Ship what works. Repeat until it compounds."
+					label="Explore product work"
+				/>
+			</div>
 		</div>
 	</section>
 
