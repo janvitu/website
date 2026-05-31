@@ -8,6 +8,11 @@ const ANIM_LABELS_OUT = 0.2;
 const ANIM_STAGGER_IN = 0.05;
 const ANIM_STAGGER_OUT = 0.02;
 
+// Desktop: grace period before closing on pointer/focus leave, so brief
+// excursions (e.g. crossing the gap to reach the labels, or drifting a pixel
+// past the text) don't collapse the nav.
+const CLOSE_DELAY_MS = 220;
+
 const desktopMql = window.matchMedia("(min-width: 768px)");
 const isDesktop = () => desktopMql.matches;
 
@@ -28,8 +33,16 @@ const menuBtn = document.querySelector<HTMLButtonElement>(
 );
 
 let isOpen = false;
-let lockedOpen = false; // true when opened via menu button tap
+let lockedOpen = false; // true when opened via menu button / sidebar tap
 let activeAnimation: AnimationHandle | null = null;
+let closeTimer: ReturnType<typeof setTimeout> | null = null;
+
+const cancelScheduledClose = () => {
+	if (closeTimer !== null) {
+		clearTimeout(closeTimer);
+		closeTimer = null;
+	}
+};
 
 const resetState = () => {
 	overlay.style.pointerEvents = "none";
@@ -46,6 +59,10 @@ const resetState = () => {
 };
 
 const onEnter = () => {
+	// Cancel a pending close first — otherwise a re-enter while the grace
+	// timer is still running would hit the isOpen guard and the nav would
+	// close out from under the pointer.
+	cancelScheduledClose();
 	if (isOpen) return;
 	isOpen = true;
 
@@ -101,6 +118,7 @@ const onEnter = () => {
 };
 
 const closeNav = () => {
+	cancelScheduledClose();
 	if (!isOpen) return;
 	isOpen = false;
 
@@ -128,8 +146,14 @@ const closeNav = () => {
 };
 
 const onLeave = () => {
-	if (lockedOpen) return; // menu button keeps it open
-	closeNav();
+	if (lockedOpen) return; // menu button / sidebar tap keeps it open
+	// Defer the close so the nav survives crossing the gap to the labels or
+	// drifting just past the text; re-entering cancels this (see onEnter).
+	cancelScheduledClose();
+	closeTimer = setTimeout(() => {
+		closeTimer = null;
+		closeNav();
+	}, CLOSE_DELAY_MS);
 };
 
 const forceClose = () => {
@@ -175,6 +199,7 @@ toggle.addEventListener("focusout", onLeave);
 // touchend → navigate to highlighted item, or close if none
 
 let highlightedLink: HTMLAnchorElement | null = null;
+let didMove = false; // whether the finger moved during the current gesture
 
 const clearHighlight = () => {
 	if (highlightedLink) {
@@ -210,6 +235,7 @@ const getNavLinkAtPoint = (
 // Touch gesture handlers (attached/removed dynamically)
 const handleTouchMove = (e: TouchEvent) => {
 	e.preventDefault();
+	didMove = true;
 
 	const touch = e.touches[0];
 	const link = getNavLinkAtPoint(touch.clientX, touch.clientY);
@@ -248,12 +274,27 @@ const handleTouchEnd = (e: TouchEvent) => {
 	if (targetLink) {
 		const href = targetLink.getAttribute("href");
 		clearHighlight();
-		onLeave();
+		forceClose();
 		if (href) {
 			window.location.href = href;
 		}
-	} else {
-		onLeave();
+		return;
+	}
+
+	// Released on empty space (no link under the finger).
+	if (!didMove) {
+		// A stationary tap on the sidebar toggles the nav open and keeps it
+		// open — same affordance as the menu button.
+		if (lockedOpen) {
+			forceClose();
+		} else {
+			lockedOpen = true;
+			if (menuBtn) menuBtn.setAttribute("aria-expanded", "true");
+			// Nav was already opened on touchstart; just keep it locked open.
+		}
+	} else if (!lockedOpen) {
+		// Dragged around and let go off any link — collapse it.
+		closeNav();
 	}
 };
 
@@ -261,6 +302,7 @@ toggle.addEventListener(
 	"touchstart",
 	(e: TouchEvent) => {
 		e.preventDefault();
+		didMove = false;
 
 		// If the touch starts directly on the logo, navigate home immediately
 		// without opening the nav overlay

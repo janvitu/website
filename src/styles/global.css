@@ -147,6 +147,15 @@ li:hover .nav-mobile-kanji {
 .nav-menu-btn {
 	writing-mode: vertical-rl;
 	color: var(--nav-dot-color);
+	position: relative;
+}
+
+/* Enlarge the tap/click target to a comfortable ≥44px without shifting the
+   visible "menu" text — the pseudo-element expands the hit area symmetrically. */
+.nav-menu-btn::before {
+	content: "";
+	position: absolute;
+	inset: -18px -22px;
 }
 
 /* Navigation dots */
