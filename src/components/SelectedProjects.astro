@@ -26,7 +26,7 @@ const projects: { permalink: string; thumbnail: string; project: string }[] =
 		{
 			projects.map((p) => (
 				<figure>
-					<a href={p.permalink}>
+					<a href={p.permalink} tabindex="-1" aria-hidden="true">
 						<img
 							src={p.permalink + p.thumbnail}
 							alt={p.project}

@@ -20,9 +20,9 @@ const currentPath = Astro.url.pathname;
 				featured && (
 					<div class="col-span-full">
 						<div class="base-grid">
-							<p class="col-start-2 col-end-12 py-6 text-lg font-bold uppercase md:col-start-3 md:col-end-11 md:py-10">
+							<h2 class="col-start-2 col-end-12 py-6 text-lg font-bold uppercase md:col-start-3 md:col-end-11 md:py-10">
 								{t("blog.featured", "Featured")}
-							</p>
+							</h2>
 						</div>
 						<ArticlePreview entry={featured} isFirst />
 					</div>
@@ -33,9 +33,9 @@ const currentPath = Astro.url.pathname;
 				rest.length > 0 && (
 					<div class="col-span-full">
 						<div class="base-grid">
-							<p class="col-start-2 col-end-12 py-6 text-lg font-bold uppercase md:col-start-3 md:col-end-11 md:py-10">
+							<h2 class="col-start-2 col-end-12 py-6 text-lg font-bold uppercase md:col-start-3 md:col-end-11 md:py-10">
 								{t("blog.latestPosts", "Latest posts")}
-							</p>
+							</h2>
 						</div>
 						{rest.map((post) => (
 							<ArticlePreview entry={post} />

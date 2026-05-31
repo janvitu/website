@@ -3,6 +3,7 @@ export const initTabs = (): void => {
 		document.querySelectorAll<HTMLButtonElement>("[role='tab']");
 	const tabPanels =
 		document.querySelectorAll<HTMLDivElement>("[role='tabpanel']");
+	const tabList = document.querySelector<HTMLDivElement>("[role='tablist']");
 
 	if (tabButtons.length === 0) return;
 
@@ -14,6 +15,7 @@ export const initTabs = (): void => {
 		tabButtons.forEach((btn) => {
 			const isTarget = btn.getAttribute("data-tab") === targetId;
 			btn.setAttribute("aria-selected", isTarget ? "true" : "false");
+			btn.setAttribute("tabindex", isTarget ? "0" : "-1");
 			btn.style.color = isTarget
 				? "var(--color-text)"
 				: "var(--color-text-muted)";
@@ -47,6 +49,36 @@ export const initTabs = (): void => {
 			activateTab(targetId);
 		});
 	});
+
+	if (tabList) {
+		tabList.addEventListener("keydown", (e: KeyboardEvent) => {
+			const index = Array.from(tabButtons).findIndex(
+				(btn) => btn === document.activeElement,
+			);
+			if (index === -1) return;
+
+			let nextIndex: number | null = null;
+			if (e.key === "ArrowRight") {
+				nextIndex = (index + 1) % tabButtons.length;
+			} else if (e.key === "ArrowLeft") {
+				nextIndex = (index - 1 + tabButtons.length) % tabButtons.length;
+			} else if (e.key === "Home") {
+				nextIndex = 0;
+			} else if (e.key === "End") {
+				nextIndex = tabButtons.length - 1;
+			}
+
+			if (nextIndex !== null) {
+				e.preventDefault();
+				const nextButton = tabButtons[nextIndex];
+				const targetId = nextButton.getAttribute("data-tab");
+				if (targetId) {
+					activateTab(targetId);
+					nextButton.focus();
+				}
+			}
+		});
+	}
 
 	// Activate tab from URL hash on load
 	const hash = window.location.hash.slice(1);

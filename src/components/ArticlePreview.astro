@@ -20,7 +20,7 @@ const href = `/blog/${entry.id}/`;
 		isFirst ? "md:grid-cols-[3fr,2fr]" : "md:grid-cols-2",
 	]}
 >
-	<a href={href} class="block aspect-video focus-accent">
+	<a href={href} class="block aspect-video focus-accent" tabindex="-1" aria-hidden="true">
 		<img
 			src={`${href}cover.webp`}
 			alt={title}

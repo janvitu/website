@@ -50,6 +50,7 @@ const t = useT(Astro);
 		copyElement?.addEventListener("click", copyContent as EventListener);
 		copyElement?.addEventListener("keydown", (e: KeyboardEvent) => {
 			if (e.key === "Enter" || e.key === " ") {
+				e.preventDefault();
 				copyContent(e as unknown as MouseEvent);
 			}
 		});
