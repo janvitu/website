@@ -60,6 +60,7 @@ const resetState = () => {
 	mobileLabels.forEach((label) => {
 		label.style.opacity = "0";
 		label.style.transform = "translateY(10px)";
+		label.style.pointerEvents = "none";
 	});
 };
 
@@ -120,6 +121,13 @@ const onEnter = () => {
 				ease: "easeOut",
 			});
 		}
+		// Restore interactivity: the .nav-label-mobile resting state is
+		// pointer-events:none (set in CSS to avoid pre-JS interaction). Without
+		// this, taps land on the <li> and elementsFromPoint never sees the <a>,
+		// so neither tapping nor the press-and-drag gesture can navigate.
+		mobileLabels.forEach((label) => {
+			label.style.pointerEvents = "auto";
+		});
 	}
 };
 
