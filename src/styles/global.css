@@ -143,19 +143,78 @@ li:hover .nav-mobile-kanji {
 	}
 }
 
-/* Vertical "menu" label button — writing-mode has no Tailwind utility */
+/* Menu trigger: "menu" wordmark morphs into an X close icon, driven by a
+   single 0→1 progress value so it interpolates smoothly and reverses. */
+@property --menu-progress {
+	syntax: "<number>";
+	inherits: true;
+	initial-value: 0;
+}
+
 .nav-menu-btn {
-	writing-mode: vertical-rl;
 	color: var(--nav-dot-color);
 	position: relative;
+	--menu-progress: 0;
+	/* ease-in-out-cubic: morph stays visible across the whole arc, both
+	   directions, no bounce. (ease-out alone front-loads and snaps shut.) */
+	transition: --menu-progress 380ms cubic-bezier(0.65, 0, 0.35, 1);
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.nav-menu-btn {
+		transition: none;
+	}
 }
 
 /* Enlarge the tap/click target to a comfortable ≥44px without shifting the
-   visible "menu" text — the pseudo-element expands the hit area symmetrically. */
+   visible label — the pseudo-element expands the hit area symmetrically. */
 .nav-menu-btn::before {
 	content: "";
 	position: absolute;
 	inset: -18px -22px;
+}
+
+/* "menu" wordmark — folds along the X's diagonal and collapses into the
+   center as the strokes draw, so the text reads as becoming the X (no fade). */
+.menu-word {
+	writing-mode: vertical-rl;
+	display: block;
+	transform-origin: center;
+	transform: scale(max(0, 1 - var(--menu-progress) / 0.55))
+		rotate(calc(var(--menu-progress) * 45deg));
+}
+
+/* X icon — two strokes drawn outward from the center as progress completes */
+.menu-x {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	width: 16px;
+	height: 16px;
+	transform: translate(-50%, -50%);
+	pointer-events: none;
+}
+
+.menu-x-bar {
+	position: absolute;
+	top: 50%;
+	left: 0;
+	right: 0;
+	height: 1.5px;
+	margin-top: -0.75px;
+	border-radius: 1px;
+	background-color: currentColor;
+	transform-origin: center;
+}
+
+.menu-x-bar:nth-child(1) {
+	transform: rotate(45deg)
+		scaleX(clamp(0, (var(--menu-progress) - 0.4) / 0.6, 1));
+}
+
+.menu-x-bar:nth-child(2) {
+	transform: rotate(-45deg)
+		scaleX(clamp(0, (var(--menu-progress) - 0.4) / 0.6, 1));
 }
 
 /* Navigation dots */

@@ -44,6 +44,11 @@ const cancelScheduledClose = () => {
 	}
 };
 
+// Drive the "menu" → X morph (0 = wordmark, 1 = X). CSS transitions the value.
+const setMenuMorph = (open: boolean) => {
+	if (menuBtn) menuBtn.style.setProperty("--menu-progress", open ? "1" : "0");
+};
+
 const resetState = () => {
 	overlay.style.pointerEvents = "none";
 	overlay.style.opacity = "0";
@@ -65,6 +70,7 @@ const onEnter = () => {
 	cancelScheduledClose();
 	if (isOpen) return;
 	isOpen = true;
+	setMenuMorph(true);
 
 	// Cancel any in-flight leave animation
 	if (activeAnimation) {
@@ -121,6 +127,7 @@ const closeNav = () => {
 	cancelScheduledClose();
 	if (!isOpen) return;
 	isOpen = false;
+	setMenuMorph(false);
 
 	if (prefersReducedMotion) {
 		resetState();
